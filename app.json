@@ -1,0 +1,48 @@
+{
+  "pages": [
+      "pages/index/index",
+      "pages/afterSale/index",
+      "pages/about/index",
+      "pages/activity/index",
+      "pages/userCenter/index",
+      "dist/components/header/index"
+  ],
+  "window":{
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#121314",
+    "navigationBarTitleText": "仁孚中国",
+    "navigationBarTextStyle": "#fff",
+    "enablePullDownRefresh": true
+  },
+  "tabBar":{
+    "color": "#A5A5A5",
+    "selectedColor": "#fff",
+    "borderStyle": "white",
+    "backgroundColor": "#121314",
+    "list":[
+      {
+       "pagePath": "pages/index/index",
+       "text": "数字化展厅"
+      },
+      {
+        "pagePath": "pages/afterSale/index",
+        "text": "售后服务"
+      },
+      {
+        "pagePath": "pages/about/index",
+        "text": "关于仁孚"
+      },
+      {
+        "pagePath": "pages/activity/index",
+        "text": "关于仁孚"
+      },
+      {
+        "pagePath": "pages/userCenter/index",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "usingComponents": {
+    "header": "/dist/components/header/index"
+  }
+}

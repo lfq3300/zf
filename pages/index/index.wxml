@@ -1,0 +1,9 @@
+<header></header>
+<view class='car-level'>
+    <scroll-view scroll-x style="height:100rpx;width: auto;overflow:hidden;">
+      <view wx:for="{{tag}}" wx:for-index="idx" wx:for-item="item" wx:key="property"
+       class="{{tabSelect == item.id?'select':''}} tag" data-id='{{item.id}}'>
+        {{item.name}}
+      </view>
+    </scroll-view>
+  </view>

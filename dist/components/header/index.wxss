@@ -1,0 +1,16 @@
+/* dist/components/header/index.wxss */
+.logo-view{
+  width: 100%;
+  height: 120rpx;
+  background: #121314;
+}
+.logo-box{
+  padding-top: 14rpx;
+  padding-left: 38rpx;
+  width: 501rpx;
+  height: 92rpx;
+  overflow: hidden;
+}
+.logo-img{
+   width: 100%;
+}

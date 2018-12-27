@@ -1,0 +1,89 @@
+/* pages/index/index.wxss */
+/* pages/carlist/carlist.wxss */
+.content{
+  width: 100%;
+}
+.item{
+  margin-top: 40rpx;
+  height: 227rpx;
+  overflow: hidden;
+  box-shadow: 0rpx 0rpx 10rpx #999;
+  position: relative;
+}
+.item .item-content{
+  width: 100%;
+  padding-top: 20rpx;
+}
+.item .item-content .item-left{ 
+  color: #333333;
+  font-size: 32rpx;
+  font-family: "MYingHeiPRC-W4";
+}
+.item .item-content .item-left text{
+  display: block;
+  padding-left:41rpx;
+  margin-top: 15rpx
+}
+.text_one{
+  padding-top: 41rpx;
+}
+
+.item .item-content .item-img{
+  width: 313rpx;
+  height: 116rpx;
+  margin-right: 21rpx;
+}
+.item-img image{
+  width: 100%;
+  height: 116rpx;
+}
+.carlist{
+  margin-bottom: 150rpx;
+}
+.bottom{
+  background: #272A31;
+  color: #999999;
+  font-size: 20rpx;
+  font-family: "MYingHeiPRC-W3";
+  text-align: center;
+  height: 50rpx;
+  line-height: 50rpx;
+  position: absolute;
+  bottom:0;
+  width: 100%;
+}
+.car-level{
+  width: 100%;
+  height: 90rpx;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.tag{
+  height: 50rpx;
+  padding-left: 26rpx;
+  padding-right: 26rpx;
+  background: #F4F4F4;
+  display: inline-block;
+  font-size: 24rpx;
+  color: #999999;
+  font-family: MYingHeiPRC-W4;
+  line-height: 50rpx;
+  margin-top: 30rpx;
+  margin-left: 40rpx;
+  box-sizing: border-box;
+  border-radius: 6rpx;
+}
+.tag:first-child{
+  margin-left: 40rpx;
+}
+.tag:last-child{
+  margin-right: 40rpx;
+}
+.select{
+  background: #272A31!important;
+  color: #FFFFFF!important;
+}
+.car-level picker{
+  line-height: 95rpx;
+  text-align: center;
+}
