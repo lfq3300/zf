@@ -37,12 +37,30 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
 					"name": "一级列表",
 					"pathName": "pages/index/catalog/index",
+					"query": "id=1"
+				},
+				{
+					"id": -1,
+					"name": "二级列表",
+					"pathName": "pages/index/details/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "询价",
+					"pathName": "pages/index/inquiry/index",
+					"query": "id=1"
+				},
+				{
+					"id": -1,
+					"name": "试驾",
+					"pathName": "pages/index/drive/index",
 					"query": "id=1"
 				}
 			]

@@ -1,0 +1,44 @@
+page {
+  background: #373737;
+  padding-bottom: 60rpx;
+}
+
+.bg {
+  height: 264rpx;
+  overflow: hidden;
+  position: relative;
+}
+
+.bg image {
+  height: 264rpx;
+  width: 100%;
+}
+
+.bg .shadow {
+  width: 100%;
+  height: 264rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.bg .text {
+  font-size: 44rpx;
+  color: #fff;
+  position: absolute;
+  width: 100%;
+  height: 264rpx;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  text-align: center;
+  line-height: 264rpx;
+  letter-spacing: 15rpx;
+}
+
+.explain{
+  color: #848484;
+  font-size: 22rpx;
+}

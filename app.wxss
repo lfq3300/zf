@@ -1,22 +1,90 @@
-  .padding-border{
+.padding-border {
   padding-left: 40rpx;
   padding-right: 40rpx;
   overflow: hidden;
+  min-height: 1rpx;
 }
 
-
-.flex-default{
-  display: -webkit-flex;  
+.flex-default {
+  display: -webkit-flex;
   display: flex;
 }
-.flex-column{
-  display: -webkit-flex;  
+
+.flex-column {
+  display: -webkit-flex;
   display: flex;
   flex-direction: column;
 }
-.flex-justify-content-end{
-  justify-content:flex-end;
+
+.flex-justify-content-end {
+  justify-content: flex-end;
 }
-.flex1{
+
+.flex1 {
   flex: 1;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.from-assembly {
+  height: 82rpx;
+  line-height: 82rpx;
+  width: 100%;
+  background: #313131;
+  margin-top: 26rpx;
+  padding: 0 24rpx 0 23rpx;
+  box-sizing: border-box;
+  font-size: 28rpx;
+}
+
+.from-assembly text {
+  font-size: 28rpx;
+  color: #fff;
+}
+
+.from-assembly-value {
+  text-align: center;
+  color: #727171;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 14rpx solid transparent;
+  border-right: 14rpx solid transparent;
+  border-top: 28rpx solid #848484;
+}
+
+.from-assembly-input, .from-assembly-input::placeholder {
+  color: #727171;
+  height: 82rpx;
+  line-height: 82rpx;
+  text-align: center;
+}
+.from-assembly-no-right{
+  padding-right: 0rpx;
+}
+.from-assembly-phone-btn {
+  height: 82rpx;
+  line-height: 82rpx;
+  border-radius: 0rpx;
+  background: #424242;
+  font-size: 28rpx;
+  color: #fff;
+}
+
+.subBtn{
+  background: #D1A24B;
+  border-radius: 0;
+  height: 82rpx;
+  line-height: 82rpx;
+  margin-top: 81rpx;
+  font-size: 32rpx;
+  color: #fff;
+  margin-bottom: 13rpx;
 }

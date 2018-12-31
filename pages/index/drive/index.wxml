@@ -1,0 +1,60 @@
+<view class='bg'>
+  <image src='/../images/banner.png'></image>
+  <view class='shadow'></view>
+  <view class='text flex-column flex-center'>
+    <text class="text-title">预约试驾</text>
+    <text class="text-sub">欢迎预约，请填写你的个人信息</text>
+  </view>
+</view>
+<view class='padding-border'>
+  <form bindsubmit="formSubmit">
+
+    <view class='from-assembly flex-default'>
+      <text>姓名</text>
+      <input class='flex1 from-assembly-input' placeholder='请输入您的姓名'></input>
+    </view>
+    <view class='from-assembly flex-default'>
+      <text>称谓</text>
+      <radio-group class="gender">
+        <label>
+          <radio value='1' /> 先生
+        </label>
+        <label>
+          <radio value='2' />女士
+        </label>
+      </radio-group>
+    </view>
+    <view class='from-assembly flex-default'>
+      <text>手机号码</text>
+      <input class='flex1 from-assembly-input' placeholder='请输入手机号码'></input>
+    </view>
+    <view class='from-assembly flex-default from-assembly-no-right'>
+      <text>验证码</text>
+      <input class='flex1 from-assembly-input' placeholder='请输入验证码'></input>
+      <button class="from-assembly-phone-btn">获取验证码</button>
+    </view>
+    <view class='from-assembly flex-default flex-center'>
+      <text>车型</text>
+      <picker class='flex1' bindchange='bingCarType' value="{{carTypeIndex}}" range="{{carType}}">
+        <view class="from-assembly-value">{{carType[carTypeIndex]}}</view>
+      </picker>
+      <text class='triangle'></text>
+    </view>
+    <view class='from-assembly'>
+      <text>预约日期</text>
+      <picker mode="date" value="{{date}}" bindchange="bindDate">
+        <view class="from-assembly-value">
+          {{date}}
+        </view>
+      </picker>
+    </view>
+    <view class='from-assembly flex-default flex-center'>
+      <text>经销商</text>
+      <picker class='flex1' bindchange='bingDis' value="{{carDisIndex}}" range="{{carDis}}">
+        <view class="from-assembly-value">{{carDis[carDisIndex]}}</view>
+      </picker>
+      <text class='triangle'></text>
+    </view>
+    <button class="subBtn">预约试驾</button>
+  </form>
+</view>

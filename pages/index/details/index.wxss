@@ -1,1 +1,85 @@
-/* pages/index/details/index.wxss */
+page{
+  padding-bottom: 200rpx;
+}
+.swiper-box, .swiper-box swiper {
+  height: 432rpx;
+  overflow: hidden;
+}
+
+.swiper-box .wx-swiper-dot {
+  width: 9rpx;
+  height: 9rpx;
+}
+
+.swiper-box  image {
+  width: 100%;
+  height: 432rpx;
+}
+
+.title {
+  display: block;
+  width: 100%;
+  background: #1b1b1b;
+  color: #fff;
+  text-align: center;
+  font-size: 30rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+}
+
+.price-box {
+  height: 163rpx;
+  padding-left: 16rpx;
+  padding-right: 22rpx;
+  box-sizing: border-box;
+}
+
+.price-box  > view {
+  height: 162rpx;
+  line-height: 162rpx;
+  width: 100%;
+  border-bottom: 1px solid #b5b5b5;
+  text-align: center;
+}
+
+.price-box view text {
+  display: inline;
+  font-size: 24rpx;
+  color: #727171;
+}
+
+.price-box view .price {
+  color: #000;
+  font-size: 48rpx;
+}
+
+.suspension {
+  position: fixed;
+  height: 106rpx;
+  background: #1b1b1b;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.suspension navigator {
+  display: inline-block;
+  background: #d1a24b;
+  color: #1b1b1b;
+  font-size: 30rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  width: 213rpx;
+  margin-left: 12rpx;
+  margin-right: 12rpx;
+  text-align: center;
+}
+
+.content{
+  margin-top: 90rpx;
+  padding: 0 88rpx 0 87rpx;
+  box-sizing: border-box;
+}

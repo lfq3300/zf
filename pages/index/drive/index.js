@@ -1,21 +1,56 @@
-// pages/index/details/index.js
+// pages/index/drive/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    carType: [
+      "请选择",
+      "车型一",
+      "车型二",
+      "车型三"
+    ],
+    carTypeIndex: 1,
+    carDis: [
+      "请选择",
+      "经销商一",
+      "经销商二",
+      "经销商三"
+    ],
+    carDisIndex: 1,
+    date:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.hideNavigationBarLoading();
-    wx.stopPullDownRefresh();
+
   },
 
+  bingCarType: function (e) {
+    var that = this;
+    var carType = that.data.carType;
+    var carTypeIndex = that.data.carTypeIndex;
+    that.setData({
+      carTypeIndex: e.detail.value
+    })
+  },
+  bingDis: function (e) {
+    var that = this;
+    var carDis = that.data.carDis;
+    var carDisIndex = that.data.carDisIndex;
+    that.setData({
+      carDisIndex: e.detail.value
+    })
+  },
+  bindDate: function (e) {
+    var that = this;
+    that.setData({
+      date: e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -58,12 +93,6 @@ Page({
 
   },
 
-  onPullDownRefresh: function () {
-    wx.showNavigationBarLoading();
-    var that = this;
-    that.onLoad();
-  },
-  
   /**
    * 用户点击右上角分享
    */

@@ -21,8 +21,10 @@ Page({
   onLoad: function (options) {
     var that = this;
     that.setData({
-      id: options.id,
+     // id: options.id,
     });
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
   },
 
   /**
@@ -66,7 +68,11 @@ Page({
   onReachBottom: function () {
 
   },
-
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading();
+    var that = this;
+    that.onLoad();
+  },
   /**
    * 用户点击右上角分享
    */
