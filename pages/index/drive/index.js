@@ -19,7 +19,13 @@ Page({
       "经销商三"
     ],
     carDisIndex: 1,
-    date:""
+    date:"2019-01-01",
+    carTime:[
+      "8:00-10:00",
+      "10:00-12:00",
+      "14:00-16:00",
+    ],
+    carTimeIndex:1
   },
 
   /**
@@ -49,6 +55,14 @@ Page({
     var that = this;
     that.setData({
       date: e.detail.value
+    })
+  },
+  bingTime:function(e){
+    var that = this;
+    var carTime = that.data.carTime;
+    var carTimeIndex = that.data.carTimeIndex;
+    that.setData({
+      carTimeIndex: e.detail.value
     })
   },
   /**

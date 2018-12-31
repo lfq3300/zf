@@ -40,12 +40,18 @@
       </picker>
       <text class='triangle'></text>
     </view>
-    <view class='from-assembly'>
+    <view class='from-assembly flex-default flex-center'>
       <text>预约日期</text>
-      <picker mode="date" value="{{date}}" bindchange="bindDate">
+      <picker  class='flex1' mode="date" value="{{date}}" bindchange="bindDate">
         <view class="from-assembly-value">
           {{date}}
         </view>
+      </picker>
+    </view>
+       <view class='from-assembly flex-default flex-center'>
+      <text>预约时间</text>
+      <picker class='flex1' bindchange='bingTime' value="{{carTimeIndex}}" range="{{carTime}}">
+        <view class="from-assembly-value">{{carTime[carTimeIndex]}}</view>
       </picker>
     </view>
     <view class='from-assembly flex-default flex-center'>
@@ -54,6 +60,10 @@
         <view class="from-assembly-value">{{carDis[carDisIndex]}}</view>
       </picker>
       <text class='triangle'></text>
+    </view>
+    <view class='agree flex-default'>
+      <checkbox></checkbox>
+    <navigator>我已阅读并接受个人信息保护法律声明。</navigator>
     </view>
     <button class="subBtn">预约试驾</button>
   </form>
