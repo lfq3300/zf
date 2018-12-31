@@ -1,0 +1,22 @@
+  .padding-border{
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  overflow: hidden;
+}
+
+
+.flex-default{
+  display: -webkit-flex;  
+  display: flex;
+}
+.flex-column{
+  display: -webkit-flex;  
+  display: flex;
+  flex-direction: column;
+}
+.flex-justify-content-end{
+  justify-content:flex-end;
+}
+.flex1{
+  flex: 1;
+}

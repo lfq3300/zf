@@ -12,6 +12,36 @@ Page({
       { "id": 3, "name": "轿跑车" },
       { "id": 4, "name": "敞篷跑车" },
       { "id": 5, "name": "MPV" }
+    ],
+    carList:[
+      { 
+        "id": 1, 
+        "n": "S", 
+        "e": "Mercedes-Benz", 
+        "c": "Class", 
+        "src":"../../images/car.png"
+      },
+      {
+        "id": 2,
+        "n": "E",
+        "e": "Mercedes-Benz",
+        "c": "Class",
+        "src": "../../images/car.png"
+      },
+      {
+        "id": 3,
+        "n": "C",
+        "e": "Mercedes-Benz",
+        "c": "Class",
+        "src": "../../images/car.png"
+      },
+      {
+        "id": 4,
+        "n": "F",
+        "e": "Mercedes-Benz",
+        "c": "Class",
+        "src": "../../images/car.png"
+      },
     ]
   },
 

@@ -59,31 +59,76 @@
   overflow: hidden;
 }
 .tag{
-  height: 50rpx;
-  padding-left: 26rpx;
-  padding-right: 26rpx;
-  background: #F4F4F4;
+  padding-left: 28rpx;
+  padding-right: 27rpx;
   display: inline-block;
-  font-size: 24rpx;
-  color: #999999;
+  font-size: 28rpx;
+  color:#9FA0A0;
   font-family: MYingHeiPRC-W4;
-  line-height: 50rpx;
   margin-top: 30rpx;
-  margin-left: 40rpx;
   box-sizing: border-box;
-  border-radius: 6rpx;
+  border-right: 1px solid #959595;
 }
 .tag:first-child{
   margin-left: 40rpx;
 }
 .tag:last-child{
   margin-right: 40rpx;
+   border-right:none!important;
 }
 .select{
-  background: #272A31!important;
-  color: #FFFFFF!important;
+  color:#595757!important;
 }
 .car-level picker{
   line-height: 95rpx;
   text-align: center;
+}
+
+.car-list{
+  margin-top: 103rpx;
+}
+.car-itme{
+  height: 158rpx;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 60rpx;
+}
+.car-itme  .car-item-bg{
+  position: absolute;
+  left: 0;
+  bottom: 12rpx;
+  background: #BFBFBF;
+  width: -webkit-calc(100% - 168rpx);
+  width: calc(100% - 168rpx);
+  width: -moz-calc(100% - 168rpx);
+  height: 101rpx;
+  z-index: 1;
+  padding: 0rpx 0rpx 15rpx 14rpx;
+}
+.car-item-bg text{
+  color:#fff;
+  font-size: 34rpx;
+}
+
+.car-item-bg text.max-size{
+  font-size: 85rpx;
+  font-weight: 900;
+}
+.car-item-bg text.min-size{
+  font-size: 16rpx;
+}
+
+.car-itme .car-item-img{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 158rpx;
+  width:334rpx;
+  z-index: 2;
+}
+
+
+
+.car-item-bg  .flex-column{
+    padding-left: 14rpx;
 }
