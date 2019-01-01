@@ -5,9 +5,11 @@
       "pages/index/details/index",
       "pages/index/drive/index",
       "pages/index/inquiry/index",
+      "pages/index/finance/index",
       "pages/afterSale/index",
       "pages/about/index",
       "pages/activity/index",
+      "pages/activity/details/index",
       "pages/userCenter/index",
       "dist/components/header/index"
   ],

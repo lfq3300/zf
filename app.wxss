@@ -1,3 +1,6 @@
+page{
+  color: #1B1B1B;
+}
 .padding-border {
   padding-left: 40rpx;
   padding-right: 40rpx;
@@ -87,4 +90,7 @@
   font-size: 32rpx;
   color: #fff;
   margin-bottom: 13rpx;
+}
+.hide{
+  display: none!important;
 }

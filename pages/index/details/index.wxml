@@ -26,5 +26,5 @@
 <view class='suspension'>
     <navigator url="/pages/index/inquiry/index?id=1">询价</navigator>
     <navigator url="/pages/index/drive/index?id=1">试驾</navigator>
-    <navigator>金融计算</navigator>
+    <navigator url="/pages/index/finance/index?id=1">金融计算</navigator>
 </view>

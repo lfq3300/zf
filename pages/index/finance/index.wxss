@@ -1,0 +1,104 @@
+.bg {
+  height: 264rpx;
+  overflow: hidden;
+  position: relative;
+}
+
+.bg image {
+  height: 264rpx;
+  width: 100%;
+}
+
+.car-title{
+  margin-top: 29rpx;
+  padding:0 37rpx  0 40rpx;
+  font-size: 24rpx;
+  color: #1B1B1B;
+}
+.car-title view{
+  text-align: right;  
+}
+.right-return-img{
+  width: 20rpx;
+  height: 20rpx;
+  padding-left: 20rpx;
+}
+.tab-title{
+  margin-top: 76rpx;
+  height: 82rpx;
+  text-align: center;
+  background: #E5E5E5;
+  line-height: 82rpx;
+  color: #727171;
+  font-size: 34rpx;
+}
+.tab-select{
+  color: #D1A24B;
+}
+.tab-border{
+  height: 60%;
+  width: 3rpx;
+  background: #fff;
+}
+.tab-car-title{
+  text-align: center;
+  display: block;
+  font-size: 23rpx;
+  margin-top: 29rpx;
+  margin-bottom: 45rpx;
+}
+.tab-car .car-center{
+  padding:0 62rpx 0 54rpx;
+  box-sizing: border-box;
+  margin-bottom: 98rpx;
+}
+.assembly{
+  font-size: 26rpx;
+  height: 62rpx;
+  line-height: 62rpx;
+  overflow: hidden;  
+  margin-bottom: 30rpx;
+}
+
+.assembly .flex1{
+  text-align: right;
+}
+.assembly .right-return-img{
+  padding-left: 76rpx;
+}
+.assembly .price{
+  text-align: center;
+  background: #EEEEEE;
+  padding: 0 44rpx  ;
+}
+.progress-assembly .flex1{
+  position: relative;
+}
+.progress-btn{
+  position: absolute;
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+  background: #fff;
+  top:50%;
+  transform: translateY(-50%);
+  left:15%;
+  box-shadow: 0px 0px 5px 3px #D1A24B;
+}
+
+.car-bottom{
+  height: 243rpx;
+  background: #E5E5E5;
+  padding: 33rpx 54rpx 0 59rpx;
+  box-sizing: border-box;
+  color: #1B1B1B;
+}
+.car-bottom .flex1{
+  text-align: right;
+  color: #D1A24B;
+}
+.subBtn{
+  width: 279rpx;
+  margin-top: 54rpx;
+  height: 84rpx;
+}
