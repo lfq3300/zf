@@ -8,7 +8,7 @@ Page({
     carList:[
       {
         "id":"1",
-        "imgurl":"/../images/car.png",
+        "imgurl":"../../../images/car.png",
         "name":"梅赛德斯",
         "n":"-奔驰S级轿车"
       }

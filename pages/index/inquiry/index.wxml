@@ -1,5 +1,5 @@
 <view class='bg'>
-  <image src='/../images/banner.png'></image>
+  <image src='../../../images/banner.png'></image>
   <view class='shadow'></view>
   <view class='text'>快速查价</view>
 </view>

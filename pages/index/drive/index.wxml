@@ -1,5 +1,5 @@
 <view class='bg'>
-  <image src='/../images/banner.png'></image>
+  <image src='../../../images/banner.png'></image>
   <view class='shadow'></view>
   <view class='text flex-column flex-center'>
     <text class="text-title">预约试驾</text>
