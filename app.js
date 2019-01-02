@@ -29,23 +29,9 @@ App({
               if (res.statusCode == 200 && res.data.success) {
                 wx.setStorageSync('sessionId', res.data.result);
                 if (wx.getStorageSync('userId').length == 0) {
-                  //判断用户是否授权过
-                  wx.getSetting({
-                    success: function(res) {
-                      //授权过
-                      if (res.authSetting['scope.userInfo']) {
-                        wx.getUserInfo({
-                          success: function(e) {
-                            var userInfo = e.userInfo;
-                          }
-                        })
-                      } else {
-                        //未授权 ，引导授权
-                        wx.navigateTo({
-                          url: "/pages/Login/index"
-                        })
-                      }
-                    }
+                  console.log('1233')
+                  wx.navigateTo({
+                    url: "/pages/login/index"
                   })
                 }
               }

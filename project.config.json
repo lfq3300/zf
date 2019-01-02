@@ -13,7 +13,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.4.3",
-	"appid": "wx250f230c9bad83d8",
+	"appid": "wx4d69fe23e65ae0ca",
 	"projectname": "%E4%BB%81%E5%AD%9A%E5%B0%8F%E7%A8%8B%E5%BA%8F",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 5,
 			"list": [
 				{
 					"id": -1,
@@ -68,6 +68,11 @@
 					"name": "金融计算",
 					"pathName": "pages/index/finance/index",
 					"query": "id=1"
+				},
+				{
+					"id": -1,
+					"name": "个人中心",
+					"pathName": "pages/userCenter/index"
 				}
 			]
 		}

@@ -12,7 +12,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var userInfo = wx.getStorageSync('userinfo');
+    var that = this;
+    that.setData({
+      nickName: userInfo.nickName,
+      gender: userInfo.gender == 1 ? "男" : "女",
+      loginhidde: false
+    })
   },
 
   /**

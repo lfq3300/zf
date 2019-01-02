@@ -1,1 +1,60 @@
-/* pages/UserCenter/index.wxss */
+/* pages/personal/personal.wxss */
+page{
+  background: #F4F4F4;
+  font-family: "MYingHeiPRC-W4";
+  font-size: 28rpx;
+}
+.msg-top{
+  background: #fff;
+  height: 188rpx;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  line-height: 188rpx;
+}
+.msg-top text{
+  color: #333;
+}
+.username{
+  padding-left: 51rpx;
+}
+.content{
+  margin-top: 30rpx;
+}
+.item{
+  background: #fff;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  height: 94rpx;
+  line-height: 94rpx;
+  border-bottom: 1px solid #F1F1F1;
+}
+.icon-box{
+  line-height: 94rpx;
+}
+.icon-box image{
+  display: inline-block;
+}
+.item .icon{
+  width: 30rpx;
+}
+.item-title{
+  padding-left: 12rpx;
+  color: #333;
+  line-height: 94rpx;
+}
+
+.member-img{
+  width: 70rpx;
+}
+.hymsg{
+  padding-left: 9rpx;
+}
+.bjhy{
+  color: #9CB1C2;
+}
+.right-msg{
+  color: #666;
+}
+.return-icon{
+  width: 14rpx;
+}
