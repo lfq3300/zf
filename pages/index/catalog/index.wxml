@@ -3,7 +3,7 @@
   <view class="left-box">
     <view>
       <view>
-        <text class="max-size">S</text>
+        <text class="max-size">{{name}}</text>
         <text class="size">Class</text>
       </view>
       <text class="qu">查找您的</text>
@@ -12,7 +12,7 @@
   <view class="car-list flex1 ">
     <navigator url='/pages/index/details/index?id={{car.id}}' wx:for="{{carList}}" wx:for-index="idx" wx:for-item="car" wx:key="property">
         <view class='item'>
-            <image src='{{car.imgurl}}'></image>
+            <image src='{{car.imgUrl}}'></image>
             <view class="cat-name">
               <text class="name">{{car.name}}</text>
               <text>{{car.n}}</text>

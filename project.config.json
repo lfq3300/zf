@@ -37,19 +37,19 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 9,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "一级列表",
 					"pathName": "pages/index/catalog/index",
-					"query": "id=1"
+					"query": "id=82&name=S"
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "二级列表",
 					"pathName": "pages/index/details/index",
-					"query": ""
+					"query": "id=32"
 				},
 				{
 					"id": -1,
@@ -90,7 +90,14 @@
 				{
 					"id": -1,
 					"name": "售后服务",
-					"pathName": "pages/afterSale/index"
+					"pathName": "pages/afterSale/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "道理救援",
+					"pathName": "pages/afterSale/help/index",
+					"query": ""
 				}
 			]
 		}

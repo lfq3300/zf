@@ -1,17 +1,37 @@
 // pages/index/details/index.js
+var app = getApp();
+var WxParse = require('../../../wxParse/wxParse.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    car:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    if (options.id) {
+      wx.request({
+        url: app.data.hostUrl + 'api/services/app/vehicle/GetById',
+        data:{"id":32},
+        method: 'post',
+        success: function (res) {
+          console.log(res);
+          if (res.data.success) {
+            var car = res.data.result.vehicle;
+             that.setData({
+               car: res.data.result.vehicle
+             })
+            WxParse.wxParse('accontent', 'html', car.content, that, 0);
+          }
+        }
+      });
+    }
     wx.hideNavigationBarLoading();
     wx.stopPullDownRefresh();
   },

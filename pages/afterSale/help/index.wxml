@@ -1,0 +1,23 @@
+<view class='padding-border'>
+  <form bindsubmit="formSubmit">
+    <view class='from-assembly flex-default'>
+      <text>手机号码</text>
+      <input class='flex1 from-assembly-input' placeholder='请输入手机号码'></input>
+    </view>
+    <view class='from-assembly flex-default from-assembly-no-right'>
+      <text>验证码</text>
+      <input class='flex1 from-assembly-input' placeholder='请输入验证码'></input>
+      <button class="from-assembly-phone-btn">获取验证码</button>
+    </view>
+    <view class='from-assembly flex-default from-assembly-no-right flex-center'>
+      <text>获取位置</text>
+      <text class='flex1 from-assembly-input'></text>
+      <image src='../../../images/afterSale/service_icon_n@3x.png' class='host'></image>
+    </view>
+     <view class='from-assembly flex-default from-assembly-no-right from-assembly-textarea'>
+      <text>救援说明</text>
+      <textarea class='flex1' ></textarea>
+    </view>
+    <button class='subBtn'>提交申请</button>
+  </form>
+</view>

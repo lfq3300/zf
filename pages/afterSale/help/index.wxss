@@ -1,0 +1,11 @@
+page{
+  background: #373737;
+}
+.host{
+  height: 52rpx;
+  width: 57rpx;
+  margin-right: 20rpx;
+}
+.subBtn{
+  margin-top:299rpx;
+}

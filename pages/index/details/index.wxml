@@ -1,26 +1,24 @@
 <view class='swiper-box'>
     <swiper indicator-dots="true" indicator-color="#B8B8B8" indicator-active-color="#D1A24B" autoplay="true" circular="true">
         <swiper-item>
-            <image src='../../../images/banner.png'></image>
-        </swiper-item>
-        <swiper-item>
-            <image src='../../../images/banner.png'></image>
+            <image src='{{car.imgUrl}}'></image>
         </swiper-item>
     </swiper>
 </view>
 <view class='title'>
-  梅赛德斯-奔驰S级轿车
+  {{car.name}}
 </view>
 <view class='price-box'>
   <view>
       <text>厂商建议零售价</text>
-      <text class='price'>￥86.38万</text>
+      <text class='price'>￥{{car.price}}万</text>
       <text>起</text>
   </view>
 </view>
 <view class='content'>
    <view>
-      
+      <import src="../../../wxParse/wxParse.wxml" />
+      <template is="wxParse" data="{{wxParseData:accontent.nodes}}" />
    </view>
 </view>
 <view class='suspension'>

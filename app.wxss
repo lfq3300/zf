@@ -69,6 +69,10 @@ page{
   line-height: 82rpx;
   text-align: center;
 }
+.from-assembly-input{
+  color: #fff;
+}
+
 .from-assembly-no-right{
   padding-right: 0rpx;
 }
@@ -78,6 +82,16 @@ page{
   border-radius: 0rpx;
   background: #424242;
   font-size: 28rpx;
+  color: #fff;
+}
+
+.from-assembly-textarea{
+  height: 150rpx;
+}
+.from-assembly-textarea textarea{
+  height: 100%;
+  padding:0 25rpx;
+  box-sizing: border-box;
   color: #fff;
 }
 

@@ -1,41 +1,18 @@
-// pages/index/catalog/index.js
-var app = getApp();
+// pages/afterSale/mycar/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    carList:[
-     
-    ]
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    that.setData({
-      name: options.name
-    })
-    if (options.id){
-      wx.request({
-        url: app.data.hostUrl + 'api/services/app/vehicle/GetActiveList?categoryId=' + options.id,
-        method: 'post',
-        success:function(res){
-          if (res.data.success){
-            var carList = res.data.result;
-            that.setData({
-              carList: carList
-            })
-          }
-        }
-      });
-    }
-    
-    wx.hideNavigationBarLoading();
-    wx.stopPullDownRefresh();
+
   },
 
   /**
@@ -79,11 +56,7 @@ Page({
   onReachBottom: function () {
 
   },
-  onPullDownRefresh: function () {
-    wx.showNavigationBarLoading();
-    var that = this;
-    that.onLoad();
-  },
+
   /**
    * 用户点击右上角分享
    */
