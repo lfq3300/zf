@@ -1,0 +1,77 @@
+<loading hidden="{{hidden}}">
+        提交中...
+</loading>
+<loading hidden="{{!loginhidde}}">
+  页面加载中...
+</loading>
+<view hidden="{{loginhidde}}">
+<form bindsubmit="formSubmit" bindreset="formReset" id="appointment">
+  <view class='flex-column'>
+    <image class="banner" src="{{imgurl}}" mode="widthFix"></image>
+    <view class='padding-border content'>
+      <view class='section flex-default'>
+        <text class='sec-left'>姓名</text>
+        <input name="username" class='flex1' placeholder-class="plc" placeholder="请填写您的姓名"></input>
+      </view>
+      <view class='section flex-default'>
+        <text class='sec-left'>称谓</text>
+        <view class='flex1 sex flex-default radio-box'>
+          <view class='radio-item {{_sex == 1?"select":""}}' data-sex="1" bindtap="bindSexChange">
+            <image src='/images/icons/Unselected_icon_n.png' class='radio-icon unicon'></image>
+            <image src='/images/icons/Selected_icon_n.png' class='radio-icon seicon'></image>先生</view>
+          <view class='radio-item {{_sex == 2?"select":""}}' data-sex="2" bindtap="bindSexChange">
+            <image src='/images/icons/Unselected_icon_n.png' class='radio-icon unicon'></image>
+            <image src='/images/icons/Selected_icon_n.png' class='radio-icon seicon'></image>
+            女士</view>
+        </view>
+      </view>
+      <view class='section flex-default'>
+        <text class='sec-left'>电话</text>
+        <input class='flex1' name="tel" placeholder-class="plc" placeholder="请填写您的电话号码"></input>
+      </view>
+      <view class='section flex-default'>
+        <text class='sec-left'>试驾车型</text>
+        <view class='flex1' wx:if="{{carindex>0}}">
+          <picker bindchange="bindcarType" value="{{carindex}}" range="{{cararr}}" mode="disabled">
+            <view class="weui-input">{{cararr[carindex]}}
+            </view>
+          </picker>
+        </view>
+        <view class='flex1' wx:else>
+          <picker bindchange="bindcarType" value="{{carindex}}" range="{{cararr}}">
+            <view class="weui-input">{{cararr[carindex]}}
+              <image class="downicon" src='/images/icons/icon_pull.png' mode="widthFix"></image>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='section flex-default'>
+        <text class='sec-left'>预约日期</text>
+        <view class='flex1'>
+          <picker mode="date" value="{{date}}"  bindchange="bindDateChange">
+            <view class="weui-input">
+              {{date}}
+              <image class="downicon" src='/images/icons/icon_pull.png' mode="widthFix"></image>
+            </view>
+          </picker>
+        </view>
+      </view>
+      <view class='section flex-default'>
+        <text class='sec-left'>预约时间</text>
+        <view class='flex1'>
+          <picker bindchange="bindTimeType" value="{{timeIndex}}" range="{{timeArr}}">
+            <view class="weui-input">
+              {{timeArr[timeIndex]}}
+              <image class="downicon" src='/images/icons/icon_pull.png' mode="widthFix"></image>
+            </view>
+          </picker>
+        </view>
+      </view>
+    </view>
+   
+    <view class='btn padding-border'>
+      <button class='defaultbtn' formType="submit">提交</button>
+    </view>
+  </view>
+</form>
+</view>

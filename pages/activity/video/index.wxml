@@ -1,0 +1,4 @@
+  <view>
+<video id="myvideo" src="{{videourl}}" objectFit="cover" direction="90" custom-cache="{{false}}" webkit-playsinline="webkit-playsinline" >
+</video>
+</view>

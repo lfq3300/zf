@@ -18,7 +18,9 @@ Page({
       nickName: userInfo.nickName,
       gender: userInfo.gender == 1 ? "男" : "女",
       loginhidde: false
-    })
+    });
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh();
   },
 
   /**
@@ -62,7 +64,12 @@ Page({
   onReachBottom: function () {
 
   },
-
+  
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading();
+    var that = this;
+    that.onLoad();
+  },
   /**
    * 用户点击右上角分享
    */

@@ -1,1 +1,21 @@
-/* pages/activity/details/index.wxss */
+/* pages/activity/activitypage.wxss */
+page{
+  background: #FFF;
+}
+.img-box{
+  background: #FFF;
+  margin-bottom: 20rpx;
+}
+.aimg{
+  width: 100%;
+}
+.wxParse-section{
+  overflow: hidden;
+}
+.wxParse-img{
+  width: 100%!important;
+}
+
+.padding-border {
+  padding: 
+}

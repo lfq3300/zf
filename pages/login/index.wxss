@@ -1,0 +1,9 @@
+/* pages/userinfo/index.wxss */
+view{
+  margin-top: 50rpx;
+  text-align: center;
+  margin-bottom: 50rpx;
+}
+button{
+  margin-bottom: 50rpx;
+}

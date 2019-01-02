@@ -1,2 +1,13 @@
-<!--pages/activity/details/index.wxml-->
-<text>pages/activity/details/index.wxml</text>
+<!--pages/activity/activitypage.wxml-->
+<loading hidden="{{!loginhidde}}">
+  页面加载中...
+</loading>
+<view hidden="{{loginhidde}}">
+  <view class='flex-column img-box'>
+    <!-- <image class='aimg' src='{{imgurl}}' mode='widthFix'></image> -->
+    <view class='padding-border'>
+      <import src="../../../wxParse/wxParse.wxml" />
+      <template is="wxParse" data="{{wxParseData:accontent.nodes}}" />
+    </view>
+  </view>
+</view>

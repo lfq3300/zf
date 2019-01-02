@@ -1,12 +1,9 @@
 <!--pages/activity/activity.wxml-->
-<loading hidden="{{!loginhidde}}">
-  页面加载中...
-</loading>
-<view hidden="{{loginhidde}}">
+
   <view class="padding-border">
-    <view wx:for="{{arr}}" wx:for-index="idx" wx:for-item="item">
+    <view wx:for="{{arr}}" wx:for-index="idx" wx:for-item="item"  wx:key="property">
       <view wx:if="{{item.hasVideo}}">
-        <navigator url='/pages/video/index?video={{item.videoUrl}}&img={{item.imgUrl}}'>
+        <navigator url='/pages/activity/video/index?video={{item.videoUrl}}&img={{item.imgUrl}}'>
         <view class='img-box'>
             <image src='{{item.imgUrl}}' mode="widthFix"></image>
         </view>
@@ -31,7 +28,7 @@
           </navigator>
         </view>
         <view wx:else>
-          <navigator url='/pages/activity/activitypage2?id={{item.id}}' data-type="{{item.type}}">
+          <navigator url='/pages/activity/details/index?id={{item.id}}' data-type="{{item.type}}">
             <view class='img-box'>
             <image src='{{item.imgUrl}}' mode='widthFix'></image>
             </view>
@@ -41,4 +38,3 @@
       </view>
     </view>
   </view>
-</view>

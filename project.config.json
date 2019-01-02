@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 7,
 			"list": [
 				{
 					"id": -1,
@@ -72,7 +72,19 @@
 				{
 					"id": -1,
 					"name": "个人中心",
-					"pathName": "pages/userCenter/index"
+					"pathName": "pages/userCenter/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "活动",
+					"pathName": "pages/activity/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "活动报名",
+					"pathName": "pages/activity/sign/index"
 				}
 			]
 		}
