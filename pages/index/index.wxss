@@ -63,7 +63,7 @@
   padding-right: 27rpx;
   display: inline-block;
   font-size: 28rpx;
-  color:#9FA0A0;
+  color:#595757;
   font-family: MYingHeiPRC-W4;
   margin-top: 30rpx;
   box-sizing: border-box;
@@ -77,15 +77,31 @@
    border-right:none!important;
 }
 .select{
-  color:#595757!important;
+  color: #9FA0A0!important;
+  
 }
+
+.select text{
+  position: relative;
+}
+
+.select text::after{
+  position: absolute;
+  content: "";
+  bottom: -10rpx;
+  left: 0;
+  background: #D1A24B;
+  width: 100%;
+  height: 5rpx;
+}
+
 .car-level picker{
   line-height: 95rpx;
   text-align: center;
 }
 
 .car-list{
-  margin-top: 103rpx;
+  margin-top: 63rpx;
 }
 .car-itme{
   height: 158rpx;

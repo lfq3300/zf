@@ -1,4 +1,4 @@
-// pages/index/index.js
+var app = getApp();
 Page({
 
   /**
@@ -7,41 +7,11 @@ Page({
   data: {
     tabSelect:1,
     tag:[
-      { "id": 1, "name": "SUV"},
-      { "id": 2, "name": "轿车" },
-      { "id": 3, "name": "轿跑车" },
-      { "id": 4, "name": "敞篷跑车" },
-      { "id": 5, "name": "MPV" }
+
     ],
+    tagIndex:0,
     carList:[
-      { 
-        "id": 1, 
-        "n": "S", 
-        "e": "Mercedes-Benz", 
-        "c": "Class", 
-        "src":"../../images/car.png"
-      },
-      {
-        "id": 2,
-        "n": "E",
-        "e": "Mercedes-Benz",
-        "c": "Class",
-        "src": "../../images/car.png"
-      },
-      {
-        "id": 3,
-        "n": "C",
-        "e": "Mercedes-Benz",
-        "c": "Class",
-        "src": "../../images/car.png"
-      },
-      {
-        "id": 4,
-        "n": "F",
-        "e": "Mercedes-Benz",
-        "c": "Class",
-        "src": "../../images/car.png"
-      },
+
     ]
   },
 
@@ -49,10 +19,37 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    wx.request({
+      url: app.data.hostUrl + 'api/services/app/vehicleLevel/GetActiveList',
+      method: 'post',
+      success: function (res) {
+        if (res.data.success){
+          var tag = res.data.result;
+          var tagIndex =  tag[0].id;
+          that.setData({
+            tag: tag,
+            tagIndex: tagIndex
+          })
+          wx.request({
+            url: app.data.hostUrl + 'api/services/app/vehicleCategory/GetActiveListByParentId?levelId=' + tagIndex,   
+            method: 'post',
+            success: function (res) {
+                if(res.data.success){
+                  that.setData({
+                    carList: res.data.result
+                  })
+                }
+            }
+          });
+        }
+      }
+    });
      wx.hideNavigationBarLoading();
      wx.stopPullDownRefresh();
   },
 
+  
  
   /**
    * 生命周期函数--监听页面初次渲染完成
