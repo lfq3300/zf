@@ -11,7 +11,8 @@
       "pages/activity/index",
       "pages/activity/details/index",
       "pages/userCenter/index",
-      "dist/components/header/index"
+      "dist/components/header/index",
+      "pages/login/index"
   ],
   "window":{
     "backgroundTextStyle": "dark",
