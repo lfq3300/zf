@@ -1,13 +1,16 @@
 page{
   background: #373737;
 }
-.host{
-  height: 52rpx;
-  width: 57rpx;
-  margin-right: 20rpx;
+.page-title{
+  font-size:36rpx;
+  color:#fff;
+  background: #000;
+  text-align: center;
+  height: 140rpx;
+  line-height: 150rpx;
 }
 .subBtn{
-  margin-top:299rpx;
+  margin:109rpx 0;
 }
 .title{
   font-size: 24rpx;

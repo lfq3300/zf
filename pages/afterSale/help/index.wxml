@@ -1,5 +1,10 @@
 <view class='padding-border'>
   <form bindsubmit="formSubmit">
+  <text class='title'>在线发送救援位置，让救援更方便，全程协助处理事故报案、查勘、定损、核价、理赔资料收集、保险回款等一系列问题</text>
+  <view class='from-assembly flex-default'>
+      <text>姓名</text>
+      <input class='flex1 from-assembly-input' placeholder='请输入您的姓名'></input>
+    </view>
     <view class='from-assembly flex-default'>
       <text>手机号码</text>
       <input class='flex1 from-assembly-input' placeholder='请输入手机号码'></input>

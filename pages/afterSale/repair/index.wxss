@@ -1,1 +1,68 @@
-/* pages/afterSale/repair/index.wxss */
+.weixiu {
+  margin-left: 105rpx;
+  margin-top: 155rpx;
+  display: flex;
+  height: 293rpx;
+  overflow: hidden;
+}
+
+.weixiu .bg1 {
+  width: 273rpx;
+  height: 293rpx;
+}
+
+.weixiu .bg2 {
+  width: 372rpx;
+  height: 293rpx;
+}
+
+.baoyang {
+  display: flex;
+  height: 359rpx;
+  overflow: hidden;
+}
+
+.baoyang .bg1 {
+  width: 378rpx;
+  height: 359rpx;
+}
+
+.baoyang .bg2 {
+  width: 270rpx;
+  height: 359rpx;
+}
+
+.weixiu >view, .baoyang>view {
+  position: relative;
+}
+
+.weixiu >view > view, .baoyang>view>view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 273rpx;
+  height: 293rpx;
+}
+
+.baoyang>view>view {
+  width: 270rpx;
+  height: 359rpx;
+}
+
+.weixiu >view > view image,
+.baoyang >view > view image  {
+  width: 78rpx;
+  height: 48rpx;
+  margin-bottom: 26rpx;
+}
+
+.weixiu >view > view text,
+.baoyang >view > view text {
+  font-size: 23rpx;
+  color: #fff;
+  border: 1px solid #c9c9c9;
+  line-height: 53rpx;
+  width: 169rpx;
+  text-align: center;
+  letter-spacing: 5rpx;
+}

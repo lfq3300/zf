@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 12,
 			"list": [
 				{
 					"id": 0,
@@ -98,6 +98,23 @@
 					"name": "道理救援",
 					"pathName": "pages/afterSale/help/index",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "维修保养",
+					"pathName": "pages/afterSale/repair/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "维修",
+					"pathName": "pages/afterSale/repair/wx/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "保养",
+					"pathName": "pages/afterSale/repair/by/index"
 				}
 			]
 		}

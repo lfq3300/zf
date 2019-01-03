@@ -1,0 +1,23 @@
+<header></header>
+<view>
+  <navigator class='weixiu' url='/pages/afterSale/repair/wx/index?type=1'>
+    <view>
+      <image src='../../../images/afterSale/home_img_bg@3x.png' class='bg1'></image>
+      <view class='flex-column flex-center'>
+        <image src='../../../images/afterSale/home_icon_service@3x.png'></image>
+        <text>预约维修</text>
+      </view>
+    </view>
+    <image src='../../../images/afterSale/img_experience@3x.png' class='bg2'></image>
+  </navigator>
+  <navigator class='baoyang' url='/pages/afterSale/repair/wx/index?type=2'>
+        <image src='../../../images/afterSale/mimg_aintenance@3x.png' class='bg1 '></image>
+        <view>
+          <view class='flex-column flex-center '>
+                <image src='../../../images/afterSale/home_icon_maintain@3x.png'></image>
+                <text>预约保养</text>
+            </view>
+          <image src='../../../images/afterSale/home_img_bg@3x.png' class='bg2 '></image>
+        </view>
+    </navigator>
+</view>

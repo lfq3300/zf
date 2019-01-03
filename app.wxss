@@ -7,7 +7,13 @@ page{
   overflow: hidden;
   min-height: 1rpx;
 }
-
+.formSubmit-title{
+   color:#898989;
+  margin-bottom: 20rpx;
+  display: flex;
+  margin-top: 60rpx;
+  font-size: 30rpx;
+}
 .flex-default {
   display: -webkit-flex;
   display: flex;
