@@ -1,0 +1,21 @@
+page{
+  background: #373737;
+}
+.page-title{
+  font-size:36rpx;
+  color:#fff;
+  background: #000;
+  text-align: center;
+  height: 140rpx;
+  line-height: 150rpx;
+}
+.subBtn{
+  margin:109rpx 0;
+}
+.title{
+  font-size: 24rpx;
+  color: #BCBCBC;
+  margin-bottom: 56rpx;
+  display: flex;
+  margin-top: 60rpx;
+}

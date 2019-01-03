@@ -1,0 +1,69 @@
+<view class='padding-border'>
+  <form bindsubmit="formSubmit">
+    <view class='from-assembly flex-default'>
+      <text>车主姓名</text>
+      <input class='flex1 from-assembly-input' placeholder='请输入您的姓名'></input>
+    </view>
+    
+    <view class='from-assembly flex-default'>
+      <text>手机号码</text>
+      <input class='flex1 from-assembly-input' placeholder='请输入手机号码'></input>
+    </view>
+    <view class='from-assembly flex-default from-assembly-no-right'>
+      <text>验证码</text>
+      <input class='flex1 from-assembly-input' placeholder='请输入验证码'></input>
+      <button class="from-assembly-phone-btn">获取验证码</button>
+    </view>
+    <view class='from-assembly flex-default flex-center'>
+      <text>车款</text>
+      <picker class='flex1' bindchange='bingDis' value="{{carDisIndex}}" range="{{carDis}}">
+        <view class="from-assembly-value">{{carDis[carDisIndex]}}</view>
+      </picker>
+      <text class='triangle'></text>
+    </view>
+    <view class='from-assembly flex-default flex-center'>
+      <text>车型</text>
+      <picker class='flex1' bindchange='bingCarType' value="{{carTypeIndex}}" range="{{carType}}">
+        <view class="from-assembly-value">{{carType[carTypeIndex]}}</view>
+      </picker>
+      <text class='triangle'></text>
+    </view>
+    <view class='from-assembly flex-default flex-center'>
+      <text>城市</text>
+      <picker class='flex1' bindchange='bingCity' value="{{cityIndex}}" range="{{city}}">
+        <view class="from-assembly-value">{{city[cityIndex]}}</view>
+      </picker>
+      <text class='triangle'></text>
+    </view>
+   
+    <view class='from-assembly flex-default flex-center'>
+      <text>购车日期</text>
+      <picker class='flex1' mode="date" value="{{date}}" bindchange="bindDate">
+        <view class="from-assembly-value">
+          {{date}}
+        </view>
+      </picker>
+    </view>
+    <view class='from-assembly flex-default'>
+      <text>车牌号</text>
+      <input class='flex1 from-assembly-input' placeholder='请输入车牌号'></input>
+    </view>
+     <view class='from-assembly flex-default'>
+      <text>车辆识别号</text>
+      <input class='flex1 from-assembly-input' placeholder='请输入车辆识别号'></input>
+    </view>
+     <view class='from-assembly flex-default'>
+      <text>底盘号码</text>
+      <input class='flex1 from-assembly-input' placeholder='请输入底盘号码'></input>
+    </view>
+       <view class='from-assembly flex-default flex-center'>
+      <text>首登日期</text>
+      <picker class='flex1' mode="date" value="{{loginDate}}" bindchange="bindLoginDate">
+        <view class="from-assembly-value">
+          {{loginDate}}
+        </view>
+      </picker>
+    </view>
+    <button class='subBtn'>保存</button>
+  </form>
+</view>

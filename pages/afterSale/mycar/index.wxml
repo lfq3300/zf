@@ -1,2 +1,17 @@
-<!--pages/afterSale/mycar/index.wxml-->
-<text>pages/afterSale/mycar/index.wxml</text>
+<view class='page-title'>
+  我的爱车
+  <image src='../../../images/afterSale/service_icon_delete_n@3x.png'></image>
+</view>
+<view class='carlist'>
+    <view class='item  flex-column'>
+        <image src='../../../images/banner.png'></image>
+        <label class='item-title'>
+          <checkbox></checkbox>
+          <text>梅赛德斯-奔驰S级轿车 S 320 L</text>
+        </label>
+    </view>
+    <navigator url='/pages/afterSale/mycar/add/index'  class='addcar'>
+     <image src='../../../images/afterSale/service_img_add_n@3x.png'></image>
+      添加爱车
+    </navigator>
+</view>

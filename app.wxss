@@ -1,5 +1,6 @@
-page{
+page,text,view{
   color: #1B1B1B;
+  font-family: "微软雅黑";
 }
 .padding-border {
   padding-left: 40rpx;
@@ -83,12 +84,14 @@ page{
   padding-right: 0rpx;
 }
 .from-assembly-phone-btn {
-  height: 82rpx;
-  line-height: 82rpx;
+  margin-top: 15rpx;
+  height: 51rpx;
+  line-height: 51rpx;
   border-radius: 0rpx;
-  background: #424242;
+  margin-right: 20rpx;
+  background: #434343;
   font-size: 28rpx;
-  color: #fff;
+  color: #B5B5B6;
 }
 
 .from-assembly-textarea{
@@ -113,4 +116,13 @@ page{
 }
 .hide{
   display: none!important;
+}
+.page-title{
+  font-size:36rpx;
+  color:#fff;
+  background: #000;
+  text-align: center;
+  height: 140rpx;
+  line-height: 150rpx;
+  letter-spacing: 10rpx;
 }
