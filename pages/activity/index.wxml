@@ -3,6 +3,6 @@
   <image src='../../images/activity.png' class='bg'></image>
 </view>
 <view class='btn flex-column flex-center'>
-  <navigator>活动报名</navigator>
+  <navigator url='/pages/activity/list/index'>活动报名</navigator>
   <navigator>问卷调查</navigator>
 </view>

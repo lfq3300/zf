@@ -126,3 +126,50 @@ page,text,view{
   line-height: 150rpx;
   letter-spacing: 10rpx;
 }
+
+.move-menu{
+  width: 100%;
+  height: 90rpx;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.move-menu .tag{
+  padding-left: 28rpx;
+  padding-right: 27rpx;
+  display: inline-block;
+  font-size: 28rpx;
+  color:#595757;
+  font-family: MYingHeiPRC-W4;
+  margin-top: 30rpx;
+  box-sizing: border-box;
+  border-right: 1px solid #959595;
+}
+.move-menu .tag:first-child{
+  margin-left: 40rpx;
+}
+.move-menu .tag:last-child{
+  margin-right: 40rpx;
+   border-right:none!important;
+}
+.move-menu .select{
+  color: #9FA0A0!important;
+}
+
+.select text{
+  position: relative;
+}
+
+.move-menu .select text::after{
+  position: absolute;
+  content: "";
+  bottom: -10rpx;
+  left: 0;
+  background: #D1A24B;
+  width: 100%;
+  height: 5rpx;
+}
+
+.move-menu picker{
+  line-height: 95rpx;
+  text-align: center;
+}

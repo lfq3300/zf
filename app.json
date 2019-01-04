@@ -17,6 +17,7 @@
       "pages/activity/details/index",
       "pages/activity/sign/index",
       "pages/activity/video/index",
+      "pages/activity/list/index",
       "pages/userCenter/index",
       "dist/components/header/index",
       "pages/login/index"
