@@ -1,4 +1,8 @@
 <header></header>
 <view class='bg-box'>
-  <image src='../../images/aboutbg.png' class='bg'></image>
+  <image src='../../images/activity.png' class='bg'></image>
+</view>
+<view class='btn flex-column flex-center'>
+  <navigator>活动报名</navigator>
+  <navigator>问卷调查</navigator>
 </view>
