@@ -1,4 +1,4 @@
 <header></header>
 <view class='bg-box'>
-<image src='../../images/banner.png' class='bg'></image>
+  <image src='../../images/aboutbg.png' class='bg'></image>
 </view>
