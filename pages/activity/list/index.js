@@ -22,7 +22,7 @@ Page({
         "name": "已结束"
       }
     ],
-    tagIndex:1
+    tagIndex:3
   },
 
   /**

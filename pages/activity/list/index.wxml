@@ -1,9 +1,14 @@
 <header></header>
 <view class='move-menu'>
-  <scroll-view scroll-x style="height:100rpx;width: auto;overflow:hidden;">
     <view wx:for="{{tag}}" wx:for-index="idx" wx:for-item="item" wx:key="property" 
     class="{{tagIndex == item.id?'select':''}} tag" data-id='{{item.id}}'>
       <text  data-id='{{item.id}}'>{{item.name}}</text>
     </view>
-  </scroll-view>
+</view>
+<view class='act-list padding-border'>
+     <navigator>
+        <image src='../../../images/banner.png'></image>
+        <view class='title'>仁孚中国爱心小熊慈善义卖</view>
+        <view class='date'>2018 12-09</view>
+    </navigator>
 </view>

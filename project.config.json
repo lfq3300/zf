@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 19,
+			"current": 6,
 			"list": [
 				{
 					"id": 0,
@@ -76,9 +76,9 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "活动",
-					"pathName": "pages/activity/index",
+					"id": 6,
+					"name": "活动列表",
+					"pathName": "pages/activity/list/index",
 					"query": ""
 				},
 				{
@@ -156,7 +156,8 @@
 				{
 					"id": -1,
 					"name": "活动列表",
-					"pathName": "pages/activity/list/index"
+					"pathName": "pages/activity/list/index",
+					"query": ""
 				}
 			]
 		}
