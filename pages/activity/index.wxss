@@ -1,38 +1,20 @@
-/* pages/activity/activity.wxss */
 page{
-  background: #F4F4F4;
+  background: #1b1b1b;
 }
-navigator{
-  margin-bottom: 11rpx;
+.bg-box{
+  position: relative;
+  height: 464rpx;
+}
+.bg-box::after{
+  position: absolute;
+  left: 0;
+  top:0;
   width: 100%;
+  height: 50rpx;
+  background: #000;
 }
-.img-box{
+.bg{
+  margin-top: 112rpx;
   width: 100%;
-  height:185.37px;
-  overflow: hidden;
-}
-image{
-  width: 100%;
-  border-top-left-radius: 15rpx;
-  border-top-right-radius: 15rpx;
-}
-
-.padding-border{
-  padding-left: 40rpx;
-  padding-right: 40rpx;
-}
-.padding-border > view{
-  margin-top:30rpx; 
-  background: #fff;
-  border-radius: 15rpx;
-}
-text{
-  line-height: 60rpx;
-  padding-left: 21rpx;
-  font-family: "MYingHeiPRC-W4";
-  color: #333333;
-  font-size: 36rpx;
-  padding-bottom: 20rpx;
-  padding-top: 15rpx;
-  display: inline-block;
+  height: 464rpx;
 }

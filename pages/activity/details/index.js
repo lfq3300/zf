@@ -6,19 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    _sex: 1,
-    loginhidde: true,
+    imgurl: 1,
+    title:"",
   },
-  bindSexChange: function (e) {
-    this.setData({
-      _sex: e.target.dataset.sex
-    })
-  },
-  bindMemberChange: function (e) {
-    this.setData({
-      _member: e.target.dataset.member
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -38,8 +29,8 @@ Page({
           var data = res.data.result;
           WxParse.wxParse('accontent', 'html', data.activity.content, that, 0);
           that.setData({
-            loginhidde: false,
-            imgurl: data.activity.imgUrl
+            imgurl: data.activity.imgUrl,
+            title: data.activity.title
           });
         }
       }

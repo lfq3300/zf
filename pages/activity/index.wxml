@@ -1,40 +1,4 @@
-<!--pages/activity/activity.wxml-->
-
-  <view class="padding-border">
-    <view wx:for="{{arr}}" wx:for-index="idx" wx:for-item="item"  wx:key="property">
-      <view wx:if="{{item.hasVideo}}">
-        <navigator url='/pages/activity/video/index?video={{item.videoUrl}}&img={{item.imgUrl}}'>
-        <view class='img-box'>
-            <image src='{{item.imgUrl}}' mode="widthFix"></image>
-        </view>
-          <text>{{item.title}}</text>
-        </navigator>
-      </view>
-      <view wx:else>
-        <view wx:if="{{item.type  == 100000003}}">
-          <navigator url='/pages/activity/details/?id={{item.id}}' data-type="{{item.type}}">
-            <view class='img-box'>
-              <image src='{{item.imgUrl}}' mode='widthFix'></image>
-            </view>
-            <text>{{item.title}}</text>
-          </navigator>
-        </view>
-        <view wx:elif="{{item.type == 100000001}}">
-          <navigator url='/pages/yysj/index?id={{item.id}}' data-type="{{item.type}}">
-            <view class='img-box'>
-            <image src='{{item.imgUrl}}' mode='widthFix'></image>
-            </view>
-            <text>{{item.title}}</text>
-          </navigator>
-        </view>
-        <view wx:else>
-          <navigator url='/pages/activity/details/index?id={{item.id}}' data-type="{{item.type}}">
-            <view class='img-box'>
-            <image src='{{item.imgUrl}}' mode='widthFix'></image>
-            </view>
-            <text>{{item.title}}</text>
-          </navigator>
-        </view>
-      </view>
-    </view>
-  </view>
+<header></header>
+<view class='bg-box'>
+<image src='../../images/banner.png' class='bg'></image>
+</view>

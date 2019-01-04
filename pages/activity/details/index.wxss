@@ -17,5 +17,23 @@ page{
 }
 
 .padding-border {
-  padding: 
+  padding-top:48rpx;
+}
+.title{
+  color:#3E3A39;
+  font-size: 34rpx;
+}
+.attr {
+  margin-top: 15rpx;
+}
+.attr {
+  font-size: 26rpx;
+}
+.attr .author{
+  color: #4ac0e4;
+}
+
+.attr .time{
+  margin-left: 15rpx;
+  color: #a2a3a3;
 }

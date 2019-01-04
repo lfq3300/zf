@@ -1,2 +1,30 @@
-<!--pages/about/index.wxml-->
-<text>pages/about/index.wxml</text>
+<header></header>
+<view class='video flex-column'>
+  <view>
+    <navigator url='/pages/activity/video/index'>
+      <image src='../../images/banner.png' class='bg'></image>
+      <image src='../../images/icons/big_play.png' class='video-play'></image>
+    </navigator>
+  </view>
+  <view class='video-title'>
+    2018仁孚中国（西区）客户服务部形象宣传片
+  </view>
+</view>
+<view class='content padding-border flex-default'>
+  <view class='flex1'>
+      <view class='title'><text>最新</text>资讯</view>
+      <view class='news'>
+        <navigator url='/pages/activity/details/index?id=1'>
+            <image src='../../images/banner.png' class='bg'></image>
+        </navigator>
+      </view>
+  </view>
+  <view class='flex1'>
+      <view class='title'><text>联系</text>我们</view>
+       <view class='news'>
+        <navigator url='/pages/activity/details/index?id=1'>
+            <image src='../../images/banner.png' class='bg'></image>
+        </navigator>
+      </view>
+  </view>
+</view>

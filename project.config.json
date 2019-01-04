@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 14,
+			"current": 17,
 			"list": [
 				{
 					"id": 0,
@@ -126,7 +126,26 @@
 				{
 					"id": -1,
 					"name": "添加爱车",
-					"pathName": "pages/afterSale/mycar/add/index"
+					"pathName": "pages/afterSale/mycar/add/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "关于任孚",
+					"pathName": "pages/about/index",
+					"query": ""
+				},
+				{
+					"id": 16,
+					"name": "详情",
+					"pathName": "pages/activity/details/index",
+					"query": "id=1"
+				},
+				{
+					"id": -1,
+					"name": "活动",
+					"pathName": "pages/activity/index",
+					"query": ""
 				}
 			]
 		}

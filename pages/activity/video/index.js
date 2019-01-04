@@ -1,4 +1,3 @@
-// pages/video/index.js
 var app = getApp();
 Page({
 
