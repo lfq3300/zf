@@ -139,7 +139,6 @@ page,text,view{
   display: inline-block;
   font-size: 28rpx;
   color:#595757;
-  font-family: MYingHeiPRC-W4;
   margin-top: 30rpx;
   box-sizing: border-box;
   border-right: 1px solid #959595;
