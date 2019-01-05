@@ -8,7 +8,9 @@ Page({
   data: {
     carList:[
      
-    ]
+    ],
+    carname:"",
+    carnameid:""
   },
 
   /**
@@ -17,7 +19,9 @@ Page({
   onLoad: function (options) {
     var that = this;
     that.setData({
-      name: options.name
+      name: options.name,
+      carname: options.carname,
+      carnameid: options.carnameid
     })
     if (options.id){
       wx.request({

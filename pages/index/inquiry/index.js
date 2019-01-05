@@ -1,63 +1,69 @@
-// pages/index/query/index.js
+var app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    carStyle: [
-      "请选择",
-      "车款一",
-      "车款二",
-      "车款三"
-    ],
-    carStyleIndex: 1,
-    carType: [
-      "请选择",
-      "车型一",
-      "车型二",
-      "车型三"
-    ],
-    carTypeIndex: 1,
     carDis: [
-      "请选择",
-      "经销商一",
-      "经销商二",
-      "经销商三"
+     
     ],
-    carDisIndex: 1
-
+    carDisIndex: 1,
+    carDisId:'',
+    imgUrl:"",
+    carname:"",
+    carnameid:"",
+    name:"",
+    carid:"",
+    phone:"",
+    getcodetext:"获取验证码",
+    getcodeStatus:true
   },
 
-  /*
-    选择车款
-  */
-  bingCarStyle: function (e) {
+  getPhoneCode:function(){
     var that = this;
-    var carStyle = that.data.carStyle;
-    var carStyleIndex = that.data.carStyleIndex;
-    that.setData({
-      carStyleIndex: e.detail.value
-    })
-  },
+    var status = app.getPhoneCode(that.data.phone);
+    if (status){
+      return;
+    }
 
-  /*
-  选择车型
-  */
-  bingCarType: function (e) {
-    var that = this;
-    var carType = that.data.carType;
-    var carTypeIndex = that.data.carTypeIndex;
+    if (!that.data.getcodeStatus){
+      return;
+    }
     that.setData({
-      carTypeIndex: e.detail.value
+      getcodeStatus: false
     })
+    var downTime = 60; 
+    var downTimeOut = setInterval(function(){
+      downTime --;
+      var getcodetext  = "";
+      if (downTime == 0 ){
+        getcodetext = "获取验证码";
+        that.setData({
+          getcodeStatus: true
+        })
+        clearTimeout(downTimeOut);
+        downTime = 60
+      }else{
+          getcodetext =  downTime+"s"
+      }
+      that.setData({
+        getcodetext: getcodetext
+      })
+    },1000)
   },
   bingDis:function(e){
     var that = this;
-    var carDis = that.data.carDis;
     var carDisIndex = that.data.carDisIndex;
     that.setData({
-      carDisIndex: e.detail.value
+      carDisIndex: e.detail.value,
+      carDisId: app.globalData.carDisAddr[carDisIndex].id * 1,
+    })
+  },
+  phoneInput:function(e){
+    this.setData({
+      phone: e.detail.value
     })
   },
 
@@ -65,16 +71,38 @@ Page({
   提交表单事件
   */
   formSubmit:function(e){
-      console.log(e);
+    var data = {
+      accountId: wx.getStorageSync("userId"),
+      contactName: msg.contactName,
+      tel: msg.tel,
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    app.getDealer(options.id);
+    var deaTime = setInterval(function(){
+      if (app.globalData.carDis){
+        clearTimeout(deaTime);
+        that.setData({
+          carDis: app.globalData.carDis,
+        })
+      }
+    },1000);
+    that.setData({
+      imgUrl: options.url,
+      carname: options.carname,
+      name: options.name,
+      carnameid: options.carnameid,
+      carid: options.id
+    });
+
     wx.hideNavigationBarLoading();
     wx.stopPullDownRefresh();
   },
-
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -12,9 +12,13 @@
 .max-size{
   font-size: 91rpx;
   font-weight: 900;
+  word-wrap:break-word;
 }
 .size{
   font-size: 23rpx;
+}
+.size,.max-size{
+  color: #D1A24B;
 }
 .left-box{
   text-align: center;
@@ -22,10 +26,10 @@
 .left-box > view{
   padding: 0rpx 16rpx 10rpx 28rpx;
   box-sizing: border-box;
-  color: #D1A24B;
 }
  .left-box > view > view{
   border-bottom: 1px solid #898989;
+  overflow: hidden;
 }
 .qu{
   font-size: 22rpx;

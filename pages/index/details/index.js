@@ -7,7 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    car:""
+    car:"",
+    carname:"",
+    carnameid:""
   },
 
   /**
@@ -15,13 +17,16 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    that.setData({
+      carname: options.carname,
+      carnameid: options.carnameid
+    })
     if (options.id) {
       wx.request({
         url: app.data.hostUrl + 'api/services/app/vehicle/GetById',
-        data:{"id":32},
+        data: { "id": options.id},
         method: 'post',
         success: function (res) {
-          console.log(res);
           if (res.data.success) {
             var car = res.data.result.vehicle;
              that.setData({

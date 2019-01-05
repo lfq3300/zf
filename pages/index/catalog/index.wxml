@@ -10,7 +10,7 @@
     </view>
   </view>
   <view class="car-list flex1 ">
-    <navigator url='/pages/index/details/index?id={{car.id}}' wx:for="{{carList}}" wx:for-index="idx" wx:for-item="car" wx:key="property">
+    <navigator url='/pages/index/details/index?id={{car.id}}&carname={{carname}}&carnameid={{carnameid}}&name={{car.name}}' wx:for="{{carList}}" wx:for-index="idx" wx:for-item="car" wx:key="property">
         <view class='item'>
             <image src='{{car.imgUrl}}'></image>
             <view class="cat-name">

@@ -37,25 +37,25 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 2,
 			"list": [
 				{
 					"id": 0,
 					"name": "一级列表",
 					"pathName": "pages/index/catalog/index",
-					"query": "id=82&name=S"
+					"query": "id=82&name=CLA"
 				},
 				{
 					"id": 1,
 					"name": "二级列表",
 					"pathName": "pages/index/details/index",
-					"query": "id=32"
+					"query": "id=84&name=CLA"
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "询价",
 					"pathName": "pages/index/inquiry/index",
-					"query": "id=1"
+					"query": "id=31&url=https://zungfu.azurewebsites.net/uploads/a8cb522b-76af-4cdf-b3ea-3899a53a16d5.png&name=梅赛德斯-A级奔驰车&carname=轿车j"
 				},
 				{
 					"id": -1,

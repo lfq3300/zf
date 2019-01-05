@@ -11,7 +11,8 @@ Page({
     tagIndex:0,
     carList:[
 
-    ]
+    ],
+    tagName:"",
   },
 
   /**
@@ -26,9 +27,11 @@ Page({
         if (res.data.success){
           var tag = res.data.result;
           var tagIndex =  tag[0].id;
+          var tagName = tag[0].name;
           that.setData({
             tag: tag,
             tagIndex: tagIndex,
+            tagName: tagName
           })
           that.getCarList(tagIndex);
         }
@@ -54,9 +57,12 @@ Page({
   },
 
   bindcarlevel:function(e){
+    var that = this;
     var tagIndex = e.target.dataset.id;
-    this.setData({
-      tagIndex: tagIndex
+    var tagName = e.target.dataset.name;
+    that.setData({
+      tagIndex: tagIndex,
+      tagName: tagName
     })
     that.getCarList(tagIndex);
   },

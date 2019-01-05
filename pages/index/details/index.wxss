@@ -51,6 +51,7 @@ page{
 .price-box view .price {
   color: #000;
   font-size: 48rpx;
+  padding: 0 10rpx;
 }
 
 .suspension {
@@ -82,4 +83,7 @@ page{
   margin-top: 90rpx;
   padding: 0 88rpx 0 87rpx;
   box-sizing: border-box;
+}
+.content>view{
+  overflow: hidden;
 }
