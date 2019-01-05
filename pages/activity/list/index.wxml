@@ -7,7 +7,7 @@
 </view>
 <view class='act-list padding-border'>
      <navigator>
-        <image src='../../../images/banner.png'></image>
+        <image src='https://zungfu.azurewebsites.net/Common/Images/App/banner.png'></image>
         <view class='title'>仁孚中国爱心小熊慈善义卖</view>
         <view class='date'>2018 12-09</view>
     </navigator>

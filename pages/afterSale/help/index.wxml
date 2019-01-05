@@ -17,7 +17,7 @@
     <view class='from-assembly flex-default from-assembly-no-right flex-center'>
       <text>获取位置</text>
       <text class='flex1 from-assembly-input'></text>
-      <image src='../../../images/afterSale/service_icon_n@3x.png' class='host'></image>
+      <image src='https://zungfu.azurewebsites.net/Common/Images/App/afterSale/service_icon_n@3x.png' class='host'></image>
     </view>
      <view class='from-assembly flex-default from-assembly-no-right from-assembly-textarea'>
       <text>救援说明</text>

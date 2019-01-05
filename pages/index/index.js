@@ -9,7 +9,6 @@ Page({
 
     ],
     tagIndex:0,
-    brandId:0,
     carList:[
 
     ]
@@ -24,7 +23,6 @@ Page({
       url: app.data.hostUrl + 'api/services/app/vehicleLevel/GetActiveList',
       method: 'post',
       success: function (res) {
-        console.log(res);
         if (res.data.success){
           var tag = res.data.result;
           var tagIndex =  tag[0].id;
@@ -32,19 +30,7 @@ Page({
             tag: tag,
             tagIndex: tagIndex,
           })
-          wx.request({
-            url: app.data.hostUrl + 'api/services/app/vehicleCategory/GetActiveListByParentId?levelId=' + tagIndex,   
-            method: 'post',
-            success: function (res) {
-                if(res.data.success){
-                  var brandId = res.data.result[0].brandId;
-                  that.setData({
-                    carList: res.data.result,
-                    brandId: brandId
-                  })
-                }
-            }
-          });
+          that.getCarList(tagIndex);
         }
       }
     });
@@ -52,11 +38,27 @@ Page({
      wx.stopPullDownRefresh();
   },
 
+  getCarList:function(id){
+    var that = this;
+    wx.request({
+      url: app.data.hostUrl + 'api/services/app/vehicleCategory/GetActiveListByParentId?levelId=' + id,
+      method: 'post',
+      success: function (res) {
+        if (res.data.success) {
+          that.setData({
+            carList: res.data.result,
+          })
+        }
+      }
+    });
+  },
+
   bindcarlevel:function(e){
-    console.log(e.target.dataset.id);
+    var tagIndex = e.target.dataset.id;
     this.setData({
-      tabId: e.target.dataset.id
+      tagIndex: tagIndex
     })
+    that.getCarList(tagIndex);
   },
  
   /**

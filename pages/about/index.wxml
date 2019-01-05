@@ -1,9 +1,9 @@
 <header></header>
 <view class='video flex-column'>
-  <view>
+  <view class='bg-box'>
     <navigator url='/pages/activity/video/index'>
-      <image src='../../images/banner.png' class='bg'></image>
-      <image src='../../images/icons/big_play.png' class='video-play'></image>
+      <image src='https://zungfu.azurewebsites.net/Common/Images/App/banner.png' class='bg'></image>
+      <image src='https://zungfu.azurewebsites.net/Common/Images/App/icons/big_play.png' class='video-play'></image>
     </navigator>
   </view>
   <view class='video-title'>
@@ -15,7 +15,7 @@
       <view class='title'><text>最新</text>资讯</view>
       <view class='news'>
         <navigator url='/pages/activity/details/index?id=1'>
-            <image src='../../images/banner.png' class='bg'></image>
+            <image src='https://zungfu.azurewebsites.net/Common/Images/App/banner.png' class='bg'></image>
         </navigator>
       </view>
   </view>
@@ -23,7 +23,7 @@
       <view class='title'><text>联系</text>我们</view>
        <view class='news'>
         <navigator url='/pages/activity/details/index?id=1'>
-            <image src='../../images/banner.png' class='bg'></image>
+            <image src='https://zungfu.azurewebsites.net/Common/Images/App/banner.png' class='bg'></image>
         </navigator>
       </view>
   </view>

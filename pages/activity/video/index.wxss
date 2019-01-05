@@ -1,1 +1,13 @@
-/* pages/activity/video/index.wxss */
+/* pages/video/index.wxss */
+view{
+  width: 100vw;
+  height: 100vh;
+  background: #000;
+  position: relative
+}
+video{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}

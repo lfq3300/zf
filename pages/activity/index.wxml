@@ -1,6 +1,6 @@
 <header></header>
 <view class='bg-box'>
-  <image src='../../images/activity.png' class='bg'></image>
+  <image src='https://zungfu.azurewebsites.net/Common/Images/App/activity.png' class='bg'></image>
 </view>
 <view class='btn flex-column flex-center'>
   <navigator url='/pages/activity/list/index'>活动报名</navigator>

@@ -37,32 +37,32 @@
     "list":[
       {
        "pagePath": "pages/index/index",
-       "iconPath": "images/icons/exper_nor.png",
-      "selectedIconPath": "images/icons/exper_sel.png",
+       "selectedIconPath": "images/icons/exper_nor.png",
+      "iconPath": "images/icons/exper_sel.png",
        "text": "数字化展厅"
       },
       {
         "pagePath": "pages/afterSale/index",
-        "iconPath": "images/icons/tab_icon_questionnaire_nor.png",
-        "selectedIconPath": "images/icons/tab_icon_questionnaire_sel.png",
+        "selectedIconPath": "images/icons/tab_icon_questionnaire_nor.png",
+        "iconPath": "images/icons/tab_icon_questionnaire_sel.png",
         "text": "售后服务"
       },
       {
         "pagePath": "pages/about/index",
-        "iconPath": "images/icons/home_nor.png",
-        "selectedIconPath": "images/icons/home_sel.png",
+        "selectedIconPath": "images/icons/home_nor.png",
+        "iconPath": "images/icons/home_sel.png",
         "text": "关于仁孚"
       },
       {
         "pagePath": "pages/activity/index",
-        "iconPath": "images/icons/activity_nor.png",
-        "selectedIconPath": "images/icons/activity_sel.png",
+        "selectedIconPath": "images/icons/activity_nor.png",
+        "iconPath": "images/icons/activity_sel.png",
         "text": "市场活动"
       },
       {
         "pagePath": "pages/userCenter/index",
-        "iconPath": "images/icons/mine_nor.png",
-        "selectedIconPath": "images/icons/mine_sel.png",
+        "selectedIconPath": "images/icons/mine_nor.png",
+        "iconPath": "images/icons/mine_sel.png",
         "text": "个人中心"
       }
     ]

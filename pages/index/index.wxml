@@ -2,13 +2,13 @@
 <view class='car-level move-menu'>
   <scroll-view scroll-x style="height:100rpx;width: auto;overflow:hidden;">
     <view wx:for="{{tag}}" wx:for-index="idx" wx:for-item="item" wx:key="property" 
-    class="{{brandId == item.id?'select':''}} tag" bindtap='bindcarlevel' data-id='{{item.id}}'>
+    class="{{ tagIndex == item.id?'select':''}} tag" bindtap='bindcarlevel' data-id='{{item.id}}'>
       <text bindtap='bindcarlevel' data-id='{{item.id}}'>{{item.name}}</text>
     </view>
   </scroll-view>
 </view>
 <view class='padding-border car-list'>
-  <view class="car-itme" wx:for="{{carList}}" wx:for-index="idx" wx:for-item="item" wx:key="property" hidden="{{!(item.brandId == brandId)}}">
+  <view class="car-itme" wx:for="{{carList}}" wx:for-index="idx" wx:for-item="item" wx:key="property">
     <navigator url="/pages/index/catalog/index?id={{item.id}}&name={{item.name}}">
       <view class="car-item-bg flex-default">
         <text class="max-size">{{item.name}}</text>

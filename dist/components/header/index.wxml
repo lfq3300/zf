@@ -1,7 +1,7 @@
 <view class="logo-view">
   <navigator url="/pages/index/index" open-type="switchTab">
     <view class="logo-box">
-      <image class='logo-img' src='/images/logo.png' mode="widthFix"></image>
+      <image class='logo-img' src='https://zungfu.azurewebsites.net/Common/Images/App/logo.png' mode="widthFix"></image>
     </view>
   </navigator>
 </view>
