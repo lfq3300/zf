@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 4,
 			"list": [
 				{
 					"id": 0,
@@ -58,16 +58,16 @@
 					"query": "id=31&url=https://zungfu.azurewebsites.net/uploads/a8cb522b-76af-4cdf-b3ea-3899a53a16d5.png&name=梅赛德斯-A级奔驰车&carname=轿车j"
 				},
 				{
-					"id": -1,
+					"id": 3,
 					"name": "试驾",
 					"pathName": "pages/index/drive/index",
-					"query": "id=1"
+					"query": "id=31&url=https://zungfu.azurewebsites.net/uploads/a8cb522b-76af-4cdf-b3ea-3899a53a16d5.png&carname=轿车j&carnameid=1&name=梅赛德斯-奔驰A级车"
 				},
 				{
-					"id": -1,
+					"id": 4,
 					"name": "金融计算",
 					"pathName": "pages/index/finance/index",
-					"query": "id=1"
+					"query": "id=20&url=https://zungfu.azurewebsites.net/uploads/a5c5998a-1cc1-4db6-9610-3c249cdff634.png&carname=轿车j&carnameid=1&name=标准轴距E级车运动版 2017年款2"
 				},
 				{
 					"id": -1,

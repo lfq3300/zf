@@ -1,43 +1,22 @@
-// pages/index/finance/index.js
+// pages/success/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imgUrl:"",
-    carname: "",
-    name: "",
-    carnameid: "",
-    carid: "",
-    carTime: [
-      "36个月",
-      "24个月",
-      "12个月"
-    ],
-    carTimeIndex:0,
+
   },
- 
-  bingCarTime: function (e) {
-    var that = this;
-    var carTime = that.data.carTime;
-    var carTimeIndex = that.data.carTimeIndex;
-    that.setData({
-      carTimeIndex: e.detail.value
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;  
-    that.setData({
-      imgUrl: options.url,
-      carname: options.carname,
-      name: options.name,
-      carnameid: options.carnameid,
-      carid: options.id
-    });
+    setTimeout(function () {
+      wx.switchTab({
+        url: '/pages/index/index'
+      })
+    }, 3000)
   },
 
   /**

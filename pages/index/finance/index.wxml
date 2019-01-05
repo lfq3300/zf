@@ -1,14 +1,11 @@
 <view class='bg'>
-  <image src='../../../images/banner.png'></image>
+  <image src='{{imgUrl}}'></image>
 </view>
 <view class="flex-default car-title flex-center ">
-  <text>梅赛德斯-奔驰S级轿车</text>
+  <text>{{carname}}</text>
   <view class="flex1">
-    <picker class='flex1' bindchange='bingCarList' value="{{carListIndex}}" range="{{carList}}">
-      <view>{{carList[carListIndex]}}</view>
-    </picker>
+      <view>{{name}}</view>
   </view>
-  <image src='../../../images/icons/mine_icon_return.png' class='right-return-img'></image>
 </view>
 <view class="flex-default car-title">
   <text>厂商建议零售价</text>

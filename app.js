@@ -81,6 +81,7 @@ App({
       },
     })
   },
+
   Rad: function (d) {
     return d * Math.PI / 180.0;  /*经纬度转换成三角函数中度分表形式。*/
   },
@@ -159,6 +160,28 @@ App({
       }
     });
   },
+
+  //获取预约时间
+  getAppointment:function(){
+      var that = this;
+      wx.request({
+        url: that.data.hostUrl + '/api/services/app/globalInformation/GetListByType?type=2',
+        method: "post",
+        success: function (res) {
+          if (res.data.success) {
+            var result = res.data.result;
+            var a = [];
+            var b = [];
+            for (var i = 0; i < result.length; i++) {
+              a[i] = result[i].name;
+              b[i] = result[i];
+            }
+            that.globalData.timeAppointment = a;
+            that.globalData.timeAppointmentArr = b
+          }
+        }
+      })
+  },
   isPoneAvailable: function (pone) {
     var myreg = /^[1][3,4,5,7,8][0-9]{9}$/;
     if (!myreg.test(pone)) {
@@ -167,5 +190,12 @@ App({
       return true;
     }
   },
-
+  isPoneCodeAvailable: function (code) {
+    var myreg = /^\d{6}$/;
+    if (!myreg.test(code)) {
+      return false;
+    } else {
+      return true;
+    }
+  },
 });

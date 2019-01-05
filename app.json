@@ -20,7 +20,9 @@
       "pages/activity/list/index",
       "pages/userCenter/index",
       "dist/components/header/index",
-      "pages/login/index"
+      "dist/components/ajaxlod/index",
+      "pages/login/index",
+      "pages/success/index"
   ],
   "window":{
     "backgroundTextStyle": "dark",
@@ -68,6 +70,7 @@
     ]
   },
   "usingComponents": {
-    "header": "/dist/components/header/index"
+    "header": "/dist/components/header/index",
+    "ajaxlod": "/dist/components/ajaxlod/index"
   }
 }

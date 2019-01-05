@@ -1,0 +1,27 @@
+/* pages/success/index.wxss */
+.icon{
+  text-align: center;
+  padding-top: 358rpx;
+  padding-bottom: 40rpx;
+}
+image{
+  display: inline-block;
+  width: 70rpx;
+  height: 70rpx;
+}
+.flex-column text{
+  width: 100%;
+  text-align: center;
+}
+
+.text1{
+  color: #333;
+  font-family: "MYingHeiPRC-W4";
+  font-size: 32rpx;
+  padding-bottom: 23rpx;
+}
+.text2{
+  color: #999;
+  font-family: "MYingHeiPRC-W4";
+  font-size: 24rpx;
+}

@@ -16,7 +16,6 @@ navigator{
   top:0;
   right: 57rpx;
   height: 264rpx;
-  color:#fff;
   font-size: 34rpx;
   font-weight: 900;
 }
@@ -28,4 +27,5 @@ navigator{
 .text  text{
   margin-top: 8rpx;
   letter-spacing:11rpx;
+  color:#fff;
 }
