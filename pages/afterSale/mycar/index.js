@@ -7,7 +7,9 @@ Page({
    */
   data: {
     carList:[],
-    carDlete:[]
+    carDlete:[],
+    loginhidde: true,
+
   },
 
   /**
@@ -21,7 +23,8 @@ Page({
       success: function (res) {
         if (res.data.success){
           that.setData({
-            carList: res.data.result
+            carList: res.data.result,
+            loginhidde:false
           })
         }
       },

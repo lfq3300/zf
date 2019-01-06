@@ -1,28 +1,22 @@
-// pages/UserCenter/index.js
+// pages/opinion/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var userInfo = wx.getStorageSync('userinfo');
-    var that = this;
-    that.setData({
-      nickName: userInfo.nickName,
-      avatarUrl: userInfo.avatarUrl,
-      gender: userInfo.gender == 1 ? "男" : "女",
-      loginhidde: false
-    });
-    wx.hideNavigationBarLoading();
-    wx.stopPullDownRefresh();
-  },
 
+  },
+  formSubmit:function(e){
+
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -64,12 +58,7 @@ Page({
   onReachBottom: function () {
 
   },
-  
-  onPullDownRefresh: function () {
-    wx.showNavigationBarLoading();
-    var that = this;
-    that.onLoad();
-  },
+
   /**
    * 用户点击右上角分享
    */

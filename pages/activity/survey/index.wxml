@@ -1,4 +1,8 @@
-  <header></header>
+<loading hidden="{{!loginhidde}}">
+  页面加载中...
+</loading>
+<view hidden="{{loginhidde}}">
+    <header></header>
   <view class='page padding-border'>
     <view class='list'>
       <block>
@@ -17,3 +21,4 @@
       </block>
     </view>
   </view>
+</view>

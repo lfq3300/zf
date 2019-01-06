@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    surveryList: []
+    surveryList: [],
+    loginhidde:true
   },
 
   /**
@@ -24,6 +25,7 @@ Page({
         if (res.statusCode == 200 && res.data.success) {
           that.setData({
             surveryList: res.data.result,
+            loginhidde: false
           })
         }
       }

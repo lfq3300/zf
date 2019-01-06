@@ -8,6 +8,9 @@ Page({
   data: {
     imgurl: 1,
     title:"",
+    loginhidde:true,
+    type:'',
+    id:""
   },
 
   /**
@@ -16,6 +19,10 @@ Page({
   onLoad: function (options) {
     var that = this;
     that.getActivity(options.id);
+    that.setData({
+      type: options.type,
+      id: options.id
+    })
   },
 
   getActivity: function (id) {
@@ -30,7 +37,8 @@ Page({
           WxParse.wxParse('accontent', 'html', data.activity.content, that, 0);
           that.setData({
             imgurl: data.activity.imgUrl,
-            title: data.activity.title
+            title: data.activity.title,
+            loginhidde: false
           });
         }
       }

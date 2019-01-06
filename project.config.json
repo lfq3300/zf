@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 23,
+			"current": 25,
 			"list": [
 				{
 					"id": 0,
@@ -181,6 +181,18 @@
 					"id": -1,
 					"name": "问卷调查",
 					"pathName": "pages/activity/survey/index",
+					"query": ""
+				},
+				{
+					"id": 24,
+					"name": "参加或",
+					"pathName": "pages/activity/signup/index",
+					"query": "id=1"
+				},
+				{
+					"id": 25,
+					"name": "意见反馈",
+					"pathName": "pages/opinion/index",
 					"query": ""
 				}
 			]

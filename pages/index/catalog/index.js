@@ -10,7 +10,8 @@ Page({
      
     ],
     carname:"",
-    carnameid:""
+    carnameid:"",
+    loginhidde:true
   },
 
   /**
@@ -31,7 +32,8 @@ Page({
           if (res.data.success){
             var carList = res.data.result;
             that.setData({
-              carList: carList
+              carList: carList,
+              loginhidde:false
             })
           }
         }

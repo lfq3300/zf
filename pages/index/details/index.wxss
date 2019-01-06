@@ -13,7 +13,7 @@ page{
 
 .swiper-box  image {
   width: 100%;
-  height: 432rpx;
+  height: 555rpx;
 }
 
 .title {

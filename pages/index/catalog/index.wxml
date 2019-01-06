@@ -1,23 +1,27 @@
-<!--pages/index/catalog/index.wxml-->
-<view class="flex-default">
-  <view class="left-box">
-    <view>
+<loading hidden="{{!loginhidde}}">
+  页面加载中...
+</loading>
+<view hidden="{{loginhidde}}">
+  <view class="flex-default">
+    <view class="left-box">
       <view>
-        <text class="max-size">{{name}}</text>
-        <text class="size">Class</text>
-      </view>
-      <text class="qu">查找您的</text>
-    </view>
-  </view>
-  <view class="car-list flex1 ">
-    <navigator url='/pages/index/details/index?id={{car.id}}&carname={{carname}}&carnameid={{carnameid}}&name={{car.name}}' wx:for="{{carList}}" wx:for-index="idx" wx:for-item="car" wx:key="property">
-        <view class='item'>
-            <image src='{{car.imgUrl}}'></image>
-            <view class="cat-name">
-              <text class="name">{{car.name}}</text>
-              <text>{{car.n}}</text>
-            </view>
+        <view>
+          <text class="max-size">{{name}}</text>
+          <text class="size">Class</text>
         </view>
-    </navigator>
+        <text class="qu">查找您的</text>
+      </view>
+    </view>
+    <view class="car-list flex1 ">
+      <navigator url='/pages/index/details/index?id={{car.id}}&carname={{carname}}&carnameid={{carnameid}}&name={{car.name}}' wx:for="{{carList}}" wx:for-index="idx" wx:for-item="car" wx:key="property">
+        <view class='item'>
+          <image src='{{car.imgUrl}}'></image>
+          <view class="cat-name">
+            <text class="name">{{car.name}}</text>
+            <text>{{car.n}}</text>
+          </view>
+        </view>
+      </navigator>
+    </view>
   </view>
 </view>

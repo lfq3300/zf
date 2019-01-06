@@ -45,27 +45,8 @@ page {
   margin-top: 23rpx;
 }
 
-.gender label{
-  color: #fff;
-  margin-left: 98rpx;
-}
 
-.gender label radio{
-  transform:scale(0.4);
-}
 
-.agree{
-  margin-top: 21rpx;
-  align-items: center;
-}
-.agree checkbox{
-  transform:scale(0.4);
-}
-
-.agree navigator{
-  font-size: 16rpx;
-  color: #FFF;
-}
 .subBtn{
   margin-top: 46rpx;
 }

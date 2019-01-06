@@ -13,6 +13,7 @@ Page({
 
     ],
     tagName:"",
+    loginhidde:true
   },
 
   /**
@@ -31,7 +32,7 @@ Page({
           that.setData({
             tag: tag,
             tagIndex: tagIndex,
-            tagName: tagName
+            tagName: tagName,
           })
           that.getCarList(tagIndex);
         }
@@ -50,6 +51,7 @@ Page({
         if (res.data.success) {
           that.setData({
             carList: res.data.result,
+            loginhidde:false
           })
         }
       }

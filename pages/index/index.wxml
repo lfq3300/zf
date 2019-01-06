@@ -1,23 +1,27 @@
-<header></header>
-<view class='car-level move-menu'>
-  <scroll-view scroll-x style="height:100rpx;width: auto;overflow:hidden;">
-    <view wx:for="{{tag}}" wx:for-index="idx" wx:for-item="item" wx:key="property" 
-    class="{{ tagIndex == item.id?'select':''}} tag" bindtap='bindcarlevel' data-id='{{item.id}}' data-name='{{item.name}}'>
-      <text bindtap='bindcarlevel' data-id='{{item.id}}' data-name='{{item.name}}' >{{item.name}}</text>
-    </view>
-  </scroll-view>
-</view>
-<view class='padding-border car-list'>
-  <view class="car-itme" wx:for="{{carList}}" wx:for-index="idx" wx:for-item="item" wx:key="property">
-    <navigator url="/pages/index/catalog/index?id={{item.id}}&name={{item.name}}&carname={{tagName}}&carnameid={{tagIndex}}">
-      <view class="car-item-bg flex-default">
-        <text class="max-size">{{item.name}}</text>
-        <view class="flex-column flex1 flex-justify-content-end">
-          <text class="min-size">Mercedes-Benz</text>
-          <text>Class</text>
-        </view>
+<loading hidden="{{!loginhidde}}">
+  页面加载中...
+</loading>
+<view hidden="{{loginhidde}}">
+  <header></header>
+  <view class='car-level move-menu'>
+    <scroll-view scroll-x style="height:100rpx;width: auto;overflow:hidden;">
+      <view wx:for="{{tag}}" wx:for-index="idx" wx:for-item="item" wx:key="property" class="{{ tagIndex == item.id?'select':''}} tag" bindtap='bindcarlevel' data-id='{{item.id}}' data-name='{{item.name}}'>
+        <text bindtap='bindcarlevel' data-id='{{item.id}}' data-name='{{item.name}}'>{{item.name}}</text>
       </view>
-      <image class="car-item-img" src='{{item.imgUrl}}'></image>
-    </navigator>
+    </scroll-view>
+  </view>
+  <view class='padding-border car-list'>
+    <view class="car-itme" wx:for="{{carList}}" wx:for-index="idx" wx:for-item="item" wx:key="property">
+      <navigator url="/pages/index/catalog/index?id={{item.id}}&name={{item.name}}&carname={{tagName}}&carnameid={{tagIndex}}">
+        <view class="car-item-bg flex-default">
+          <text class="max-size">{{item.name}}</text>
+          <view class="flex-column flex1 flex-justify-content-end">
+            <text class="min-size">Mercedes-Benz</text>
+            <text>Class</text>
+          </view>
+        </view>
+        <image class="car-item-img" src='{{item.imgUrl}}'></image>
+      </navigator>
+    </view>
   </view>
 </view>

@@ -1,1 +1,80 @@
-/* pages/activity/survey/survey.wxss */
+/* pages/survey/survey.wxss */
+
+page {
+  background: #f4f4f4;
+}
+
+
+.title {
+  background: #fff;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 40rpx;
+  color: #333;
+  font-family: MYingHeiPRC-W5;
+}
+
+.sur-item {
+  background: #fff;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.sur-item-title {
+  color: #333;
+  font-size: 32rpx;
+  padding-left: 24rpx;
+  font-family: MYingHeiPRC-W4;
+  padding-bottom: 20rpx;
+}
+
+.sur-item-content {
+  border-top: 1rpx solid #f4f4f4;
+  padding-bottom: 10rpx;
+  padding-left: 35rpx;
+  padding-right: 35rpx;
+  padding-top: 20rpx;
+}
+
+.from-item label {
+  color: #666;
+  font-size: 28rpx;
+  line-height: 0;
+}
+
+radio, checkbox {
+  transform: scale(0.5);
+}
+
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  position: absolute;
+  -webkit-appearance: none;
+  background: #5f8fff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.other-textarea input{
+  background: rgba(244,245,247,1);
+  height: 80rpx;
+  width: 100%;
+  font-size: 28rpx;
+  padding-left: 20rpx;
+}
+.btn-bottom{
+  text-align: center;
+  padding-left: 41rpx;
+  padding-right: 41rpx;
+  margin-top: 76rpx;
+  margin-bottom: 76rpx;
+}
+.btn-bottom text{
+  display: inline-block;
+  line-height: 94rpx;
+  width:100%;
+  color:  #fff;
+  background: #5F8FFF;
+}

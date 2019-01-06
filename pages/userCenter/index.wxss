@@ -1,41 +1,48 @@
 /* pages/personal/personal.wxss */
 page{
   background: #F4F4F4;
-  font-family: "MYingHeiPRC-W4";
   font-size: 28rpx;
 }
 .msg-top{
-  background: #fff;
-  height: 188rpx;
+  background: #F4F4F4;
+  height: 287rpx;
   padding-left: 40rpx;
   padding-right: 40rpx;
-  line-height: 188rpx;
+  text-align: center;
 }
-.msg-top text{
-  color: #333;
+
+.msg-top image{
+  width: 132rpx;
+  height: 132rpx;
+  border-radius: 50%;
+  margin: 44rpx 0;
 }
+
 .username{
   padding-left: 51rpx;
 }
 .content{
   margin-top: 30rpx;
+  background: #fff;
 }
 .item{
-  background: #fff;
   padding-left: 40rpx;
   padding-right: 40rpx;
   height: 94rpx;
   line-height: 94rpx;
   border-bottom: 1px solid #F1F1F1;
 }
+.item:first-child{
+  padding-top: 100rpx;
+}
 .icon-box{
-  line-height: 94rpx;
+  line-height: 110rpx;
 }
 .icon-box image{
   display: inline-block;
 }
 .item .icon{
-  width: 30rpx;
+  width: 40rpx;
 }
 .item-title{
   padding-left: 12rpx;
@@ -57,4 +64,20 @@ page{
 }
 .return-icon{
   width: 14rpx;
+}
+.save-userinfo{
+    margin-top: 26rpx;
+    color: #727171;
+    font-size: 18rpx;
+    position: relative;
+}
+.save-userinfo::after{
+  position: absolute;
+  content: "";
+  width: 200rpx;
+  height: 7rpx;
+  background: #D1A24B;
+  bottom: -10rpx;
+  left: 50%;
+  transform: translateX(-50%);
 }

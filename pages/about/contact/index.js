@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    loginhidde:true,
     mapstatus: false,
     mapIndex:0,
     latitude:"",
@@ -41,7 +42,8 @@ Page({
           }]
         })
         that.setData({
-          mapstatus: true
+          mapstatus: true,
+          loginhidde:false
         })
       }
     }, 1000);

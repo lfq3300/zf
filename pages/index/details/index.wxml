@@ -1,28 +1,33 @@
-<view class='swiper-box'>
+<loading hidden="{{!loginhidde}}">
+  页面加载中...
+</loading>
+<view hidden="{{loginhidde}}">
+  <view class='swiper-box'>
     <swiper indicator-dots="true" indicator-color="#B8B8B8" indicator-active-color="#D1A24B" autoplay="true" circular="true">
-        <swiper-item>
-            <image src='{{car.imgUrl}}'></image>
-        </swiper-item>
+      <swiper-item>
+        <image src='{{car.imgUrl}}'></image>
+      </swiper-item>
     </swiper>
-</view>
-<view class='title'>
-  {{car.name}}
-</view>
-<view class='price-box'>
-  <view>
+  </view>
+  <view class='title'>
+    {{car.name}}
+  </view>
+  <view class='price-box'>
+    <view>
       <text>厂商建议零售价</text>
       <text class='price'>￥{{car.price}}万</text>
       <text>起</text>
+    </view>
   </view>
-</view>
-<view class='content'>
-   <view>
+  <view class='content'>
+    <view>
       <import src="../../../wxParse/wxParse.wxml" />
       <template is="wxParse" data="{{wxParseData:accontent.nodes}}" />
-   </view>
-</view>
-<view class='suspension'>
+    </view>
+  </view>
+  <view class='suspension'>
     <navigator url="/pages/index/inquiry/index?id={{car.id}}&url={{car.imgUrl}}&carname={{carname}}&carnameid={{carnameid}}&name={{car.name}}">询价</navigator>
     <navigator url="/pages/index/drive/index?id={{car.id}}&url={{car.imgUrl}}&carname={{carname}}&carnameid={{carnameid}}&name={{car.name}}">试驾</navigator>
     <navigator url="/pages/index/finance/index?id={{car.id}}&url={{car.imgUrl}}&carname={{carname}}&carnameid={{carnameid}}&name={{car.name}}">金融计算</navigator>
+  </view>
 </view>

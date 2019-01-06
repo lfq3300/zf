@@ -6,7 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-      list:[]
+      list:[],
+    loginhidde: true,
+
   },
 
   /**
@@ -20,7 +22,8 @@ Page({
       success: function (res) {
         if(res.data.success) {
           that.setData({
-            list: res.data.result
+            list: res.data.result,
+            loginhidde:false
           })
         }
       }

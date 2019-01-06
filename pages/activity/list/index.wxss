@@ -31,4 +31,5 @@
 .act-list navigator{
   border-bottom: 1px solid #DCDCDC;
   padding-bottom: 10rpx;
+  margin-bottom: 100rpx;
 }

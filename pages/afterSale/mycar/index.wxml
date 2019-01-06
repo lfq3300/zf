@@ -1,22 +1,25 @@
-<view class='page-title'>
-  我的爱车
-  <image src='https://zungfu.azurewebsites.net/Common/Images/App/afterSale/service_icon_delete_n@3x.png'
-  bindtap='deleteMyCar'
-  ></image>
-</view>
-
-<view class='carlist'>
-<checkbox-group bindchange="binCar">
-  <view class='item  flex-column' wx:for="{{carList}}" wx:for-index="idx" wx:for-item="item" wx:key="property">
-    <image src='https://zungfu.azurewebsites.net/Common/Images/App/banner.png'></image>
-    <label class='item-title'>
-      <checkbox value='{{item.id}}'></checkbox>
-      <text>{{item.name}}</text>
-    </label>
+<loading hidden="{{!loginhidde}}">
+  页面加载中...
+</loading>
+<view hidden="{{loginhidde}}">
+  <view class='page-title'>
+    我的爱车
+    <image src='https://zungfu.azurewebsites.net/Common/Images/App/afterSale/service_icon_delete_n@3x.png' bindtap='deleteMyCar'></image>
   </view>
-  </checkbox-group>
-  <navigator url='/pages/afterSale/mycar/add/index' class='addcar'>
-    <image src='https://zungfu.azurewebsites.net/Common/Images/App/afterSale/service_img_add_n@3x.png'></image>
-    添加爱车
-  </navigator>
+
+  <view class='carlist'>
+    <checkbox-group bindchange="binCar">
+      <view class='item  flex-column' wx:for="{{carList}}" wx:for-index="idx" wx:for-item="item" wx:key="property">
+        <image src='https://zungfu.azurewebsites.net/Common/Images/App/banner.png'></image>
+        <label class='item-title'>
+          <checkbox value='{{item.id}}'></checkbox>
+          <text>{{item.name}}</text>
+        </label>
+      </view>
+    </checkbox-group>
+    <navigator url='/pages/afterSale/mycar/add/index' class='addcar'>
+      <image src='https://zungfu.azurewebsites.net/Common/Images/App/afterSale/service_img_add_n@3x.png'></image>
+      添加爱车
+    </navigator>
+  </view>
 </view>

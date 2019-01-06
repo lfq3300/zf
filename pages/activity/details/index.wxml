@@ -1,4 +1,8 @@
-<view class='padding-border'>
+<loading hidden="{{!loginhidde}}">
+  页面加载中...
+</loading>
+<view hidden="{{loginhidde}}">
+  <view class='padding-border'>
   <view class='title'>{{title}}</view>
   <view class='attr'>
     <text class='author'>任孚中国</text>
@@ -10,4 +14,8 @@
       <template is="wxParse" data="{{wxParseData:accontent.nodes}}" />
     </view>
   </view>
+</view>
+<navigator hidden="{{type != '100000002'}}" class='btn' url='/pages/activity/signup/index?id={{id}}'>
+  立即报名
+</navigator>
 </view>

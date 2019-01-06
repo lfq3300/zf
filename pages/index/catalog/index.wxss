@@ -41,7 +41,7 @@
 }
 .item image{
   width: 344rpx;
-  height: 158rpx;
+  height: 238rpx;
 }
 
 .cat-name{
@@ -64,4 +64,7 @@
   background: #D1A24B;
   left: 0;
   top:-10rpx;
+}
+.car-list navigator:last-child{
+  margin-bottom: 100rpx;
 }

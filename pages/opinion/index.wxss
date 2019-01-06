@@ -1,0 +1,24 @@
+page{
+  background: #EDEDED;
+}
+.padding-border view{
+  width: 100%;
+  overflow: hidden;
+}
+textarea{
+  margin-top: 24rpx;
+  background: #fff;
+  width: 100%;
+  padding: 24rpx;
+  font-size: 24rpx;
+}
+textarea::placeholder{
+  color: #898989;
+}
+button{
+  background: #434343;
+  margin-top: 78rpx;
+  color: #FFFFFF;
+  border-radius: 0;
+  font-size: 34rpx;
+}

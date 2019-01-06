@@ -9,7 +9,8 @@ Page({
   data: {
     car:"",
     carname:"",
-    carnameid:""
+    carnameid:"",
+    loginhidde:true
   },
 
   /**
@@ -30,7 +31,8 @@ Page({
           if (res.data.success) {
             var car = res.data.result.vehicle;
              that.setData({
-               car: res.data.result.vehicle
+               car: res.data.result.vehicle,
+               loginhidde:false
              })
             WxParse.wxParse('accontent', 'html', car.content, that, 0);
           }

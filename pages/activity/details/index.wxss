@@ -1,39 +1,63 @@
 /* pages/activity/activitypage.wxss */
-page{
-  background: #FFF;
+
+page {
+  background: #fff;
 }
-.img-box{
-  background: #FFF;
+
+.img-box {
+  background: #fff;
   margin-bottom: 20rpx;
 }
-.aimg{
+
+.aimg {
   width: 100%;
 }
-.wxParse-section{
+
+.wxParse-section {
   overflow: hidden;
 }
-.wxParse-img{
-  width: 100%!important;
+
+.wxParse-img {
+  width: 100% !important;
 }
 
 .padding-border {
-  padding-top:48rpx;
+  padding-top: 48rpx;
 }
-.title{
-  color:#3E3A39;
+
+.title {
+  color: #3e3a39;
   font-size: 34rpx;
 }
+
 .attr {
   margin-top: 15rpx;
 }
+
 .attr {
   font-size: 26rpx;
 }
-.attr .author{
+
+.attr .author {
   color: #4ac0e4;
 }
 
-.attr .time{
+.attr .time {
   margin-left: 15rpx;
   color: #a2a3a3;
+}
+
+.btn {
+  background: #434343;
+  color: #fff;
+  font-size: 24rpx;
+  position: fixed;
+  bottom: 88rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 51rpx;
+  line-height: 51rpx;
+  width: 168rpx;
+  text-align: center;
+  z-index: 10;
 }

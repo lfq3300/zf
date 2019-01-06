@@ -78,6 +78,8 @@ page,text,view{
 }
 .from-assembly-input{
   color: #fff;
+  padding-left: 110rpx;
+  text-align: left;
 }
 
 .from-assembly-no-right{
@@ -171,4 +173,25 @@ page,text,view{
 .move-menu picker{
   line-height: 95rpx;
   text-align: center;
+}
+.gender label{
+  color: #fff;
+  margin-left: 98rpx;
+}
+
+.gender label radio{
+  transform:scale(0.4);
+}
+
+.agree{
+  margin-top: 21rpx;
+  align-items: center;
+}
+.agree checkbox{
+  transform:scale(0.4);
+}
+
+.agree navigator{
+  font-size: 16rpx;
+  color: #FFF;
 }

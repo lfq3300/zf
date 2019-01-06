@@ -1,3 +1,0 @@
-<form bindsubmit="formSubmit" bindreset="formReset" id="appointment">
-   <image class="banner" src="{{imgurl}}" mode="widthFix"></image>
-</form>
