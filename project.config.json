@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 27,
+			"current": 28,
 			"list": [
 				{
 					"id": 0,
@@ -204,7 +204,13 @@
 				{
 					"id": 27,
 					"name": "个人信息",
-					"pathName": "pages/userCenter/msg/index",
+					"pathName": "pages/userCenter/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "个人信息",
+					"pathName": "pages/activity/index",
 					"query": ""
 				}
 			]

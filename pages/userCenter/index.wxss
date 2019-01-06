@@ -5,7 +5,7 @@ page{
 }
 .msg-top{
   background: #F4F4F4;
-  height: 295rpx;
+  height: 305rpx;
   padding-left: 40rpx;
   padding-right: 40rpx;
   text-align: center;
@@ -66,18 +66,11 @@ page{
   width: 14rpx;
 }
 .save-userinfo{
-    margin-top: 26rpx;
     color: #727171;
     font-size: 18rpx;
     position: relative;
-}
-.save-userinfo::after{
-  position: absolute;
-  content: "";
-  width: 200rpx;
-  height: 7rpx;
-  background: #D1A24B;
-  bottom: -10rpx;
-  left: 50%;
-  transform: translateX(-50%);
+    width: 201rpx;
+    border-bottom: 5px solid  #D1A24B;
+    height: 30rpx;
+    margin: 26rpx auto;
 }
