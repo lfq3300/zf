@@ -1,0 +1,6 @@
+<view class='padding-border'>
+    <navigator class='flex-column' url="/pages/activity/details/index?id={{item.id}}" wx:for="{{list}}" wx:for-index="idx" wx:for-item="item" wx:key="property" >
+        <image src='{{item.imgUrl}}'></image>
+        <view>{{item.title}}</view>
+    </navigator>
+</view>

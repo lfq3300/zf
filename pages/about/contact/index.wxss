@@ -1,0 +1,35 @@
+.msg{
+  height:145rpx;
+  border-bottom: 1px solid #DCDCDC;
+  justify-content: center;
+  position: relative;
+}
+
+.msg .title{
+  color:#1B1B1B;
+  font-size: 32rpx;
+  font-weight: 900;
+}
+.msg view{
+  font-size: 22rpx;
+  padding: 5rpx 0;
+}
+.right-return-img{
+  position: absolute;
+  width: 12rpx;
+  height: 24rpx;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.bottom{
+  margin-top: 20rpx;
+}
+.bottom view{
+  color: #000000;
+  font-size: 18rpx;
+  margin:20rpx 0;
+}
+.em{
+  color: #e1c499;
+}

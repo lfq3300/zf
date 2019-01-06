@@ -1,0 +1,49 @@
+/* pages/survey/index.wxss */
+page{
+  background: #F4F4F4;
+  margin-bottom: 100rpx;
+}
+.list navigator{
+  background: #fff;
+  min-height: 160rpx;
+  margin-top: 20rpx;
+}
+.right{
+  width: 170rpx;
+  position: relative;
+}
+.right-btn{
+  width: 140rpx;
+  height: 56rpx;
+  background: #5F8FFF;
+  color: #fff;
+  text-align: center;
+  border-radius: 6rpx;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.flex-default{
+  height: 100%;
+}
+.flex-column{
+  padding-left: 22rpx;
+}
+.title{
+  padding-top: 35rpx;
+  color: #333333;
+  font-size: 36rpx;
+  font-family: 'MYingHeiPRC-W5';
+}
+.date{
+  padding-top: 29rpx;
+  color: #999999;
+  font-size: 28rpx;
+}
+.right-btn-false{
+  background: #DDDDDD;
+}
+.done{
+  background: #DDDDDD;
+  color: #fff;
+}

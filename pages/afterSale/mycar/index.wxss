@@ -13,12 +13,13 @@
     padding: 20rpx;
 }
 .carlist{
-  padding: 164rpx 100rpx 0 100rpx;
+  padding: 74rpx 100rpx 0 100rpx;
   box-sizing: border-box;
 }
 .item{
   width: 100%;
   overflow: hidden;
+  margin-bottom: 60rpx;
 }
 .item image{
   width: 100%;

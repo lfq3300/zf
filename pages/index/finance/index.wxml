@@ -31,7 +31,7 @@
           <view>{{carTime[carTimeIndex]}}</view>
         </picker>
       </view>
-      <image src='../../../images/icons/mine_icon_return.png' class='right-return-img'></image>
+      <image src='https://zungfu.azurewebsites.net/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
     </view>
     <view class='flex-default flex-center assembly'>
       <text>首付</text>

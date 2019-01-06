@@ -1,4 +1,4 @@
-// pages/afterSale/mycar/index.js
+// pages/activity/survey/index.js
 var app = getApp();
 Page({
 
@@ -6,50 +6,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-    carList:[],
-    carDlete:[]
+    surveryList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      var that = this;
+    var that = this;
     wx.request({
-      url: app.data.hostUrl + 'api/services/app/myVehicle/GetActiveList?accountId=' + wx.getStorageSync("userId"),
-      method: 'get',
+      url: app.data.hostUrl + 'api/services/app/survey/GetListByAccountIdAsync',
+      method: "post",
+      data: {
+        id: wx.getStorageSync('userId')
+      },
       success: function (res) {
-        if (res.data.success){
+        if (res.statusCode == 200 && res.data.success) {
           that.setData({
-            carList: res.data.result
+            surveryList: res.data.result,
           })
         }
-      },
+      }
     })
   },
 
-  deleteMyCar:function(e){
-    var that = this;
-    wx.request({
-      url: app.data.hostUrl + 'api/services/app/myVehicle/DeleteMyVehicleAsync',
-      data: that.data.carDlete,
-      method: 'post',
-      success: function (res) {
-        console.log(res)
-      },
-    })
-    
-  },
-  binCar:function(e){
-    var value = e.detail.value;
-    var arr = [];
-    for(var i = 0;i<value.length;i++){
-      arr[i] = {"id":value[i]*1}
-    }
-    this.setData({
-      carDlete:arr
-    })
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

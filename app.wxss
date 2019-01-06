@@ -9,7 +9,7 @@ page,text,view{
   min-height: 1rpx;
 }
 .formSubmit-title{
-   color:#898989;
+  color:#898989;
   margin-bottom: 20rpx;
   display: flex;
   margin-top: 60rpx;

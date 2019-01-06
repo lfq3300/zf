@@ -1,0 +1,20 @@
+<view style="width: 100%; height: 738rpx;">
+  <map wx:if="{{mapstatus}}" style="width: 100%; height: 738rpx;" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}">
+  </map>
+</view>
+<view class='padding-border'>
+  <view class='msg flex-column'>
+    <picker bindchange='bingDis' value="{{carDisIndex}}" range="{{carDis}}">
+      <view class='title'>{{carDis[carDisIndex]}}</view>
+    </picker>
+    <view>{{address}}</view>
+    <view>{{tel}}</view>
+     <image src='https://zungfu.azurewebsites.net/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
+  </view>
+</view>
+<view class='bottom padding-border'>
+    <view>若有任何疑问，可以通过以下渠道寻求帮助：</view>
+    <view>发邮件至：<text class='em'>Marketingzfmm@zfchina.com</text> </view>
+    <view>邮件或私信请注明申请编号和中文姓名,还有你的联系方式。</view>
+    <view>我们将尽快为您提供专业资讯服务</view>
+</view>

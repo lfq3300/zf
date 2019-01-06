@@ -14,16 +14,16 @@
   <view class='flex1'>
       <view class='title'><text>最新</text>资讯</view>
       <view class='news'>
-        <navigator url='/pages/activity/details/index?id=1'>
-            <image src='https://zungfu.azurewebsites.net/Common/Images/App/banner.png' class='bg'></image>
+        <navigator url='/pages/about/list/index'>
+            <image src='../../images/about_img_information@3x.png' class='bg'></image>
         </navigator>
       </view>
   </view>
   <view class='flex1'>
       <view class='title'><text>联系</text>我们</view>
        <view class='news'>
-        <navigator url='/pages/activity/details/index?id=1'>
-            <image src='https://zungfu.azurewebsites.net/Common/Images/App/banner.png' class='bg'></image>
+        <navigator url='/pages/about/contact/index'>
+            <image src='https://zungfu.azurewebsites.net/Common/Images/App/afterSale/mimg_aintenance@3x.png' class='bg'></image>
         </navigator>
       </view>
   </view>

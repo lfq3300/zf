@@ -1,67 +1,341 @@
 // pages/afterSale/repair/wx/index.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    carType: [
-      "请选择",
-      "车型一",
-      "车型二",
-      "车型三"
-    ],
-    carTypeIndex: 1,
-    carDis: [
-      "请选择",
-      "车款一",
-      "车款二",
-      "车款三"
-    ],
-    carDisIndex: 1,
     date: "2019-01-01",
-    city: [
-      "广东", "湖南", "北京"
-    ],
+    city: [],
+    cityId:0,
     cityIndex: 1,
     loginDate: "2019-01-01",
-
+    carStyle:[],
+    carStyleIndex:0,
+    carStyleId:0,
+    carVehicle:[],
+    carVehicleIndex:0,
+    carVehicleId:0,
+    // carList:[],
+    // carListIndex:0,
+    // carListId:0,
+    phone: "",
+    getcodetext: "获取验证码",
+    getcodeStatus: true,
+    ajaxStatus: true,
   },
-
+  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
-  },
-  bingCity: function (e) {
     var that = this;
-    that.setData({
-      cityIndex: e.detail.value
-    })
+    app.getCarStyleList();
+    var carStyleOut =  setInterval(function(){
+      if(app.globalData.carStyle){
+        clearTimeout(carStyleOut);
+        that.setData({
+          carStyle: app.globalData.carStyle,
+          carStyleId: app.globalData.carStyleArr[that.data.carStyleIndex].id * 1,
+        });
+        app.getCarVehicleList(that.data.carStyleId);
+        var carVehicleOut = setInterval(function () {
+          if (app.globalData.carVehicle) {
+            clearTimeout(carVehicleOut);
+            if (app.globalData.carVehicle.length > 0) {
+              that.setData({
+                carVehicle: app.globalData.carVehicle,
+                carVehicleId: app.globalData.carVehicleArr[that.data.carVehicleIndex].id * 1,
+              });
+              // app.getCarList(that.data.carVehicleId);
+              // var carListOut = setInterval(function () {
+              //   if (app.globalData.carList) {
+              //     clearTimeout(carListOut);
+              //     if (app.globalData.carList.length > 0) {
+              //       that.setData({
+              //         carList: app.globalData.carList,
+              //         carListId: app.globalData.carListArr[that.data.carListIndex].id * 1,
+              //       });
+              //     } else {
+              //       that.setData({
+              //         carList: [],
+              //         carListId: -1,
+              //       });
+              //     }
+              //   }
+              // }, 1000);
+
+            } else {
+              that.setData({
+                carVehicle: [],
+                carVehicleId: -1,
+              });
+            }
+          }
+        }, 1000);
+      }
+    },1000);
+    app.getCity();
+    var cityOut = setInterval(function () {
+      if (app.globalData.city) {
+        clearTimeout(cityOut);
+        if (app.globalData.city.length > 0) {
+          that.setData({
+            city: app.globalData.city,
+            cityId: app.globalData.cityArr[that.data.cityIndex].id * 1,
+          });
+        }
+      }
+    }, 1000);
   },
-  bingCarType: function (e) {
+  
+  bingCarStyle: function (e) {
     var that = this;
+    var carStyleIndex = e.detail.value;
     that.setData({
-      carTypeIndex: e.detail.value
-    })
+      carStyleIndex: carStyleIndex,
+      carStyleId: app.globalData.carStyleArr[carStyleIndex].id * 1,
+    });
+    app.getCarVehicleList(that.data.carStyleId);
+    var carVehicleOut = setInterval(function () {
+      if (app.globalData.carVehicle) {
+        clearTimeout(carVehicleOut);
+        if (app.globalData.carVehicle.length>0){
+          that.setData({
+            carVehicle: app.globalData.carVehicle,
+            carVehicleId: app.globalData.carVehicleArr[that.data.carVehicleIndex].id * 1,
+          });
+          // app.getCarList(that.data.carVehicleId);
+          // var carListOut = setInterval(function () {
+          //   if (app.globalData.carList) {
+          //     clearTimeout(carListOut);
+          //     if (app.globalData.carList.length > 0) {
+          //       that.setData({
+          //         carList: app.globalData.carList,
+          //         carListId: app.globalData.carListArr[that.data.carListIndex].id * 1,
+          //       });
+          //     } else {
+          //       that.setData({
+          //         carList: [],
+          //         carListId: -1,
+          //       });
+          //     }
+          //   }
+          // }, 1000);
+
+        }else{
+          that.setData({
+            carVehicle: [],
+            carVehicleId:-1,
+          });
+        }
+      }
+    }, 1000);
   },
-  bingDis: function (e) {
+
+  bingCarVehicle:function(e){
     var that = this;
+    var carVehicleIndex = e.detail.value;
     that.setData({
-      carDisIndex: e.detail.value
-    })
+      carVehicleIndex: carVehicleIndex,
+      carVehicleId: app.globalData.carVehicleArr[carVehicleIndex].id * 1,
+    });
+    // app.getCarList(that.data.carVehicleId);
+    // var carListOut = setInterval(function () {
+    //   if (app.globalData.carList) {
+    //     clearTimeout(carListOut);
+    //     if (app.globalData.carList.length > 0) {
+    //       that.setData({
+    //         carList: app.globalData.carList,
+    //         carListId: app.globalData.carListArr[that.data.carListIndex].id * 1,
+    //       });
+    //     } else {
+    //       that.setData({
+    //         carList: [],
+    //         carListId: -1,
+    //       });
+    //     }
+    //   }
+    // }, 1000);
   },
+
+  bingCity:function(e){
+    var that = this;
+    var cityIndex = e.detail.value;
+    that.setData({
+      cityIndex: cityIndex,
+      cityId: app.globalData.cityArr[cityIndex].id * 1,
+    });
+  },
+  
   bindDate: function (e) {
     var that = this;
     that.setData({
       date: e.detail.value
     })
   },
+
   bindLoginDate: function (e) {
     var that = this;
     that.setData({
       loginDate: e.detail.value
+    })
+  },
+  getPhoneCode: function () {
+    var that = this;
+    var status = app.getPhoneCode(that.data.phone);
+    if (status) {
+      return;
+    }
+
+    if (!that.data.getcodeStatus) {
+      return;
+    }
+    that.setData({
+      getcodeStatus: false
+    })
+    var downTime = 60;
+    var downTimeOut = setInterval(function () {
+      downTime--;
+      var getcodetext = "";
+      if (downTime == 0) {
+        getcodetext = "获取验证码";
+        that.setData({
+          getcodeStatus: true
+        })
+        clearTimeout(downTimeOut);
+        downTime = 60
+      } else {
+        getcodetext = downTime + "s"
+      }
+      that.setData({
+        getcodetext: getcodetext
+      })
+    }, 1000)
+  },
+  phoneInput: function (e) {
+    this.setData({
+      phone: e.detail.value
+    })
+  },
+  formSubmit:function(e){
+    var that = this;
+    if (!that.data.ajaxStatus) {
+      return;
+    }
+    var msg = e.detail.value;
+    if (msg.contactName == "") {
+      wx.showToast({
+        title: '姓名不能为空',
+        icon: 'none',
+        duration: 1500
+      })
+      return false;
+    }
+    if (!app.isPoneAvailable(msg.phone)) {
+      wx.showToast({  
+        title: '电话号码输入有误',
+        icon: 'none',
+        duration: 1500
+      })
+      return false;
+    }
+    if (!app.isPoneCodeAvailable(msg.code)) {
+      wx.showToast({
+        title: '验证码格式错误',
+        icon: 'none',
+        duration: 1500
+      })
+      return false;
+    }
+    if (msg.name == "") {
+      wx.showToast({
+        title: '请输入爱车昵称',
+        icon: 'none',
+        duration: 1500
+      })
+      return false;
+    }
+    if (msg.licensePlate == "") {
+      wx.showToast({
+        title: '请输入车牌号',
+        icon: 'none',
+        duration: 1500
+      })
+      return false;
+    }
+    
+    if (msg.engineCode == ""){
+      wx.showToast({
+        title: '请输入车辆识别号',
+        icon: 'none',
+        duration: 1500
+      })
+      return false;
+    }
+    if (msg.vin == "") {
+      wx.showToast({
+        title: '请输入底盘号码',
+        icon: 'none',
+        duration: 1500
+      })
+      return false;
+    }
+    var data = {
+      id:"",
+      name: msg.name,
+      contactName: msg.contactName,
+      categoryId: that.data.carStyleId,
+      vehicleId: that.data.carVehicleId,
+      carListId: that.data.carListId,
+      engineCode: msg.engineCode,
+      vin: msg.vin,
+      licensePlate: msg.licensePlate,
+      city:that.data.cityId,
+      firstLicenseDate:that.data.date,
+      purchaseDate: that.data.loginDate,
+      code:msg.code,
+      contactTel:msg.phone,
+      accountId: wx.getStorageSync("userId"),
+      sessionId: wx.getStorageSync('sessionId'),
+      fromId: "appointment",
+    };
+    console.log(data);
+    that.setData({
+      ajaxStatus: false
+    })
+    wx.request({
+      url: app.data.hostUrl + 'api/services/app/myVehicle/CreateOrUpdateMyVehicleAsync',
+      data: data,
+      method: 'POST',
+      success: function (res) {
+        that.setData({
+          ajaxStatus: true,
+        })
+        if (res.data.success) {
+          wx.redirectTo({
+            url: '/pages/success/index'
+          })
+        } else {
+          wx.showToast({
+            title: res.data.error.message,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      },
+      fail: function () {
+        //未发送请求
+        that.setData({
+          ajaxstatus: true,
+        })
+        wx.showToast({
+          title: '网络异常，请检查网络状态',
+          icon: 'none',
+          duration: 2500
+        })
+      }
     })
   },
   

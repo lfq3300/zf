@@ -198,4 +198,88 @@ App({
       return true;
     }
   },
+  //获取车款
+  getCarStyleList:function(){
+    var that = this;
+    wx.request({
+      url: that.data.hostUrl + 'api/services/app/vehicleLevel/GetActiveList',
+      method: 'post',
+      success: function (res) {
+        if (res.data.success) {
+          var result = res.data.result;
+          var a = [];
+          var b = [];
+          for (var i = 0; i < result.length; i++) {
+            a[i] = result[i].name;
+            b[i] = result[i];
+          }
+          that.globalData.carStyle = a;
+          that.globalData.carStyleArr = b
+        }
+      }
+    });
+  },
+  //获取车型
+  getCarVehicleList: function (id){
+    var that = this;
+    wx.request({
+      url: that.data.hostUrl + 'api/services/app/vehicleCategory/GetActiveListByParentId?levelId=' + id,
+      method: 'post',
+      success: function (res) {
+        if (res.data.success) {
+          var result = res.data.result;
+          var a = [];
+          var b = [];
+          for (var i = 0; i < result.length; i++) {
+            a[i] = result[i].name;
+            b[i] = result[i];
+          }
+          that.globalData.carVehicle = a;
+          that.globalData.carVehicleArr = b;
+        }
+      }
+    });
+  },
+  //获取车型
+  getCarList: function (id) {
+    var that = this;
+    wx.request({
+      url: that.data.hostUrl + 'api/services/app/vehicle/GetActiveList?categoryId=' + id,
+      method: 'post',
+      success: function (res) {
+        if (res.data.success) {
+          var result = res.data.result;
+          var a = [];
+          var b = [];
+          for (var i = 0; i < result.length; i++) {
+            a[i] = result[i].name;
+            b[i] = result[i];
+          }
+          that.globalData.carList = a;
+          that.globalData.carListArr = b;
+        }
+      }
+    });
+  },
+  //获取城市 
+  getCity:function(){
+    var that = this;
+    wx.request({
+      url: that.data.hostUrl + 'api/services/app/globalInformation/GetListByType?type=1',
+      method: 'post',
+      success: function (res) {
+        if (res.data.success) {
+          var result = res.data.result;
+          var a = [];
+          var b = [];
+          for (var i = 0; i < result.length; i++) {
+            a[i] = result[i].name;
+            b[i] = result[i];
+          }
+          that.globalData.city = a;
+          that.globalData.cityArr = b;
+        }
+      }
+    });
+  }
 });

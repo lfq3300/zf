@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 23,
 			"list": [
 				{
 					"id": 0,
@@ -157,6 +157,30 @@
 					"id": -1,
 					"name": "活动列表",
 					"pathName": "pages/activity/list/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "添加我的爱车",
+					"pathName": "pages/afterSale/mycar/add/index",
+					"query": ""
+				},
+				{
+					"id": 21,
+					"name": "联系我们",
+					"pathName": "pages/about/contact/index",
+					"query": ""
+				},
+				{
+					"id": 22,
+					"name": "爱车列表",
+					"pathName": "pages/afterSale/mycar/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "问卷调查",
+					"pathName": "pages/activity/survey/index",
 					"query": ""
 				}
 			]
