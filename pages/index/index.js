@@ -118,6 +118,7 @@ Page({
     wx.showNavigationBarLoading();
     var that = this;
     that.onLoad();
+    
   },
   /**
    * 用户点击右上角分享

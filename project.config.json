@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 25,
+			"current": 26,
 			"list": [
 				{
 					"id": 0,
@@ -193,6 +193,12 @@
 					"id": 25,
 					"name": "意见反馈",
 					"pathName": "pages/opinion/index",
+					"query": ""
+				},
+				{
+					"id": 26,
+					"name": "预约维修",
+					"pathName": "pages/afterSale/repair/wx/index",
 					"query": ""
 				}
 			]

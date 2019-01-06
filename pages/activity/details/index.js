@@ -20,7 +20,7 @@ Page({
     var that = this;
     that.getActivity(options.id);
     that.setData({
-      type: options.type,
+      type: options.type ? options.type:'',
       id: options.id
     })
   },
@@ -40,6 +40,8 @@ Page({
             title: data.activity.title,
             loginhidde: false
           });
+          wx.hideNavigationBarLoading();
+          wx.stopPullDownRefresh();
         }
       }
     })
@@ -83,7 +85,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var that = this;
+    that.getActivity(that.data.id);
+   
   },
 
   /**

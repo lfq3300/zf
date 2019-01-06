@@ -19,11 +19,12 @@
         </navigator>
       </view>
   </view>
+  <view class='wid'></view>
   <view class='flex1'>
       <view class='title'><text>联系</text>我们</view>
        <view class='news'>
         <navigator url='/pages/about/contact/index'>
-            <image src='https://zungfu.azurewebsites.net/Common/Images/App/afterSale/mimg_aintenance@3x.png' class='bg'></image>
+            <image src='https://zungfu.azurewebsites.net/Common/Images/App/about_img_contact@3x' class='bg'></image>
         </navigator>
       </view>
   </view>
