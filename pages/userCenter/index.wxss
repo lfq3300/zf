@@ -5,7 +5,7 @@ page{
 }
 .msg-top{
   background: #F4F4F4;
-  height: 287rpx;
+  height: 295rpx;
   padding-left: 40rpx;
   padding-right: 40rpx;
   text-align: center;
