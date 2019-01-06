@@ -22,14 +22,15 @@ Page({
 
   getPhoneCode:function(){
     var that = this;
+    if (!that.data.getcodeStatus) {
+      return;
+    }
     var status = app.getPhoneCode(that.data.phone);
     if (status){
       return;
     }
 
-    if (!that.data.getcodeStatus){
-      return;
-    }
+    
     that.setData({
       getcodeStatus: false
     })
@@ -155,16 +156,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    app.getDealer(options.id);
-    var deaTime = setInterval(function(){
-      if (app.globalData.carDis){
-        clearTimeout(deaTime);
-        that.setData({
-          carDis: app.globalData.carDis,
-          carDisId: app.globalData.carDisAddr[that.data.carDisIndex].id * 1,
-        })
-      }
-    },1000);
     that.setData({
       imgUrl: options.url,
       carname: options.carname,
@@ -172,9 +163,22 @@ Page({
       carnameid: options.carnameid,
       carid: options.id
     });
-
-    wx.hideNavigationBarLoading();
-    wx.stopPullDownRefresh();
+    that.onInfo(options.id);
+  },
+  onInfo:function(id){
+    var that = this;
+    app.getDealer(id);
+    var deaTime = setInterval(function () {
+      if (app.globalData.carDis) {
+        clearTimeout(deaTime);
+        that.setData({
+          carDis: app.globalData.carDis,
+          carDisId: app.globalData.carDisAddr[that.data.carDisIndex].id * 1,
+        })
+        wx.hideNavigationBarLoading();
+        wx.stopPullDownRefresh();
+      }
+    }, 1000);
   },
   
   /**
@@ -222,7 +226,7 @@ Page({
   onPullDownRefresh: function () {
     wx.showNavigationBarLoading();
     var that = this;
-    that.onLoad();
+    that.onInfo(that.data.carid);
   },
 
   /**

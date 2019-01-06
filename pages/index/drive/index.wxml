@@ -33,7 +33,7 @@
     <view class='from-assembly flex-default from-assembly-no-right'>
       <text>验证码</text>
       <input class='flex1 from-assembly-input' placeholder='请输入验证码' name='code'></input>
-      <button class="from-assembly-phone-btn" bindtap='getPhoneCode'>获取验证码</button>
+      <button class="from-assembly-phone-btn" bindtap='getPhoneCode'>{{getcodetext}}</button>
     </view>
     <view class='from-assembly flex-default flex-center'>
       <text>车型</text>

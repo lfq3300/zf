@@ -109,14 +109,15 @@ Page({
   },
   getPhoneCode: function () {
     var that = this;
+
+    if (!that.data.getcodeStatus) {
+      return;
+    }
     var status = app.getPhoneCode(that.data.phone);
     if (status) {
       return;
     }
 
-    if (!that.data.getcodeStatus) {
-      return;
-    }
     that.setData({
       getcodeStatus: false
     })
@@ -162,6 +163,19 @@ Page({
     that.setData({
       date: date
     });
+    that.setData({
+      imgUrl: options.url,
+      carname: options.carname,
+      name: options.name,
+      carnameid: options.carnameid,
+      carid: options.id
+    });
+    that.onInfo(options.id)
+   
+  },
+
+  onInfo:function(id){
+    var that = this;
     app.getAppointment();
     var timeAppointment = setInterval(function () {
       if (app.globalData.timeAppointment) {
@@ -172,7 +186,8 @@ Page({
         })
       }
     }, 1000);
-    app.getDealer(options.id);
+
+    app.getDealer(id);
     var deaTime = setInterval(function () {
       if (app.globalData.carDis) {
         clearTimeout(deaTime);
@@ -182,16 +197,7 @@ Page({
         })
       }
     }, 1000);
-    that.setData({
-      imgUrl: options.url,
-      carname: options.carname,
-      name: options.name,
-      carnameid: options.carnameid,
-      carid: options.id
-    });
-
-    wx.hideNavigationBarLoading();
-    wx.stopPullDownRefresh();
+    
   },
 
   bingCarType: function (e) {
@@ -262,7 +268,7 @@ Page({
   onPullDownRefresh: function () {
     wx.showNavigationBarLoading();
     var that = this;
-    that.onLoad();
+    that.onInfo(that.data.carid);
   },
   /**
    * 用户点击右上角分享

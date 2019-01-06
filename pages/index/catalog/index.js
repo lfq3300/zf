@@ -22,26 +22,29 @@ Page({
     that.setData({
       name: options.name,
       carname: options.carname,
-      carnameid: options.carnameid
+      carnameid: options.carnameid,
+      id:options.id
     })
-    if (options.id){
-      wx.request({
-        url: app.data.hostUrl + 'api/services/app/vehicle/GetActiveList?categoryId=' + options.id,
-        method: 'post',
-        success:function(res){
-          if (res.data.success){
-            var carList = res.data.result;
-            that.setData({
-              carList: carList,
-              loginhidde:false
-            })
-          }
+    that.onInfo(options.id);
+  },
+
+  onInfo: function (id){
+    var that = this;
+    wx.request({
+      url: app.data.hostUrl + 'api/services/app/vehicle/GetActiveList?categoryId=' + id,
+      method: 'post',
+      success: function (res) {
+        if (res.data.success) {
+          var carList = res.data.result;
+          that.setData({
+            carList: carList,
+            loginhidde: false
+          })
+          wx.hideNavigationBarLoading();
+          wx.stopPullDownRefresh();
         }
-      });
-    }
-    
-    wx.hideNavigationBarLoading();
-    wx.stopPullDownRefresh();
+      }
+    });
   },
 
   /**
@@ -88,7 +91,7 @@ Page({
   onPullDownRefresh: function () {
     wx.showNavigationBarLoading();
     var that = this;
-    that.onLoad();
+    that.onInfo(that.data.id);
   },
   /**
    * 用户点击右上角分享

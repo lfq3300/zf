@@ -20,29 +20,32 @@ Page({
     var that = this;
     that.setData({
       carname: options.carname,
-      carnameid: options.carnameid
+      carnameid: options.carnameid,
+      id:options.id
     })
-    if (options.id) {
-      wx.request({
-        url: app.data.hostUrl + 'api/services/app/vehicle/GetById',
-        data: { "id": options.id},
-        method: 'post',
-        success: function (res) {
-          if (res.data.success) {
-            var car = res.data.result.vehicle;
-             that.setData({
-               car: res.data.result.vehicle,
-               loginhidde:false
-             })
-            WxParse.wxParse('accontent', 'html', car.content, that, 0);
-          }
-        }
-      });
-    }
-    wx.hideNavigationBarLoading();
-    wx.stopPullDownRefresh();
+    that.onInfo(options.id);
+   
   },
-
+  onInfo: function (id){
+    var that = this;
+    wx.request({
+      url: app.data.hostUrl + 'api/services/app/vehicle/GetById',
+      data: { "id": id },
+      method: 'post',
+      success: function (res) {
+        if (res.data.success) {
+          var car = res.data.result.vehicle;
+          that.setData({
+            car: res.data.result.vehicle,
+            loginhidde: false
+          })
+          WxParse.wxParse('accontent', 'html', car.content, that, 0);
+          wx.hideNavigationBarLoading();
+          wx.stopPullDownRefresh();
+        }
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -88,7 +91,7 @@ Page({
   onPullDownRefresh: function () {
     wx.showNavigationBarLoading();
     var that = this;
-    that.onLoad();
+    that.onInfo(that.data.id);
   },
   
   /**

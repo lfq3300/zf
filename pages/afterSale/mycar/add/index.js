@@ -184,14 +184,15 @@ Page({
   },
   getPhoneCode: function () {
     var that = this;
+    if (!that.data.getcodeStatus) {
+      return;
+    }
     var status = app.getPhoneCode(that.data.phone);
     if (status) {
       return;
     }
 
-    if (!that.data.getcodeStatus) {
-      return;
-    }
+    
     that.setData({
       getcodeStatus: false
     })

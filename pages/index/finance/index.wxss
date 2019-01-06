@@ -1,11 +1,11 @@
 .bg {
-  height: 264rpx;
+  height: 455rpx;
   overflow: hidden;
   position: relative;
 }
 
 .bg image {
-  height: 264rpx;
+  height: 555rpx;
   width: 100%;
 }
 

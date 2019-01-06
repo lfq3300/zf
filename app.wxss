@@ -64,8 +64,8 @@ page,text,view{
 }
 
 .triangle {
-  width: 0;
-  height: 0;
+  width: 0!important;
+  height: 0!important;
   border-left: 14rpx solid transparent;
   border-right: 14rpx solid transparent;
   border-top: 28rpx solid #848484;
