@@ -8,7 +8,7 @@
   padding-right:  6.25%;
 }
 .move-menu .select text::after{
-  bottom: -25rpx;
+  bottom: -10rpx;
 }
 
 .act-list{

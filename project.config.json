@@ -202,9 +202,9 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "关于仁孚",
-					"pathName": "pages/about/index",
+					"id": 27,
+					"name": "个人信息",
+					"pathName": "pages/userCenter/msg/index",
 					"query": ""
 				}
 			]

@@ -3,7 +3,7 @@
   <view>
     {{nickName}}
   </view>
-  <navigator class='save-userinfo'>完善个人信息</navigator>
+  <navigator class='save-userinfo' url='/pages/userCenter/msg/index'>完善个人信息</navigator>
 </view>
 <view class="content">
   <view class='padding-border'>
