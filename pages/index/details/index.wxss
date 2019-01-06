@@ -81,9 +81,9 @@ page{
 
 .content{
   margin-top: 90rpx;
-  padding: 0 88rpx 0 87rpx;
   box-sizing: border-box;
 }
+
 .content>view{
   overflow: hidden;
 }
