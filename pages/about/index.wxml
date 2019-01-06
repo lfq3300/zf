@@ -1,31 +1,38 @@
-<header></header>
-<view class='video flex-column'>
-  <view class='bg-box'>
-    <navigator url='/pages/activity/video/index'>
-      <image src='https://zungfu.azurewebsites.net/Common/Images/App/banner.png' class='bg'></image>
-      <image src='https://zungfu.azurewebsites.net/Common/Images/App/icons/big_play.png' class='video-play'></image>
-    </navigator>
+<loading hidden="{{!loginhidde}}">
+        页面加载中...
+</loading>
+<view hidden="{{loginhidde}}">
+  <header></header>
+  <view class='video flex-column'>
+    <view class='bg-box'>
+      <navigator url='/pages/activity/video/index?video={{videoUrl}}&img={{imgUrl}}'>
+        <image src='{{imgUrl}}' class='bg'></image>
+        <image src='/../../../images/about_icon_play@3x.png' class='video-play'></image>
+      </navigator>
+    </view>
+    <view class='video-title'>
+      {{videoTitle}}
+    </view>
   </view>
-  <view class='video-title'>
-    2018仁孚中国（西区）客户服务部形象宣传片
-  </view>
-</view>
-<view class='content padding-border flex-default'>
-  <view class='flex1'>
-      <view class='title'><text>最新</text>资讯</view>
+  <view class='content padding-border flex-default'>
+    <view class='flex1'>
+      <view class='title'>
+        <text>最新</text>资讯</view>
       <view class='news'>
         <navigator url='/pages/about/list/index'>
-            <image src='../../images/about_img_information@3x.png' class='bg'></image>
+          <image src='../../images/about_img_information@3x.png' class='bg'></image>
         </navigator>
       </view>
-  </view>
-  <view class='wid'></view>
-  <view class='flex1'>
-      <view class='title'><text>联系</text>我们</view>
-       <view class='news'>
+    </view>
+    <view class='wid'></view>
+    <view class='flex1'>
+      <view class='title'>
+        <text>联系</text>我们</view>
+      <view class='news'>
         <navigator url='/pages/about/contact/index'>
-            <image src='https://zungfu.azurewebsites.net/Common/Images/App/about_img_contact@3x' class='bg'></image>
+          <image src='/../../../images/about_img_contact@3x.png' class='bg'></image>
         </navigator>
       </view>
+    </view>
   </view>
 </view>

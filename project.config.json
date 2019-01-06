@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 26,
+			"current": 27,
 			"list": [
 				{
 					"id": 0,
@@ -199,6 +199,12 @@
 					"id": 26,
 					"name": "预约维修",
 					"pathName": "pages/afterSale/repair/wx/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "关于仁孚",
+					"pathName": "pages/about/index",
 					"query": ""
 				}
 			]

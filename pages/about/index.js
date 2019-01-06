@@ -1,24 +1,43 @@
 // pages/about/index.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list:[
-      {
-        "hasVideo":false,
-        "imgUrl":
-        "videoUrl"
-      }
-    ]
+    loginhidde:true,
+    imgUrl:"",
+    videoUrl:"",
+    videoTitle:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    wx.request({
+      url: app.data.hostUrl + 'api/services/app/homeSetting/GetActiveList?top=4',
+      method: "post",
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.success) {
+          var data = res.data.result;
+          that.setData({
+            loginhidde: false,
+            imgUrl: data[3].url,
+            videoUrl: data[3].videoUrl,
+            videoTitle: data[3].name
+          })
+        }
+      },
+      complete: function () {
+        // 隐藏导航栏加载框
+        wx.hideNavigationBarLoading();
+        // 停止下拉动作
+        wx.stopPullDownRefresh();
+      }
+    })
   },
 
   /**
