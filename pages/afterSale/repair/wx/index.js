@@ -44,6 +44,16 @@ Page({
     });
     if (options.type == 1) {
       title = "预约维修";
+      app.getWxType();
+      var carWxOut = setInterval(function () {
+        if (app.globalData.carWx) {
+          clearTimeout(carWxOut);
+          that.setData({
+            carWx: app.globalData.carWx,
+            carWxId: app.globalData.carWxArr[that.data.carWxIndex].id * 1,
+          });
+        }
+      }, 1000);
     } else {
       title = "预约保养";
     }
@@ -80,16 +90,7 @@ Page({
         }, 1000);
       }
     }, 1000);
-    app.getWxType();
-    var carWxOut = setInterval(function () {
-      if (app.globalData.carWx) {
-        clearTimeout(carWxOut);
-        that.setData({
-          carWx: app.globalData.carWx,
-          carWxId: app.globalData.carWxArr[that.data.carWxIndex].id * 1,
-        });
-      }
-    }, 1000);
+    
     app.getDealer('');
     var deaTime = setInterval(function () {
       if (app.globalData.carDis) {
