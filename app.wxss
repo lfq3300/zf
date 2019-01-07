@@ -55,7 +55,7 @@ page,text,view{
 .from-assembly text {
   font-size: 28rpx;
   color: #fff;
-  width: 125rpx;
+  width: 142rpx;
 }
 
 .from-assembly-value {

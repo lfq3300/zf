@@ -41,7 +41,7 @@
 }
 .item image{
   width: 344rpx;
-  height: 238rpx;
+  height: 174rpx;
 }
 
 .cat-name{

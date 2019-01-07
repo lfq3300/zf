@@ -2,7 +2,7 @@
   <ajaxlod></ajaxlod>
 </view>
 <view class='bg'>
-  <image src='https://zungfu.azurewebsites.net/Common/Images/App/minbanner.png'></image>
+  <image src='{{imgUrl}}'></image>
   <view class='shadow'></view>
   <view class='text flex-column flex-center'>
     <text class="text-title">预约试驾</text>

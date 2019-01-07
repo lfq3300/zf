@@ -2,7 +2,7 @@
   <ajaxlod></ajaxlod>
 </view>
 <view class='bg'>
-  <image src='https://zungfu.azurewebsites.net/Common/Images/App/minbanner.png'></image>
+  <image src='{{imgUrl}}'></image>
   <view class='shadow'></view>
   <view class='text'>快速查价</view>
 </view>

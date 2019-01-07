@@ -4,19 +4,19 @@ page {
 }
 
 .bg {
-  height: 264rpx;
+  height: 405rpx;
   overflow: hidden;
   position: relative;
 }
 
 .bg image {
-  height: 264rpx;
+  height: 405rpx;
   width: 100%;
 }
 
 .bg .shadow {
   width: 100%;
-  height: 264rpx;
+  height: 405rpx;
   position: absolute;
   top: 0;
   left: 0;
@@ -29,7 +29,7 @@ page {
   color: #fff;
   position: absolute;
   width: 100%;
-  height: 264rpx;
+  height: 405rpx;
   z-index: 2;
   top: 0;
   left: 0;

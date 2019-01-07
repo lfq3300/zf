@@ -26,8 +26,8 @@
     </view>
   </view>
   <view class='suspension'>
-    <navigator url="/pages/index/inquiry/index?id={{car.id}}&url={{car.imgUrl}}&carname={{carname}}&carnameid={{carnameid}}&name={{car.name}}">询价</navigator>
-    <navigator url="/pages/index/drive/index?id={{car.id}}&url={{car.imgUrl}}&carname={{carname}}&carnameid={{carnameid}}&name={{car.name}}">试驾</navigator>
-    <navigator url="/pages/index/finance/index?id={{car.id}}&url={{car.imgUrl}}&carname={{carname}}&carnameid={{carnameid}}&name={{car.name}}">金融计算</navigator>
+    <navigator url="/pages/index/inquiry/index?id={{car.id}}&url={{carImage[0].imgUrl}}&carname={{carname}}&carnameid={{carnameid}}&name={{car.name}}">询价</navigator>
+    <navigator url="/pages/index/drive/index?id={{car.id}}&url={{carImage[0].imgUrl}}&carname={{carname}}&carnameid={{carnameid}}&name={{car.name}}">试驾</navigator>
+    <navigator url="/pages/index/finance/index?id={{car.id}}&url={{carImage[0].imgUrl}}&carname={{carname}}&carnameid={{carnameid}}&name={{car.name}}">金融计算</navigator>
   </view>
 </view>
