@@ -1,5 +1,5 @@
 <header></header>
-<view>
+<view class='box'>
   <navigator class='weixiu' url='/pages/afterSale/repair/wx/index?type=1'>
     <view>
       <image src='https://zungfu.azurewebsites.net/Common/Images/App/afterSale/home_img_bg@3x.png' class='bg1'></image>

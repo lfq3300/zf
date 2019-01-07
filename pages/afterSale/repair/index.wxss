@@ -1,19 +1,27 @@
+page{
+  background: #373737;
+}
+.box{
+  position: fixed;
+  top:50%;
+  left: 0;
+  transform: translateY(-50%);
+}
 .weixiu {
   margin-left: 105rpx;
-  margin-top: 155rpx;
   display: flex;
-  height: 293rpx;
+  height: 359rpx;
   overflow: hidden;
 }
 
 .weixiu .bg1 {
   width: 273rpx;
-  height: 293rpx;
+  height: 359rpx;
 }
 
 .weixiu .bg2 {
   width: 372rpx;
-  height: 293rpx;
+  height: 359rpx;
 }
 
 .baoyang {
@@ -51,8 +59,8 @@
 
 .weixiu >view > view image,
 .baoyang >view > view image  {
-  width: 78rpx;
-  height: 48rpx;
+  width: 108rpx;
+  height: 108rpx;
   margin-bottom: 26rpx;
 }
 

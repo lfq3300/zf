@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 28,
+			"current": 29,
 			"list": [
 				{
 					"id": 0,
@@ -211,6 +211,12 @@
 					"id": -1,
 					"name": "个人信息",
 					"pathName": "pages/activity/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "预约维修",
+					"pathName": "pages/afterSale/repair/index",
 					"query": ""
 				}
 			]
