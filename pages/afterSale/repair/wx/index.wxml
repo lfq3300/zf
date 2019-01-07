@@ -51,7 +51,7 @@
     </view>
     
     <text class='formSubmit-title'>主要信息</text>
-    <view class='from-assembly flex-default flex-center'>
+    <view class='from-assembly flex-default flex-center' hidden='{{pageType == 2}}'>
       <text>维修类型</text>
       <picker class='flex1' bindchange='bingWx' value="{{carWxIndex}}" range="{{carWx}}">
         <view class="from-assembly-value">{{carWx[carWxIndex]}}</view>
