@@ -281,5 +281,26 @@ App({
         }
       }
     });
+  },
+  //获取维修项目
+  getWxType:function(){
+    var that = this;
+    wx.request({
+      url: that.data.hostUrl + 'api/services/app/globalInformation/GetListByType?type=10',
+      method: 'post',
+      success: function (res) {
+        if (res.data.success) {
+          var result = res.data.result;
+          var a = [];
+          var b = [];
+          for (var i = 0; i < result.length; i++) {
+            a[i] = result[i].name;
+            b[i] = result[i];
+          }
+          that.globalData.carWx = a;
+          that.globalData.carWxArr = b;
+        }
+      }
+    });
   }
 });

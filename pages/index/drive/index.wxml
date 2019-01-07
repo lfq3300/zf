@@ -37,7 +37,7 @@
     </view>
     <view class='from-assembly flex-default flex-center'>
       <text>车型</text>
-       <input class='flex1 from-assembly-input' value='{{name}}' readonly = "readonly"></input>
+       <input class='flex1 from-assembly-input' value='{{name}}' disabled='true'></input>
     </view>
     <view class='from-assembly flex-default flex-center'>
       <text>预约日期</text>

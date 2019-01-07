@@ -2,6 +2,7 @@
 <view class='icon'>
   <image src='/images/icons/icon_submit.png'></image>
 </view>
-<text class="text1">提交成功</text>
-<text  class="text2">3秒后返回</text>
+<text class="text1">{{msg}}。</text>
+<text class="text1">我们将尽快与您取得联系。</text>
+<text  class="text2">仁孚中国</text>
 </view>

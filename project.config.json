@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 29,
+			"current": 32,
 			"list": [
 				{
 					"id": 0,
@@ -186,8 +186,8 @@
 				{
 					"id": 24,
 					"name": "参加或",
-					"pathName": "pages/activity/signup/index",
-					"query": "id=1"
+					"pathName": "pages/success/index",
+					"query": "msg=您的询价需求已经收到"
 				},
 				{
 					"id": 25,
@@ -218,6 +218,24 @@
 					"name": "预约维修",
 					"pathName": "pages/afterSale/repair/index",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "快速询价",
+					"pathName": "pages/index/inquiry/index",
+					"query": "id=19&url=https://zungfu.azurewebsites.net/uploads/a7af6333-8964-4946-ace3-44500cd0c40b.png&carname=轿车&carnameid=1&name=梅赛德斯-奔驰C级旅行轿车"
+				},
+				{
+					"id": 31,
+					"name": "预约试驾",
+					"pathName": "pages/index/drive/index",
+					"query": "id=19&url=https://zungfu.azurewebsites.net/uploads/a7af6333-8964-4946-ace3-44500cd0c40b.png&carname=轿车&carnameid=1&name=梅赛德斯-奔驰C级旅行轿车"
+				},
+				{
+					"id": 32,
+					"name": "预约维修",
+					"pathName": "pages/afterSale/repair/wx/index",
+					"query": "type=1"
 				}
 			]
 		}

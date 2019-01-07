@@ -10,11 +10,11 @@
   <form bindsubmit="formSubmit">
     <view class='from-assembly flex-default flex-center'>
       <text>车款</text>
-       <input class='flex1 from-assembly-input' value='{{carname}}' readonly = "readonly"></input>
+       <input class='flex1 from-assembly-input' value='{{carname}}' disabled="true" ></input>
     </view>
     <view class='from-assembly flex-default flex-center'>
       <text>车型</text>
-       <input class='flex1 from-assembly-input' value='{{name}}' readonly = "readonly"></input>
+       <input class='flex1 from-assembly-input' value='{{name}}' disabled="true" ></input>
     </view>
     <view class='from-assembly flex-default flex-center'>
       <text>经销商</text>
@@ -41,6 +41,5 @@
       <input class='flex1 from-assembly-input' placeholder='' name='description'></input>
     </view>
      <button class="subBtn" formType="submit">立即询价</button>
-     <navigator class="explain">询价说明</navigator>
   </form>
 </view>

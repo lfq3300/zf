@@ -84,7 +84,7 @@ Page({
         })
         if (res.data.success) {
           wx.redirectTo({
-            url: '/pages/success/index'
+            url: "/pages/success/index?msg=您的试驾需求已经收到"
           })
         } else {
           wx.showToast({
