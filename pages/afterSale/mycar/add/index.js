@@ -48,6 +48,7 @@ Page({
                 carVehicle: app.globalData.carVehicle,
                 carVehicleId: app.globalData.carVehicleArr[that.data.carVehicleIndex].id * 1,
               });
+              app.globalData.carVehicle = "";
               // app.getCarList(that.data.carVehicleId);
               // var carListOut = setInterval(function () {
               //   if (app.globalData.carList) {
@@ -106,6 +107,7 @@ Page({
             carVehicle: app.globalData.carVehicle,
             carVehicleId: app.globalData.carVehicleArr[that.data.carVehicleIndex].id * 1,
           });
+          app.globalData.carVehicle = "";
           // app.getCarList(that.data.carVehicleId);
           // var carListOut = setInterval(function () {
           //   if (app.globalData.carList) {

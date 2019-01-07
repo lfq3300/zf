@@ -6,7 +6,18 @@
     <text class='formSubmit-title'>基本信息</text>
     <view class='from-assembly flex-default'>
       <text>姓名</text>
-      <input class='flex1 from-assembly-input' placeholder='请输入您的姓名'></input>
+      <input class='flex1 from-assembly-input' name="name" placeholder='请输入您的姓名'></input>
+    </view>
+     <view class='from-assembly flex-default'>
+      <text>称谓</text>
+      <radio-group class="gender">
+        <label>
+          <radio value='1' name="sex" checked/> 先生
+        </label>
+        <label>
+          <radio value='2' name="sex" />女士
+        </label>
+      </radio-group>
     </view>
      <view class='from-assembly flex-default flex-center'>
       <text>车款</text>
@@ -22,14 +33,21 @@
       </picker>
       <text class='triangle'></text>
     </view>
-    <view class='from-assembly flex-default'>
+     <view class='from-assembly flex-default flex-center'>
+      <text>经销商</text>
+      <picker class='flex1' bindchange='bingDis' value="{{carDisIndex}}" range="{{carDis}}">
+        <view class="from-assembly-value">{{carDis[carDisIndex]}}</view>
+      </picker>
+      <text class='triangle'></text>
+    </view>
+     <view class='from-assembly flex-default'>
       <text>手机号码</text>
-      <input class='flex1 from-assembly-input' placeholder='请输入手机号码'></input>
+      <input class='flex1 from-assembly-input' name='phone'  bindinput ="phoneInput"  placeholder='请输入手机号码'></input>
     </view>
     <view class='from-assembly flex-default from-assembly-no-right'>
       <text>验证码</text>
-      <input class='flex1 from-assembly-input' placeholder='请输入验证码'></input>
-      <button class="from-assembly-phone-btn">获取验证码</button>
+      <input class='flex1 from-assembly-input' placeholder='请输入验证码'  name='code'></input>
+      <button class="from-assembly-phone-btn" bindtap='getPhoneCode'>{{getcodetext}}</button>
     </view>
     
     <text class='formSubmit-title'>主要信息</text>
@@ -56,8 +74,8 @@
     </view>
     <view class='from-assembly flex-default from-assembly-no-right from-assembly-textarea'>
       <text>具体描述</text>
-      <textarea class='flex1'></textarea>
+      <textarea class='flex1' name="description"></textarea>
     </view>
-    <button class='subBtn'>提交申请</button>
+    <button class='subBtn' formType="submit">提交申请</button>
   </form>
 </view>
