@@ -37,6 +37,7 @@ Page({
           var car = res.data.result.vehicle;
           that.setData({
             car: res.data.result.vehicle,
+            carImage: res.data.result.vehicleBanners,
             loginhidde: false
           })
           WxParse.wxParse('accontent', 'html', car.content, that, 0);
