@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 32,
 			"list": [
 				{
 					"id": 1,
@@ -229,6 +229,12 @@
 					"id": 32,
 					"name": "预约维修",
 					"pathName": "pages/afterSale/repair/wx/index",
+					"query": "type=1"
+				},
+				{
+					"id": -1,
+					"name": "我的预约",
+					"pathName": "pages/userCenter/appointment/index",
 					"query": "type=1"
 				}
 			]

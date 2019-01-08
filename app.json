@@ -26,6 +26,7 @@
       "pages/activity/survey/survey",
       "pages/userCenter/index",
       "pages/userCenter/msg/index",
+      "pages/userCenter/appointment/index",
       "dist/components/header/index",
       "dist/components/ajaxlod/index",
       "pages/login/index",

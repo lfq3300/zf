@@ -1,0 +1,87 @@
+page {
+  background: #ededed;
+}
+
+.move-menu .tag {
+  padding-left: 6.25%;
+  padding-right: 6.25%;
+}
+
+.move-menu .select text::after {
+  bottom: -20rpx;
+}
+
+.move-menu .tag:first-child {
+  margin-left: 0;
+}
+
+.list {
+  padding-top: 43rpx;
+}
+
+.list navigator {
+  height: 270rpx;
+  width: 100%;
+  background: #fff;
+  overflow: hidden;
+}
+
+.box {
+  padding: 0 16rpx;
+}
+
+.title {
+  height: 62rpx;
+  line-height: 62rpx;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.title image {
+  width: 35rpx;
+  height: 35rpx;
+  vertical-align: middle;
+}
+
+.title text {
+  color: #595757;
+  font-size: 26rpx;
+  padding-left: 10rpx;
+}
+
+.title text.status {
+  color: #4597cb;
+  float: right;
+}
+
+.box-content{
+  margin-top: 25rpx;
+}
+.box-content view {
+  height: 45rpx;
+  line-height: 45rpx;
+}
+
+.box-content text {
+  color: #595757;
+  font-size: 22rpx;
+}
+
+.right {
+  float: right;
+}
+
+.box{
+  position: relative;
+}
+.box .delbtn {
+  width: 120rpx;
+  height: 36rpx;
+  border: 1px solid #595757;
+  line-height: 36rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #595757;
+  position: absolute;
+  bottom: -65rpx;
+  right: 16rpx;
+}

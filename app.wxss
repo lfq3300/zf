@@ -141,6 +141,7 @@ page,text,view{
   height: 90rpx;
   white-space: nowrap;
   overflow: hidden;
+  background: #fff;
 }
 .move-menu .tag{
   padding-left: 28rpx;
