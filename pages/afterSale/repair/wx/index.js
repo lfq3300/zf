@@ -244,11 +244,12 @@ Page({
       description: msg.description,
       accountId: wx.getStorageSync("userId"),
       sessionId: wx.getStorageSync('sessionId'),
-      fromId: "appointment",
+      code:msg.code,
+      FormId: "appointment",
     }
     var url = "";
     var msg = "";
-    if (pageType == 1){
+    if (that.data.pageType == 1){
       url = app.data.hostUrl + 'api/services/app/appointment/SubmitMaintainAppointment',
         msg = "您的预约维修需求已经收到";
     }else{
@@ -265,7 +266,7 @@ Page({
         })
         if (res.data.success) {
           wx.redirectTo({
-            url: '/pages/success/index?msg=msg'
+            url: '/pages/success/index?msg=' + msg
           })
         } else {
           wx.showToast({

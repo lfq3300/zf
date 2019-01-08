@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 32,
+			"current": 33,
 			"list": [
 				{
 					"id": 1,
@@ -184,9 +184,9 @@
 					"query": "msg=您的询价需求已经收到"
 				},
 				{
-					"id": 25,
-					"name": "意见反馈",
-					"pathName": "pages/opinion/index",
+					"id": 24,
+					"name": "售后服务",
+					"pathName": "pages/afterSale/index",
 					"query": ""
 				},
 				{
@@ -236,6 +236,12 @@
 					"name": "报名活动",
 					"pathName": "pages/activity/signup/index",
 					"query": "type=1"
+				},
+				{
+					"id": -1,
+					"name": "问卷调查",
+					"pathName": "pages/activity/survey/index",
+					"query": ""
 				}
 			]
 		}

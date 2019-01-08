@@ -101,7 +101,7 @@ Page({
       ajaxStatus: false
     })
     wx.request({
-      url: app.data.hostUrl + '/api/services/app/appointment/SubmitVehicleAppointment',
+      url: app.data.hostUrl + 'api/services/app/appointment/SubmitVehicleAppointment',
       data: data,
       method: 'POST',
       success: function (res) {
@@ -110,7 +110,7 @@ Page({
         })
         if (res.data.success) {
           wx.redirectTo({
-            url: "/pages/success/index?msg=您的已经收到"
+            url: "/pages/success/index?msg=您的报名需求已经收到"
           })
         } else {
           wx.showToast({

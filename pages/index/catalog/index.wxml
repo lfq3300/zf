@@ -6,8 +6,8 @@
     <view class="left-box">
       <view>
         <view>
-          <text class="max-size">{{name}}</text>
-          <text class="size">Class</text>
+          <text class="max-size {{classhide?'min-size':''}}">{{name}}</text>
+          <text class="size" hidden="{{classhide}}">Class</text>
         </view>
         <text class="qu">查找您的</text>
       </view>

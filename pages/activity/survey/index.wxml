@@ -3,22 +3,15 @@
 </loading>
 <view hidden="{{loginhidde}}">
     <header></header>
-  <view class='page padding-border'>
-    <view class='list'>
-      <block>
-          <navigator class='flex-default' wx:for='{{surveryList}}' wx:for-item="item"  wx:key="property" url='/pages/activity/survey/survey?id={{item.id}}&title={{item.title}}' >
-        <view class='flex-column flex1'>
-          <text class='title'>{{item.title}}</text>
-          <text class='date'>{{item.creationDate}}</text>
-        </view>
-        <view class='right' wx:if='{{item.isDone}}'>
-          <text class='right-btn done'>已参与</text>
-        </view>
-        <view class='right' wx:if='{{!item.isDone}}'>
-          <text class='right-btn'>参与</text>
-        </view>
-      </navigator>
-      </block>
+    <view class='list padding-border'>
+        <navigator wx:for="{{surveryList}}" wx:for-index="idx" wx:for-item="item" wx:key="property" url='/pages/activity/survey/survey?id={{item.id}}&title={{item.title}}'>
+            <image src='{{item.imgUrl}}'></image>
+            <view class='bg'>
+                <view class='title'>{{item.title}}</view>
+                <view class='date'>{{item.creationDate}}</view>
+            </view>
+            <view class='btn' wx:if='{{!item.isDone}}'>参加</view>
+            <view class='btn old' wx:if='{{item.isDone}}'>已参加</view>
+        </navigator>
     </view>
-  </view>
 </view>

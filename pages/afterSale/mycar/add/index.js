@@ -6,7 +6,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    date: "2019-01-01",
     city: [],
     cityId:0,
     cityIndex: 1,
@@ -31,6 +30,17 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    var myDate = new Date();
+    var m = myDate.getMonth() + 1;
+    var t = 0;
+    if (myDate.getHours() >= 18) {
+      t = 1;
+    }
+    var b = myDate.getDate() + t;
+    var date = myDate.getFullYear() + "-" + m + "-" + b;
+    that.setData({
+      date: date
+    });
     app.getCarStyleList();
     var carStyleOut =  setInterval(function(){
       if(app.globalData.carStyle){

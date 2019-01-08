@@ -11,7 +11,7 @@ Page({
     ],
     carname:"",
     carnameid:"",
-    loginhidde:true
+    loginhidde:true,
   },
 
   /**
@@ -19,11 +19,16 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    var classhide = false;
+    if (options.name.length > 1){
+      classhide = true;
+    }
     that.setData({
       name: options.name,
       carname: options.carname,
       carnameid: options.carnameid,
-      id:options.id
+      id:options.id,
+      classhide: classhide
     })
     that.onInfo(options.id);
   },
