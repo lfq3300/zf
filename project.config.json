@@ -37,14 +37,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 32,
+			"current": -1,
 			"list": [
-				{
-					"id": 0,
-					"name": "一级列表",
-					"pathName": "pages/index/catalog/index",
-					"query": "id=82&name=CLA"
-				},
 				{
 					"id": 1,
 					"name": "二级列表",
