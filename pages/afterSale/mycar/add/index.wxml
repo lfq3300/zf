@@ -39,10 +39,10 @@
       </picker>
       <text class='triangle'></text>
     </view> -->
-    <view class='from-assembly flex-default'>
+    <!-- <view class='from-assembly flex-default'>
       <text>爱车昵称</text>
       <input class='flex1 from-assembly-input' name='name' placeholder='请输入您爱车昵称'></input>
-    </view>
+    </view> -->
     <view class='from-assembly flex-default flex-center'>
       <text>城市</text>
      <picker class='flex1' bindchange='bingCity' value="{{cityIndex}}" range="{{city}}">

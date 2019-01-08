@@ -252,14 +252,14 @@ Page({
       })
       return false;
     }
-    if (msg.name == "") {
-      wx.showToast({
-        title: '请输入爱车昵称',
-        icon: 'none',
-        duration: 1500
-      })
-      return false;
-    }
+    // if (msg.name == "") {
+    //   wx.showToast({
+    //     title: '请输入爱车昵称',
+    //     icon: 'none',
+    //     duration: 1500
+    //   })
+    //   return false;
+    // }
     if (msg.licensePlate == "") {
       wx.showToast({
         title: '请输入车牌号',
