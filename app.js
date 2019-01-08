@@ -198,6 +198,14 @@ App({
       return true;
     }
   },
+  isEmailAvailable: function (email) {
+    var myreg = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+    if (!myreg.test(email)) {
+      return false;
+    } else {
+      return true;
+    }
+  },
   //获取车款
   getCarStyleList:function(){
     var that = this;

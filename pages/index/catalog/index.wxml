@@ -18,7 +18,7 @@
           <image src='{{car.imgUrl}}'></image>
           <view class="cat-name">
             <text class="name">{{car.name}}</text>
-            <text>{{car.n}}</text>
+            <!-- <text></text> -->
           </view>
         </view>
       </navigator>

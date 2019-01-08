@@ -48,7 +48,7 @@ page {
 }
 
 .btn {
-  background: #434343;
+  background: #D1A24B;
   color: #fff;
   font-size: 24rpx;
   position: fixed;

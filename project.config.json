@@ -232,9 +232,9 @@
 					"query": "type=1"
 				},
 				{
-					"id": -1,
-					"name": "我的预约",
-					"pathName": "pages/userCenter/appointment/index",
+					"id": 32,
+					"name": "报名活动",
+					"pathName": "pages/activity/signup/index",
 					"query": "type=1"
 				}
 			]

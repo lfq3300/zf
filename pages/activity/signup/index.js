@@ -5,9 +5,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    city: [],
-    cityId: 0,
-    cityIndex: 1,
     phone: "",
     getcodetext: "获取验证码",
     getcodeStatus: true,
@@ -51,23 +48,96 @@ Page({
       phone: e.detail.value
     })
   },
+  formSubmit: function (e) {
+    var that = this;
+    if (!that.data.ajaxStatus) {
+      return;
+    }
+    var msg = e.detail.value;
+    if (msg.contactName == "") {
+      wx.showToast({
+        title: '姓名不能为空',
+        icon: 'none',
+        duration: 1500
+      })
+      return false;
+    }
+    if (!app.isPoneAvailable(msg.phone)) {
+      wx.showToast({
+        title: '电话号码输入有误',
+        icon: 'none',
+        duration: 1500
+      })
+      return false;
+    }
+    if (!app.isPoneCodeAvailable(msg.code)) {
+      wx.showToast({
+        title: '验证码格式错误',
+        icon: 'none',
+        duration: 1500
+      })
+      return false;
+    }
+    if (!app.isEmailAvailable(msg.email)) {
+      wx.showToast({
+        title: '邮箱格式错误',
+        icon: 'none',
+        duration: 1500
+      })
+      return false;
+    }
+    var data = {
+      accountId: wx.getStorageSync("userId"),
+      name: msg.contactName,
+      activityId:"",
+      tel: msg.phone,
+      genderId: msg.sex,
+      sessionId: wx.getStorageSync('sessionId'),
+      fromId: "appointment",
+      email: msg.email,
+      code: msg.code
+    }
+    that.setData({
+      ajaxStatus: false
+    })
+    wx.request({
+      url: app.data.hostUrl + '/api/services/app/appointment/SubmitVehicleAppointment',
+      data: data,
+      method: 'POST',
+      success: function (res) {
+        that.setData({
+          ajaxStatus: true,
+        })
+        if (res.data.success) {
+          wx.redirectTo({
+            url: "/pages/success/index?msg=您的已经收到"
+          })
+        } else {
+          wx.showToast({
+            title: res.data.error.message,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      },
+      fail: function () {
+        //未发送请求
+        that.setData({
+          ajaxstatus: true,
+        })
+        wx.showToast({
+          title: '网络异常，请检查网络状态',
+          icon: 'none',
+          duration: 2500
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
     var that = this;
-    app.getCity();
-    var cityOut = setInterval(function () {
-      if (app.globalData.city) {
-        clearTimeout(cityOut);
-        if (app.globalData.city.length > 0) {
-          that.setData({
-            city: app.globalData.city,
-            cityId: app.globalData.cityArr[that.data.cityIndex].id * 1,
-          });
-        }
-      }
-    }, 1000);
   },
 
   /**

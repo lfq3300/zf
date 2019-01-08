@@ -1,3 +1,6 @@
+<view hidden="{{ajaxStatus}}">
+  <ajaxlod></ajaxlod>
+</view>
 <view class='title'>
   活动报名
 </view>
@@ -25,22 +28,11 @@
     <view class='from-assembly flex-default from-assembly-no-right'>
       <text>验证码</text>
       <input class='flex1 from-assembly-input' placeholder='请输入验证码' name='code'></input>
-      <button class="from-assembly-phone-btn" bindtap='getPhoneCode'>获取验证码</button>
+      <button class="from-assembly-phone-btn" bindtap='getPhoneCode'>{{getcodetext}}</button>
     </view>
     <view class='from-assembly flex-default'>
       <text>邮箱</text>
-      <input class='flex1 from-assembly-input' name='contactName' placeholder='请输入您的邮箱'></input>
-    </view>
-       <view class='from-assembly flex-default flex-center'>
-      <text>城市</text>
-     <picker class='flex1' bindchange='bingCity' value="{{cityIndex}}" range="{{city}}">
-        <view class="from-assembly-value">{{city[cityIndex]}}</view>
-      </picker>
-      <text class='triangle'></text>
-    </view>
-     <view class='agree flex-default'>
-      <checkbox></checkbox>
-    <navigator>我已阅读并接受个人信息保护法律声明。</navigator>
+      <input class='flex1 from-assembly-input' name='email' placeholder='请输入您的邮箱'></input>
     </view>
     <button class="subBtn" formType="submit">提交申请</button>
   </form>

@@ -59,7 +59,7 @@
 .name::after{
   position: absolute;
   content: "";
-  width: 100%;
+  width: 105rpx;
   height: 5rpx;
   background: #D1A24B;
   left: 0;
