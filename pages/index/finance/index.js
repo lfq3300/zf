@@ -18,12 +18,12 @@ Page({
     ],
     carTimeIndex: 2,
     loginhidde: true,
-    carListIndex:0,
-    carListId:'',
-    switchpageIndex:2,
-    speed:30,
-    shoufu:'',
-    yg:''
+    carListIndex: 0,
+    carListId: '',
+    switchpageIndex: 2,
+    speed: 30,
+    shoufu: '',
+    yg: ''
   },
 
   bingCarTime: function (e) {
@@ -76,11 +76,11 @@ Page({
             a[i] = result[i].name;
             b[i] = result[i];
           }
-          var carListId =  b[0].id * 1;
+          var carListId = b[0].id * 1;
           that.setData({
             loginhidde: false,
             carList: a,
-            carListArr:b,
+            carListArr: b,
             carListId: carListId,
           });
           that.getGetById(carListId);
@@ -90,7 +90,7 @@ Page({
 
   },
 
-  getGetById:function(id){
+  getGetById: function (id) {
     var that = this;
     wx.request({
       url: app.data.hostUrl + 'api/services/app/vehicleModel/GetById',
@@ -101,22 +101,22 @@ Page({
       success: function (res) {
         if (res.data.success) {
           var data = res.data.result.vehicleModel.financialPlans;
-          if (data){
+          if (data) {
             var leftmsg = '';
             var rightmsg1 = '';
             var rightmsg2 = '';
-            for(var i = 0;i<data.length;i++){
-              if (data[i].financialTypeId == '100000000'){
+            for (var i = 0; i < data.length; i++) {
+              if (data[i].financialTypeId == '100000000') {
                 leftmsg = data[i].financialPlanDetails[0];
-              }else{
-                if (data[i].financialPlanDetails[1].maxDownpayRatio == 50){
+              } else {
+                if (data[i].financialPlanDetails[1].maxDownpayRatio == 50) {
                   rightmsg2 = data[i].financialPlanDetails[1];
-                }else{
+                } else {
                   rightmsg1 = data[i].financialPlanDetails[1];
                 }
               }
             }
-            var shoufu = rightmsg1.period*that.data.speed/100;
+            var shoufu = rightmsg1.period * that.data.speed / 100;
             var yg = (rightmsg1.period - shoufu) * rightmsg1.interestRate / 100 / 12;
             yg = yg.toFixed(2)
             that.setData({
@@ -131,18 +131,18 @@ Page({
       }
     });
   },
-  bingCar:function(e){
+  bingCar: function (e) {
     var that = this;
     var carListIndex = e.detail.value;
     console.log(carListIndex);
     that.setData({
       carListIndex: carListIndex,
-      carListId: that.data.carListArr[carListIndex].id*1
+      carListId: that.data.carListArr[carListIndex].id * 1
     });
     that.getGetById(that.data.carListId);
   },
-  
-  switchpage:function(e){
+
+  switchpage: function (e) {
     console.log(e)
     var that = this;
     var switchpageIndex = e.target.dataset.index;
@@ -151,27 +151,30 @@ Page({
     })
   },
 
-  tapmove:function(e){
+  tapmove: function (e) {
     var that = this;
-    var speed = parseInt(e.touches[0].clientX - 70 + that.data.speed);
-    if (speed>100){
+    // var touchs = e.touches[0];
+    // var pageX = touchs.pageX; 
+    var speed = parseInt(e.touches[0].clientX - 70);
+    if (speed > 100) {
       speed = 100;
     };
-    if (speed<0){
+    if (speed < 0) {
       speed = 0;
     }
     var shoufu = "";
-    if (speed>50){
+    console.log(that.data.rightmsg1);
+    if (speed > 50) {
       shoufu = that.data.rightmsg1.period * that.data.speed / 100;
-    }else{
+    } else {
       shoufu = that.data.rightmsg2.period * that.data.speed / 100;
     }
     var yg = "";
     var time = that.data.carTime[that.data.carTimeIndex];
     if (speed > 50) {
-      yg = (that.data.rightmsg1.period - shoufu) * that.data.rightmsg1.interestRate / 100 / time 
+      yg = (that.data.rightmsg1.period - shoufu) * that.data.rightmsg1.interestRate / 100 / time
     } else {
-      yg = (that.data.rightmsg2.period - shoufu) * that.data.rightmsg2.interestRate / 100 / time 
+      yg = (that.data.rightmsg2.period - shoufu) * that.data.rightmsg2.interestRate / 100 / time
     }
     yg = yg.toFixed(2);
     that.setData({
