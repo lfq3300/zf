@@ -6,30 +6,26 @@ Page({
    */
   data: {
     loginhidde: true,
+    list:[],
     tag: [{
       "id": 0,
-      "name": "全部",
-      "status": 100000000,
+      "name": "全部"
     },
     {
       "id": 1,
-      "name": "预约试驾",
-      "status": 100000001,
+      "name": "预约试驾"
     },
     {
       "id": 2,
-      "name": "维修保养",
-      "status": 100000003,
+      "name": "维修保养"
     },
     {
       "id": 3,
-      "name": "活动报名",
-      "status": 100000004,
+      "name": "活动报名"
     }
     ],
-    tagIndex: 2,
+    tagIndex: 0,
     activityList: [],
-    status: 100000004
   },
 
   /**
@@ -40,9 +36,9 @@ Page({
     that.setData({
       loginhidde:false
     })
-    that.getMyAppoin(that.data.status);
+    that.getMyAppoin();
   },
-  getMyAppoin(status) {
+  getMyAppoin:function() {
     var that = this;
     wx.request({
       url: app.data.hostUrl + 'api/services/app/appointment/GetListByAccountAsync',
@@ -64,7 +60,6 @@ Page({
             var c = {};
             c.dealerIdName = data[i].dealerIdName;
             c.appointmentDate = data[i].appointmentDate;
-            
             c.type = data[i].type;
             all.push(c);
             if (c.type == "100000001") {
@@ -80,9 +75,9 @@ Page({
             all: all,
             yysj: yysj,
             afterSale: afterSale,
-            activity: activity
+            activity: activity,
+            list:all
           });
-          console.log(that.data);
         }
       },
       fail: function () {
@@ -91,6 +86,12 @@ Page({
         // 停止下拉动作
         wx.stopPullDownRefresh();
       }
+    })
+  },
+  getAsync:function(e){
+    var that = this;
+    that.setData({
+       tagIndex:e.target.dataset.id
     })
   },
   /**

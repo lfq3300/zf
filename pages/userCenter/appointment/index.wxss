@@ -24,6 +24,7 @@ page {
   width: 100%;
   background: #fff;
   overflow: hidden;
+  margin-bottom: 20rpx;
 }
 
 .box {
