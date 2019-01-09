@@ -1,5 +1,6 @@
 page {
   background: #ededed;
+  margin-bottom: 30rpx;
 }
 
 .move-menu .tag {

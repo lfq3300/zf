@@ -19,7 +19,7 @@
       <text>起</text>
     </view>
   </view>
-  <view class='content'>
+  <view class='content padding-border'>
     <view>
       <import src="../../../wxParse/wxParse.wxml" />
       <template is="wxParse" data="{{wxParseData:accontent.nodes}}" />

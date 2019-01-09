@@ -58,21 +58,16 @@ Page({
         typeId: ""
       },
       success: function (res) {
-        // 隐藏导航栏加载框
-        wx.hideNavigationBarLoading();
-        // 停止下拉动作
-        wx.stopPullDownRefresh();
         var all = [], yysj = [], afterSale = [], activity = [];
         if (res.statusCode == 200 && res.data.success) {
           var data = res.data.result;
           var len = data.length;
           var carTimeArr = that.data.carTimeArr;
-          console.log(carTimeArr);
           for (var i = 0; i < len; i++) {
             var c = {};
             c.dealerIdName = data[i].dealerIdName;
             c.appointmentDate = data[i].appointmentDate;
-            for (var a = 0; a < carTimeArr.length;i++){
+            for (var a = 0; a < carTimeArr.length;a++){
               if (c.appointmentTimeId == carTimeArr[a].id){
                 c.time = carTimeArr[a].name;
                   break;
@@ -80,11 +75,25 @@ Page({
             }
             c.type = data[i].type;
             all.push(c);
+            if (c.type == "100000001") {
+              yysj.push(c);
+            } else if (c.type == "100000002") {
+              activity.push(c);
+            } else{
+              afterSale.push(c);
+            }
           }
           that.setData({
             loginhidde: false,
-            list:all
+            list:all,
+            yysj: yysj,
+            afterSale: afterSale,
+            activity: activity
           });
+          // 隐藏导航栏加载框
+          wx.hideNavigationBarLoading();
+          // 停止下拉动作
+          wx.stopPullDownRefresh();
         }
       },
       fail: function () {
@@ -97,9 +106,21 @@ Page({
   },
   getAsync:function(e){
     var that = this;
+    var index = e.target.dataset.id;
+    var list = [];
+    if(index == 0){
+        list = that.data.list;
+    }else if(index == 1){
+      list = that.data.yysj;
+    } else if (index == 2) {
+      list = that.data.afterSale;
+    }else{
+      list = that.data.activity;
+    }
     that.setData({
-       tagIndex:e.target.dataset.id
-    })
+      tagIndex: index,
+      list:list
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
