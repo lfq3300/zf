@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 7,
+			"current": 3,
 			"list": [
 				{
 					"id": 1,
@@ -58,10 +58,10 @@
 					"query": "id=31&url=https://zungfu.azurewebsites.net/uploads/a8cb522b-76af-4cdf-b3ea-3899a53a16d5.png&carname=轿车j&carnameid=1&name=梅赛德斯-奔驰A级车"
 				},
 				{
-					"id": 4,
+					"id": 3,
 					"name": "金融计算",
 					"pathName": "pages/index/finance/index",
-					"query": "id=20&url=https://zungfu.azurewebsites.net/uploads/a5c5998a-1cc1-4db6-9610-3c249cdff634.png&carname=轿车j&carnameid=1&name=标准轴距E级车运动版 2017年款2"
+					"query": "id=20&url=https://zungfu.azurewebsites.net/uploads/8194e801-2f06-4271-a5e9-a68779e7dbcf.png&carname=轿车&carnameid=1&name=梅赛德斯-奔驰标准轴距C级车运动版"
 				},
 				{
 					"id": -1,

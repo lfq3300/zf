@@ -16,6 +16,7 @@ Page({
       "12个月"
     ],
     carTimeIndex:0,
+    loginhidde:true
   },
  
   bingCarTime: function (e) {
@@ -38,6 +39,32 @@ Page({
       carnameid: options.carnameid,
       carid: options.id
     });
+    that.LoInfo();
+  },
+
+  LoInfo:function(){
+    var that = this;
+    that.setData({
+      loginhidde:false
+    });
+    wx.request({
+      url: app.data.hostUrl + 'api/services/app/vehicleLevel/GetActiveList',
+      method: 'post',
+      success: function (res) {
+        if (res.data.success) {
+          var tag = res.data.result;
+          var tagIndex = tag[0].id;
+          var tagName = tag[0].name;
+          that.setData({
+            tag: tag,
+            tagIndex: tagIndex,
+            tagName: tagName,
+          })
+          that.getCarList(tagIndex);
+        }
+      }
+    });
+
   },
 
   /**

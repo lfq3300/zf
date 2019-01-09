@@ -1,56 +1,61 @@
-<view class='bg'>
-  <image src='{{imgUrl}}'></image>
-</view>
-<view class="flex-default car-title flex-center ">
-  <text>{{carname}}</text>
-  <view class="flex1">
+<loading hidden="{{!loginhidde}}">
+  页面加载中...
+</loading>
+<view hidden="{{loginhidde}}">
+  <view class='bg'>
+    <image src='{{imgUrl}}'></image>
+  </view>
+  <view class="flex-default car-title flex-center ">
+    <text>{{carname}}</text>
+    <view class="flex1">
       <view>{{name}}</view>
+    </view>
   </view>
-</view>
-<view class="flex-default car-title">
-  <text>厂商建议零售价</text>
-  <view class="flex1">￥86.38000</view>
-</view>
-<view class='tab-title flex-default flex-center'>
-  <view class='flex1'>
-    <text class="frist">先享后选</text>
+  <view class="flex-default car-title">
+    <text>厂商建议零售价</text>
+    <view class="flex1">￥86.38000</view>
   </view>
-  <view class='tab-border'></view>
-  <view class='flex1 tab-select'>
-    <text>金融方案</text>
+  <view class='tab-title flex-default flex-center'>
+    <view class='flex1'>
+      <text class="frist">先享后选</text>
+    </view>
+    <view class='tab-border'></view>
+    <view class='flex1 tab-select'>
+      <text>金融方案</text>
+    </view>
   </view>
-</view>
-<view class='tab-car hide'>222</view>
-<view class='tab-car'>
-  <view class='car-center'>
-    <text class='tab-car-title'>低利率、低首付、低月付</text>
-    <view class='flex-default flex-center assembly'>
-      <text>期限</text>
-      <view class="flex1">
-        <picker class='flex1' bindchange='bingCarTime' value="{{carTimeIndex}}" range="{{carTime}}">
-          <view>{{carTime[carTimeIndex]}}</view>
-        </picker>
+  <view class='tab-car hide'>222</view>
+  <view class='tab-car'>
+    <view class='car-center'>
+      <text class='tab-car-title'>低利率、低首付、低月付</text>
+      <view class='flex-default flex-center assembly'>
+        <text>期限</text>
+        <view class="flex1">
+          <picker class='flex1' bindchange='bingCarTime' value="{{carTimeIndex}}" range="{{carTime}}">
+            <view>{{carTime[carTimeIndex]}}</view>
+          </picker>
+        </view>
+        <image src='https://zungfu.azurewebsites.net/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
       </view>
-      <image src='https://zungfu.azurewebsites.net/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
-    </view>
-    <view class='flex-default flex-center assembly'>
-      <text>首付</text>
-      <view class='flex1'></view>
-      <view class='price'>￥86.38</view>
-    </view>
-    <view class='flex-default flex-center assembly progress-assembly'>
-      <view class='flex1'>
-        <progress percent="20" show-info color='#D1A24B' stroke-width='4' border-radius='50' />
-        <view class='progress-btn'></view>
+      <view class='flex-default flex-center assembly'>
+        <text>首付</text>
+        <view class='flex1'></view>
+        <view class='price'>￥86.38</view>
       </view>
-    </view>
-  </view>
-  <view class='car-bottom'>
-    <view class='flex-default flex-center'>
-      <text>月供</text>
-      <view class='flex1'>
-        ￥86.38
+      <view class='flex-default flex-center assembly progress-assembly'>
+        <view class='flex1'>
+          <progress percent="20" show-info color='#D1A24B' stroke-width='4' border-radius='50' />
+          <view class='progress-btn'></view>
+        </view>
       </view>
     </view>
-  </view>   
+    <view class='car-bottom'>
+      <view class='flex-default flex-center'>
+        <text>月供</text>
+        <view class='flex1'>
+          ￥86.38
+        </view>
+      </view>
+    </view>
+  </view>
 </view>

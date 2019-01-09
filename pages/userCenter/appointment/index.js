@@ -49,7 +49,7 @@ Page({
       method: "post",
       data: {
         id: wx.getStorageSync("userId"),
-        typeId: status
+        typeId: ""
       },
       success: function (res) {
         // 隐藏导航栏加载框
@@ -63,19 +63,15 @@ Page({
           for (var i = 0; i < len; i++) {
             var c = {};
             c.dealerIdName = data[i].dealerIdName;
-            var genderIdName = data[i].genderIdName ? data[i].genderIdName : "";
-            c.name = data[i].name + "" + genderIdName;
-            c.vehicleIdName = data[i].vehicleIdName;
-            c.date = data[i].appointmentDate + "" + data[i].appointmentTimeIdName;
-            c.id = data[i].id;
-            c.tel = data[i].tel;
+            c.appointmentDate = data[i].appointmentDate;
+            
             c.type = data[i].type;
             all.push(c);
             if (c.type == "100000001") {
               yysj.push(c);
             } else if (c.type == "100000002") {
               activity.push(c);
-            } else if (c.type == "100000003") {
+            } else if (c.type == "100000003" || c.type == "100000004") {
               afterSale.push(c);
             }
           }
@@ -85,7 +81,8 @@ Page({
             yysj: yysj,
             afterSale: afterSale,
             activity: activity
-          })
+          });
+          console.log(that.data);
         }
       },
       fail: function () {

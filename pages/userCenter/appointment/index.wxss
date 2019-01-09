@@ -19,7 +19,7 @@ page {
   padding-top: 43rpx;
 }
 
-.list navigator {
+.list .item {
   height: 270rpx;
   width: 100%;
   background: #fff;

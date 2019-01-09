@@ -10,7 +10,7 @@
   </view>
 </view>
 <view class='list padding-border'>
-    <navigator>
+    <view class='item'>
         <view class='box'>
             <view class='title'>
                 <image src='http://www.luofq.com/personal_icon_mine01@3x.png'></image>
@@ -29,5 +29,5 @@
             </view>
             <view class='delbtn'>删除预约</view>
         </view>
-    </navigator>
+    </view>
 </view>

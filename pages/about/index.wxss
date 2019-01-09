@@ -21,8 +21,8 @@ page{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 58rpx;
-  height: 58rpx;
+  width: 98rpx;
+  height: 98rpx;
 }
 
 .video-title {
