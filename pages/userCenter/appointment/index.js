@@ -34,10 +34,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    that.setData({
-      loginhidde:false
-    })
-    that.getMyAppoin();
     app.getAppointment();
     var timeAppointment = setInterval(function () {
       if (app.globalData.timeAppointment) {
@@ -46,7 +42,9 @@ Page({
           carTime: app.globalData.timeAppointment,
           carTimeArr: app.globalData.timeAppointmentArr,
           carTimeId: app.globalData.timeAppointmentArr[that.data.carTimeIndex].id * 1,
+          loginhidde: false
         })
+        that.getMyAppoin();
       }
     }, 1000);
   },
@@ -69,32 +67,22 @@ Page({
           var data = res.data.result;
           var len = data.length;
           var carTimeArr = that.data.carTimeArr;
+          console.log(carTimeArr);
           for (var i = 0; i < len; i++) {
             var c = {};
             c.dealerIdName = data[i].dealerIdName;
             c.appointmentDate = data[i].appointmentDate;
-            for (var i = 0; i < carTimeArr.length;i++){
-              if (c.appointmentTimeId == carTimeArr[i].id){
-                c.time = carTimeArr[i].name;
+            for (var a = 0; a < carTimeArr.length;i++){
+              if (c.appointmentTimeId == carTimeArr[a].id){
+                c.time = carTimeArr[a].name;
                   break;
               }
             }
             c.type = data[i].type;
             all.push(c);
-            if (c.type == "100000001") {
-              yysj.push(c);
-            } else if (c.type == "100000002") {
-              activity.push(c);
-            } else if (c.type == "100000003" || c.type == "100000004") {
-              afterSale.push(c);
-            }
           }
           that.setData({
             loginhidde: false,
-            all: all,
-            yysj: yysj,
-            afterSale: afterSale,
-            activity: activity,
             list:all
           });
         }
