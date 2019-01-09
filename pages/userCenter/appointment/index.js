@@ -26,6 +26,7 @@ Page({
     ],
     tagIndex: 0,
     activityList: [],
+    carTimeIndex:0
   },
 
   /**
@@ -37,6 +38,17 @@ Page({
       loginhidde:false
     })
     that.getMyAppoin();
+    app.getAppointment();
+    var timeAppointment = setInterval(function () {
+      if (app.globalData.timeAppointment) {
+        clearTimeout(timeAppointment);
+        that.setData({
+          carTime: app.globalData.timeAppointment,
+          carTimeArr: app.globalData.timeAppointmentArr,
+          carTimeId: app.globalData.timeAppointmentArr[that.data.carTimeIndex].id * 1,
+        })
+      }
+    }, 1000);
   },
   getMyAppoin:function() {
     var that = this;
@@ -56,10 +68,17 @@ Page({
         if (res.statusCode == 200 && res.data.success) {
           var data = res.data.result;
           var len = data.length;
+          var carTimeArr = that.data.carTimeArr;
           for (var i = 0; i < len; i++) {
             var c = {};
             c.dealerIdName = data[i].dealerIdName;
             c.appointmentDate = data[i].appointmentDate;
+            for (var i = 0; i < carTimeArr.length;i++){
+              if (c.appointmentTimeId == carTimeArr[i].id){
+                c.time = carTimeArr[i].name;
+                  break;
+              }
+            }
             c.type = data[i].type;
             all.push(c);
             if (c.type == "100000001") {

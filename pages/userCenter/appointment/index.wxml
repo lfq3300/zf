@@ -14,24 +14,24 @@
     <view class='box' wx-if="{{item.type == '100000001'}}">
       <view class='title'>
         <image src='http://www.luofq.com/personal_icon_mine01@3x.png'></image>
-        <text>预约试驾</text>
+        <text>活动报名</text>
         <text class='status'>待确认</text>
       </view>
       <view class='box-content'>
         <view>
           <text>经销商</text>
-          <text class='right'>广东仁孚怡邦汽车销售服务有限公司</text>
+          <text class='right'>{{item.dealerIdName}}</text>
         </view>
         <view>
           <text>预约时间</text>
-          <text class='right'>2018-12-20 09:00-16:30</text>
+          <text class='right'>{{item.appointmentDate}} {{item.time}}</text>
         </view>
       </view>
       <view class='delbtn'>删除预约</view>
     </view>
     <view class='box' wx:elif="{{item.type == '100000002'}}">
       <view class='title'>
-        <image src='http://www.luofq.com/personal_icon_mine01@3x.png'></image>
+        <image src='http://www.luofq.com/personal_icon_mine02@3x.png'></image>
         <text>预约试驾</text>
         <text class='status'>待确认</text>
       </view>
@@ -49,7 +49,7 @@
     </view>
     <view class='box' wx:elif="{{item.type == '100000003'}}">
       <view class='title'>
-        <image src='http://www.luofq.com/personal_icon_mine01@3x.png'></image>
+        <image src='http://www.luofq.com/personal_icon_mine03@3x.png'></image>
         <text>预约保养</text>
         <text class='status'>待确认</text>
       </view>
