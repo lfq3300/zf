@@ -1,11 +1,12 @@
 // pages/opinion/index.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    ajaxStatus:true
   },
 
   /**
@@ -43,6 +44,65 @@ Page({
    */
   onUnload: function () {
 
+  },
+
+  formSubmit:function(e){
+    var that = this;
+    if (!that.data.ajaxStatus) {
+      return;
+    }
+    var msg = e.detail.value;
+    if (msg.msg == "") {
+      wx.showToast({
+        title: '提交意见不能为空',
+        icon: 'none',
+        duration: 1500
+      })
+      return false;
+    }
+
+    var data = {
+      accountId: wx.getStorageSync("userId"),
+      description: msg.msg,
+      sessionId: wx.getStorageSync('sessionId'),
+      fromId: "appointment",
+    };
+    that.setData({
+      ajaxStatus: false
+    })
+
+    wx.request({
+      url: app.data.hostUrl + 'api/services/app/comment/SubmitComment',
+      data: data,
+      method: 'POST',
+      success: function (res) {
+        that.setData({
+          ajaxStatus: true,
+        })
+        if (res.data.success) {
+          wx.redirectTo({
+            url: "/pages/success/index?msg=您的反馈意见已经收到"
+          })
+        } else {
+          wx.showToast({
+            title: res.data.error.message,
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      },
+      fail: function () {
+        //未发送请求
+        that.setData({
+          ajaxstatus: true,
+        })
+        wx.showToast({
+          title: '网络异常，请检查网络状态',
+          icon: 'none',
+          duration: 2500
+        })
+      }
+    })
   },
 
   /**
