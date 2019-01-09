@@ -32,7 +32,7 @@
   color: #727171;
   font-size: 34rpx;
 }
-.tab-select{
+.tab-select text{
   color: #D1A24B;
 }
 .tab-border{
@@ -82,7 +82,6 @@
   background: #fff;
   top:50%;
   transform: translateY(-50%);
-  left:15%;
   box-shadow: 0px 0px 5px 3px #D1A24B;
 }
 
@@ -101,4 +100,38 @@
   width: 279rpx;
   margin-top: 54rpx;
   height: 84rpx;
+}
+
+.tab-car-sel-box{
+  height: 162rpx;
+  width: 100%;
+  background: #fff;
+  border-radius: 15rpx;
+  border: 1px solid #DCDCDC;
+  margin-bottom: 70rpx;
+  text-align: center;
+}
+
+.box-title{
+  color: #1B1B1B;
+  font-size: 34rpx;
+  width: 90%;
+  margin-left: 5%;
+  border-bottom: 1px solid #CCC;
+  line-height: 81rpx;
+}
+
+.box-cen{
+  color: #727171;
+  font-size: 28rpx;
+  line-height: 81rpx;
+}
+.box-cen text{
+  color: #1B1B1B;
+}
+.show-info{
+  width: 130rpx;
+  text-align: center;
+  padding-left: 30rpx;
+  box-sizing: border-box;
 }
