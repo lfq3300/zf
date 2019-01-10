@@ -23,6 +23,7 @@ Page({
     getcodetext: "获取验证码",
     getcodeStatus: true,
     ajaxStatus: true,
+    carDisIndex:0
   },
   
   /**
@@ -59,6 +60,16 @@ Page({
                 carVehicleId: app.globalData.carVehicleArr[that.data.carVehicleIndex].id * 1,
               });
               app.globalData.carVehicle = "";
+              app.getDealer('');
+              var deaTime = setInterval(function () {
+                if (app.globalData.carDis) {
+                  clearTimeout(deaTime);
+                  that.setData({
+                    carDis: app.globalData.carDis,
+                    carDisId: app.globalData.carDisAddr[that.data.carDisIndex].id * 1,
+                  })
+                }
+              }, 1000);
               // app.getCarList(that.data.carVehicleId);
               // var carListOut = setInterval(function () {
               //   if (app.globalData.carList) {
@@ -87,18 +98,27 @@ Page({
         }, 1000);
       }
     },1000);
-    app.getCity();
-    var cityOut = setInterval(function () {
-      if (app.globalData.city) {
-        clearTimeout(cityOut);
-        if (app.globalData.city.length > 0) {
-          that.setData({
-            city: app.globalData.city,
-            cityId: app.globalData.cityArr[that.data.cityIndex].id * 1,
-          });
-        }
-      }
-    }, 1000);
+    // app.getCity();
+    // var cityOut = setInterval(function () {
+    //   if (app.globalData.city) {
+    //     clearTimeout(cityOut);
+    //     if (app.globalData.city.length > 0) {
+    //       that.setData({
+    //         city: app.globalData.city,
+    //         cityId: app.globalData.cityArr[that.data.cityIndex].id * 1,
+    //       });
+    //     }
+    //   }
+    // }, 1000);
+  },
+
+  bingDis: function (e) {
+    var that = this;
+    var carDisIndex = that.data.carDisIndex;
+    that.setData({
+      carDisIndex: e.detail.value,
+      carDisId: app.globalData.carDisAddr[carDisIndex].id * 1,
+    })
   },
   
   bingCarStyle: function (e) {
@@ -305,7 +325,7 @@ Page({
       engineCode: msg.engineCode,
       vin: msg.vin,
       licensePlate: msg.licensePlate,
-      city:that.data.cityId,
+      dealerId: that.data.carDisIndex,
       firstLicenseDate:that.data.date,
       purchaseDate: that.data.loginDate,
       code:msg.code,

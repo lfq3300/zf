@@ -96,7 +96,7 @@ Page({
       url: app.data.hostUrl + 'api/services/app/vehicleModel/GetById',
       method: 'post',
       data: {
-        id: 10
+        id: id
       },
       success: function (res) {
         if (res.data.success) {

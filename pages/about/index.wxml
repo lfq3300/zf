@@ -7,7 +7,7 @@
     <view class='bg-box'>
       <navigator url='/pages/activity/video/index?video={{videoUrl}}&img={{imgUrl}}'>
         <image src='{{imgUrl}}' class='bg'></image>
-        <image src='/../../../images/about_icon_play@3x.png' class='video-play'></image>
+        <image src='http://www.luofq.com/about_icon_play@3x.png' class='video-play'></image>
       </navigator>
     </view>
     <view class='video-title'>
