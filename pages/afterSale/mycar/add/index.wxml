@@ -43,20 +43,20 @@
       <text>爱车昵称</text>
       <input class='flex1 from-assembly-input' name='name' placeholder='请输入您爱车昵称'></input>
     </view> -->
-    <!-- <view class='from-assembly flex-default flex-center'>
+    <view class='from-assembly flex-default flex-center'>
       <text>城市</text>
      <picker class='flex1' bindchange='bingCity' value="{{cityIndex}}" range="{{city}}">
         <view class="from-assembly-value">{{city[cityIndex]}}</view>
       </picker>
       <text class='triangle'></text>
-    </view> -->
-      <view class='from-assembly flex-default flex-center'>
+    </view>
+      <!-- <view class='from-assembly flex-default flex-center'>
       <text>经销商</text>
       <picker class='flex1' bindchange='bingDis' value="{{carDisIndex}}" range="{{carDis}}">
         <view class="from-assembly-value">{{carDis[carDisIndex]}}</view>
       </picker>
       <text class='triangle'></text>
-    </view>
+    </view> -->
     <view class='from-assembly flex-default flex-center'>
       <text>购车日期</text>
       <picker class='flex1' mode="date" value="{{date}}" bindchange="bindDate">

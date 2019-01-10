@@ -7,25 +7,25 @@ Page({
    */
   data: {
     city: [],
-    cityId:0,
+    cityId: 0,
     cityIndex: 1,
     loginDate: "2019-01-01",
-    carStyle:[],
-    carStyleIndex:0,
-    carStyleId:0,
-    carVehicle:[],
-    carVehicleIndex:0,
-    carVehicleId:0,
-    // carList:[],
-    // carListIndex:0,
-    // carListId:0,
+    carStyle: [],
+    carStyleIndex: 0,
+    carStyleId: 0,
+    carVehicle: [],
+    carVehicleIndex: 0,
+    carVehicleId: 0,
+    carList: [],
+    carListIndex: 0,
+    carListId: 0,
     phone: "",
     getcodetext: "获取验证码",
     getcodeStatus: true,
     ajaxStatus: true,
-    carDisIndex:0
+    carDisIndex: 0
   },
-  
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -43,8 +43,8 @@ Page({
       date: date
     });
     app.getCarStyleList();
-    var carStyleOut =  setInterval(function(){
-      if(app.globalData.carStyle){
+    var carStyleOut = setInterval(function () {
+      if (app.globalData.carStyle) {
         clearTimeout(carStyleOut);
         that.setData({
           carStyle: app.globalData.carStyle,
@@ -60,33 +60,23 @@ Page({
                 carVehicleId: app.globalData.carVehicleArr[that.data.carVehicleIndex].id * 1,
               });
               app.globalData.carVehicle = "";
-              app.getDealer('');
-              var deaTime = setInterval(function () {
-                if (app.globalData.carDis) {
-                  clearTimeout(deaTime);
-                  that.setData({
-                    carDis: app.globalData.carDis,
-                    carDisId: app.globalData.carDisAddr[that.data.carDisIndex].id * 1,
-                  })
+              app.getCarList(that.data.carVehicleId);
+              var carListOut = setInterval(function () {
+                if (app.globalData.carList) {
+                  clearTimeout(carListOut);
+                  if (app.globalData.carList.length > 0) {
+                    that.setData({
+                      carList: app.globalData.carList,
+                      carListId: app.globalData.carListArr[that.data.carListIndex].id * 1,
+                    });
+                  } else {
+                    that.setData({
+                      carList: [],
+                      carListId: -1,
+                    });
+                  }
                 }
               }, 1000);
-              // app.getCarList(that.data.carVehicleId);
-              // var carListOut = setInterval(function () {
-              //   if (app.globalData.carList) {
-              //     clearTimeout(carListOut);
-              //     if (app.globalData.carList.length > 0) {
-              //       that.setData({
-              //         carList: app.globalData.carList,
-              //         carListId: app.globalData.carListArr[that.data.carListIndex].id * 1,
-              //       });
-              //     } else {
-              //       that.setData({
-              //         carList: [],
-              //         carListId: -1,
-              //       });
-              //     }
-              //   }
-              // }, 1000);
 
             } else {
               that.setData({
@@ -97,17 +87,27 @@ Page({
           }
         }, 1000);
       }
-    },1000);
-    // app.getCity();
-    // var cityOut = setInterval(function () {
-    //   if (app.globalData.city) {
-    //     clearTimeout(cityOut);
-    //     if (app.globalData.city.length > 0) {
-    //       that.setData({
-    //         city: app.globalData.city,
-    //         cityId: app.globalData.cityArr[that.data.cityIndex].id * 1,
-    //       });
-    //     }
+    }, 1000);
+    app.getCity();
+    var cityOut = setInterval(function () {
+      if (app.globalData.city) {
+        clearTimeout(cityOut);
+        if (app.globalData.city.length > 0) {
+          that.setData({
+            city: app.globalData.city,
+            cityId: app.globalData.cityArr[that.data.cityIndex].id * 1,
+          });
+        }
+      }
+    }, 1000);
+    // app.getDealer('');
+    // var deaTime = setInterval(function () {
+    //   if (app.globalData.carDis) {
+    //     clearTimeout(deaTime);
+    //     that.setData({
+    //       carDis: app.globalData.carDis,
+    //       carDisId: app.globalData.carDisAddr[that.data.carDisIndex].id * 1,
+    //     })
     //   }
     // }, 1000);
   },
@@ -120,7 +120,7 @@ Page({
       carDisId: app.globalData.carDisAddr[carDisIndex].id * 1,
     })
   },
-  
+
   bingCarStyle: function (e) {
     var that = this;
     var carStyleIndex = e.detail.value;
@@ -132,7 +132,7 @@ Page({
     var carVehicleOut = setInterval(function () {
       if (app.globalData.carVehicle) {
         clearTimeout(carVehicleOut);
-        if (app.globalData.carVehicle.length>0){
+        if (app.globalData.carVehicle.length > 0) {
           that.setData({
             carVehicle: app.globalData.carVehicle,
             carVehicleId: app.globalData.carVehicleArr[that.data.carVehicleIndex].id * 1,
@@ -156,17 +156,17 @@ Page({
           //   }
           // }, 1000);
 
-        }else{
+        } else {
           that.setData({
             carVehicle: [],
-            carVehicleId:-1,
+            carVehicleId: -1,
           });
         }
       }
     }, 1000);
   },
 
-  bingCarVehicle:function(e){
+  bingCarVehicle: function (e) {
     var that = this;
     var carVehicleIndex = e.detail.value;
     that.setData({
@@ -192,7 +192,7 @@ Page({
     // }, 1000);
   },
 
-  bingCity:function(e){
+  bingCity: function (e) {
     var that = this;
     var cityIndex = e.detail.value;
     that.setData({
@@ -200,7 +200,7 @@ Page({
       cityId: app.globalData.cityArr[cityIndex].id * 1,
     });
   },
-  
+
   bindDate: function (e) {
     var that = this;
     that.setData({
@@ -224,7 +224,7 @@ Page({
       return;
     }
 
-    
+
     that.setData({
       getcodeStatus: false
     })
@@ -252,7 +252,7 @@ Page({
       phone: e.detail.value
     })
   },
-  formSubmit:function(e){
+  formSubmit: function (e) {
     var that = this;
     if (!that.data.ajaxStatus) {
       return;
@@ -267,7 +267,7 @@ Page({
       return false;
     }
     if (!app.isPoneAvailable(msg.phone)) {
-      wx.showToast({  
+      wx.showToast({
         title: '电话号码输入有误',
         icon: 'none',
         duration: 1500
@@ -298,8 +298,8 @@ Page({
       })
       return false;
     }
-    
-    if (msg.engineCode == ""){
+
+    if (msg.engineCode == "") {
       wx.showToast({
         title: '请输入车辆识别号',
         icon: 'none',
@@ -316,7 +316,7 @@ Page({
       return false;
     }
     var data = {
-      id:"",
+      id: "",
       name: msg.name,
       contactName: msg.contactName,
       categoryId: that.data.carStyleId,
@@ -325,11 +325,12 @@ Page({
       engineCode: msg.engineCode,
       vin: msg.vin,
       licensePlate: msg.licensePlate,
-      dealerId: that.data.carDisIndex,
-      firstLicenseDate:that.data.date,
+      cityId: that.data.cityId,
+      //dealerId: that.data.carDisIndex,
+      firstLicenseDate: that.data.date,
       purchaseDate: that.data.loginDate,
-      code:msg.code,
-      contactTel:msg.phone,
+      code: msg.code,
+      contactTel: msg.phone,
       accountId: wx.getStorageSync("userId"),
       sessionId: wx.getStorageSync('sessionId'),
       fromId: "appointment",
@@ -371,7 +372,7 @@ Page({
       }
     })
   },
-  
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
