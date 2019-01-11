@@ -4,7 +4,7 @@ page{
 .icon{
   text-align: center;
   padding-top: 358rpx;
-  padding-bottom: 40rpx;
+  padding-bottom: 65rpx;
 }
 image{
   display: inline-block;
@@ -18,12 +18,15 @@ image{
 
 .text1{
   font-family: "MYingHeiPRC-W4";
-  font-size: 32rpx;
+  font-size: 28rpx;
   padding-bottom: 23rpx;
   color: #FFF;
+  text-align: center;
 }
 .text2{
   font-family: "MYingHeiPRC-W4";
   font-size: 24rpx;
   color: #FFF;
+  margin-top: 55rpx;
+  text-align: center;
 }

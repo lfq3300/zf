@@ -6,9 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    city: [],
-    cityId: 0,
-    cityIndex: 1,
+    // city: [],
+    // cityId: 0,
+    // cityIndex: 1,
     loginDate: "2019-01-01",
     carStyle: [],
     carStyleIndex: 0,
@@ -88,28 +88,28 @@ Page({
         }, 1000);
       }
     }, 1000);
-    app.getCity();
-    var cityOut = setInterval(function () {
-      if (app.globalData.city) {
-        clearTimeout(cityOut);
-        if (app.globalData.city.length > 0) {
-          that.setData({
-            city: app.globalData.city,
-            cityId: app.globalData.cityArr[that.data.cityIndex].id * 1,
-          });
-        }
-      }
-    }, 1000);
-    // app.getDealer('');
-    // var deaTime = setInterval(function () {
-    //   if (app.globalData.carDis) {
-    //     clearTimeout(deaTime);
-    //     that.setData({
-    //       carDis: app.globalData.carDis,
-    //       carDisId: app.globalData.carDisAddr[that.data.carDisIndex].id * 1,
-    //     })
+    // app.getCity();
+    // var cityOut = setInterval(function () {
+    //   if (app.globalData.city) {
+    //     clearTimeout(cityOut);
+    //     if (app.globalData.city.length > 0) {
+    //       that.setData({
+    //         city: app.globalData.city,
+    //         cityId: app.globalData.cityArr[that.data.cityIndex].id * 1,
+    //       });
+    //     }
     //   }
     // }, 1000);
+    app.getDealer('');
+    var deaTime = setInterval(function () {
+      if (app.globalData.carDis) {
+        clearTimeout(deaTime);
+        that.setData({
+          carDis: app.globalData.carDis,
+          carDisId: app.globalData.carDisAddr[that.data.carDisIndex].id * 1,
+        })
+      }
+    }, 1000);
   },
 
   bingDis: function (e) {

@@ -52,12 +52,13 @@ page {
   color: #fff;
   font-size: 24rpx;
   position: fixed;
-  bottom: 88rpx;
+  bottom: 0rpx;
   left: 50%;
   transform: translateX(-50%);
-  height: 51rpx;
-  line-height: 51rpx;
-  width: 168rpx;
+  width: 100%;
   text-align: center;
   z-index: 10;
+  height: 100rpx;
+  line-height: 100rpx;
+  opacity: 1;
 }
