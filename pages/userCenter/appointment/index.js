@@ -86,6 +86,7 @@ Page({
           that.setData({
             loginhidde: false,
             list:all,
+            all: all,
             yysj: yysj,
             afterSale: afterSale,
             activity: activity
@@ -108,8 +109,9 @@ Page({
     var that = this;
     var index = e.target.dataset.id;
     var list = [];
+    console.log(index);
     if(index == 0){
-        list = that.data.list;
+      list = that.data.all;
     }else if(index == 1){
       list = that.data.yysj;
     } else if (index == 2) {

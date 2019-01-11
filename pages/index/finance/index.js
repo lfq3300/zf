@@ -77,11 +77,13 @@ Page({
             b[i] = result[i];
           }
           var carListId = b[0].id * 1;
+          var carPrice = b[0].price * 1;
           that.setData({
             loginhidde: false,
             carList: a,
             carListArr: b,
             carListId: carListId,
+            carPrice: carPrice
           });
           that.getGetById(carListId);
         }
@@ -103,28 +105,18 @@ Page({
           var data = res.data.result.vehicleModel.financialPlans;
           if (data) {
             var leftmsg = '';
-            var rightmsg1 = '';
-            var rightmsg2 = '';
+            var financialTypeId = '';
             for (var i = 0; i < data.length; i++) {
               if (data[i].financialTypeId == '100000000') {
                 leftmsg = data[i].financialPlanDetails[0];
               } else {
-                if (data[i].financialPlanDetails[1].maxDownpayRatio == 50) {
-                  rightmsg2 = data[i].financialPlanDetails[1];
-                } else {
-                  rightmsg1 = data[i].financialPlanDetails[1];
-                }
+                financialTypeId = data[i].financialTypeId;
               }
             }
-            var shoufu = rightmsg1.period * that.data.speed / 100;
-            var yg = (rightmsg1.period - shoufu) * rightmsg1.interestRate / 100 / 12;
-            yg = yg.toFixed(2)
+            that.getfinancial(financialTypeId);
             that.setData({
               leftmsg: leftmsg,
-              rightmsg1: rightmsg1,
-              rightmsg2: rightmsg2,
-              shoufu: shoufu,
-              yg: yg
+              financialTypeId: financialTypeId
             });
           }
         }
@@ -181,6 +173,24 @@ Page({
       speed: speed,
       shoufu: shoufu,
       yg: yg
+    })
+  },
+
+  getfinancial: function (id){
+    var that = this;
+    wx.request({
+      url: app.data.hostUrl + '/api/services/app/financialPlan/CalculatePrice',
+      method: 'post',
+      data: {
+        financialTypeId: id,
+        vehicleModelId:10,
+        downPaymentRatio:30,
+        period:12,
+        price: that.data.carPrice
+      },
+      success:function(e){
+
+      }
     })
   },
   /**

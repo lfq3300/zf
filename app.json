@@ -10,6 +10,7 @@
       "pages/afterSale/index",
       "pages/afterSale/mycar/index",
       "pages/afterSale/mycar/add/index",
+      "pages/afterSale/mycar/love/index",
       "pages/afterSale/repair/index",
       "pages/afterSale/repair/wx/index",
       "pages/afterSale/help/index",

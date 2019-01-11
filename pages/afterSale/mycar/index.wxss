@@ -52,3 +52,6 @@ checkbox{
   height: 28rpx;
   margin-left: 26rpx;
 }
+.lovecar{
+  margin-top: 40rpx;
+}
