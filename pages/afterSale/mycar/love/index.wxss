@@ -1,3 +1,6 @@
+page{
+  background: #373737;
+}
 image{
   width: 100%;
 }

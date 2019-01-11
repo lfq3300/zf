@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 35,
 			"list": [
 				{
 					"id": 0,
@@ -66,7 +66,7 @@
 				{
 					"id": 4,
 					"name": "个人中心",
-					"pathName": "pages/activity/details/index",
+					"pathName": "pages/userCenter/index",
 					"query": "id=1006&type=100000002"
 				},
 				{
@@ -248,6 +248,12 @@
 					"name": "添加爱车",
 					"pathName": "pages/afterSale/mycar/add/index",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "问卷调查",
+					"pathName": "pages/activity/survey/index",
+					"query": "msg=您的报名需求已经收到"
 				}
 			]
 		}

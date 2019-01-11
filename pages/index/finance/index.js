@@ -13,36 +13,28 @@ Page({
     carid: "",
     carTime: [
       "36",
-      "24",
-      "12"
+      "24"
     ],
-    carTimeIndex: 2,
+    carTimeIndex: 1,
     loginhidde: true,
+    jrhidde:false,
     carListIndex: 0,
-    carListId: '',
+    carListId: 10,
     switchpageIndex: 2,
     speed: 30,
-    shoufu: '',
-    yg: ''
+    shoufu: 0,
+    yg: 0,
+    xxhx:[]
   },
 
   bingCarTime: function (e) {
     var that = this;
-    var speed = that.data.speed;
-    var shoufu = that.data.shoufu;
     var carTimeIndex = e.detail.value;
-    var time = that.data.carTime[carTimeIndex];
-    var yg = "";
-    if (speed > 50) {
-      yg = (that.data.rightmsg1.period - shoufu) * that.data.rightmsg1.interestRate / 100 / time
-    } else {
-      yg = (that.data.rightmsg2.period - shoufu) * that.data.rightmsg2.interestRate / 100 / time
-    }
-    yg = yg.toFixed(2)
     that.setData({
       carTimeIndex: carTimeIndex,
-      yg: yg
+      jrhidde: true
     });
+    that.getfinancial();
   },
   /**
    * 生命周期函数--监听页面加载
@@ -76,49 +68,63 @@ Page({
             a[i] = result[i].name;
             b[i] = result[i];
           }
-          var carListId = b[0].id * 1;
+        //  var carListId = b[0].id * 1;
           var carPrice = b[0].price * 1;
           that.setData({
             loginhidde: false,
             carList: a,
             carListArr: b,
-            carListId: carListId,
-            carPrice: carPrice
+      //      carListId: carListId,
+            carPrice: carPrice,
+            jrhidde: true,
           });
-          that.getGetById(carListId);
+          that.getGetById();
         }
       }
     });
 
   },
 
-  getGetById: function (id) {
+  getGetById: function () {
     var that = this;
     wx.request({
       url: app.data.hostUrl + 'api/services/app/vehicleModel/GetById',
       method: 'post',
       data: {
-        id: 10
+        id: that.data.carListId
       },
       success: function (res) {
         if (res.data.success) {
           var data = res.data.result.vehicleModel.financialPlans;
           if (data) {
+            var price = res.data.result.vehicleModel.price;
             var leftmsg = '';
             var financialTypeId = '';
+            var xxhx = [];
             for (var i = 0; i < data.length; i++) {
               if (data[i].financialTypeId == '100000000') {
-                leftmsg = data[i].financialPlanDetails[0];
+                xxhx.push(data[i]);
               } else {
                 financialTypeId = data[i].financialTypeId;
               }
             }
-            that.getfinancial(financialTypeId);
             that.setData({
               leftmsg: leftmsg,
-              financialTypeId: financialTypeId
+              financialTypeId: financialTypeId,
+              price: price,
+              jrhidde: true,
+              xxhx: xxhx
             });
+            console.log(that.data);
+            that.getfinancial();
           }
+        }else{
+            wx.showToast({
+              title: "金融方案不存在",
+              icon: 'none',
+              duration: 5500
+            })
+            return false;
         }
       }
     });
@@ -131,7 +137,7 @@ Page({
       carListIndex: carListIndex,
       carListId: that.data.carListArr[carListIndex].id * 1
     });
-    that.getGetById(that.data.carListId);
+    that.getGetById();
   },
 
   switchpage: function (e) {
@@ -145,51 +151,60 @@ Page({
 
   tapmove: function (e) {
     var that = this;
-    // var touchs = e.touches[0];
-    // var pageX = touchs.pageX; 
     var speed = parseInt(e.touches[0].clientX - 70);
-    if (speed > 100) {
-      speed = 100;
+    if (speed > 50) {
+      speed = 50;
     };
-    if (speed < 0) {
-      speed = 0;
+    if (speed < 20) {
+      speed = 20;
     }
-    var shoufu = "";
-    console.log(that.data.rightmsg1);
-    if (speed > 50) {
-      shoufu = that.data.rightmsg1.period * that.data.speed / 100;
-    } else {
-      shoufu = that.data.rightmsg2.period * that.data.speed / 100;
-    }
-    var yg = "";
-    var time = that.data.carTime[that.data.carTimeIndex];
-    if (speed > 50) {
-      yg = (that.data.rightmsg1.period - shoufu) * that.data.rightmsg1.interestRate / 100 / time
-    } else {
-      yg = (that.data.rightmsg2.period - shoufu) * that.data.rightmsg2.interestRate / 100 / time
-    }
-    yg = yg.toFixed(2);
     that.setData({
       speed: speed,
-      shoufu: shoufu,
-      yg: yg
     })
   },
-
-  getfinancial: function (id){
+  tapend:function(e){
+    var that = this;
+    that.setData({
+      jrhidde:true
+    })
+    that.getfinancial();
+  },
+  
+  getfinancial: function (){
     var that = this;
     wx.request({
       url: app.data.hostUrl + '/api/services/app/financialPlan/CalculatePrice',
       method: 'post',
       data: {
-        financialTypeId: id,
-        vehicleModelId:10,
-        downPaymentRatio:30,
-        period:12,
+        financialTypeId: that.data.financialTypeId,
+        vehicleModelId: that.data.carListId,
+        downPaymentRatio: that.data.speed,
+        period: that.data.carTime[that.data.carTimeIndex],
         price: that.data.carPrice
       },
-      success:function(e){
-
+      success:function(res){
+          if(res.data.success){
+            that.setData({
+              jrhidde: false
+            })
+            var result = res.data.result;
+            if (result.price == 0){
+              wx.showToast({
+                title: result.name,
+                icon: 'none',
+                duration: 5500
+              })
+              return false;
+            }else{
+              var yg = result.price.toFixed(3);
+              var shoufu =  that.data.price * that.data.speed /100;
+              shoufu = shoufu.toFixed(2);
+              that.setData({
+                yg: yg,
+                shoufu: shoufu,
+              })
+            }
+          }
       }
     })
   },

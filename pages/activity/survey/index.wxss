@@ -1,3 +1,6 @@
+page{
+  background: #1b1b1b;
+}
 .list navigator{
   margin-top: 60rpx;
   height: 252rpx;
@@ -22,11 +25,11 @@
 }
 .bg view{
   color: #FFF;
-  font-size: 38rpx;
+  font-size: 30rpx;
   font-weight: 900;
 }
 .bg .date{
-  font-size: 30rpx;
+  font-size: 18rpx;
   margin-top: 20rpx;
 }
 .title{

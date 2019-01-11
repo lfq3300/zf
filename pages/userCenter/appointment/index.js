@@ -6,6 +6,7 @@ Page({
    */
   data: {
     loginhidde: true,
+    ajaxhden:false,
     list:[],
     tag: [{
       "id": 0,
@@ -67,6 +68,9 @@ Page({
             var c = {};
             c.dealerIdName = data[i].dealerIdName;
             c.appointmentDate = data[i].appointmentDate;
+            c.statusIdName = data[i].statusIdName ? data[i].statusIdName:'';
+            c.status = data[i].statusId;
+            c.id = data[i].id;
             for (var a = 0; a < carTimeArr.length;a++){
               if (c.appointmentTimeId == carTimeArr[a].id){
                 c.time = carTimeArr[a].name;
@@ -109,7 +113,6 @@ Page({
     var that = this;
     var index = e.target.dataset.id;
     var list = [];
-    console.log(index);
     if(index == 0){
       list = that.data.all;
     }else if(index == 1){
@@ -121,8 +124,28 @@ Page({
     }
     that.setData({
       tagIndex: index,
-      list:list
+      list:list,
+      ajaxhden: false
     });
+  },
+  delAppintmet:function(e){
+    var that = this;
+    var id = e.target.dataset.id;
+    that.setData({
+      ajaxhden:true
+    });
+    wx.request({
+      url: app.data.hostUrl + 'api/services/app/appointment/CancelAppointment',
+      method: "post",
+      data: {
+        id: id
+      },
+      success: function (res) {
+        if (res.statusCode == 200 && res.data.success) {
+          that.getMyAppoin();
+        }
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
