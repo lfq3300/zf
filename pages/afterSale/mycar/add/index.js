@@ -126,6 +126,7 @@ Page({
     var carStyleIndex = e.detail.value;
     that.setData({
       carStyleIndex: carStyleIndex,
+      carVehicleIndex:0,
       carStyleId: app.globalData.carStyleArr[carStyleIndex].id * 1,
     });
     app.getCarVehicleList(that.data.carStyleId);
@@ -317,7 +318,7 @@ Page({
     }
     var data = {
       id: "",
-      name: msg.name,
+      name: that.data.carStyle[that.data.carStyleIndex] + '   ' + that.data.carVehicle[that.data.carVehicleIndex],
       contactName: msg.contactName,
       categoryId: that.data.carStyleId,
       vehicleId: that.data.carVehicleId,
@@ -335,7 +336,6 @@ Page({
       sessionId: wx.getStorageSync('sessionId'),
       fromId: "appointment",
     };
-    console.log(data);
     that.setData({
       ajaxStatus: false
     })

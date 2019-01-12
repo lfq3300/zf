@@ -13,7 +13,7 @@
         <image src='https://zungfu.azurewebsites.net/Common/Images/App/banner.png'></image>
         <label class='item-title'>
           <checkbox value='{{item.id}}'></checkbox>
-          <text>{{item.prefixName}}</text>
+          <text>{{item.name}}</text>
         </label>
       </view>
     </checkbox-group>
