@@ -34,7 +34,7 @@
       <text class='tab-car-title'>先享后选-弹性购车新方案</text>
       <view class='padding-border'>
         <view class='tab-car-sel-box' wx:for="{{xxhx}}" wx:for-index="idx" wx:for-item="item" wx:key="property">
-            <view class='box-title'>{{item.subName}} </view>
+            <view class='box-title'>{{item.name}} </view>
             <view class='box-cen'>预付款人民币<text>{{item.monthlyPay}}</text>万起</view>
         </view>
       </view>
