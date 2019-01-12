@@ -19,12 +19,12 @@ Page({
     loginhidde: true,
     jrhidde:false,
     carListIndex: 0,
-    carListId: 10,
+    carListId: 0,
     switchpageIndex: 2,
     speed: 30,
     shoufu: 0,
     yg: 0,
-    xxhx:[]
+    xxhx:[],
   },
 
   bingCarTime: function (e) {
@@ -68,13 +68,13 @@ Page({
             a[i] = result[i].name;
             b[i] = result[i];
           }
-        //  var carListId = b[0].id * 1;
+          var carListId = b[0].id * 1;
           var carPrice = b[0].price * 1;
           that.setData({
             loginhidde: false,
             carList: a,
             carListArr: b,
-      //      carListId: carListId,
+            carListId: carListId,
             carPrice: carPrice,
             jrhidde: true,
           });
@@ -88,16 +88,15 @@ Page({
   getGetById: function () {
     var that = this;
     wx.request({
-      url: app.data.hostUrl + 'api/services/app/vehicleModel/GetById',
-      method: 'post',
+      url: app.data.hostUrl + 'api/services/app/financialPlan/GetActiveList',
+      method: 'get',
       data: {
-        id: that.data.carListId
+        vehicleModelId:  that.data.carListId
       },
       success: function (res) {
         if (res.data.success) {
-          var data = res.data.result.vehicleModel.financialPlans;
-          if (data) {
-            var price = res.data.result.vehicleModel.price;
+          var data = res.data.result;
+          if (data.length>0) {
             var leftmsg = '';
             var financialTypeId = '';
             var xxhx = [];
@@ -111,16 +110,24 @@ Page({
             that.setData({
               leftmsg: leftmsg,
               financialTypeId: financialTypeId,
-              price: price,
               jrhidde: true,
               xxhx: xxhx
             });
-            console.log(that.data);
             that.getfinancial();
+          }else{
+            that.setData({
+              jrhidde: false
+            })
+            wx.showToast({
+              title: "没有找到金融方案",
+              icon: 'none',
+              duration: 5500
+            })
+            return false;
           }
         }else{
             wx.showToast({
-              title: "金融方案不存在",
+              title: "没有找到金融方案",
               icon: 'none',
               duration: 5500
             })
@@ -132,16 +139,16 @@ Page({
   bingCar: function (e) {
     var that = this;
     var carListIndex = e.detail.value;
-    console.log(carListIndex);
     that.setData({
       carListIndex: carListIndex,
-      carListId: that.data.carListArr[carListIndex].id * 1
+      carListId: that.data.carListArr[carListIndex].id * 1,
+      carPrice: that.data.carListArr[carListIndex].price * 1,
+      jrhidde: true
     });
     that.getGetById();
   },
 
   switchpage: function (e) {
-    console.log(e)
     var that = this;
     var switchpageIndex = e.target.dataset.index;
     that.setData({
@@ -197,7 +204,7 @@ Page({
               return false;
             }else{
               var yg = result.price.toFixed(3);
-              var shoufu =  that.data.price * that.data.speed /100;
+              var shoufu =  that.data.carPrice * that.data.speed /100;
               shoufu = shoufu.toFixed(2);
               that.setData({
                 yg: yg,
