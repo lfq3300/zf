@@ -7,7 +7,7 @@ view{
 }
 video{
   position: absolute;
-  top: 50%;
+  top: 42%;
   transform: translateY(-50%);
   width: 100%;
 }

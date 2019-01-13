@@ -54,6 +54,7 @@ Page({
       return;
     }
     var msg = e.detail.value;
+    console.log(msg);
     if (msg.contactName == "") {
       wx.showToast({
         title: '姓名不能为空',
@@ -89,11 +90,11 @@ Page({
     var data = {
       accountId: wx.getStorageSync("userId"),
       name: msg.contactName,
-      activityId:"",
+      activityId: that.data.activityId,
       tel: msg.phone,
       genderId: msg.sex,
       sessionId: wx.getStorageSync('sessionId'),
-      fromId: "appointment",
+      formId: "appointment",
       email: msg.email,
       code: msg.code
     }
@@ -101,7 +102,7 @@ Page({
       ajaxStatus: false
     })
     wx.request({
-      url: app.data.hostUrl + 'api/services/app/appointment/SubmitVehicleAppointment',
+      url: app.data.hostUrl + 'api/services/app/appointment/SubmitActivityAppointment',
       data: data,
       method: 'POST',
       success: function (res) {
@@ -138,6 +139,9 @@ Page({
    */
   onLoad: function(options) {
     var that = this;
+    that.setData({
+      activityId:options.id
+    })
   },
 
   /**

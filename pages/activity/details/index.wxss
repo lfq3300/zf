@@ -55,7 +55,7 @@ page {
   font-size: 36rpx;
   position: fixed;
   bottom: 0rpx;
-  left: 40rpx;
+  left: 0;
   width: 100%;
   text-align: center;
   z-index: 10;

@@ -17,12 +17,12 @@
     </view>
     <view class='from-assembly flex-default'>
       <text>称谓</text>
-      <radio-group class="gender">
+      <radio-group class="gender"  name="sex" >
         <label>
-          <radio value='1' name="sex" checked/> 先生
+          <radio value='1' checked/> 先生
         </label>
         <label>
-          <radio value='2' name="sex" />女士
+          <radio value='2' />女士
         </label>
       </radio-group>
     </view>
