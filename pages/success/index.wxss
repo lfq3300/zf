@@ -17,14 +17,14 @@ image{
 }
 
 .text1{
-  font-family: "MYingHeiPRC-W4";
+  font-family: "微软雅黑";
   font-size: 28rpx;
   padding-bottom: 23rpx;
   color: #FFF;
   text-align: center;
 }
 .text2{
-  font-family: "MYingHeiPRC-W4";
+  font-family: "微软雅黑";
   font-size: 24rpx;
   color: #FFF;
   margin-top: 55rpx;

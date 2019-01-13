@@ -2,7 +2,7 @@
 <view class='box'>
   <navigator class='weixiu' url='/pages/afterSale/repair/wx/index?type=1'>
     <view>
-      <image src='https://zungfu.azurewebsites.net/Common/Images/App/afterSale/home_img_bg@3x.png' class='bg1'></image>
+      <image src='http://www.luofq.com/home_img_bg01@3x.png' class='bg1'></image>
       <view class='flex-column flex-center'>
         <image src='https://zungfu.azurewebsites.net/Common/Images/App/afterSale/home_icon_service@3x.png'></image>
         <text>预约维修</text>
@@ -17,7 +17,7 @@
                 <image src='https://zungfu.azurewebsites.net/Common/Images/App/afterSale/home_icon_maintain@3x.png'></image>
                 <text>预约保养</text>
             </view>
-          <image src='https://zungfu.azurewebsites.net/Common/Images/App/afterSale/home_img_bg@3x.png' class='bg2 '></image>
+          <image src='http://www.luofq.com/home_img_bg02@3x.png' class='bg2'></image>
         </view>
     </navigator>
 </view>
