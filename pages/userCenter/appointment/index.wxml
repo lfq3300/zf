@@ -32,7 +32,7 @@
       </view>
        <view class='delbtn' hidden="{{item.status != '100000000'}}" data-id='{{item.id}}' bindtap='delAppintmet'>删除预约</view>
     </view>
-    <view class='box' wx:elif="{{item.type == '100000002'}}">
+    <view class='box active-box' wx:elif="{{item.type == '100000002'}}">
       <view class='title'>
         <image src='http://www.luofq.com/personal_icon_mine03@3x.png'></image>
         <text>活动预约</text>
@@ -40,12 +40,12 @@
       </view>
       <view class='box-content'>
         <view>
-          <text>经销商</text>
+          <text>活动主题</text>
           <text class='right'>{{item.dealerIdName}}</text>
 
         </view>
         <view>
-          <text>预约时间</text>
+          <text>活动时间</text>
           <text class='right'>{{item.appointmentDate}} {{item.time}}</text>
         </view>
       </view>
