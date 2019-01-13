@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="page-body">
+    <view class="page-section">
+      <view class="page-body-info display-area {{ loaded ? 'font-loaded' : '' }}">
+        <text class='font-loaded' wx:if="{{!loaded}}">Load {{ fontFamily }} 1234 我我我</text>
+        <text  class='font-loaded' wx:else>{{ fontFamily }} is loaded  1234 我我我</text>
+      </view>
+      <view class="btn-area">
+        <text wx:if="{{!loaded}}">Load {{ fontFamily }} 1234 我我我</text>
+        <text wx:else>{{ fontFamily }} is loaded  1234 我我我</text>
+        <button type="primary" bindtap="loadFontFace">加载字体</button>
+      </view>
+    </view>
+  </view>
+</view>

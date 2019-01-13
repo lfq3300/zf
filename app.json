@@ -31,7 +31,8 @@
       "dist/components/header/index",
       "dist/components/ajaxlod/index",
       "pages/login/index",
-      "pages/success/index"
+      "pages/success/index",
+      "pages/demo/index"
   ],
   "window":{
     "backgroundTextStyle": "dark",

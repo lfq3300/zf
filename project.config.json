@@ -37,12 +37,12 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
-					"name": "二级列表",
-					"pathName": "pages/success/index",
+					"name": "字体测试",
+					"pathName": "pages/demo/index",
 					"query": "msg=您的报名需求已经收到"
 				},
 				{

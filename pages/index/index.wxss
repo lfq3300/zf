@@ -58,7 +58,7 @@
   margin-top: 63rpx;
 }
 .car-itme{
-  height: 180rpx;
+  height: 170rpx;
   position: relative;
   overflow: hidden;
   margin-bottom: 60rpx;

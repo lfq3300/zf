@@ -30,6 +30,7 @@ Page({
 
   carselect:function(e){
     var that = this;
+    console.log(e);
     that.setData({
       carsel: e.detail.id
     })
@@ -210,7 +211,7 @@ Page({
               })
               return false;
             }else{
-              var yg = result.price.toFixed(3);
+              var yg = result.price;
               var shoufu =  that.data.carPrice * that.data.speed /100;
               shoufu = shoufu.toFixed(2);
               that.setData({

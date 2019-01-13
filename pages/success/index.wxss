@@ -4,7 +4,7 @@ page{
 .icon{
   text-align: center;
   padding-top: 358rpx;
-  padding-bottom: 65rpx;
+  padding-bottom: 50rpx;
 }
 image{
   display: inline-block;
@@ -17,16 +17,16 @@ image{
 }
 
 .text1{
-  font-family: "微软雅黑";
-  font-size: 28rpx;
-  padding-bottom: 23rpx;
+  font-family: "MYingHeiPRC-W3";
+  font-size: 21rpx;
+  padding-bottom: 10rpx;
   color: #FFF;
   text-align: center;
 }
 .text2{
-  font-family: "微软雅黑";
-  font-size: 24rpx;
+  font-family: "MYingHeiPRC-W3";
+  font-size: 21rpx;
   color: #FFF;
-  margin-top: 55rpx;
+  margin-top: 45rpx;
   text-align: center;
 }
