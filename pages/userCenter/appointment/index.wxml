@@ -27,7 +27,7 @@
         </view>
         <view>
           <text>预约时间</text>
-          <text class='right'>{{item.appointmentDate}} {{item.time}}</text>
+          <text class='right'>{{item.appointmentDateString}}    <text class='r-time'>{{item.time}}</text></text>
         </view>
       </view>
        <view class='delbtn' hidden="{{item.status != '100000000'}}" data-id='{{item.id}}' bindtap='delAppintmet'>删除预约</view>
@@ -46,7 +46,7 @@
         </view>
         <view>
           <text>活动时间</text>
-          <text class='right'>{{item.appointmentDate}} {{item.time}}</text>
+          <text class='right'>{{item.appointmentDateString}}  <text class='r-time'>{{item.time}}</text></text>
         </view>
       </view>
        <view class='delbtn' hidden="{{item.status != '100000000'}}" data-id='{{item.id}}' bindtap='delAppintmet'>删除预约</view>
@@ -64,7 +64,7 @@
         </view>
         <view>
           <text>预约时间</text>
-          <text class='right'>{{item.appointmentDate}} {{item.time}}</text>
+          <text class='right'>{{item.appointmentDateString}}   <text class='r-time'>{{item.time}}</text></text>
         </view>
       </view>
        <view class='delbtn' hidden="{{item.status != '100000000'}}" data-id='{{item.id}}' bindtap='delAppintmet'>删除预约</view>
@@ -82,7 +82,7 @@
         </view>
         <view>
           <text>预约时间</text>
-          <text class='right'>{{item.appointmentDate}} {{item.time}}</text>
+          <text class='right'>{{item.appointmentDateString}}    <text class='r-time'>{{item.time}}</text></text>
         </view>
       </view>
       <view class='delbtn' hidden="{{item.status != '100000000'}}" data-id='{{item.id}}' bindtap='delAppintmet'>删除预约</view>

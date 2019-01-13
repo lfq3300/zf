@@ -70,9 +70,10 @@ Page({
             c.appointmentDate = data[i].appointmentDate;
             c.statusIdName = data[i].statusIdName ? data[i].statusIdName:'';
             c.status = data[i].statusId;
+            c.appointmentDateString = data[i].appointmentDateString;
             c.id = data[i].id;
             for (var a = 0; a < carTimeArr.length;a++){
-              if (c.appointmentTimeId == carTimeArr[a].id){
+              if (data[i].appointmentTimeId == carTimeArr[a].id){
                 c.time = carTimeArr[a].name;
                   break;
               }
@@ -93,7 +94,8 @@ Page({
             all: all,
             yysj: yysj,
             afterSale: afterSale,
-            activity: activity
+            activity: activity,
+            ajaxhden: false
           });
           // 隐藏导航栏加载框
           wx.hideNavigationBarLoading();

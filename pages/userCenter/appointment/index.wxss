@@ -87,3 +87,6 @@ page {
   bottom: -65rpx;
   right: 16rpx;
 }
+.r-time{
+  padding-left: 20rpx;
+}
