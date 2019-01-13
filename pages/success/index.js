@@ -25,7 +25,7 @@ Page({
     }
     wx.loadFontFace({
       family: "MYingHeiPRC-W3",
-      source: 'url("https://miniprogram.zfchina.com/fonts/zf/MYingHeiPRC-W3.otf")',
+      source: 'url("https://sungd.github.io/Pacifico.ttf")',
       success(res) {
         console.log('success')
         console.log(res);
