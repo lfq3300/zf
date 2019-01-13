@@ -2,7 +2,7 @@
   页面加载中...
 </loading>
 <loading hidden="{{!jrhidde}}">
-  金融方案加载中...
+  方案加载中...
 </loading>
 <view hidden="{{loginhidde}}">
   <view class='bg'>
@@ -33,7 +33,7 @@
   <view class='tab-car' hidden='{{switchpageIndex == 2}}'>
       <text class='tab-car-title'>先享后选-弹性购车新方案</text>
       <view class='padding-border'>
-        <view class='tab-car-sel-box' wx:for="{{xxhx}}" wx:for-index="idx" wx:for-item="item" wx:key="property">
+        <view class="tab-car-sel-box {{carsel == idx?'tab-car-sel-box-select':''}}" wx:for="{{xxhx}}" wx:for-index="idx" wx:for-item="item" wx:key="property" bindtap='carselect' data-id='{{idx}}'>
             <view class='box-title'>{{item.name}} </view>
             <view class='box-cen'>预付款人民币<text>{{item.monthlyPay}}</text>万起</view>
         </view>
@@ -73,4 +73,5 @@
       </view>
     </view>
   </view>
+  <image src='http://www.luofq.com/xxhx.png' class='xxhxbg'></image>
 </view>

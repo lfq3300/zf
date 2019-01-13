@@ -7,6 +7,7 @@ page {
 .img-box {
   background: #fff;
   margin-bottom: 20rpx;
+  overflow: hidden;
 }
 
 .aimg {
@@ -36,6 +37,7 @@ page {
 
 .attr {
   font-size: 26rpx;
+  margin-bottom: 40rpx;
 }
 
 .attr .author {
@@ -50,11 +52,10 @@ page {
 .btn {
   background: #D1A24B;
   color: #fff;
-  font-size: 24rpx;
+  font-size: 36rpx;
   position: fixed;
   bottom: 0rpx;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 40rpx;
   width: 100%;
   text-align: center;
   z-index: 10;

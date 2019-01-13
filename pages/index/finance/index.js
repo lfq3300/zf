@@ -20,13 +20,20 @@ Page({
     jrhidde:false,
     carListIndex: 0,
     carListId: 0,
-    switchpageIndex: 2,
+    switchpageIndex: 1,
     speed: 30,
     shoufu: 0,
     yg: 0,
     xxhx:[],
+    carsel:0
   },
 
+  carselect:function(e){
+    var that = this;
+    that.setData({
+      carsel: e.detail.id
+    })
+  },
   bingCarTime: function (e) {
     var that = this;
     var carTimeIndex = e.detail.value;
@@ -121,7 +128,7 @@ Page({
             wx.showToast({
               title: "没有找到金融方案",
               icon: 'none',
-              duration: 5500
+              duration: 3500
             })
             return false;
           }
@@ -129,7 +136,7 @@ Page({
             wx.showToast({
               title: "没有找到金融方案",
               icon: 'none',
-              duration: 5500
+              duration: 3500
             })
             return false;
         }
@@ -199,7 +206,7 @@ Page({
               wx.showToast({
                 title: result.name,
                 icon: 'none',
-                duration: 5500
+                duration: 3500
               })
               return false;
             }else{
@@ -211,6 +218,16 @@ Page({
                 shoufu: shoufu,
               })
             }
+          }else{
+            that.setData({
+              jrhidde: false
+            })
+            wx.showToast({
+              title: "没有找到金融方案",
+              icon: 'none',
+              duration: 3500
+            })
+            return false;
           }
       }
     })

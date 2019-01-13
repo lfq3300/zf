@@ -58,7 +58,7 @@
   margin-top: 63rpx;
 }
 .car-itme{
-  height: 158rpx;
+  height: 180rpx;
   position: relative;
   overflow: hidden;
   margin-bottom: 60rpx;
@@ -91,8 +91,8 @@
 .car-itme .car-item-img{
   position: absolute;
   right: 0;
-  bottom: -10rpx;
-  height: 180rpx;
+  bottom: -5rpx;
+  height: 175rpx;
   width:334rpx;
   z-index: 2;
 }

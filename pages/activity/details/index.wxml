@@ -9,13 +9,12 @@
     <text class='time'>一周前</text>
   </view>
   <view class='flex-column img-box'>
-    <view class='padding-border'>
       <import src="../../../wxParse/wxParse.wxml" />
       <template is="wxParse" data="{{wxParseData:accontent.nodes}}" />
-    </view>
-  </view>
-</view>
-<navigator hidden="{{type != '100000002'}}" class='btn' url='/pages/activity/signup/index?id={{id}}'>
+       <navigator hidden="{{type != '100000002'}}" class='btn' url='/pages/activity/signup/index?id={{id}}'>
   立即报名
 </navigator>
+  </view>
+</view>
+
 </view>

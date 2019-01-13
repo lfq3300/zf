@@ -1,5 +1,5 @@
 page{
-  background: #1b1b1b;
+  background: #373737;
 }
 .list navigator{
   margin-top: 60rpx;
@@ -21,7 +21,7 @@ page{
   z-index: 2;
   padding: 0 0 0 32rpx;
   box-sizing: border-box;
-  background: rgba(0,0,0,0.3);
+  background: #434343;
 }
 .bg view{
   color: #FFF;

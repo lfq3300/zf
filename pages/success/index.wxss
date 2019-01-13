@@ -8,8 +8,8 @@ page{
 }
 image{
   display: inline-block;
-  width: 170rpx;
-  height: 170rpx;
+  width: 132rpx;
+  height: 132rpx;
 }
 .flex-column text{
   width: 100%;

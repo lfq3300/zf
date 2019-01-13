@@ -13,7 +13,8 @@ Page({
 
     ],
     tagName:"",
-    loginhidde:true
+    loginhidde:true,
+    ajaxStatus: true,
   },
 
   /**
@@ -51,7 +52,8 @@ Page({
         if (res.data.success) {
           that.setData({
             carList: res.data.result,
-            loginhidde:false
+            loginhidde:false,
+            ajaxStatus: true,
           })
         }
       }
@@ -64,7 +66,8 @@ Page({
     var tagName = e.target.dataset.name;
     that.setData({
       tagIndex: tagIndex,
-      tagName: tagName
+      tagName: tagName,
+      ajaxStatus: false,
     })
     that.getCarList(tagIndex);
   },

@@ -1,6 +1,9 @@
 <loading hidden="{{!loginhidde}}">
   页面加载中...
 </loading>
+<loading hidden="{{ajaxStatus}}">
+  加载中...
+</loading>
 <view hidden="{{loginhidde}}">
   <header></header>
   <view class='car-level move-menu'>

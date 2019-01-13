@@ -44,7 +44,8 @@ page{
   position: relative;
 }
 
-.weixiu >view > view, .baoyang>view>view {
+.weixiu >view > view,
+.baoyang>view>view {
   position: absolute;
   top: 0;
   left: 0;
@@ -66,11 +67,11 @@ page{
 
 .weixiu >view > view text,
 .baoyang >view > view text {
-  font-size: 23rpx;
+  font-size: 32rpx;
   color: #fff;
   border: 1px solid #c9c9c9;
-  line-height: 53rpx;
-  width: 169rpx;
+  line-height: 70rpx;
+  width: 210rpx;
   text-align: center;
   letter-spacing: 5rpx;
 }
