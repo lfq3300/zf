@@ -155,4 +155,5 @@
   color: #727171;
   font-size: 22rpx;
   text-align: center;
+   padding-bottom: 60rpx;
 }
