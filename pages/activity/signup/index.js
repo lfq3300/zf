@@ -96,7 +96,8 @@ Page({
       sessionId: wx.getStorageSync('sessionId'),
       formId: "appointment",
       email: msg.email,
-      code: msg.code
+      code: msg.code,
+      appointmentDate: that.data.start
     }
     that.setData({
       ajaxStatus: false
@@ -140,7 +141,8 @@ Page({
   onLoad: function(options) {
     var that = this;
     that.setData({
-      activityId:options.id
+      activityId:options.id,
+      start: options.start
     })
   },
 

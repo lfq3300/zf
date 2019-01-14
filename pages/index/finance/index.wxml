@@ -38,6 +38,7 @@
             <view class='box-cen'>预付款人民币<text>{{item.monthlyPay}}</text>万起</view>
         </view>
       </view>
+      <view class='tab-car-explain'>*实际月付款以奔驰租赁系统为准</view>
     </view>
   <view class='tab-car' hidden='{{switchpageIndex == 1}}'>
     <view class='car-center'>

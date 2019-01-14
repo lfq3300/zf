@@ -62,11 +62,8 @@ Page({
   LoInfo: function () {
     var that = this;
     wx.request({
-      url: app.data.hostUrl + 'api/services/app/vehicleModel/GetActiveList',
+      url: app.data.hostUrl + 'api/services/app/vehicleModel/GetActiveList?vehicleId=' + that.data.carid,
       method: 'post',
-      data: {
-        vehicleId: that.data.carid
-      },
       success: function (res) {
         if (res.data.success) {
           var result = res.data.result;

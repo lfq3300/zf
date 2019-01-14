@@ -142,11 +142,17 @@
    z-index: -1;
    left: 0;
    bottom: 0;
-   height: 850rpx;
+   height: 650rpx;
 }
 .tab-car-sel-box-select{
-  box-shadow: 0px 0px 5px 3px #D1A24B;
+  box-shadow: 0px 0px 5px 1px #D1A24B;
 }
 .padding-border{
   overflow: initial;
+}
+.tab-car-explain{
+  padding-top: 32rpx;
+  color: #727171;
+  font-size: 22rpx;
+  text-align: center;
 }

@@ -38,7 +38,8 @@ Page({
           that.setData({
             imgurl: data.activity.imgUrl,
             title: data.activity.title,
-            loginhidde: false
+            loginhidde: false,
+            start: data.activity.startDate
           });
           wx.hideNavigationBarLoading();
           wx.stopPullDownRefresh();
