@@ -72,6 +72,7 @@ Page({
             c.status = data[i].statusId;
             c.appointmentDateString = data[i].appointmentDateString;
             c.id = data[i].id;
+            c.activityIdName = data[i].activityIdName;
             for (var a = 0; a < carTimeArr.length;a++){
               if (data[i].appointmentTimeId == carTimeArr[a].id){
                 c.time = carTimeArr[a].name;

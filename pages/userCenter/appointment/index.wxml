@@ -41,7 +41,7 @@
       <view class='box-content'>
         <view>
           <text>活动主题</text>
-          <text class='right'>{{item.dealerIdName}}</text>
+          <text class='right'>{{item.activityIdName}}</text>
 
         </view>
         <view>
