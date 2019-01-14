@@ -59,8 +59,8 @@
       </view>
       <view class='flex-default flex-center assembly progress-assembly'>
         <view class='flex1'>
-          <progress percent="{{speed}}"  color='#D1A24B' stroke-width='4' border-radius='50' />
-          <view class='progress-btn' style='left:{{speed}}%' bindtouchmove="tapmove" bindtouchend='tapend'></view>
+          <progress percent="{{viewspeed}}"  color='#D1A24B' stroke-width='4' border-radius='50' />
+          <view class='progress-btn' style='left:{{viewspeed}}%' bindtouchmove="tapmove" bindtouchend='tapend'></view>
         </view>
         <view class="show-info">{{speed}}%</view>
       </view>
