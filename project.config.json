@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 36,
+			"current": 37,
 			"list": [
 				{
 					"id": 0,
@@ -260,6 +260,12 @@
 					"name": "活动列表",
 					"pathName": "pages/userCenter/appointment/index",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "活动报名",
+					"pathName": "pages/activity/details/index",
+					"query": "id=1006&type=100000002"
 				}
 			]
 		}

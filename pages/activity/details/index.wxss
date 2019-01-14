@@ -54,9 +54,9 @@ page {
   color: #fff;
   font-size: 36rpx;
   position: fixed;
-  bottom: 0rpx;
-  left: 0;
-  width: 100%;
+  bottom: 20rpx;
+  left: 30rpx;
+  width: calc(100% - 60rpx);
   text-align: center;
   z-index: 10;
   height: 100rpx;
