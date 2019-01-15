@@ -22,6 +22,7 @@ Page({
     carListId: 0,
     switchpageIndex: 1,
     speed: 30,
+    viewspeed:60,
     shoufu: 0,
     yg: 0,
     xxhx:[],
@@ -163,15 +164,17 @@ Page({
 
   tapmove: function (e) {
     var that = this;
-    var speed = parseInt(e.touches[0].clientX - 70);
+    var speed = parseInt(e.touches[0].clientX - 170);
     if (speed > 50) {
       speed = 50;
     };
     if (speed < 20) {
       speed = 20;
     }
+    var viewspeed = 2*speed;
     that.setData({
       speed: speed,
+      viewspeed: viewspeed
     })
   },
   tapend:function(e){

@@ -4,7 +4,7 @@ page{
 .page-title{
   font-size:36rpx;
   color:#fff;
-  background: #000;
+  background: #1b1b1b;
   text-align: center;
   height: 140rpx;
   line-height: 150rpx;
