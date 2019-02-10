@@ -55,8 +55,8 @@ page {
   font-size: 36rpx;
   position: fixed;
   bottom: 20rpx;
-  left: 30rpx;
-  width: calc(100% - 60rpx);
+  left: 35rpx;
+  width: calc(100% - 70rpx);
   text-align: center;
   z-index: 10;
   height: 100rpx;
