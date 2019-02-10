@@ -1,0 +1,59 @@
+<loading hidden="{{!loginhidde}}">
+  页面加载中...
+</loading>
+<view hidden="{{loginhidde}}">
+  <view class='swiper-box'>
+    <swiper indicator-dots="true" indicator-color="#B8B8B8" indicator-active-color="#D1A24B" autoplay="true" circular="true">
+      <swiper-item  wx:for="{{carImage}}" wx:for-index="idx" wx:for-item="item" wx:key="property" >
+        <image src='{{item.imgUrl}}'></image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class='title'>
+    {{car.name}}
+  </view>
+  <view class='price-box'>
+    <view>
+      <text>厂商建议零售价</text>
+      <text class='price'>￥{{car.price}}万</text>
+      <text>起</text>
+    </view>
+  </view>
+  <view class='content padding-border'>
+    <view class='highlight'>
+        <view class='htitle'>车型亮点</view>
+    </view>
+  </view>
+  <view class='highlightimgbox'>
+    <image src='https://zungfu.azurewebsites.net/Common/Images/App/afterSale/service_img_03@3x.png'></image>
+    <view class='highlighttap flex-column'>
+        <text  wx:for="{{vehicleDetails}}" wx:for-index="idx" wx:for-item="item" wx:key="pro">{{item.name}}</text>
+    </view>
+  </view>
+   <view class='content padding-border'>
+    <view class='highlight highlightimgheader'>
+        <view class='htitle'>车型比较</view>
+    </view>
+    <image src='{{carImg}}' class='highlightimg'></image>
+    <view class='carlist'>
+       <view class='flex-default flex-center' wx:for="{{carlist}}" wx:for-index="idx" wx:for-item="item" wx:key="carkey">
+          <text class='textleft'>{{item.name}}</text>
+          <view class='flex-column'>
+              <text class='explain'>厂商建议零售价</text>
+              <text>￥ {{item.price}} 万起</text>
+          </view>
+       </view>
+    </view>
+  </view> 
+  <!-- <view class='content padding-border'>
+    <view>
+      <import src="../../../wxParse/wxParse.wxml" />
+      <template is="wxParse" data="{{wxParseData:accontent.nodes}}" />
+    </view>
+  </view> -->
+  <view class='suspension'>
+    <navigator url="/pages/index/inquiry/index?id={{car.id}}&url={{carImage[0].imgUrl}}&carname={{carname}}&carnameid={{carnameid}}&name={{car.name}}">快速询价</navigator>
+    <navigator url="/pages/index/drive/index?id={{car.id}}&url={{carImage[0].imgUrl}}&carname={{carname}}&carnameid={{carnameid}}&name={{car.name}}">预约试驾</navigator>
+    <navigator url="/pages/index/finance/index?id={{car.id}}&url={{carImage[0].imgUrl}}&carname={{carname}}&carnameid={{carnameid}}&name={{car.name}}">金融计算</navigator>
+  </view>
+</view>

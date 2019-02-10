@@ -1,0 +1,154 @@
+page{
+  padding-bottom: 200rpx;
+}
+
+.swiper-box, .swiper-box swiper {
+  height: 432rpx;
+  overflow: hidden;
+}
+
+.swiper-box .wx-swiper-dot {
+  width: 9rpx;
+  height: 9rpx;
+}
+
+.swiper-box  image {
+  width: 100%;
+  height: 455rpx;
+}
+
+.title {
+  display: block;
+  width: 100%;
+  background: #1b1b1b;
+  color: #fff;
+  text-align: center;
+  font-size: 30rpx;
+  height: 68rpx;
+  line-height: 68rpx;
+}
+
+.price-box {
+  height: 163rpx;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  box-sizing: border-box;
+}
+
+.price-box  > view {
+  height: 162rpx;
+  line-height: 162rpx;
+  width: 100%;
+  border-bottom: 1px solid #b5b5b5;
+  text-align: center;
+}
+
+.price-box view text {
+  display: inline;
+  font-size: 24rpx;
+  color: #727171;
+}
+
+.price-box view .price {
+  color: #000;
+  font-size: 48rpx;
+  padding: 0 10rpx;
+}
+
+.suspension {
+  position: fixed;
+  height: 106rpx;
+  background: #1b1b1b;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.suspension navigator {
+  display: inline-block;
+  background: #d1a24b;
+  color: #1b1b1b;
+  font-size: 30rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  width: 213rpx;
+  margin-left: 12rpx;
+  margin-right: 12rpx;
+  text-align: center;
+}
+
+.content{
+  margin-top: 40rpx;
+  box-sizing: border-box;
+}
+
+.content>view{
+  overflow: hidden;
+}
+.htitle{
+  font-size:28rpx;  
+  border-bottom:5rpx solid #d1a24b;
+  display: inline-block;
+  line-height: 50rpx;
+}
+.highlightimgbox{
+  position: relative;
+  margin-top: 50rpx;
+}
+.highlightimgbox image{
+  width: 100%;
+  height: 450rpx;
+}
+.highlighttap{
+  position: absolute;
+  height: 450rpx;
+  width: 280rpx;
+  background: rgba(0,0,0,0.5);
+  top: 0;
+  right: 0;
+}
+.highlighttap text{
+  text-align: center;
+  color: #fff;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  font-size: 28rpx;
+  border-bottom: 1px solid #d1a24b;
+}
+.highlightimg{
+   margin-top: 20rpx;
+   margin-bottom: 50rpx;
+   width: 500rpx;
+   height: 240rpx;
+   margin: 0 auto;
+   display: block;
+}
+.highlightimgheader{
+  margin-bottom: 30rpx;
+}
+.carlist{
+  margin-top: 80rpx;
+}
+.carlist > view{
+  border-bottom: 1px solid #727171;
+  padding-bottom: 5rpx;
+  margin-bottom: 20rpx;
+}
+.carlist text{
+  font-size: 28rpx;
+}
+.textleft{
+  flex: 1;
+  text-align: left
+}
+.carlist text.explain{
+  text-align: right;
+  font-size: 22rpx;
+  color:#727171;
+}
