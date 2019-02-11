@@ -1,18 +1,55 @@
 // pages/afterSale/help/index.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    carDisIndex:0,
+    tel:0,
+    loginhidde:true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this;
+    app.getDealer('');
+    var deaTime = setInterval(function () {
+      if (app.globalData.carDis) {
+        clearTimeout(deaTime);
+        that.setData({
+          carDis: app.globalData.carDis,
+          carDisId: app.globalData.carDisAddr[that.data.carDisIndex].id * 1,
+          tel: app.globalData.carDisAddr[that.data.carDisIndex].tel,
+          loginhidde: false
+        })
+      }
+    }, 1000);
+  },
+  // getLocation:function(){
+  //   wx.getLocation({
+  //     success: function(res) {
+  //       console.log(res)
+  //     },
+  //   })
+  // },
+  bingDis: function (e) {
+    var that = this;
+    var carDisIndex = e.detail.value;
+    that.setData({
+      carDisIndex: carDisIndex,
+      carDisId: app.globalData.carDisAddr[carDisIndex].id * 1,
+      tel: app.globalData.carDisAddr[carDisIndex].tel,
+    });
+  },
+  callphone:function(){
+    var that = this;
+    wx.makePhoneCall({
+      phoneNumber: that.data.tel
+    })
   },
 
   /**

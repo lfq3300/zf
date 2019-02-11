@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 38,
+			"current": 39,
 			"list": [
 				{
 					"id": 0,
@@ -272,6 +272,11 @@
 					"name": "新车系",
 					"pathName": "pages/index/details2/index",
 					"query": "id=20&carname=轿车&carnameid=1&name=梅赛德斯-奔驰标准轴距C级车运动版"
+				},
+				{
+					"id": -1,
+					"name": "道路救援",
+					"pathName": "pages/afterSale/help/index"
 				}
 			]
 		}

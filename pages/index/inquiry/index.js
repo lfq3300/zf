@@ -60,9 +60,9 @@ Page({
   },
   bingDis:function(e){
     var that = this;
-    var carDisIndex = that.data.carDisIndex;
+    var carDisIndex = e.detail.value;
     that.setData({
-      carDisIndex: e.detail.value,
+      carDisIndex: carDisIndex,
       carDisId: app.globalData.carDisAddr[carDisIndex].id * 1,
     })
   },
