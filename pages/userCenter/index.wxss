@@ -32,9 +32,6 @@ page{
   line-height: 94rpx;
   border-bottom: 1px solid #F1F1F1;
 }
-.item:first-child{
-  padding-top: 100rpx;
-}
 .icon-box{
   line-height: 110rpx;
 }
