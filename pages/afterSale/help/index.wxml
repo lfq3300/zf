@@ -5,14 +5,14 @@
 <view class='padding-border'>
   <form bindsubmit="formSubmit">
     <text class='title'>在线发送救援位置，让救援更方便，全程协助处理事故报案、查勘、定损、核价、理赔资料收集、保险回款等一系列问题</text>
-    <view class='from-assembly flex-default flex-center'>
+    <!-- <view class='from-assembly flex-default flex-center'>
       <text>经销商</text>
       <picker class='flex1' bindchange='bingDis' value="{{carDisIndex}}" range="{{carDis}}">
         <view class="from-assembly-value">{{carDis[carDisIndex]}}</view>
       </picker>
       <text class='triangle'></text>
-    </view>
-    <!-- <view class='from-assembly flex-default'>
+    </view> -->
+    <view class='from-assembly flex-default'>
       <text>姓名</text>
       <input class='flex1 from-assembly-input' placeholder='请输入您的姓名'></input>
     </view>
@@ -33,7 +33,7 @@
     <view class='from-assembly flex-default from-assembly-no-right from-assembly-textarea'>
       <text>救援说明</text>
       <textarea class='flex1'></textarea>
-    </view> -->
+    </view> 
     <button class='subBtn' bindtap='callphone'>拨打电话</button>
   </form>
 </view>
