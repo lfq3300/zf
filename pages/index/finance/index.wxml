@@ -69,7 +69,7 @@
       <view class='flex-default flex-center'>
         <text>月供</text>
         <view class='flex1'>
-          ￥{{yg}} 万
+          ￥{{yg}} 千
         </view>
       </view>
     </view>
