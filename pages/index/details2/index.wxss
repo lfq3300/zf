@@ -105,7 +105,7 @@ page{
 .highlighttap{
   position: absolute;
   height: 450rpx;
-  width: 230rpx;
+  width: 160rpx;
   background: rgba(0,0,0,0.5);
   top: 0;
   right: 0;
