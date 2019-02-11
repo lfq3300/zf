@@ -21,8 +21,5 @@
       <image src='https://zungfu.azurewebsites.net/Common/Images/App/afterSale/service_img_add_n@3x.png'></image>
       添加爱车
     </navigator>
-    <navigator url='/pages/afterSale/mycar/love/index' class='addcar lovecar'>
-      保养小贴士
-    </navigator>
   </view>
 </view>

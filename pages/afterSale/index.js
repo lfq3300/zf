@@ -7,20 +7,20 @@ Page({
   data: {
       list:[
         {
-          url:"/pages/afterSale/mycar/index",
-          text:"我的爱车",
-          bg:"https://zungfu.azurewebsites.net/Common/Images/App/afterSale/service_img_01@3x.png",
-          icon:"https://zungfu.azurewebsites.net/Common/Images/App/afterSale/home_icon_normal@3x.png",
-        },
-        {
           url: "/pages/afterSale/repair/index",
           text: "维修保养",
-          bg: "https://zungfu.azurewebsites.net/Common/Images/App//afterSale/service_img_02@3x.png",
+          bg: "https://zungfu.azurewebsites.net/Common/Images/App/afterSale/service_img_01@3x.png",
           icon: "https://zungfu.azurewebsites.net/Common/Images/App/afterSale/home_icon_normal@3x.png",
         },
         {
           url: "/pages/afterSale/help/index",
           text: "道路救援",
+          bg: "https://zungfu.azurewebsites.net/Common/Images/App//afterSale/service_img_02@3x.png",
+          icon: "https://zungfu.azurewebsites.net/Common/Images/App/afterSale/home_icon_normal@3x.png",
+        },
+        {
+          url: "/pages/afterSale/mycar/love/index",
+          text: "爱车小贴士",
           bg: "https://zungfu.azurewebsites.net/Common/Images/App/afterSale/service_img_03@3x.png",
           icon: "https://zungfu.azurewebsites.net/Common/Images/App/afterSale/home_icon_normal@3x.png",
         }

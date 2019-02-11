@@ -73,6 +73,7 @@ App({
             c.tel = data[i].tel;
             c.address = data[i].address;
             c.id = data[i].id;
+            c.name = data[i].name;
             addrs[i] = c;
           }
           that.globalData.carDis = jsx;

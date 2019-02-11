@@ -23,21 +23,21 @@
       <picker class='flex1' bindchange='bingCarStyle' value="{{carStyleIndex}}" range="{{carStyle}}">
         <view class="from-assembly-value">{{carStyle[carStyleIndex]}}</view>
       </picker>
-      <text class='triangle'></text>
+      <text class='triangle' bindchange='bingCarStyle'></text>
     </view>
     <view class='from-assembly flex-default flex-center'>
       <text>车型</text>
       <picker class='flex1' bindchange='bingCarVehicle' value="{{carVehicleIndex}}" range="{{carVehicle}}">
         <view class="from-assembly-value">{{carVehicle[carVehicleIndex]}}</view>
       </picker>
-      <text class='triangle'></text>
+      <text class='triangle' bindchange='bingCarVehicle'></text>
     </view>
     <!-- <view class='from-assembly flex-default flex-center'>
       <text>车辆</text>
       <picker class='flex1' bindchange='bingCar' value="{{carListIndex}}" range="{{carList}}">
         <view class="from-assembly-value">{{carList[carListIndex]}}</view>
       </picker>
-      <text class='triangle'></text>
+      <text class='triangle' bindchange='bingCar'></text>
     </view> -->
     <!-- <view class='from-assembly flex-default'>
       <text>爱车昵称</text>
@@ -48,14 +48,14 @@
      <picker class='flex1' bindchange='bingCity' value="{{cityIndex}}" range="{{city}}">
         <view class="from-assembly-value">{{city[cityIndex]}}</view>
       </picker>
-      <text class='triangle'></text>
+      <text class='triangle' bindchange='bingCar'></text>
     </view> -->
       <view class='from-assembly flex-default flex-center'>
       <text>经销商</text>
       <picker class='flex1' bindchange='bingDis' value="{{carDisIndex}}" range="{{carDis}}">
         <view class="from-assembly-value">{{carDis[carDisIndex]}}</view>
       </picker>
-      <text class='triangle'></text>
+      <text class='triangle' bindchange='bingDis'></text>
     </view>
     <view class='from-assembly flex-default flex-center'>
       <text>购车日期</text>

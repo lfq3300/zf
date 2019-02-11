@@ -21,7 +21,7 @@
       <picker class='flex1' bindchange='bingDis' value="{{carDisIndex}}" range="{{carDis}}">
         <view class="from-assembly-value">{{carDis[carDisIndex]}}</view>
       </picker>
-      <text class='triangle'></text>
+      <text class='triangle'  bindchange='bingDis'></text>
     </view>
     <view class='from-assembly flex-default'>
       <text>姓名</text>

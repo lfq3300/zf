@@ -23,6 +23,7 @@ Page({
         that.setData({
           carDis: app.globalData.carDis,
           carDisId: app.globalData.carDisAddr[that.data.carDisIndex].id * 1,
+          carDisAddr: app.globalData.carDisAddr,
           tel: app.globalData.carDisAddr[that.data.carDisIndex].tel,
           loginhidde: false
         })
@@ -45,10 +46,10 @@ Page({
       tel: app.globalData.carDisAddr[carDisIndex].tel,
     });
   },
-  callphone:function(){
+  callphone:function(e){
     var that = this;
     wx.makePhoneCall({
-      phoneNumber: that.data.tel
+      phoneNumber: e.target.dataset.tel
     })
   },
 
