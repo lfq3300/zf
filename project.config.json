@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 39,
+			"current": 40,
 			"list": [
 				{
 					"id": 0,
@@ -276,7 +276,13 @@
 				{
 					"id": -1,
 					"name": "道路救援",
-					"pathName": "pages/afterSale/help/index"
+					"pathName": "pages/afterSale/help/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "预约维修",
+					"pathName": "pages/afterSale/repair/wx/index"
 				}
 			]
 		}

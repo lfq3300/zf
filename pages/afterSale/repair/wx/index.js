@@ -30,6 +30,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    app.jumpPageUserInfo(that.route);
     var title = '';
     var myDate = new Date();
     var m = myDate.getMonth() + 1;
@@ -59,7 +60,7 @@ Page({
     }
     that.setData({
       title: title,
-      pageType: options.type
+      pageType: options.type ? options.type:1
     });
     var that = this;
     app.getCarStyleList();

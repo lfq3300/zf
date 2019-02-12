@@ -31,11 +31,9 @@ App({
             },
             method: 'post',
             success: function(res) {
-              console.log(res);
               if (res.statusCode == 200 && res.data.success) {
                 wx.setStorageSync('sessionId', res.data.result);
                 if (wx.getStorageSync('userId').length == 0) {
-                  console.log('1233')
                   wx.navigateTo({
                     url: "/pages/login/index"
                   })
@@ -82,19 +80,16 @@ App({
       },
     })
   },
-
   //根据地址获取经销商
   getAddrDealer:function(addr){
     var that = this;
-    wx.request({
-      url: that.data.hostUrl + 'api/services/app/dealer/GetActiveListByCity',
-      data: {
-        city: addr
-      },
+    wx.request({  
+      url: that.data.hostUrl + 'api/services/app/dealer/GetActiveListByCity?city=' + addr + "&accountId=" + wx.getStorageSync('userId'),
       method: 'post',
       success: function (res) {
         if (res.data.success) {
           var data = res.data.result;
+
           data = that.sortAddres(data);
           var jsx = [];
           var addrs = [];
@@ -186,7 +181,7 @@ App({
           },
           method: 'GET',
           success: function (res) {
-            console.log(res)
+            that.globalData.loadcity = res.data.result.address_component.city;
           }
         })
   },
@@ -208,7 +203,6 @@ App({
       },
       method: 'get',
       success: function (res) {
-        console.log(res)
       }
     });
   },
@@ -363,5 +357,14 @@ App({
         }
       }
     });
+  },
+  
+  //判断跳转页面
+  jumpPageUserInfo:function(url){
+    if (!wx.getStorageSync("hasPersonal")) {
+      wx.navigateTo({
+        url: "/pages/userCenter/msg/index?pageurl=" + url
+      })
+    }
   }
 });

@@ -24,7 +24,7 @@ Page({
     app.data.userInfo = userInfo;
     wx.setStorageSync('userinfo', userInfo);
     wx.request({
-      url: app.data.hostUrl + 'api/MiniApp/checkaccount',
+      url: app.data.hostUrl + 'api/services/app/account/CheckAccountAsync',
       method: "post",
       data: {
         sessionId: wx.getStorageSync('sessionId'),
@@ -42,6 +42,8 @@ Page({
         if (res.statusCode == 200 && res.data.success) {
           wx.setStorageSync('userId', res.data.result.accountId);
           wx.setStorageSync('usertoken', res.data.result.token);
+          wx.setStorageSync('hasPersonal', res.data.result.hasPersonal);
+          wx.setStorageSync('hasVehicle', res.data.result.hasVehicle);
         } else {
           wx.showToast({
             title: '授权失败',

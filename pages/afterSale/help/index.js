@@ -6,11 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    carDisIndex:0,
-    tel:0,
-    loginhidde:true,
-    cityIndex:0,
+    carDisIndex: 0,
+    tel: 0,
+    loginhidde: true,
+    cityIndex: 0,
     city: [],
+    ajaxstatus:false
   },
 
   /**
@@ -24,26 +25,32 @@ Page({
         clearTimeout(cityOut);
         if (app.globalData.city.length > 0) {
           that.setData({
-             city: app.globalData.city,
-             loginhidde: false
+            city: app.globalData.city,
+            loginhidde: false
           });
-          console.log(app.globalData.city)
+          var pagecity = app.globalData.city;
+          var vcity = "";
+          for (var i = 0; i < pagecity.length; i++) {
+            if (pagecity[i] == app.globalData.loadcity) {
+              vcity = pagecity[i];
+              break;
+            } else {
+              vcity = pagecity[0];
+            }
+          }
+          app.getAddrDealer(vcity);
+          var deaTime = setInterval(function () {
+            if (app.globalData.carAddrDisAddr) {
+              that.setData({
+                carDisAddr: app.globalData.carAddrDisAddr,
+                ajaxstatus:true
+              })
+            }
+          }, 1000);
         }
       }
     }, 1000);
-    // app.getDealer('');
-    // var deaTime = setInterval(function () {
-    //   if (app.globalData.carDis) {
-    //     clearTimeout(deaTime);
-    //     that.setData({
-    //       carDis: app.globalData.carDis,
-    //       carDisId: app.globalData.carDisAddr[that.data.carDisIndex].id * 1,
-    //       carDisAddr: app.globalData.carDisAddr,
-    //       tel: app.globalData.carDisAddr[that.data.carDisIndex].tel,
-          
-    //     })
-    //   }
-    // }, 1000);
+
   },
   // getLocation:function(){
   //   wx.getLocation({
@@ -66,9 +73,20 @@ Page({
     var cityIndex = e.detail.value;
     that.setData({
       cityIndex: cityIndex,
+      ajaxstatus:false
     });
+    app.getAddrDealer(that.data.city[cityIndex]);
+    var deaTime = setInterval(function () {
+      if (app.globalData.carAddrDisAddr) {
+        clearTimeout(deaTime);
+        that.setData({
+          carDisAddr: app.globalData.carAddrDisAddr,
+          ajaxstatus:true
+        })
+      }
+    }, 1000);
   },
-  callphone:function(e){
+  callphone: function (e) {
     var that = this;
     wx.makePhoneCall({
       phoneNumber: e.target.dataset.tel

@@ -1,3 +1,6 @@
+<loading hidden="{{ajaxstatus}}">
+  加载中...
+</loading>
 <loading hidden="{{!loginhidde}}">
   加载中...
 </loading>
