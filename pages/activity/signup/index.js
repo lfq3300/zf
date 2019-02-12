@@ -54,7 +54,6 @@ Page({
       return;
     }
     var msg = e.detail.value;
-    console.log(msg);
     if (msg.contactName == "") {
       wx.showToast({
         title: '姓名不能为空',

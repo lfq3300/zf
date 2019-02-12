@@ -11,12 +11,12 @@ Page({
     getcodeStatus: true,
     ajaxStatus: true,
   },
-  
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      console.log(options);
+      console.log(options.pageurl);
   },
   getPhoneCode: function () {
     var that = this;
@@ -55,6 +55,37 @@ Page({
     this.setData({
       phone: e.detail.value
     })
+  },
+  formSubmit:function(e){
+    var that = this;
+    if (!that.data.ajaxStatus) {
+      return;
+    }
+    var msg = e.detail.value;
+    if (msg.contactName == "") {
+      wx.showToast({
+        title: '姓名不能为空',
+        icon: 'none',
+        duration: 1500
+      })
+      return false;
+    }
+    if (!app.isPoneAvailable(msg.phone)) {
+      wx.showToast({
+        title: '电话号码输入有误',
+        icon: 'none',
+        duration: 1500
+      })
+      return false;
+    }
+    if (!app.isPoneCodeAvailable(msg.code)) {
+      wx.showToast({
+        title: '验证码格式错误',
+        icon: 'none',
+        duration: 1500
+      })
+      return false;
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

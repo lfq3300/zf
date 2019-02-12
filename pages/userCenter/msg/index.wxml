@@ -14,6 +14,6 @@
       <input class='flex1 from-assembly-input' placeholder='请输入验证码' name='code'></input>
       <button class="from-assembly-phone-btn" bindtap='getPhoneCode'>{{getcodetext}}</button>
     </view>
-    <button class='subBtn' formType="submit">保存</button>
+    <button class='subBtn' formType="submit" type='submit'>保存</button>
   </form>
 </view>
