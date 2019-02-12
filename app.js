@@ -83,6 +83,41 @@ App({
     })
   },
 
+  //根据地址获取经销商
+  getAddrDealer:function(addr){
+    var that = this;
+    wx.request({
+      url: that.data.hostUrl + 'api/services/app/dealer/GetActiveListByCity',
+      data: {
+        city: addr
+      },
+      method: 'post',
+      success: function (res) {
+        if (res.data.success) {
+          var data = res.data.result;
+          data = that.sortAddres(data);
+          var jsx = [];
+          var addrs = [];
+          for (var i = 0; i < data.length; i++) {
+            jsx[i] = data[i].name;
+            var c = {};
+            c.latitude = data[i].latitude;
+            c.longitude = data[i].longitude;
+            c.tel = data[i].tel;
+            c.address = data[i].address;
+            c.id = data[i].id;
+            c.name = data[i].name;
+            addrs[i] = c;
+          }
+          that.globalData.carAddrDis = jsx;
+          that.globalData.carAddrDisAddr = addrs;
+        }
+      },
+    })
+  },
+
+  //获取当前经纬度
+
   Rad: function (d) {
     return d * Math.PI / 180.0;  /*经纬度转换成三角函数中度分表形式。*/
   },
@@ -134,12 +169,28 @@ App({
       success: function (res) {
         that.globalData.latitude = res.latitude;
         that.globalData.longitude = res.longitude;
+        that.getLocal(res.latitude, res.longitude)
       }
     })
   },
 
+  //通过腾讯地图解析当前地址
+  getLocal: function (latitude, longitude){
+    var that = this;
+    var locationString = latitude + "," + longitude;
+        wx.request({
+          url: 'http://apis.map.qq.com/ws/geocoder/v1/',
+          data: {
+            "key": "ILEBZ-F4KC4-QSBU6-DK5J3-H7W6S-3MFLO",
+            "location": locationString
+          },
+          method: 'GET',
+          success: function (res) {
+            console.log(res)
+          }
+        })
+  },
   //获取手机验证码
-
   getPhoneCode:function(phone){
     var that = this;
     if(!that.isPoneAvailable(phone)){
@@ -291,6 +342,7 @@ App({
       }
     });
   },
+  
   //获取维修项目
   getWxType:function(){
     var that = this;

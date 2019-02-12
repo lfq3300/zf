@@ -8,7 +8,9 @@ Page({
   data: {
     carDisIndex:0,
     tel:0,
-    loginhidde:true
+    loginhidde:true,
+    cityIndex:0,
+    city: [],
   },
 
   /**
@@ -16,19 +18,32 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    app.getDealer('');
-    var deaTime = setInterval(function () {
-      if (app.globalData.carDis) {
-        clearTimeout(deaTime);
-        that.setData({
-          carDis: app.globalData.carDis,
-          carDisId: app.globalData.carDisAddr[that.data.carDisIndex].id * 1,
-          carDisAddr: app.globalData.carDisAddr,
-          tel: app.globalData.carDisAddr[that.data.carDisIndex].tel,
-          loginhidde: false
-        })
+    app.getCity();
+    var cityOut = setInterval(function () {
+      if (app.globalData.city) {
+        clearTimeout(cityOut);
+        if (app.globalData.city.length > 0) {
+          that.setData({
+             city: app.globalData.city,
+             loginhidde: false
+          });
+          console.log(app.globalData.city)
+        }
       }
     }, 1000);
+    // app.getDealer('');
+    // var deaTime = setInterval(function () {
+    //   if (app.globalData.carDis) {
+    //     clearTimeout(deaTime);
+    //     that.setData({
+    //       carDis: app.globalData.carDis,
+    //       carDisId: app.globalData.carDisAddr[that.data.carDisIndex].id * 1,
+    //       carDisAddr: app.globalData.carDisAddr,
+    //       tel: app.globalData.carDisAddr[that.data.carDisIndex].tel,
+          
+    //     })
+    //   }
+    // }, 1000);
   },
   // getLocation:function(){
   //   wx.getLocation({
@@ -44,6 +59,13 @@ Page({
       carDisIndex: carDisIndex,
       carDisId: app.globalData.carDisAddr[carDisIndex].id * 1,
       tel: app.globalData.carDisAddr[carDisIndex].tel,
+    });
+  },
+  bingCity: function (e) {
+    var that = this;
+    var cityIndex = e.detail.value;
+    that.setData({
+      cityIndex: cityIndex,
     });
   },
   callphone:function(e){
