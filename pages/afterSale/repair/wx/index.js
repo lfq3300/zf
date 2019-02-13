@@ -33,7 +33,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    app.jumpPageUserInfo(that.route,options);
+    if (!app.jumpPageUserInfo(that.route, options)){
+        return;
+    }
     var title = '';
     var myDate = new Date();
     var m = myDate.getMonth() + 1;
@@ -44,7 +46,8 @@ Page({
     var b = myDate.getDate() + t;
     var date = myDate.getFullYear() + "-" + m + "-" + b;
     that.setData({
-      date: date
+      date: date,
+      options:options
     });
     if (options.type == 1) {
       title = "预约维修";
@@ -77,6 +80,7 @@ Page({
             wx.navigateTo({
               url: "/pages/afterSale/mycar/index"
             })
+            return;
           }
           var a = [];
           for (var i = 0; i < result.length; i++) {
@@ -389,7 +393,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.onLoad(this.data.options)
   },
 
   /**

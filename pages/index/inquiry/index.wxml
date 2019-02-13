@@ -1,6 +1,10 @@
 <view hidden="{{ajaxStatus}}">
   <ajaxlod></ajaxlod>
 </view>
+<loading hidden="{{loginhidde}}">
+  加载中...
+</loading>
+<view hidden="{{!loginhidde}}">
 <view class='bg'>
   <image src='{{imgUrl}}'></image>
   <view class='shadow'></view>
@@ -16,6 +20,18 @@
       <text>车型</text>
        <input class='flex1 from-assembly-input' value='{{name}}' disabled="true" ></input>
     </view>
+     <view class='from-assembly flex-default flex-center'>
+      <text>车型规格</text>
+       <picker class='flex1' bindchange='bingCar' value="{{carListIndex}}" range="{{carList}}">
+        <view class="from-assembly-value">{{carList[carListIndex]}}</view>
+      </picker>
+    </view>
+    <view class='from-assembly flex-default flex-center'>
+        <text>城市</text>
+        <picker class='flex1' bindchange='bingCity' value="{{cityIndex}}" range="{{city}}">
+          <view class="from-assembly-value">{{city[cityIndex]}}</view>
+        </picker>
+    </view>
     <view class='from-assembly flex-default flex-center'>
       <text>经销商</text>
       <picker class='flex1' bindchange='bingDis' value="{{carDisIndex}}" range="{{carDis}}">
@@ -23,7 +39,7 @@
       </picker>
       <text class='triangle'  bindchange='bingDis'></text>
     </view>
-    <view class='from-assembly flex-default'>
+    <!-- <view class='from-assembly flex-default'>
       <text>姓名</text>
       <input class='flex1 from-assembly-input' name="contactName" placeholder='请输入您的姓名'></input>
     </view>
@@ -35,11 +51,12 @@
       <text>验证码</text>
       <input class='flex1 from-assembly-input' placeholder='请输入验证码'  name='code'></input>
       <button class="from-assembly-phone-btn" bindtap='getPhoneCode'>{{getcodetext}}</button>
-    </view>
+    </view> -->
     <view class='from-assembly flex-default'>
       <text>备注</text>
       <input class='flex1 from-assembly-input' placeholder='' name='description'></input>
     </view>
      <button class="subBtn" formType="submit">立即询价</button>
   </form>
+</view>
 </view>

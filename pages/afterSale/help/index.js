@@ -41,10 +41,12 @@ Page({
           app.getAddrDealer(vcity);
           var deaTime = setInterval(function () {
             if (app.globalData.carAddrDisAddr) {
+              clearTimeout(deaTime);
               that.setData({
                 carDisAddr: app.globalData.carAddrDisAddr,
                 ajaxstatus:true
-              })
+              });
+              app.globalData.carAddrDisAddr = '';
             }
           }, 1000);
         }
@@ -83,6 +85,7 @@ Page({
           carDisAddr: app.globalData.carAddrDisAddr,
           ajaxstatus:true
         })
+        app.globalData.carAddrDisAddr = '';
       }
     }, 1000);
   },

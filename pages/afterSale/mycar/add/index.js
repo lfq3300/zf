@@ -32,7 +32,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    app.jumpPageUserInfo(that.route, options);
+    if (!app.jumpPageUserInfo(that.route, options)) {
+      return;
+    }
     var myDate = new Date();
     var m = myDate.getMonth() + 1;
     var t = 0;
@@ -373,7 +375,7 @@ Page({
         })
         if (res.data.success) {
           wx.redirectTo({
-            url: '/pages/success/index'
+            url: '/pages/afterSale/mycar/index'
           })
         } else {
           wx.showToast({

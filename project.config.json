@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 38,
+			"current": 43,
 			"list": [
 				{
 					"id": 0,
@@ -296,6 +296,13 @@
 					"name": "预约维修",
 					"pathName": "pages/afterSale/repair/wx/index",
 					"query": "type=1"
+				},
+				{
+					"id": 43,
+					"name": "快速查价格",
+					"pathName": "pages/index/inquiry/index",
+					"query": "id=48&url=https://zungfu2.azurewebsites.net/uploads/0c98ecd9-90ec-44db-b6b2-41a996148b3c.jpg&carname=轿车&carnameid=1&name=梅赛德斯-奔驰S级轿车",
+					"scene": null
 				}
 			]
 		}

@@ -20,7 +20,8 @@ App({
   /*判断用户是否登陆*/
   ifUserLogin: function(e) {
     var that = this;
-    if (wx.getStorageSync('sessionId').length == 0) {
+    if (!wx.getStorageSync('userId')) {
+      console.log('未登陆')
       wx.login({
         success: function(res) {
           var code = res.code;
@@ -43,6 +44,8 @@ App({
           })
         }
       })
+    }else{
+      console.log('登陆')
     }
 
 
@@ -372,7 +375,11 @@ App({
     if (!wx.getStorageSync("hasPersonal")) {
       wx.navigateTo({
         url: "/pages/userCenter/msg/index?pageurl=" + url + str
-      })
+      });
+      return false;
+    }else{
+      return true;
     }
   }
+  
 });

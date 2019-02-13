@@ -11,7 +11,7 @@
 </view>
 <view class='padding-border'>
   <form bindsubmit="formSubmit">
-    <view class='from-assembly flex-default'>
+    <!-- <view class='from-assembly flex-default'>
       <text>姓名</text>
       <input class='flex1 from-assembly-input' name="contactName"  placeholder='请输入您的姓名'></input>
     </view>
@@ -34,10 +34,29 @@
       <text>验证码</text>
       <input class='flex1 from-assembly-input' placeholder='请输入验证码' name='code'></input>
       <button class="from-assembly-phone-btn" bindtap='getPhoneCode'>{{getcodetext}}</button>
-    </view>
+    </view> -->
     <view class='from-assembly flex-default flex-center'>
       <text>车型</text>
        <input class='flex1 from-assembly-input' value='{{name}}' disabled='true'></input>
+    </view>
+    <view class='from-assembly flex-default flex-center'>
+      <text>车型规格</text>
+       <picker class='flex1' bindchange='bingCar' value="{{carListIndex}}" range="{{carList}}">
+        <view class="from-assembly-value">{{carList[carListIndex]}}</view>
+      </picker>
+    </view>
+    <view class='from-assembly flex-default flex-center'>
+        <text>城市</text>
+        <picker class='flex1' bindchange='bingCity' value="{{cityIndex}}" range="{{city}}">
+          <view class="from-assembly-value">{{city[cityIndex]}}</view>
+        </picker>
+    </view>
+    <view class='from-assembly flex-default flex-center'>
+      <text>经销商</text>
+      <picker class='flex1' bindchange='bingDis' value="{{carDisIndex}}" range="{{carDis}}">
+        <view class="from-assembly-value">{{carDis[carDisIndex]}}</view>
+      </picker>
+      <text class='triangle'  bindchange='bingDis'></text>
     </view>
     <view class='from-assembly flex-default flex-center'>
       <text>预约日期</text>
@@ -54,13 +73,13 @@
       </picker>
       <text class='triangle' bindchange='bingTime'></text>
     </view>
-    <view class='from-assembly flex-default flex-center'>
+    <!-- <view class='from-assembly flex-default flex-center'>
       <text>经销商</text>
       <picker class='flex1' bindchange='bingDis' value="{{carDisIndex}}" range="{{carDis}}">
         <view class="from-assembly-value">{{carDis[carDisIndex]}}</view>
       </picker>
       <text class='triangle'  bindchange='bingDis'></text>
-    </view>
+    </view> -->
     <!-- <view class='agree flex-default'>
       <checkbox></checkbox>
     <navigator>我已阅读并接受个人信息保护法律声明。</navigator>

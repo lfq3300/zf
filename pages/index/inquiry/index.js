@@ -18,6 +18,9 @@ Page({
     getcodetext:"获取验证码",
     getcodeStatus:true,
     ajaxStatus:true,
+    loginhidde:false,
+    cityIndex:0,
+    carListIndex:0
   },
 
   getPhoneCode:function(){
@@ -63,7 +66,7 @@ Page({
     var carDisIndex = e.detail.value;
     that.setData({
       carDisIndex: carDisIndex,
-      carDisId: app.globalData.carDisAddr[carDisIndex].id * 1,
+      carDisId: app.globalData.carAddrDisAddr[carDisIndex].id * 1,
     })
   },
   
@@ -77,30 +80,30 @@ Page({
       return;
     }
     var msg = e.detail.value;
-    if (msg.contactName == "") {
-      wx.showToast({
-        title: '姓名不能为空',
-        icon: 'none',
-        duration: 1500
-      })
-      return false;
-    }
-    if (!app.isPoneAvailable(msg.phone)) {
-      wx.showToast({
-        title: '电话号码输入有误',
-        icon: 'none',
-        duration: 1500
-      })
-      return false;
-    }
-    if (!app.isPoneCodeAvailable(msg.code)) {
-      wx.showToast({
-        title: '验证码格式错误',
-        icon: 'none',
-        duration: 1500
-      })
-      return false;
-    }
+    // if (msg.contactName == "") {
+    //   wx.showToast({
+    //     title: '姓名不能为空',
+    //     icon: 'none',
+    //     duration: 1500
+    //   })
+    //   return false;
+    // }
+    // if (!app.isPoneAvailable(msg.phone)) {
+    //   wx.showToast({
+    //     title: '电话号码输入有误',
+    //     icon: 'none',
+    //     duration: 1500
+    //   })
+    //   return false;
+    // }
+    // if (!app.isPoneCodeAvailable(msg.code)) {
+    //   wx.showToast({
+    //     title: '验证码格式错误',
+    //     icon: 'none',
+    //     duration: 1500
+    //   })
+    //   return false;
+    // }
     var data = {
       accountId: wx.getStorageSync("userId"),
       contactName: msg.contactName,
@@ -156,7 +159,9 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    app.jumpPageUserInfo(that.route, options);
+    if (!app.jumpPageUserInfo(that.route, options)) {
+      return;
+    }
     that.setData({
       imgUrl: options.url,
       carname: options.carname,
@@ -168,20 +173,94 @@ Page({
   },
   onInfo:function(id){
     var that = this;
-    app.getDealer(id);
+    app.getCity();
+    var cityOut = setInterval(function () {
+      if (app.globalData.city) {
+        clearTimeout(cityOut);
+        if (app.globalData.city.length > 0) {
+          that.setData({
+            city: app.globalData.city,
+          });
+          var pagecity = app.globalData.city;
+          var vcity = "";
+          for (var i = 0; i < pagecity.length; i++) {
+            if (pagecity[i] == app.globalData.loadcity) {
+              vcity = pagecity[i];
+              break;
+            } else {
+              vcity = pagecity[0];
+            }
+          }
+          app.getAddrDealer(vcity);
+          var deaTime = setInterval(function () {
+            if (app.globalData.carAddrDisAddr) {
+              clearTimeout(deaTime);
+              that.setData({
+                carDis: app.globalData.carAddrDis,
+                carDisIndex:0,
+                carDisId: app.globalData.carAddrDisAddr[0].id * 1,
+                loginhidde: true
+              })
+              app.globalData.carAddrDisAddr = '';
+            }
+            wx.hideNavigationBarLoading();
+            wx.stopPullDownRefresh();
+          }, 1000);
+        }
+      }
+    }, 1000);
+    wx.request({
+      url: app.data.hostUrl + 'api/services/app/vehicleModel/GetActiveList?vehicleId=' + that.data.carid,
+      method: 'post',
+      success: function (res) {
+        if (res.data.success) {
+          var result = res.data.result;
+          var a = [];
+          var b = [];
+          for (var i = 0; i < result.length; i++) {
+            a[i] = result[i].name;
+            b[i] = result[i];
+          }
+          var carListId = b[0].id * 1;
+          that.setData({
+            carList: a,
+            carListArr: b,
+            carListId: carListId,
+          });
+        }
+      },
+    })
+  },
+  bingCar:function(e){
+    var that = this;
+    var carListIndex = e.detail.value;
+    that.setData({
+      carListIndex: carListIndex,
+      carListId: that.data.carListArr[carListIndex].id * 1,
+    });
+  },
+  bingCity: function (e) {
+    var that = this;
+    var cityIndex = e.detail.value;
+    that.setData({
+      cityIndex: cityIndex,
+      ajaxstatus: false
+    });
+    app.getAddrDealer(that.data.city[cityIndex]);
     var deaTime = setInterval(function () {
-      if (app.globalData.carDis) {
+      if (app.globalData.carAddrDisAddr) {
         clearTimeout(deaTime);
         that.setData({
-          carDis: app.globalData.carDis,
-          carDisId: app.globalData.carDisAddr[that.data.carDisIndex].id * 1,
+          carDis: app.globalData.carAddrDis,
+          carDisIndex:0,
+          carDisId: app.globalData.carAddrDisAddr[0].id * 1,
+          ajaxstatus: true
         })
-        wx.hideNavigationBarLoading();
-        wx.stopPullDownRefresh();
+        app.globalData.carAddrDisAddr = '';
       }
     }, 1000);
   },
-  
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
