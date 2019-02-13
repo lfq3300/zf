@@ -139,6 +139,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    app.jumpPageUserInfo(that.route, options);
     that.setData({
       activityId: options.id,
       start: options.start

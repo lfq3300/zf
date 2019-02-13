@@ -23,6 +23,9 @@ Page({
     getcodeStatus: true,
     ajaxStatus: true,
     pageType:1,
+    carListArrIndex:0,
+    lovecarId:0,
+    loginhidde: true
   },
 
   /**
@@ -30,7 +33,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    app.jumpPageUserInfo(that.route);
+    app.jumpPageUserInfo(that.route,options);
     var title = '';
     var myDate = new Date();
     var m = myDate.getMonth() + 1;
@@ -62,35 +65,71 @@ Page({
       title: title,
       pageType: options.type ? options.type:1
     });
-    var that = this;
-    app.getCarStyleList();
-    var carStyleOut = setInterval(function () {
-      if (app.globalData.carStyle) {
-        clearTimeout(carStyleOut);
-        that.setData({
-          carStyle: app.globalData.carStyle,
-          carStyleId: app.globalData.carStyleArr[that.data.carStyleIndex].id * 1,
-        });
-        app.getCarVehicleList(that.data.carStyleId);
-        var carVehicleOut = setInterval(function () {
-          if (app.globalData.carVehicle) {
-            clearTimeout(carVehicleOut);
-            if (app.globalData.carVehicle.length > 0) {
-              that.setData({
-                carVehicle: app.globalData.carVehicle,
-                carVehicleId: app.globalData.carVehicleArr[that.data.carVehicleIndex].id * 1,
-              });
-              app.globalData.carVehicle = "";
-            } else {
-              that.setData({
-                carVehicle: [],
-                carVehicleId: -1,
-              });
-            }
+
+    //获取我的爱车
+    wx.request({
+      url: app.data.hostUrl + 'api/services/app/myVehicle/GetActiveList?accountId=' + wx.getStorageSync("userId"),
+      method: 'get',
+      success: function (res) {
+        if (res.data.success) {
+          var result = res.data.result;
+          var a = [];
+          for (var i = 0; i < result.length; i++) {
+            a[i] = result[i].name;
           }
-        }, 1000);
-      }
-    }, 1000);
+          that.setData({
+            carList: res.data.result,
+            carListArr: a,
+            lovecarId: res.data.result[0].id,
+            dealerId: res.data.result[0].dealerId,
+            vehicleId: res.data.result[0].vehicleId,
+          });
+          wx.request({
+            url: app.data.hostUrl + 'api/services/app/myVehicle/GetMyVehicleForEdit',
+            data:{
+              id: that.data.carList[that.data.carListArrIndex].id
+            },
+            method:'post',
+            success:function(res){
+              if (res.data.success){
+                that.setData({
+                  carname: res.data.result.myVehicle.name,
+                  loginhidde: false
+                })
+              }
+            }
+          })
+        }
+      },
+    })
+    // app.getCarStyleList();
+    // var carStyleOut = setInterval(function () {
+    //   if (app.globalData.carStyle) {
+    //     clearTimeout(carStyleOut);
+    //     that.setData({
+    //       carStyle: app.globalData.carStyle,
+    //       carStyleId: app.globalData.carStyleArr[that.data.carStyleIndex].id * 1,
+    //     });
+    //     app.getCarVehicleList(that.data.carStyleId);
+    //     var carVehicleOut = setInterval(function () {
+    //       if (app.globalData.carVehicle) {
+    //         clearTimeout(carVehicleOut);
+    //         if (app.globalData.carVehicle.length > 0) {
+    //           that.setData({
+    //             carVehicle: app.globalData.carVehicle,
+    //             carVehicleId: app.globalData.carVehicleArr[that.data.carVehicleIndex].id * 1,
+    //           });
+    //           app.globalData.carVehicle = "";
+    //         } else {
+    //           that.setData({
+    //             carVehicle: [],
+    //             carVehicleId: -1,
+    //           });
+    //         }
+    //       }
+    //     }, 1000);
+    //   }
+    // }, 1000);
     
     app.getDealer('');
     var deaTime = setInterval(function () {
@@ -102,6 +141,7 @@ Page({
         })
       }
     }, 1000);
+
     app.getAppointment();
     var timeAppointment = setInterval(function () {
       if (app.globalData.timeAppointment) {
@@ -112,6 +152,42 @@ Page({
         })
       }
     }, 1000);
+  },
+
+  bingLoveCar: function (e) {
+    var that = this;
+    var carListArrIndex = e.detail.value;
+    that.setData({
+      carListArrIndex: carListArrIndex,
+      ajaxstatus: true
+    })
+    wx.request({
+      url: app.data.hostUrl + 'api/services/app/myVehicle/GetMyVehicleForEdit',
+      data: {
+        id: that.data.carList[carListArrIndex].id
+      },
+      method: 'post',
+      success: function (res) {
+        if (res.data.success) {
+          that.setData({
+            carname: res.data.result.myVehicle.name,
+            ajaxstatus: false,
+            lovecarId: that.data.carList[carListArrIndex].id,
+            dealerId: that.data.carList[carListArrIndex].dealerId,
+            vehicleId: that.data.carList[carListArrIndex].vehicleId,
+          })
+        }
+      }
+    })
+  },
+  bingDis: function (e) {
+    var that = this;
+    var carDisIndex = e.detail.value;
+    that.setData({
+      carDisIndex: carDisIndex,
+      carDisId: app.globalData.carDisAddr[carDisIndex].id * 1,
+    });
+    console.log(that.data)
   },
   bingWx: function (e) {
     var that = this;
@@ -133,42 +209,42 @@ Page({
     })
   },
 
-  bingCarStyle: function (e) {
-    var that = this;
-    var carStyleIndex = e.detail.value;
-    that.setData({
-      carStyleIndex: carStyleIndex,
-      carStyleId: app.globalData.carStyleArr[carStyleIndex].id * 1,
-    });
+  // bingCarStyle: function (e) {
+  //   var that = this;
+  //   var carStyleIndex = e.detail.value;
+  //   that.setData({
+  //     carStyleIndex: carStyleIndex,
+  //     carStyleId: app.globalData.carStyleArr[carStyleIndex].id * 1,
+  //   });
 
-    app.getCarVehicleList(that.data.carStyleId);
-    var carVehicleOut = setInterval(function () {
-      if (app.globalData.carVehicle) {
-        clearTimeout(carVehicleOut);
-        if (app.globalData.carVehicle.length > 0) {
-          that.setData({
-            carVehicle: app.globalData.carVehicle,
-            carVehicleId: app.globalData.carVehicleArr[that.data.carVehicleIndex].id * 1,
-          });
-          app.globalData.carVehicle = "";
-        } else {
-          that.setData({
-            carVehicle: [],
-            carVehicleId: -1,
-          });
-        }
-      }
-    }, 1000);
-  },
+  //   app.getCarVehicleList(that.data.carStyleId);
+  //   var carVehicleOut = setInterval(function () {
+  //     if (app.globalData.carVehicle) {
+  //       clearTimeout(carVehicleOut);
+  //       if (app.globalData.carVehicle.length > 0) {
+  //         that.setData({
+  //           carVehicle: app.globalData.carVehicle,
+  //           carVehicleId: app.globalData.carVehicleArr[that.data.carVehicleIndex].id * 1,
+  //         });
+  //         app.globalData.carVehicle = "";
+  //       } else {
+  //         that.setData({
+  //           carVehicle: [],
+  //           carVehicleId: -1,
+  //         });
+  //       }
+  //     }
+  //   }, 1000);
+  // },
 
-  bingCarVehicle: function (e) {
-    var that = this;
-    var carVehicleIndex = e.detail.value;
-    that.setData({
-      carVehicleIndex: carVehicleIndex,
-      carVehicleId: app.globalData.carVehicleArr[carVehicleIndex].id * 1,
-    });
-  },
+  // bingCarVehicle: function (e) {
+  //   var that = this;
+  //   var carVehicleIndex = e.detail.value;
+  //   that.setData({
+  //     carVehicleIndex: carVehicleIndex,
+  //     carVehicleId: app.globalData.carVehicleArr[carVehicleIndex].id * 1,
+  //   });
+  // },
   getPhoneCode: function () {
     var that = this;
     if (!that.data.getcodeStatus) {
@@ -237,11 +313,13 @@ Page({
     var data = {
       name:msg.name,
       tel:msg.phone,
-      vehicleId: that.data.carVehicleId,
-      dealerId:that.data.carDisId,
+      
+      vehicleId: that.data.vehicleId,
+      dealerId: that.data.dealerId,
       appointmentDate:that.data.date,
       appointmentTimeId: that.data.carTimeId,
       genderId:msg.sex,
+      myVehicleId: that.data.lovecarId,
       description: msg.description,
       accountId: wx.getStorageSync("userId"),
       sessionId: wx.getStorageSync('sessionId'),

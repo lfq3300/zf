@@ -285,7 +285,7 @@ App({
           var a = [];
           var b = [];
           for (var i = 0; i < result.length; i++) {
-            a[i] = result[i].name;
+            a[i] = result[i].prefixName + '    ' + result[i].name;
             b[i] = result[i];
           }
           that.globalData.carVehicle = a;
@@ -360,10 +360,18 @@ App({
   },
   
   //判断跳转页面
-  jumpPageUserInfo:function(url){
+  jumpPageUserInfo: function (url,options){
+    var str = "";
+    for (var key in options) {
+      console.log(options[key]);
+      str += key + "=" + options[key]+"&"
+    }
+    if(str){
+      str = "&" + str;
+    }
     if (!wx.getStorageSync("hasPersonal")) {
       wx.navigateTo({
-        url: "/pages/userCenter/msg/index?pageurl=" + url
+        url: "/pages/userCenter/msg/index?pageurl=" + url + str
       })
     }
   }

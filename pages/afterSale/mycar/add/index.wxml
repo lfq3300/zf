@@ -1,3 +1,6 @@
+<loading hidden="{{!loadStatus}}">
+  加载中...
+</loading>
 <view hidden="{{ajaxStatus}}">
   <ajaxlod></ajaxlod>
 </view>
@@ -32,6 +35,15 @@
       </picker>
       <text class='triangle' bindchange='bingCarVehicle'></text>
     </view>
+
+    <view class='from-assembly flex-default flex-center'>
+      <text>车辆</text>
+      <picker class='flex1' bindchange='bingCarList' value="{{carListIndex}}" range="{{carList}}">
+        <view class="from-assembly-value">{{carList[carListIndex]}}</view>
+      </picker>
+      <text class='triangle' bindchange='bingCarVehicle'></text>
+    </view>
+
     <!-- <view class='from-assembly flex-default flex-center'>
       <text>车辆</text>
       <picker class='flex1' bindchange='bingCar' value="{{carListIndex}}" range="{{carList}}">

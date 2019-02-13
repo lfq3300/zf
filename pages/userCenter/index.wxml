@@ -39,7 +39,7 @@
         </view>
       </view>
     </navigator>
-     <navigator class="item flex-default" url='/pages/userCenter/msg/index'>
+     <navigator class="item flex-default" url='/pages/userCenter/msg/index' hidden='{{msghidden}}'>
       <view class="icon-box">
         <image class="icon" src="/images/icons/personal_icon_view@3x.png" mode="widthFix"></image>
       </view>

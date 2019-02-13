@@ -156,6 +156,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    app.jumpPageUserInfo(that.route, options);
     that.setData({
       imgUrl: options.url,
       carname: options.carname,

@@ -23,6 +23,7 @@ Page({
     getcodetext: "获取验证码",
     getcodeStatus: true,
     ajaxStatus: true,
+    loadStatus:true,
     carDisIndex: 0
   },
 
@@ -31,6 +32,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    app.jumpPageUserInfo(that.route, options);
     var myDate = new Date();
     var m = myDate.getMonth() + 1;
     var t = 0;
@@ -75,6 +77,10 @@ Page({
                       carListId: -1,
                     });
                   }
+                  app.globalData.carList = "";
+                  that.setData({
+                    loadStatus:false
+                  })
                 }
               }, 1000);
 
@@ -128,6 +134,7 @@ Page({
       carStyleIndex: carStyleIndex,
       carVehicleIndex:0,
       carStyleId: app.globalData.carStyleArr[carStyleIndex].id * 1,
+      loadStatus:true
     });
     app.getCarVehicleList(that.data.carStyleId);
     var carVehicleOut = setInterval(function () {
@@ -139,23 +146,28 @@ Page({
             carVehicleId: app.globalData.carVehicleArr[that.data.carVehicleIndex].id * 1,
           });
           app.globalData.carVehicle = "";
-          // app.getCarList(that.data.carVehicleId);
-          // var carListOut = setInterval(function () {
-          //   if (app.globalData.carList) {
-          //     clearTimeout(carListOut);
-          //     if (app.globalData.carList.length > 0) {
-          //       that.setData({
-          //         carList: app.globalData.carList,
-          //         carListId: app.globalData.carListArr[that.data.carListIndex].id * 1,
-          //       });
-          //     } else {
-          //       that.setData({
-          //         carList: [],
-          //         carListId: -1,
-          //       });
-          //     }
-          //   }
-          // }, 1000);
+          app.getCarList(that.data.carVehicleId);
+          var carListOut = setInterval(function () {
+            if (app.globalData.carList) {
+              clearTimeout(carListOut);
+              if (app.globalData.carList.length > 0) {
+                that.setData({
+                  carList: app.globalData.carList,
+                  carListId: app.globalData.carListArr[that.data.carListIndex].id * 1,
+                });
+                
+              } else {
+                that.setData({
+                  carList: [],
+                  carListId: -1,
+                });
+              }
+              app.globalData.carList = "";
+              that.setData({
+                loadStatus: false
+              })
+            }
+          }, 1000);
 
         } else {
           that.setData({
@@ -173,26 +185,38 @@ Page({
     that.setData({
       carVehicleIndex: carVehicleIndex,
       carVehicleId: app.globalData.carVehicleArr[carVehicleIndex].id * 1,
+      loadStatus: true
     });
-    // app.getCarList(that.data.carVehicleId);
-    // var carListOut = setInterval(function () {
-    //   if (app.globalData.carList) {
-    //     clearTimeout(carListOut);
-    //     if (app.globalData.carList.length > 0) {
-    //       that.setData({
-    //         carList: app.globalData.carList,
-    //         carListId: app.globalData.carListArr[that.data.carListIndex].id * 1,
-    //       });
-    //     } else {
-    //       that.setData({
-    //         carList: [],
-    //         carListId: -1,
-    //       });
-    //     }
-    //   }
-    // }, 1000);
+    app.getCarList(that.data.carVehicleId);
+    var carListOut = setInterval(function () {
+      if (app.globalData.carList) {
+        clearTimeout(carListOut);
+        if (app.globalData.carList.length > 0) {
+          that.setData({
+            carList: app.globalData.carList,
+            carListId: app.globalData.carListArr[that.data.carListIndex].id * 1,
+          });
+        } else {
+          that.setData({
+            carList: [],
+            carListId: -1,
+          });
+        }
+        app.globalData.carList = '';
+        that.setData({
+          loadStatus: false
+        })
+      }
+    }, 1000);
   },
-
+  bingCarList: function (e) {
+    var that = this;
+    var carListIndex = e.detail.value;
+    that.setData({
+      carListIndex: carListIndex,
+      carListId: app.globalData.carListArr[carListIndex].id * 1,
+    });
+  },
   bingCity: function (e) {
     var that = this;
     var cityIndex = e.detail.value;
@@ -318,16 +342,16 @@ Page({
     }
     var data = {
       id: "",
-      name: that.data.carStyle[that.data.carStyleIndex] + '   ' + that.data.carVehicle[that.data.carVehicleIndex],
+      name: that.data.carList[that.data.carVehicleIndex],
       contactName: msg.contactName,
       categoryId: that.data.carStyleId,
-      vehicleId: that.data.carVehicleId,
-      carListId: that.data.carListId,
+      vehicleId: that.data.carListId,
+     // carListId: that.data.carListId,
       engineCode: msg.engineCode,
       vin: msg.vin,
       licensePlate: msg.licensePlate,
-      cityId: that.data.cityId,
-      //dealerId: that.data.carDisIndex,
+     // cityId: that.data.cityId,
+      dealerId: that.data.carDisIndex,
       firstLicenseDate: that.data.date,
       purchaseDate: that.data.loginDate,
       code: msg.code,

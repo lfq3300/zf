@@ -150,6 +150,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    app.jumpPageUserInfo(that.route, options);
     var myDate = new Date();
     var m = myDate.getMonth() + 1;
     //如果超过了18点 就只能预约第二天的

@@ -9,7 +9,7 @@ Page({
     carList:[],
     carDlete:[],
     loginhidde: true,
-
+    loadStatus: false,
   },
 
   /**
@@ -33,12 +33,26 @@ Page({
 
   deleteMyCar:function(e){
     var that = this;
+    that.setData({
+      loadStatus: true
+    })
     wx.request({
       url: app.data.hostUrl + 'api/services/app/myVehicle/DeleteMyVehicleAsync',
       data: that.data.carDlete,
       method: 'post',
       success: function (res) {
-        console.log(res)
+        wx.request({
+          url: app.data.hostUrl + 'api/services/app/myVehicle/GetActiveList?accountId=' + wx.getStorageSync("userId"),
+          method: 'get',
+          success: function (res) {
+            if (res.data.success) {
+              that.setData({
+                carList: res.data.result,
+                loadStatus: false
+              })
+            }
+          },
+        })
       },
     })
     

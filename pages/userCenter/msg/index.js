@@ -16,7 +16,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      console.log(options.pageurl);
+   
+    if (options.pageurl){
+      var pageurl = options.pageurl;
+      delete options['pageurl'];
+      this.setData({
+        pageurl: pageurl,
+        options: options
+      });
+
+    }
+    
+
   },
   getPhoneCode: function () {
     var that = this;
@@ -86,6 +97,52 @@ Page({
       })
       return false;
     }
+    that.setData({
+      ajaxStatus: false
+    })
+    var data = {
+      "accontId": wx.getStorageSync("userId"),
+      "phone": msg.phone,
+      "realName": msg.contactName,
+      "code": msg.code
+    }
+    wx.request({
+       url: app.data.hostUrl +'api/services/app/account/UpdateAccount',
+       data:data,
+       method: "post",
+       success:function(res){
+         that.setData({
+           ajaxStatus: true,
+         })
+         if (res.data.success) {
+           wx.setStorageSync('hasPersonal', true);
+           if (that.data.pageurl){
+             var options = that.data.options;
+             var str = "";
+             for (var key in options) {
+               console.log(options[key]);
+               str += key + "=" + options[key] + "&"
+             }
+             if (str) {
+               str = "&" + str;
+             }
+             wx.redirectTo({
+               url: "/"+that.data.pageurl
+             })
+           }else{
+             wx.switchTab({
+               url:"/pages/userCenter/index"
+             })
+           }
+         } else {
+           wx.showToast({
+             title: res.data.error.message,
+             icon: 'none',
+             duration: 2000
+           })
+         }
+       }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

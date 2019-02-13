@@ -1,3 +1,6 @@
+<loading hidden="{{ajaxStatus}}">
+  请求中...
+</loading>
 <view class='padding-border'>
   <form bindsubmit="formSubmit">
     <view class='from-assembly flex-default'>

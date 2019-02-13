@@ -1,25 +1,43 @@
-<view class='page-title'>
-  {{title}}
-</view>
-<view class='padding-border'>
-  <form bindsubmit="formSubmit">
-    <text class='formSubmit-title'>基本信息</text>
-    <view class='from-assembly flex-default'>
-      <text>姓名</text>
-      <input class='flex1 from-assembly-input' name="name" placeholder='请输入您的姓名'></input>
-    </view>
-     <view class='from-assembly flex-default'>
-      <text>称谓</text>
-      <radio-group class="gender"  name="sex">
-        <label>
-          <radio value='1' checked/> 先生
-        </label>
-        <label>
-          <radio value='2' />女士
-        </label>
-      </radio-group>
-    </view>
-     <view class='from-assembly flex-default flex-center'>
+<loading hidden="{{!loginhidde}}">
+  页面加载中...
+</loading>
+<loading hidden="{{!ajaxstatus}}">
+  加载中...
+</loading>
+<view hidden="{{loginhidde}}">
+  <view class='page-title'>
+    {{title}}
+  </view>
+  <view class='padding-border'>
+    <form bindsubmit="formSubmit">
+      <text class='formSubmit-title'>基本信息</text>
+      <view class='from-assembly flex-default'>
+        <text>姓名</text>
+        <input class='flex1 from-assembly-input' name="name" placeholder='请输入您的姓名'></input>
+      </view>
+      <view class='from-assembly flex-default'>
+        <text>称谓</text>
+        <radio-group class="gender" name="sex">
+          <label>
+            <radio value='1' checked/> 先生
+          </label>
+          <label>
+            <radio value='2' />女士
+          </label>
+        </radio-group>
+      </view>
+      <view class='from-assembly flex-default flex-center'>
+        <text>爱车名称</text>
+        <picker class='flex1' bindchange='bingLoveCar' value="{{carListArrIndex}}" range="{{carListArr}}">
+          <view class="from-assembly-value">{{carListArr[carListArrIndex]}}</view>
+        </picker>
+        <text class='triangle'></text>
+      </view>
+      <view class='from-assembly flex-default'>
+        <text>车款/车型</text>
+        <view class='flex1 from-assembly-input'>{{carname}}</view>
+      </view>
+      <!-- <view class='from-assembly flex-default flex-center'>
       <text>车款</text>
       <picker class='flex1' bindchange='bingCarStyle' value="{{carStyleIndex}}" range="{{carStyle}}">
         <view class="from-assembly-value">{{carStyle[carStyleIndex]}}</view>
@@ -32,50 +50,51 @@
         <view class="from-assembly-value">{{carVehicle[carVehicleIndex]}}</view>
       </picker>
       <text class='triangle' bindchange='bingCarVehicle'></text>
-    </view>
-     <view class='from-assembly flex-default flex-center'>
-      <text>经销商</text>
-      <picker class='flex1' bindchange='bingDis' value="{{carDisIndex}}" range="{{carDis}}">
-        <view class="from-assembly-value">{{carDis[carDisIndex]}}</view>
-      </picker>
-      <text class='triangle' bindchange='bingDis'></text>
-    </view>
-     <view class='from-assembly flex-default'>
-      <text>手机号码</text>
-      <input class='flex1 from-assembly-input' name='phone'  bindinput ="phoneInput"  placeholder='请输入手机号码'></input>
-    </view>
-    <view class='from-assembly flex-default from-assembly-no-right'>
-      <text>验证码</text>
-      <input class='flex1 from-assembly-input' placeholder='请输入验证码'  name='code'></input>
-      <button class="from-assembly-phone-btn" bindtap='getPhoneCode'>{{getcodetext}}</button>
-    </view>
-    
-    <text class='formSubmit-title'>主要信息</text>
-    <view class='from-assembly flex-default flex-center' hidden='{{pageType == 2}}'>
-      <text>维修类型</text>
-      <picker class='flex1' bindchange='bingWx' value="{{carWxIndex}}" range="{{carWx}}">
-        <view class="from-assembly-value">{{carWx[carWxIndex]}}</view>
-      </picker>
-      <text class='triangle' bindchange='bingWx'></text>
-    </view>
-    <view class='from-assembly flex-default flex-center'>
-      <text>预约日期</text>
-      <picker class='flex1' mode="date" value="{{date}}" bindchange="bindDate">
-        <view class="from-assembly-value">
-          {{date}}
-        </view>
-      </picker>
-    </view>
-    <view class='from-assembly flex-default flex-center'>
-      <text>预约时间</text>
-      <picker class='flex1' bindchange='bingTime' value="{{carTimeIndex}}" range="{{carTime}}">
-        <view class="from-assembly-value">{{carTime[carTimeIndex]}}</view>
-      </picker>
-    </view>
-    <view class='from-assembly flex-default from-assembly-no-right from-assembly-textarea'>
-      <text>具体描述</text>
-      <textarea class='flex1' name="description"></textarea>
-    </view>
-    <button class='subBtn' formType="submit">提交申请</button>
-  </form>
+    </view> -->
+      <view class='from-assembly flex-default flex-center'>
+        <text>经销商</text>
+        <picker class='flex1' bindchange='bingDis' value="{{carDisIndex}}" range="{{carDis}}">
+          <view class="from-assembly-value">{{carDis[carDisIndex]}}</view>
+        </picker>
+        <text class='triangle' bindchange='bingDis'></text>
+      </view>
+      <view class='from-assembly flex-default'>
+        <text>手机号码</text>
+        <input class='flex1 from-assembly-input' name='phone' bindinput="phoneInput" placeholder='请输入手机号码'></input>
+      </view>
+      <view class='from-assembly flex-default from-assembly-no-right'>
+        <text>验证码</text>
+        <input class='flex1 from-assembly-input' placeholder='请输入验证码' name='code'></input>
+        <button class="from-assembly-phone-btn" bindtap='getPhoneCode'>{{getcodetext}}</button>
+      </view>
+
+      <text class='formSubmit-title'>主要信息</text>
+      <view class='from-assembly flex-default flex-center' hidden='{{pageType == 2}}'>
+        <text>维修类型</text>
+        <picker class='flex1' bindchange='bingWx' value="{{carWxIndex}}" range="{{carWx}}">
+          <view class="from-assembly-value">{{carWx[carWxIndex]}}</view>
+        </picker>
+        <text class='triangle' bindchange='bingWx'></text>
+      </view>
+      <view class='from-assembly flex-default flex-center'>
+        <text>预约日期</text>
+        <picker class='flex1' mode="date" value="{{date}}" bindchange="bindDate">
+          <view class="from-assembly-value">
+            {{date}}
+          </view>
+        </picker>
+      </view>
+      <view class='from-assembly flex-default flex-center'>
+        <text>预约时间</text>
+        <picker class='flex1' bindchange='bingTime' value="{{carTimeIndex}}" range="{{carTime}}">
+          <view class="from-assembly-value">{{carTime[carTimeIndex]}}</view>
+        </picker>
+      </view>
+      <view class='from-assembly flex-default from-assembly-no-right from-assembly-textarea'>
+        <text>具体描述</text>
+        <textarea class='flex1' name="description"></textarea>
+      </view>
+      <button class='subBtn' formType="submit">提交申请</button>
+    </form>
+  </view>
 </view>
