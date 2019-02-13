@@ -285,7 +285,7 @@ App({
           var a = [];
           var b = [];
           for (var i = 0; i < result.length; i++) {
-            a[i] = result[i].prefixName + '    ' + result[i].name;
+            a[i] = result[i].name;
             b[i] = result[i];
           }
           that.globalData.carVehicle = a;

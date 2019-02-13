@@ -344,7 +344,7 @@ Page({
       id: "",
       name: that.data.carList[that.data.carVehicleIndex],
       contactName: msg.contactName,
-      categoryId: that.data.carStyleId,
+      categoryId: that.data.carVehicleId,
       vehicleId: that.data.carListId,
      // carListId: that.data.carListId,
       engineCode: msg.engineCode,

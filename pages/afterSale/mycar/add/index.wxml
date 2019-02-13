@@ -22,14 +22,14 @@
     </view>
 
     <view class='from-assembly flex-default flex-center'>
-      <text>车款</text>
+      <text>车型</text>
       <picker class='flex1' bindchange='bingCarStyle' value="{{carStyleIndex}}" range="{{carStyle}}">
         <view class="from-assembly-value">{{carStyle[carStyleIndex]}}</view>
       </picker>
       <text class='triangle' bindchange='bingCarStyle'></text>
     </view>
     <view class='from-assembly flex-default flex-center'>
-      <text>车型</text>
+      <text>车款</text>
       <picker class='flex1' bindchange='bingCarVehicle' value="{{carVehicleIndex}}" range="{{carVehicle}}">
         <view class="from-assembly-value">{{carVehicle[carVehicleIndex]}}</view>
       </picker>
