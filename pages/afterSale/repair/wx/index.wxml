@@ -28,14 +28,14 @@
       </view>
       <view class='from-assembly flex-default'>
         <text>车款</text>
-        <view class='flex1 from-assembly-input'>{{carStyle}}</view>
+        <view class='flex1 from-assembly-input'>{{categoryIdName}}</view>
       </view>
-      <view class='from-assembly flex-default'>
+      <!-- <view class='from-assembly flex-default'>
         <text>车型</text>
         <view class='flex1 from-assembly-input'>{{carVehicle}}</view>
-      </view>
+      </view> -->
       <view class='from-assembly flex-default flex-center'>
-        <text>爱车名称</text>
+        <text>车辆</text>
         <picker class='flex1' bindchange='bingLoveCar' value="{{carListArrIndex}}" range="{{carListArr}}">
           <view class="from-assembly-value">{{carListArr[carListArrIndex]}}</view>
         </picker>

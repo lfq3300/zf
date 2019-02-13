@@ -93,6 +93,7 @@ Page({
               if (res.data.success){
                 that.setData({
                   carname: res.data.result.myVehicle.name,
+                  categoryIdName: res.data.result.myVehicle.categoryIdName,
                 })
               }
             }
