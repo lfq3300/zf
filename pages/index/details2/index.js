@@ -10,7 +10,9 @@ Page({
     car: "",
     carname: "",
     carnameid: "",
-    loginhidde: true
+    loginhidde: true,
+    vehicleDetailsIndex:0,
+    switchimgindex:0
   },
 
   /**
@@ -40,7 +42,7 @@ Page({
             carImage: res.data.result.vehicleBanners,
             loginhidde: false,
             vehicleDetails: res.data.result.vehicleDetails,
-            carImg: res.data.result.vehicle.headingImgUrl
+            vehicleDetailsImg: res.data.result.vehicleDetails[that.data.vehicleDetailsIndex].items
           })
           WxParse.wxParse('accontent', 'html', car.content, that, 0);
           wx.hideNavigationBarLoading();
@@ -59,6 +61,15 @@ Page({
         }
       }
     });
+  },
+  switchimg:function(e){
+    var that = this;
+    var vehicleDetailsIndex = e.target.dataset.index;
+    that.setData({
+      vehicleDetailsIndex: vehicleDetailsIndex,
+      vehicleDetailsImg: that.data.vehicleDetails[vehicleDetailsIndex].items,
+      switchimgindex:0
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

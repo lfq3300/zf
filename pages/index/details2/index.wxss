@@ -98,13 +98,14 @@ page{
   position: relative;
   margin-top: 50rpx;
 }
-.highlightimgbox image{
-  width: 100%;
-  height: 450rpx;
+.highlightimgbox .swiper-box,
+.highlightimgbox .swiper-box, .swiper-box swiper,
+.highlighttap{
+  height: 455rpx;
 }
+
 .highlighttap{
   position: absolute;
-  height: 450rpx;
   width: 160rpx;
   background: rgba(0,0,0,0.5);
   top: 0;
@@ -120,6 +121,9 @@ page{
   justify-items: center;
   font-size: 28rpx;
   border-bottom: 1px solid #d1a24b;
+}
+.highlighttap text:last-child{
+  border-bottom: none;
 }
 .highlightimg{
    margin-top: 20rpx;

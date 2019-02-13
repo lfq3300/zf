@@ -81,7 +81,6 @@ Page({
             carList: res.data.result,
             carListArr: a,
             lovecarId: res.data.result[0].id,
-            dealerId: res.data.result[0].dealerId,
             vehicleId: res.data.result[0].vehicleId,
           });
           wx.request({
@@ -94,12 +93,14 @@ Page({
               if (res.data.success){
                 that.setData({
                   carname: res.data.result.myVehicle.name,
-                  loginhidde: false
                 })
               }
             }
           })
         }
+        that.setData({
+          loginhidde: false
+        })
       },
     })
     // app.getCarStyleList();
@@ -173,7 +174,6 @@ Page({
             carname: res.data.result.myVehicle.name,
             ajaxstatus: false,
             lovecarId: that.data.carList[carListArrIndex].id,
-            dealerId: that.data.carList[carListArrIndex].dealerId,
             vehicleId: that.data.carList[carListArrIndex].vehicleId,
           })
         }
@@ -255,7 +255,6 @@ Page({
       return;
     }
 
-
     that.setData({
       getcodeStatus: false
     })
@@ -285,6 +284,9 @@ Page({
   },
   formSubmit: function (e) {
     var that = this;
+    if(!that.data.ajaxstatus){
+      return;
+    }
     var msg = e.detail.value;
     if (msg.name == "") {
       wx.showToast({
@@ -313,9 +315,8 @@ Page({
     var data = {
       name:msg.name,
       tel:msg.phone,
-      
       vehicleId: that.data.vehicleId,
-      dealerId: that.data.dealerId,
+      dealerId: that.data.carDisId,
       appointmentDate:that.data.date,
       appointmentTimeId: that.data.carTimeId,
       genderId:msg.sex,
@@ -335,6 +336,9 @@ Page({
       url = app.data.hostUrl + 'api/services/app/appointment/SubmitServiceAppointment',
       msg = "您的预约保养需求已经收到";
     }
+    that.setData({
+      ajaxstatus: false,
+    })
     wx.request({
       url: url,
       data: data,
