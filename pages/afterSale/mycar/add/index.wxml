@@ -6,7 +6,7 @@
 </view>
 <view class='padding-border'>
   <form bindsubmit="formSubmit">
-    <view class='from-assembly flex-default'>
+    <!-- <view class='from-assembly flex-default'>
       <text>车主姓名</text>
       <input class='flex1 from-assembly-input' name='contactName' placeholder='请输入您的姓名'></input>
     </view>
@@ -19,8 +19,8 @@
       <text>验证码</text>
       <input class='flex1 from-assembly-input' placeholder='请输入验证码'  name='code'></input>
       <button class="from-assembly-phone-btn" bindtap='getPhoneCode'>{{getcodetext}}</button>
-    </view>
-
+    </view> -->
+    
     <view class='from-assembly flex-default flex-center'>
       <text>车型</text>
       <picker class='flex1' bindchange='bingCarStyle' value="{{carStyleIndex}}" range="{{carStyle}}">
@@ -35,7 +35,7 @@
       </picker>
       <text class='triangle' bindchange='bingCarVehicle'></text>
     </view>
-
+    
     <view class='from-assembly flex-default flex-center'>
       <text>车辆</text>
       <picker class='flex1' bindchange='bingCarList' value="{{carListIndex}}" range="{{carList}}">
@@ -43,7 +43,12 @@
       </picker>
       <text class='triangle' bindchange='bingCarVehicle'></text>
     </view>
-
+     <view class='from-assembly flex-default flex-center'>
+      <text>车型规格</text>
+       <picker class='flex1' bindchange='bingCars' value="{{carsIndex}}" range="{{cars}}">
+        <view class="from-assembly-value">{{cars[carsIndex]}}</view>
+      </picker>
+    </view>
     <!-- <view class='from-assembly flex-default flex-center'>
       <text>车辆</text>
       <picker class='flex1' bindchange='bingCar' value="{{carListIndex}}" range="{{carList}}">

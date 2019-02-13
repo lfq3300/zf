@@ -24,7 +24,8 @@ Page({
     getcodeStatus: true,
     ajaxStatus: true,
     loadStatus:true,
-    carDisIndex: 0
+    carDisIndex: 0,
+    carsIndex:0
   },
 
   /**
@@ -73,6 +74,7 @@ Page({
                       carList: app.globalData.carList,
                       carListId: app.globalData.carListArr[that.data.carListIndex].id * 1,
                     });
+                    that.getCars(that.data.carListId);
                   } else {
                     that.setData({
                       carList: [],
@@ -80,9 +82,6 @@ Page({
                     });
                   }
                   app.globalData.carList = "";
-                  that.setData({
-                    loadStatus:false
-                  })
                 }
               }, 1000);
 
@@ -198,6 +197,7 @@ Page({
             carList: app.globalData.carList,
             carListId: app.globalData.carListArr[that.data.carListIndex].id * 1,
           });
+          that.getCars(that.data.carListId);
         } else {
           that.setData({
             carList: [],
@@ -205,9 +205,6 @@ Page({
           });
         }
         app.globalData.carList = '';
-        that.setData({
-          loadStatus: false
-        })
       }
     }, 1000);
   },
@@ -218,6 +215,7 @@ Page({
       carListIndex: carListIndex,
       carListId: app.globalData.carListArr[carListIndex].id * 1,
     });
+    that.getCars(that.data.carListId);
   },
   bingCity: function (e) {
     var that = this;
@@ -285,30 +283,30 @@ Page({
       return;
     }
     var msg = e.detail.value;
-    if (msg.contactName == "") {
-      wx.showToast({
-        title: '姓名不能为空',
-        icon: 'none',
-        duration: 1500
-      })
-      return false;
-    }
-    if (!app.isPoneAvailable(msg.phone)) {
-      wx.showToast({
-        title: '电话号码输入有误',
-        icon: 'none',
-        duration: 1500
-      })
-      return false;
-    }
-    if (!app.isPoneCodeAvailable(msg.code)) {
-      wx.showToast({
-        title: '验证码格式错误',
-        icon: 'none',
-        duration: 1500
-      })
-      return false;
-    }
+    // if (msg.contactName == "") {
+    //   wx.showToast({
+    //     title: '姓名不能为空',
+    //     icon: 'none',
+    //     duration: 1500
+    //   })
+    //   return false;
+    // }
+    // if (!app.isPoneAvailable(msg.phone)) {
+    //   wx.showToast({
+    //     title: '电话号码输入有误',
+    //     icon: 'none',
+    //     duration: 1500
+    //   })
+    //   return false;
+    // }
+    // if (!app.isPoneCodeAvailable(msg.code)) {
+    //   wx.showToast({
+    //     title: '验证码格式错误',
+    //     icon: 'none',
+    //     duration: 1500
+    //   })
+    //   return false;
+    // }
     // if (msg.name == "") {
     //   wx.showToast({
     //     title: '请输入爱车昵称',
@@ -399,6 +397,40 @@ Page({
     })
   },
 
+  getCars: function(carid){
+    var that = this;
+    wx.request({
+      url: app.data.hostUrl + 'api/services/app/vehicleModel/GetActiveList?vehicleId=' + carid,
+      method: 'post',
+      success: function (res) {
+        if (res.data.success) {
+          var result = res.data.result;
+          var a = [];
+          var b = [];
+          for (var i = 0; i < result.length; i++) {
+            a[i] = result[i].name;
+            b[i] = result[i];
+          }
+          var carListId = b[0].id * 1;
+          that.setData({
+            cars: a,
+            carsArr: b,
+            carsIndex:0,
+            carsId: carListId,
+            loadStatus: false
+          });
+        }
+      },
+    })
+  },
+  bingCars:function(e){
+    var that = this;
+    var carsIndex = e.detail.value;
+    that.setData({
+      carsIndex: carsIndex,
+      carsId: that.data.carsArr[carsIndex],
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

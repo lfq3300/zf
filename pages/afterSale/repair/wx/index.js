@@ -25,6 +25,8 @@ Page({
     pageType:1,
     carListArrIndex:0,
     lovecarId:0,
+    cityIndex:0,
+    carListIndex: 0,
     loginhidde: true
   },
 
@@ -142,16 +144,53 @@ Page({
     //   }
     // }, 1000);
     
-    app.getDealer('');
-    var deaTime = setInterval(function () {
-      if (app.globalData.carDis) {
-        clearTimeout(deaTime);
-        that.setData({
-          carDis: app.globalData.carDis,
-          carDisId: app.globalData.carDisAddr[that.data.carDisIndex].id * 1,
-        })
+    // app.getDealer('');
+    // var deaTime = setInterval(function () {
+    //   if (app.globalData.carDis) {
+    //     clearTimeout(deaTime);
+    //     that.setData({
+    //       carDis: app.globalData.carDis,
+    //       carDisId: app.globalData.carDisAddr[that.data.carDisIndex].id * 1,
+    //     })
+    //   }
+    // }, 1000);
+
+    app.getCity();
+    var cityOut = setInterval(function () {
+      if (app.globalData.city) {
+        clearTimeout(cityOut);
+        if (app.globalData.city.length > 0) {
+          that.setData({
+            city: app.globalData.city,
+          });
+          var pagecity = app.globalData.city;
+          var vcity = "";
+          for (var i = 0; i < pagecity.length; i++) {
+            if (pagecity[i] == app.globalData.loadcity) {
+              vcity = pagecity[i];
+              break;
+            } else {
+              vcity = pagecity[0];
+            }
+          }
+          app.getAddrDealer(vcity);
+          var deaTime = setInterval(function () {
+            if (app.globalData.carAddrDisAddr) {
+              clearTimeout(deaTime);
+              that.setData({
+                carDis: app.globalData.carAddrDis,
+                carDisIndex: 0,
+                carDisId: app.globalData.carAddrDisAddr[0].id * 1,
+              })
+              app.globalData.carAddrDisAddr = '';
+            }
+            wx.hideNavigationBarLoading();
+            wx.stopPullDownRefresh();
+          }, 1000);
+        }
       }
     }, 1000);
+
 
     app.getAppointment();
     var timeAppointment = setInterval(function () {
@@ -165,6 +204,25 @@ Page({
     }, 1000);
   },
 
+  bingCity: function (e) {
+    var that = this;
+    var cityIndex = e.detail.value;
+    that.setData({
+      cityIndex: cityIndex,
+    });
+    app.getAddrDealer(that.data.city[cityIndex]);
+    var deaTime = setInterval(function () {
+      if (app.globalData.carAddrDisAddr) {
+        clearTimeout(deaTime);
+        that.setData({
+          carDis: app.globalData.carAddrDis,
+          carDisIndex: 0,
+          carDisId: app.globalData.carAddrDisAddr[0].id * 1,
+        })
+        app.globalData.carAddrDisAddr = '';
+      }
+    }, 1000);
+  },
   bingLoveCar: function (e) {
     var that = this;
     var carListArrIndex = e.detail.value;
@@ -298,30 +356,30 @@ Page({
       return;
     }
     var msg = e.detail.value;
-    if (msg.name == "") {
-      wx.showToast({
-        title: '姓名不能为空',
-        icon: 'none',
-        duration: 1500
-      })
-      return false;
-    }
-    if (!app.isPoneAvailable(msg.phone)) {
-      wx.showToast({
-        title: '电话号码输入有误',
-        icon: 'none',
-        duration: 1500
-      })
-      return false;
-    }
-    if (!app.isPoneCodeAvailable(msg.code)) {
-      wx.showToast({
-        title: '验证码格式错误',
-        icon: 'none',
-        duration: 1500
-      })
-      return false;
-    }
+    // if (msg.name == "") {
+    //   wx.showToast({
+    //     title: '姓名不能为空',
+    //     icon: 'none',
+    //     duration: 1500
+    //   })
+    //   return false;
+    // }
+    // if (!app.isPoneAvailable(msg.phone)) {
+    //   wx.showToast({
+    //     title: '电话号码输入有误',
+    //     icon: 'none',
+    //     duration: 1500
+    //   })
+    //   return false;
+    // }
+    // if (!app.isPoneCodeAvailable(msg.code)) {
+    //   wx.showToast({
+    //     title: '验证码格式错误',
+    //     icon: 'none',
+    //     duration: 1500
+    //   })
+    //   return false;
+    // }
     var data = {
       name:msg.name,
       tel:msg.phone,
