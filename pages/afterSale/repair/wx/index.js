@@ -73,6 +73,11 @@ Page({
       success: function (res) {
         if (res.data.success) {
           var result = res.data.result;
+          if (result.length == 0){
+            wx.navigateTo({
+              url: "/pages/afterSale/mycar/index"
+            })
+          }
           var a = [];
           for (var i = 0; i < result.length; i++) {
             a[i] = result[i].name;

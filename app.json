@@ -39,7 +39,7 @@
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#121314",
     "navigationBarTitleText": "仁孚中国",
-    "navigationBarTextStyle": "#fff",
+    "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true
   },
   "tabBar":{
