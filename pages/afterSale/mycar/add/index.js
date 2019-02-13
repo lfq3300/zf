@@ -342,7 +342,7 @@ Page({
     }
     var data = {
       id: "",
-      name: that.data.carList[that.data.carVehicleIndex],
+      name: that.data.carList[that.data.carListIndex],
       contactName: msg.contactName,
       categoryId: that.data.carVehicleId,
       vehicleId: that.data.carListId,
