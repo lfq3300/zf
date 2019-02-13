@@ -40,7 +40,7 @@
     <view class='highlight highlightimgheader'>
       <view class='htitle'>车型比较</view>
     </view>
-
+    <image src='{{headingImgUrl}}' class='headingImgUrl' mode="widthFix"></image>
     <view class='carlist'>
       <view class='flex-default flex-center' wx:for="{{carlist}}" wx:for-index="idx" wx:for-item="item" wx:key="carkey">
         <text class='textleft'>{{item.name}}</text>
