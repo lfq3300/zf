@@ -2,8 +2,10 @@ page{
   padding-bottom: 200rpx;
 }
 
-.swiper-box, .swiper-box swiper {
-  height: 432rpx;
+.swiper-box, 
+.swiper-box > swiper,
+.banner swiper{
+  height: 380rpx;
   overflow: hidden;
 }
 
@@ -14,7 +16,7 @@ page{
 
 .swiper-box  image {
   width: 100%;
-  height: 455rpx;
+  height: 380rpx;
 }
 
 .title {
@@ -99,8 +101,12 @@ page{
   margin-top: 50rpx;
 }
 .highlightimgbox .swiper-box,
-.highlightimgbox .swiper-box, .swiper-box swiper,
+.highlightimgbox .swiper-box, 
+.highlightimgbox .swiper-box swiper,
 .highlighttap{
+  height: 455rpx;
+}
+.highlightimgbox .swiper-box image{
   height: 455rpx;
 }
 

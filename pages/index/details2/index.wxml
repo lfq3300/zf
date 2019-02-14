@@ -2,7 +2,7 @@
   页面加载中...
 </loading>
 <view hidden="{{loginhidde}}">
-  <view class='swiper-box'>
+  <view class='swiper-box banner'>
     <swiper indicator-dots="true" indicator-color="#B8B8B8" indicator-active-color="#D1A24B" autoplay="true" circular="true">
       <swiper-item wx:for="{{carImage}}" wx:for-index="idx" wx:for-item="item" wx:key="property">
         <image src='{{item.imgUrl}}'></image>
