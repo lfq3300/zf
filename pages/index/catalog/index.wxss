@@ -40,7 +40,8 @@
 }
 .item{
   text-align: center;
-  margin-top: 47rpx;
+  margin-top: 70rpx;
+  width: 100%;
 }
 .item image{
   width: 344rpx;
@@ -49,23 +50,30 @@
 
 .cat-name{
   margin-top:30rpx;
-  line-height: 1rpx;
+  text-align:left;
 }
 .cat-name text{
   color: #595757;
   font-size: 28rpx;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  display: block;
+  height:45rpx;
+  width:80%;
+  margin-left:10%;
+  overflow: hidden;
 }
 
-.name{
+.cat-name{
   position: relative;
 }
-.name::after{
+.cat-name::after{
   position: absolute;
   content: "";
   width: 105rpx;
   height: 5rpx;
   background: #D1A24B;
-  left: 0;
+  left: 10%;
   top:-10rpx;
 }
 .car-list navigator:last-child{
