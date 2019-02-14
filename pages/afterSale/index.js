@@ -37,10 +37,24 @@ Page({
   jump:function(e){
     if (e.target.dataset.text == "维修保养"){
         //判断是否添加个人资料和爱车信息
-      if (!wx.getStorageSync('hasPersonal') || !wx.getStorageSync('hasVehicle')){
+      if (!wx.getStorageSync('hasPersonal')){
         wx.showModal({
           title: '提示',
-          content: '请移步到个人中心完善个人信息和添加爱车后再进行维修保养操作',
+          content: '请移步到个人中心完善个人信息后再进行维修保养操作',
+          success(res) {
+            if (res.confirm) {
+              wx.switchTab({
+                url: "/pages/userCenter/index"
+              })
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
+        })
+      } if (!wx.getStorageSync('hasVehicle')){
+        wx.showModal({
+          title: '提示',
+          content: '请移步到个人中心添加我的爱车后再进行维修保养操作',
           success(res) {
             if (res.confirm) {
               wx.switchTab({

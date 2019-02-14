@@ -6,7 +6,6 @@
   <view class='shadow'></view>
   <view class='text flex-column flex-center'>
     <text class="text-title">预约试驾</text>
-    <text class="text-sub">欢迎预约，请填写你的个人信息</text>
   </view>
 </view>
 <view class='padding-border'>

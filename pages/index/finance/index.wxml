@@ -12,10 +12,11 @@
     <text>{{name}}</text>
     <view class="flex1">
       <picker class='flex1' bindchange='bingCar' value="{{carListIndex}}" range="{{carList}}">
-        <view >{{carList[carListIndex]}}</view>
+        <view class='flex1'>{{carList[carListIndex]}} 
+        <image src='https://zungfu2.azurewebsites.net/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
+        </view>
       </picker>
     </view>
-    <image src='https://zungfu2.azurewebsites.net/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
   </view>
   <view class="flex-default car-title">
     <text>厂商建议零售价</text>
@@ -47,10 +48,11 @@
         <text>期限</text>
         <view class="flex1">
           <picker class='flex1' bindchange='bingCarTime' value="{{carTimeIndex}}" range="{{carTime}}">
-            <view>{{carTime[carTimeIndex]}}</view>
+            <view>{{carTime[carTimeIndex]}}
+                <image src='https://zungfu2.azurewebsites.net/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
+            </view>
           </picker>
         </view>
-        <image src='https://zungfu2.azurewebsites.net/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
       </view>
       <view class='flex-default flex-center assembly'>
         <text>首付</text>

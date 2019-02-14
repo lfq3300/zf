@@ -26,6 +26,7 @@ Page({
       if (app.globalData.carDis) {
         clearTimeout(deaTime);
         var carDisAddr = app.globalData.carDisAddr;
+        console.log(carDisAddr[0]);
         that.setData({
           carDis: app.globalData.carDis,
           carDisAddr: carDisAddr,
@@ -34,8 +35,8 @@ Page({
           address: carDisAddr[0].address,
           tel: carDisAddr[0].tel,
           markers:[{
-            latitude: carDisAddr[0].latitude,
-            longitude: carDisAddr[0].longitude,
+            latitude: 23.1254719009,
+            longitude: 113.3873873949,
             iconPath: '../../../images/location.png',
             height: 37,
             width: 28,

@@ -137,7 +137,7 @@ page{
   margin-bottom: 30rpx;
 }
 .carlist{
-  margin-top: 80rpx;
+  margin-top: 50rpx;
 }
 .carlist > view{
   border-bottom: 1px solid #727171;

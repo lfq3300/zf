@@ -20,7 +20,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     var classhide = false;
-    if (options.name.length > 1){
+    if (options.name.replace(/\s+/g,'').length > 1){
       classhide = true;
     }
     that.setData({

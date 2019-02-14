@@ -142,7 +142,7 @@
    z-index: -1;
    left: 0;
    bottom: 0;
-   height: 650rpx;
+   height: 810rpx;
 }
 .tab-car-sel-box-select{
   box-shadow: 0px 0px 5px 1px #D1A24B;
