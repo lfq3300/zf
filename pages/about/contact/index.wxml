@@ -11,10 +11,10 @@
   <view class='msg flex-column'>
     <picker bindchange='bingDis' value="{{carDisIndex}}" range="{{carDis}}">
       <view class='title'>{{carDis[carDisIndex]}}</view>
+       <view>{{address}}</view>
+        <view>{{tel}}</view>
+       <image src='https://zungfu2.azurewebsites.net/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
     </picker>
-    <view>{{address}}</view>
-    <view>{{tel}}</view>
-     <image src='https://zungfu2.azurewebsites.net/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
   </view>
 </view>
 <view class='bottom padding-border'>

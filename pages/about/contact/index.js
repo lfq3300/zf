@@ -35,8 +35,8 @@ Page({
           address: carDisAddr[0].address,
           tel: carDisAddr[0].tel,
           markers:[{
-            latitude: 23.1254719009,
-            longitude: 113.3873873949,
+            latitude: carDisAddr[0].latitude,
+            longitude: carDisAddr[0].longitude,
             iconPath: '../../../images/location.png',
             height: 37,
             width: 28,
