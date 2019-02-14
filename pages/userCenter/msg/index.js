@@ -113,6 +113,7 @@ Page({
        data:data,
        method: "post",
        success:function(res){
+         console.log(res);
          that.setData({
            ajaxStatus: true,
          })

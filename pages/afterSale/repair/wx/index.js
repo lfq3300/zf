@@ -223,8 +223,6 @@ Page({
       code:msg.code,
       FormId: "appointment",
     }
-    console.log(data);
-    return;
     var url = "";
     var msg = "";
     if (that.data.pageType == 1){
