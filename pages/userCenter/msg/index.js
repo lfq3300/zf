@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    phone: "",
+    phone: wx.getStorageSync('phone'),
+    contactName: wx.getStorageSync('realName'), 
     getcodetext: "获取验证码",
     getcodeStatus: true,
     ajaxStatus: true,

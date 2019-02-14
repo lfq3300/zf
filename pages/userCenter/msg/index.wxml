@@ -5,12 +5,12 @@
   <form bindsubmit="formSubmit">
     <view class='from-assembly flex-default'>
       <text>车主姓名</text>
-      <input class='flex1 from-assembly-input' name='contactName' placeholder='请输入您的姓名'></input>
+      <input class='flex1 from-assembly-input' name='contactName' placeholder='请输入您的姓名' value='{{contactName}}'></input>
     </view>
 
     <view class='from-assembly flex-default'>
       <text>手机号码</text>
-      <input class='flex1 from-assembly-input' name='phone' bindinput="phoneInput" placeholder='请输入手机号码'></input>
+      <input class='flex1 from-assembly-input' name='phone' bindinput="phoneInput" placeholder='请输入手机号码' value='{{phone}}'></input>
     </view>
     <view class='from-assembly flex-default from-assembly-no-right'>
       <text>验证码</text>
