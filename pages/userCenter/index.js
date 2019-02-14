@@ -22,7 +22,27 @@ Page({
     wx.hideNavigationBarLoading();
     wx.stopPullDownRefresh();
   },
-
+  cl:function(){
+    wx.clearStorageSync();
+    wx.showToast({
+      title: '清除缓存成功',
+      icon: 'none',
+      duration: 1500
+    })
+  },
+  jumplovecar:function(e){
+    if(!wx.getStorageSync('hasPersonal')){
+      wx.showToast({
+        title: '请先完善个人信息',
+        icon: 'none',
+        duration: 1500
+      })
+    }else{
+      wx.navigateTo({
+        url: e.target.dataset.url
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

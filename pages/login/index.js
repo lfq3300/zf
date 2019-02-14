@@ -36,6 +36,7 @@ Page({
         gender: 0
       },
       success: function (res) {
+        console.log(res);
         that.setData({
           hidden: true
         })
@@ -43,6 +44,7 @@ Page({
           wx.setStorageSync('userId', res.data.result.accountId);
           wx.setStorageSync('usertoken', res.data.result.token);
           wx.setStorageSync('hasPersonal', res.data.result.hasPersonal);
+        //  wx.setStorageSync('hasPersonal', false);
           wx.setStorageSync('hasVehicle', res.data.result.hasVehicle);
           wx.setStorageSync('phone', res.data.result.phone);
           wx.setStorageSync('realName', res.data.result.realName);

@@ -67,6 +67,7 @@ Page({
       data: data,
       method: 'POST',
       success: function (res) {
+        console.log(res);
         that.setData({
           ajaxStatus: true,
         })
@@ -100,15 +101,14 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    if (!app.jumpPageUserInfo(that.route, options)) {
-      return;
-    }
     that.setData({
       imgUrl: options.url,
       carname: options.carname,
       name: options.name,
       carnameid: options.carnameid,
-      carid: options.id
+      carid: options.id,
+      phone: wx.getStorageSync('phone'),
+      contactName: wx.getStorageSync('realName'),
     });
     that.onInfo(options.id);
   },

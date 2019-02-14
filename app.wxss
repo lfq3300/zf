@@ -57,6 +57,8 @@ page,text,view{
   font-size: 28rpx;
   color: #fff;
   width: 142rpx;
+  flex-shrink:0;
+  flex-basis:142rpx;
 }
 
 .from-assembly-value {

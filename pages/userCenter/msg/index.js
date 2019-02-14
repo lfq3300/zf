@@ -6,8 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    phone: wx.getStorageSync('phone'),
-    contactName: wx.getStorageSync('realName'), 
+    
     getcodetext: "获取验证码",
     getcodeStatus: true,
     ajaxStatus: true,
@@ -17,7 +16,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+    var that = this;
     if (options.pageurl){
       var pageurl = options.pageurl;
       delete options['pageurl'];
@@ -27,8 +26,10 @@ Page({
       });
 
     }
-    
-
+    that.setData({
+      phone: wx.getStorageSync('phone'),
+      contactName: wx.getStorageSync('realName'), 
+    })
   },
   getPhoneCode: function () {
     var that = this;

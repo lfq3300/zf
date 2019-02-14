@@ -14,7 +14,7 @@
     </picker>
     <view>{{address}}</view>
     <view>{{tel}}</view>
-     <image src='https://zungfu.azurewebsites.net/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
+     <image src='https://zungfu2.azurewebsites.net/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
   </view>
 </view>
 <view class='bottom padding-border'>

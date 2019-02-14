@@ -59,6 +59,7 @@ Page({
       data: data,
       method: 'POST',
       success: function (res) {
+        console.log(res)
         that.setData({
           ajaxStatus: true,
         })
@@ -130,9 +131,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    if (!app.jumpPageUserInfo(that.route, options)) {
-      return;
-    }
     var myDate = new Date();
     var m = myDate.getMonth() + 1;
     //如果超过了18点 就只能预约第二天的
@@ -165,7 +163,7 @@ Page({
         clearTimeout(timeAppointment);
         that.setData({
           carTime: app.globalData.timeAppointment,
-          carTimeId: app.globalData.timeAppointmentArr[that.data.carTimeIndex].id * 1,
+          carTimeId: app.globalData.timeAppointmentArr[that.data.carTimeIndex].value,
         })
       }
     }, 1000);

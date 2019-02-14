@@ -9,20 +9,20 @@ Page({
         {
           url: "/pages/afterSale/repair/index",
           text: "维修保养",
-          bg: "https://zungfu.azurewebsites.net/Common/Images/App/afterSale/service_img_01@3x.png",
-          icon: "https://zungfu.azurewebsites.net/Common/Images/App/afterSale/home_icon_normal@3x.png",
+          bg: "https://zungfu2.azurewebsites.net/Common/Images/App/afterSale/service_img_01@3x.png",
+          icon: "https://zungfu2.azurewebsites.net/Common/Images/App/afterSale/home_icon_normal@3x.png",
         },
         {
           url: "/pages/afterSale/help/index",
           text: "道路救援",
-          bg: "https://zungfu.azurewebsites.net/Common/Images/App//afterSale/service_img_02@3x.png",
-          icon: "https://zungfu.azurewebsites.net/Common/Images/App/afterSale/home_icon_normal@3x.png",
+          bg: "https://zungfu2.azurewebsites.net/Common/Images/App//afterSale/service_img_02@3x.png",
+          icon: "https://zungfu2.azurewebsites.net/Common/Images/App/afterSale/home_icon_normal@3x.png",
         },
         {
           url: "/pages/afterSale/mycar/love/index",
           text: "爱车小贴士",
-          bg: "https://zungfu.azurewebsites.net/Common/Images/App/afterSale/service_img_03@3x.png",
-          icon: "https://zungfu.azurewebsites.net/Common/Images/App/afterSale/home_icon_normal@3x.png",
+          bg: "https://zungfu2.azurewebsites.net/Common/Images/App/afterSale/service_img_03@3x.png",
+          icon: "https://zungfu2.azurewebsites.net/Common/Images/App/afterSale/home_icon_normal@3x.png",
         }
       ]
   },
@@ -33,6 +33,34 @@ Page({
   onLoad: function (options) {
     wx.hideNavigationBarLoading();
     wx.stopPullDownRefresh();
+  },
+  jump:function(e){
+    if (e.target.dataset.text == "维修保养"){
+        //判断是否添加个人资料和爱车信息
+      if (!wx.getStorageSync('hasPersonal') || !wx.getStorageSync('hasVehicle')){
+        wx.showModal({
+          title: '提示',
+          content: '请移步到个人中心完善个人信息和添加爱车后再进行维修保养操作',
+          success(res) {
+            if (res.confirm) {
+              wx.switchTab({
+                url: "/pages/userCenter/index"
+              })
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
+        })
+      }else{
+        wx.navigateTo({
+          url: e.target.dataset.url
+        })
+      }
+    }else{
+      wx.navigateTo({
+        url: e.target.dataset.url
+      })
+    }
   },
 
   /**

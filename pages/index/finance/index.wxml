@@ -15,7 +15,7 @@
         <view >{{carList[carListIndex]}}</view>
       </picker>
     </view>
-    <image src='https://zungfu.azurewebsites.net/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
+    <image src='https://zungfu2.azurewebsites.net/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
   </view>
   <view class="flex-default car-title">
     <text>厂商建议零售价</text>
@@ -50,7 +50,7 @@
             <view>{{carTime[carTimeIndex]}}</view>
           </picker>
         </view>
-        <image src='https://zungfu.azurewebsites.net/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
+        <image src='https://zungfu2.azurewebsites.net/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
       </view>
       <view class='flex-default flex-center assembly'>
         <text>首付</text>

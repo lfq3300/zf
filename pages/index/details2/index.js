@@ -72,6 +72,34 @@ Page({
       switchimgindex:0
     })
   },
+  jumpurl: function (e) {
+    if (e.target.dataset.text == "快速询价" || e.target.dataset.text == "预约试驾") {
+      //判断是否添加个人资料和爱车信息
+      if (!wx.getStorageSync('hasPersonal')) {
+        wx.showModal({
+          title: '提示',
+          content: '请移步到个人中心完善个人资料，再开始' + e.target.dataset.text+"操作",
+          success(res) {
+            if (res.confirm) {
+              wx.switchTab({
+                url: "/pages/userCenter/index"
+              })
+            } else if (res.cancel) {
+              console.log('用户点击取消')
+            }
+          }
+        })
+      } else {
+        wx.navigateTo({
+          url: e.target.dataset.url
+        })
+      }
+    } else {
+      wx.navigateTo({
+        url: e.target.dataset.url
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

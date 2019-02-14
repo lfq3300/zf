@@ -2,12 +2,12 @@
 <header></header>
 <view class='flex-column flex-center box'>
   <view class='sale'>
-    <navigator wx:for="{{list}}" wx:for-index="idx" wx:for-item="item" wx:key="property" url='{{item.url}}'>
-      <image src='{{item.bg}}' class='bg'></image>
-      <view class='text flex-column flex-center'>
-        <image src='{{item.icon}}'></image>
-        <text>{{item.text}}</text>
+    <view class='navigatorview' wx:for="{{list}}" wx:for-index="idx" wx:for-item="item" wx:key="property" bindtap='jump' data-text='{{item.text}}' data-url='{{item.url}}'>
+      <image src='{{item.bg}}' class='bg' data-text='{{item.text}}' data-url='{{item.url}}'></image>
+      <view class='text flex-column flex-center' data-text='{{item.text}}' data-url='{{item.url}}'>
+        <image src='{{item.icon}}' data-text='{{item.text}}' data-url='{{item.url}}'></image>
+        <text data-text='{{item.text}}' data-url='{{item.url}}'>{{item.text}}</text>
       </view>
-    </navigator>
+    </view>
   </view>
 </view>

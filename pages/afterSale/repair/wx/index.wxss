@@ -19,3 +19,10 @@ page{
   display: flex;
   margin-top: 60rpx;
 }
+.lovecar{
+  overflow: hidden;
+  white-space:nowrap;
+}
+.lovecarpicker{
+  overflow: hidden;
+}

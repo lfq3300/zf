@@ -13,6 +13,19 @@ App({
     carDisAddr:""
   },
   onLaunch: function() {
+    wx.getStorageInfo({
+      success(res) {
+        console.log(res.keys)
+        console.log(res.currentSize)
+        console.log(res.limitSize)
+      }
+    })
+    try {
+      const res = wx.getStorageInfoSync()
+      console.log(res)
+    } catch (e) {
+      // Do something when catch error
+    }
     this.ifUserLogin();
     this.getUserAddsInfo();
   },
@@ -240,7 +253,7 @@ App({
     }
   },
   isPoneCodeAvailable: function (code) {
-    var myreg = /^\d{6}$/;
+    var myreg = /^[0-9]*$/;
     if (!myreg.test(code)) {
       return false;
     } else {
@@ -361,25 +374,5 @@ App({
       }
     });
   },
-  
-  //判断跳转页面
-  jumpPageUserInfo: function (url,options){
-    var str = "";
-    for (var key in options) {
-      console.log(options[key]);
-      str += key + "=" + options[key]+"&"
-    }
-    if(str){
-      str = "&" + str;
-    }
-    if (!wx.getStorageSync("hasPersonal")) {
-      wx.navigateTo({
-        url: "/pages/userCenter/msg/index?pageurl=" + url + str
-      });
-      return false;
-    }else{
-      return true;
-    }
-  }
   
 });

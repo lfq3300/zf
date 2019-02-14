@@ -67,7 +67,7 @@ page{
   align-items: center;
 }
 
-.suspension navigator {
+.suspension view {
   display: inline-block;
   background: #d1a24b;
   color: #1b1b1b;

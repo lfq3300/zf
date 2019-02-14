@@ -42,7 +42,7 @@ Page({
         that.setData({
           carTime: app.globalData.timeAppointment,
           carTimeArr: app.globalData.timeAppointmentArr,
-          carTimeId: app.globalData.timeAppointmentArr[that.data.carTimeIndex].id * 1,
+          carTimeId: app.globalData.timeAppointmentArr[that.data.carTimeIndex].value,
           loginhidde: false
         })
         that.getMyAppoin();

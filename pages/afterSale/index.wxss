@@ -15,7 +15,7 @@ margin-top: -60rpx;
   border-radius: 15rpx;
   margin-bottom: 8rpx;
 }
-navigator{
+.navigatorview{
   position: relative;
   width: 100%;
 }

@@ -35,9 +35,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    if (!app.jumpPageUserInfo(that.route, options)){
-        return;
-    }
     var title = '';
     var myDate = new Date();
     var m = myDate.getMonth() + 1;
@@ -76,14 +73,9 @@ Page({
       url: app.data.hostUrl + 'api/services/app/myVehicle/GetActiveList?accountId=' + wx.getStorageSync("userId"),
       method: 'get',
       success: function (res) {
+        console.log(res)
         if (res.data.success) {
           var result = res.data.result;
-          if (result.length == 0){
-            wx.navigateTo({
-              url: "/pages/afterSale/mycar/index"
-            })
-            return;
-          }
           var a = [];
           for (var i = 0; i < result.length; i++) {
             a[i] = result[i].name;
@@ -146,7 +138,7 @@ Page({
         clearTimeout(timeAppointment);
         that.setData({
           carTime: app.globalData.timeAppointment,
-          carTimeId: app.globalData.timeAppointmentArr[that.data.carTimeIndex].id * 1,
+          carTimeId: app.globalData.timeAppointmentArr[that.data.carTimeIndex].value,
         })
       }
     }, 1000);
@@ -210,7 +202,6 @@ Page({
   },
 
   formSubmit: function (e) {
-    console.log('1234')
     var that = this;
     console.log(that.data.ajaxstatus);
     if(!that.data.ajaxstatus){
@@ -232,6 +223,8 @@ Page({
       code:msg.code,
       FormId: "appointment",
     }
+    console.log(data);
+    return;
     var url = "";
     var msg = "";
     if (that.data.pageType == 1){
@@ -288,7 +281,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.onLoad(this.data.options)
+   // this.onLoad(this.data.options)
   },
 
   /**

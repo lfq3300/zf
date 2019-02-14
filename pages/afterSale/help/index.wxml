@@ -21,37 +21,6 @@
           <view class='callbtn' bindtap='callphone' data-tel='{{item.tel}}'>拨打电话</view>
         </view>
       </view>
-
-      <!-- <view class='from-assembly flex-default flex-center'>
-      <text>经销商</text>
-      <picker class='flex1' bindchange='bingDis' value="{{carDisIndex}}" range="{{carDis}}">
-        <view class="from-assembly-value">{{carDis[carDisIndex]}}</view>
-      </picker>
-      <text class='triangle'></text>
-    </view> -->
-      <!-- <view class='from-assembly flex-default'>
-      <text>姓名</text>
-      <input class='flex1 from-assembly-input' placeholder='请输入您的姓名'></input>
-    </view>
-    <view class='from-assembly flex-default'>
-      <text>手机号码</text>
-      <input class='flex1 from-assembly-input' placeholder='请输入手机号码'></input>
-    </view>
-    <view class='from-assembly flex-default from-assembly-no-right'>
-      <text>验证码</text>
-      <input class='flex1 from-assembly-input' placeholder='请输入验证码'></input>
-      <button class="from-assembly-phone-btn">获取验证码</button>
-    </view>
-    <view class='from-assembly flex-default from-assembly-no-right flex-center'>
-      <text>获取位置</text>
-      <text class='flex1 from-assembly-input' bindtap='getLocation'></text>
-      <image src='https://zungfu.azurewebsites.net/Common/Images/App/afterSale/service_icon_n@3x.png' class='host'></image>
-    </view>
-    <view class='from-assembly flex-default from-assembly-no-right from-assembly-textarea'>
-      <text>救援说明</text>
-      <textarea class='flex1'></textarea>
-    </view>  -->
-      <!-- <button class='subBtn' bindtap='callphone'>拨打电话</button> -->
     </form>
   </view>
 </view>

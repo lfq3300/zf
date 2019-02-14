@@ -19,8 +19,8 @@
       
       <view class='from-assembly flex-default flex-center'>
         <text>爱车</text>
-        <picker class='flex1' bindchange='bingLoveCar' value="{{carListArrIndex}}" range="{{carListArr}}">
-          <view class="from-assembly-value">{{carListArr[carListArrIndex]}}</view>
+        <picker class='flex1 lovecarpicker' bindchange='bingLoveCar' value="{{carListArrIndex}}" range="{{carListArr}}">
+          <view class="from-assembly-value lovecar">{{carListArr[carListArrIndex]}}</view>
         </picker>
         <text class='triangle'></text>
       </view>

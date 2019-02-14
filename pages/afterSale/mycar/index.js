@@ -11,7 +11,6 @@ Page({
     loginhidde: true,
     loadStatus: false,
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -22,6 +21,9 @@ Page({
       method: 'get',
       success: function (res) {
         if (res.data.success){
+          if (res.data.result.length == 0) {
+            wx.setStorageSync('hasVehicle', false);
+          }
           that.setData({
             carList: res.data.result,
             loginhidde:false
@@ -46,6 +48,9 @@ Page({
           method: 'get',
           success: function (res) {
             if (res.data.success) {
+              if (res.data.result.length == 0){
+                wx.setStorageSync('hasVehicle', false);
+              }
               that.setData({
                 carList: res.data.result,
                 loadStatus: false
@@ -78,7 +83,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    this.onLoad();
   },
 
   /**

@@ -33,9 +33,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    if (!app.jumpPageUserInfo(that.route, options)) {
-      return;
-    }
     var myDate = new Date();
     var m = myDate.getMonth() + 1;
     var t = 0;
@@ -302,6 +299,7 @@ Page({
           ajaxStatus: true,
         })
         if (res.data.success) {
+          wx.setStorageSync('hasVehicle', true);
           wx.redirectTo({
             url: '/pages/afterSale/mycar/index'
           })
