@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 45,
+			"current": 46,
 			"list": [
 				{
 					"id": 0,
@@ -317,6 +317,12 @@
 					"pathName": "pages/index/details2/index",
 					"query": "id=48&carname=轿车&carnameid=1&name=梅赛德斯-奔驰S级轿车",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "维修中心",
+					"pathName": "pages/afterSale/repair/wx/index",
+					"query": "type=1"
 				}
 			]
 		}

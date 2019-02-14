@@ -156,7 +156,7 @@ Page({
                   carList: app.globalData.carList,
                   carListId: app.globalData.carListArr[that.data.carListIndex].id * 1,
                 });
-                
+                that.getCars(that.data.carListId);
               } else {
                 that.setData({
                   carList: [],
@@ -239,82 +239,12 @@ Page({
       loginDate: e.detail.value
     })
   },
-  getPhoneCode: function () {
-    var that = this;
-    if (!that.data.getcodeStatus) {
-      return;
-    }
-    var status = app.getPhoneCode(that.data.phone);
-    if (status) {
-      return;
-    }
-
-
-    that.setData({
-      getcodeStatus: false
-    })
-    var downTime = 60;
-    var downTimeOut = setInterval(function () {
-      downTime--;
-      var getcodetext = "";
-      if (downTime == 0) {
-        getcodetext = "获取验证码";
-        that.setData({
-          getcodeStatus: true
-        })
-        clearTimeout(downTimeOut);
-        downTime = 60
-      } else {
-        getcodetext = downTime + "s"
-      }
-      that.setData({
-        getcodetext: getcodetext
-      })
-    }, 1000)
-  },
-  phoneInput: function (e) {
-    this.setData({
-      phone: e.detail.value
-    })
-  },
   formSubmit: function (e) {
     var that = this;
     if (!that.data.ajaxStatus) {
       return;
     }
     var msg = e.detail.value;
-    // if (msg.contactName == "") {
-    //   wx.showToast({
-    //     title: '姓名不能为空',
-    //     icon: 'none',
-    //     duration: 1500
-    //   })
-    //   return false;
-    // }
-    // if (!app.isPoneAvailable(msg.phone)) {
-    //   wx.showToast({
-    //     title: '电话号码输入有误',
-    //     icon: 'none',
-    //     duration: 1500
-    //   })
-    //   return false;
-    // }
-    // if (!app.isPoneCodeAvailable(msg.code)) {
-    //   wx.showToast({
-    //     title: '验证码格式错误',
-    //     icon: 'none',
-    //     duration: 1500
-    //   })
-    //   return false;
-    // }
-    // if (msg.name == "") {
-    //   wx.showToast({
-    //     title: '请输入爱车昵称',
-    //     icon: 'none',
-    //     duration: 1500
-    //   })
-    //   return false;
-    // }
     if (msg.licensePlate == "") {
       wx.showToast({
         title: '请输入车牌号',
@@ -342,8 +272,7 @@ Page({
     }
     var data = {
       id: "",
-      name: that.data.carList[that.data.carListIndex],
-      contactName: msg.contactName,
+      name: that.data.carList[that.data.carListIndex] + '' + that.data.cars[that.data.carsIndex],
       categoryId: that.data.carVehicleId,
       vehicleId: that.data.carListId,
      // carListId: that.data.carListId,
@@ -351,11 +280,12 @@ Page({
       vin: msg.vin,
       licensePlate: msg.licensePlate,
      // cityId: that.data.cityId,
+      VehicleModelId: that.data.carsId,
       dealerId: that.data.carDisIndex,
       firstLicenseDate: that.data.date,
       purchaseDate: that.data.loginDate,
-      code: msg.code,
-      contactTel: msg.phone,
+      contactName: wx.getStorageSync("realName"),
+      contactTel: wx.getStorageSync("phone"),
       accountId: wx.getStorageSync("userId"),
       sessionId: wx.getStorageSync('sessionId'),
       fromId: "appointment",

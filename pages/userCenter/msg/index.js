@@ -116,6 +116,8 @@ Page({
          })
          if (res.data.success) {
            wx.setStorageSync('hasPersonal', true);
+           wx.setStorageSync('phone', msg.phone);
+           wx.setStorageSync('realName', msg.contactName);
            if (that.data.pageurl){
              var options = that.data.options;
              var str = "";

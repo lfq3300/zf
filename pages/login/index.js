@@ -44,6 +44,8 @@ Page({
           wx.setStorageSync('usertoken', res.data.result.token);
           wx.setStorageSync('hasPersonal', res.data.result.hasPersonal);
           wx.setStorageSync('hasVehicle', res.data.result.hasVehicle);
+          wx.setStorageSync('phone', res.data.result.phone);
+          wx.setStorageSync('realName', res.data.result.realName);
         } else {
           wx.showToast({
             title: '授权失败',

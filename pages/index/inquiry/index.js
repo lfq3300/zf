@@ -20,47 +20,10 @@ Page({
     ajaxStatus:true,
     loginhidde:false,
     cityIndex:0,
+    cityId:0,
     carListIndex:0
   },
 
-  getPhoneCode:function(){
-    var that = this;
-    if (!that.data.getcodeStatus) {
-      return;
-    }
-    var status = app.getPhoneCode(that.data.phone);
-    if (status){
-      return;
-    }
-
-    
-    that.setData({
-      getcodeStatus: false
-    })
-    var downTime = 60; 
-    var downTimeOut = setInterval(function(){
-      downTime --;
-      var getcodetext  = "";
-      if (downTime == 0 ){
-        getcodetext = "获取验证码";
-        that.setData({
-          getcodeStatus: true
-        })
-        clearTimeout(downTimeOut);
-        downTime = 60
-      }else{
-          getcodetext =  downTime+"s"
-      }
-      that.setData({
-        getcodetext: getcodetext
-      })
-    },1000)
-  },
-  phoneInput: function (e) {
-    this.setData({
-      phone: e.detail.value
-    })
-  },
   bingDis:function(e){
     var that = this;
     var carDisIndex = e.detail.value;
@@ -80,34 +43,11 @@ Page({
       return;
     }
     var msg = e.detail.value;
-    // if (msg.contactName == "") {
-    //   wx.showToast({
-    //     title: '姓名不能为空',
-    //     icon: 'none',
-    //     duration: 1500
-    //   })
-    //   return false;
-    // }
-    // if (!app.isPoneAvailable(msg.phone)) {
-    //   wx.showToast({
-    //     title: '电话号码输入有误',
-    //     icon: 'none',
-    //     duration: 1500
-    //   })
-    //   return false;
-    // }
-    // if (!app.isPoneCodeAvailable(msg.code)) {
-    //   wx.showToast({
-    //     title: '验证码格式错误',
-    //     icon: 'none',
-    //     duration: 1500
-    //   })
-    //   return false;
-    // }
+   
     var data = {
       accountId: wx.getStorageSync("userId"),
-      contactName: msg.contactName,
-      contactTel: msg.phone,
+      contactName: wx.getStorageSync("realName"),
+      contactTel: wx.getStorageSync("phone"),
       categoryId: that.data.carnameid,
       categoryIdName: that.data.carname,
       vehicleId: that.data.carid,
@@ -116,7 +56,8 @@ Page({
       description: msg.description,
       sessionId: wx.getStorageSync('sessionId'),
       fromId: "appointment",
-      code:msg.code
+      cityId:that.data.cityId,
+      vehicleModelId:that.data.carListId
     };
     that.setData({
       ajaxStatus:false
@@ -180,6 +121,7 @@ Page({
         if (app.globalData.city.length > 0) {
           that.setData({
             city: app.globalData.city,
+            cityId: app.globalData.cityArr[0].id
           });
           var pagecity = app.globalData.city;
           var vcity = "";
@@ -244,6 +186,7 @@ Page({
     var cityIndex = e.detail.value;
     that.setData({
       cityIndex: cityIndex,
+      cityId: app.globalData.cityArr[cityIndex].id,
       ajaxstatus: false
     });
     app.getAddrDealer(that.data.city[cityIndex]);

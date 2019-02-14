@@ -25,6 +25,7 @@ Page({
     getcodeStatus: true,
     ajaxStatus: true,
     cityIndex: 0,
+    cityId:0,
     carListIndex: 0
   },
   formSubmit:function(e){
@@ -33,34 +34,10 @@ Page({
       return;
     }
     var msg = e.detail.value;
-    // if (msg.contactName == "") {
-    //   wx.showToast({
-    //     title: '姓名不能为空',
-    //     icon: 'none',
-    //     duration: 1500
-    //   })
-    //   return false;
-    // }
-    // if (!app.isPoneAvailable(msg.phone)) {
-    //   wx.showToast({
-    //     title: '电话号码输入有误',
-    //     icon: 'none',
-    //     duration: 1500
-    //   })
-    //   return false;
-    // }
-    // if (!app.isPoneCodeAvailable(msg.code)) {
-    //   wx.showToast({
-    //     title: '验证码格式错误',
-    //     icon: 'none',
-    //     duration: 1500
-    //   })
-    //   return false;
-    // }
     var data = {
       accountId: wx.getStorageSync("userId"),
-      name: msg.contactName,
-      tel: msg.phone,
+      name: wx.getStorageSync("realName"),
+      tel: wx.getStorageSync("phone"),
       vehicleId: that.data.carid,
       vehicleIdName: that.data.name,
       dealerId: that.data.carDisId,
@@ -71,7 +48,8 @@ Page({
       genderId:msg.sex,
       sessionId: wx.getStorageSync('sessionId'),
       fromId: "appointment",
-      code: msg.code
+      cityId: that.data.cityId,
+      vehicleModelId: that.data.carListId
     }
     that.setData({
       ajaxStatus: false
@@ -199,6 +177,7 @@ Page({
         if (app.globalData.city.length > 0) {
           that.setData({
             city: app.globalData.city,
+            cityId: app.globalData.cityArr[0].id
           });
           var pagecity = app.globalData.city;
           var vcity = "";
@@ -265,6 +244,7 @@ Page({
     var cityIndex = e.detail.value;
     that.setData({
       cityIndex: cityIndex,
+      cityId: app.globalData.cityArr[cityIndex].id,
       ajaxstatus: false
     });
     app.getAddrDealer(that.data.city[cityIndex]);

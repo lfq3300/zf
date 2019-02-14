@@ -39,11 +39,11 @@
         </view>
       </view>
     </navigator>
-     <navigator class="item flex-default" url='/pages/userCenter/msg/index' hidden='{{msghidden}}'>
+     <navigator class="item flex-default" url='/pages/userCenter/msg/index'>
       <view class="icon-box">
         <image class="icon" src="/images/icons/personal_icon_view@3x.png" mode="widthFix"></image>
       </view>
-      <text class="item-title">完善个人信息</text>
+      <text class="item-title">个人信息</text>
       <view class="item-right flex1 flex-default flex-justify-content-end">
         <view class="icon-box">
           <image class="return-icon" src="/images/icons/mine_icon_return.png" mode="widthFix"></image>

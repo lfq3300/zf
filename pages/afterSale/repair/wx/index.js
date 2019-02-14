@@ -21,7 +21,7 @@ Page({
     phone: "",
     getcodetext: "获取验证码",
     getcodeStatus: true,
-    ajaxStatus: true,
+    ajaxstatus: true,
     pageType:1,
     carListArrIndex:0,
     lovecarId:0,
@@ -93,67 +93,14 @@ Page({
             carListArr: a,
             lovecarId: res.data.result[0].id,
             vehicleId: res.data.result[0].vehicleId,
+            categoryIdName: res.data.result[0].categoryIdName,
           });
-          wx.request({
-            url: app.data.hostUrl + 'api/services/app/myVehicle/GetMyVehicleForEdit',
-            data:{
-              id: that.data.carList[that.data.carListArrIndex].id
-            },
-            method:'post',
-            success:function(res){
-              if (res.data.success){
-                that.setData({
-                  carname: res.data.result.myVehicle.name,
-                  categoryIdName: res.data.result.myVehicle.categoryIdName,
-                })
-              }
-            }
-          })
         }
         that.setData({
           loginhidde: false
         })
       },
     })
-    // app.getCarStyleList();
-    // var carStyleOut = setInterval(function () {
-    //   if (app.globalData.carStyle) {
-    //     clearTimeout(carStyleOut);
-    //     that.setData({
-    //       carStyle: app.globalData.carStyle,
-    //       carStyleId: app.globalData.carStyleArr[that.data.carStyleIndex].id * 1,
-    //     });
-    //     app.getCarVehicleList(that.data.carStyleId);
-    //     var carVehicleOut = setInterval(function () {
-    //       if (app.globalData.carVehicle) {
-    //         clearTimeout(carVehicleOut);
-    //         if (app.globalData.carVehicle.length > 0) {
-    //           that.setData({
-    //             carVehicle: app.globalData.carVehicle,
-    //             carVehicleId: app.globalData.carVehicleArr[that.data.carVehicleIndex].id * 1,
-    //           });
-    //           app.globalData.carVehicle = "";
-    //         } else {
-    //           that.setData({
-    //             carVehicle: [],
-    //             carVehicleId: -1,
-    //           });
-    //         }
-    //       }
-    //     }, 1000);
-    //   }
-    // }, 1000);
-    
-    // app.getDealer('');
-    // var deaTime = setInterval(function () {
-    //   if (app.globalData.carDis) {
-    //     clearTimeout(deaTime);
-    //     that.setData({
-    //       carDis: app.globalData.carDis,
-    //       carDisId: app.globalData.carDisAddr[that.data.carDisIndex].id * 1,
-    //     })
-    //   }
-    // }, 1000);
 
     app.getCity();
     var cityOut = setInterval(function () {
@@ -180,6 +127,7 @@ Page({
               that.setData({
                 carDis: app.globalData.carAddrDis,
                 carDisIndex: 0,
+                carAddrDisAddr: app.globalData.carAddrDisAddr,
                 carDisId: app.globalData.carAddrDisAddr[0].id * 1,
               })
               app.globalData.carAddrDisAddr = '';
@@ -217,6 +165,7 @@ Page({
         that.setData({
           carDis: app.globalData.carAddrDis,
           carDisIndex: 0,
+          carAddrDisAddr: app.globalData.carAddrDisAddr,
           carDisId: app.globalData.carAddrDisAddr[0].id * 1,
         })
         app.globalData.carAddrDisAddr = '';
@@ -228,34 +177,17 @@ Page({
     var carListArrIndex = e.detail.value;
     that.setData({
       carListArrIndex: carListArrIndex,
-      ajaxstatus: true
-    })
-    wx.request({
-      url: app.data.hostUrl + 'api/services/app/myVehicle/GetMyVehicleForEdit',
-      data: {
-        id: that.data.carList[carListArrIndex].id
-      },
-      method: 'post',
-      success: function (res) {
-        if (res.data.success) {
-          that.setData({
-            carname: res.data.result.myVehicle.name,
-            ajaxstatus: false,
-            lovecarId: that.data.carList[carListArrIndex].id,
-            vehicleId: that.data.carList[carListArrIndex].vehicleId,
-          })
-        }
-      }
+      categoryIdName: that.data.carList[carListArrIndex].categoryIdName,
     })
   },
   bingDis: function (e) {
     var that = this;
     var carDisIndex = e.detail.value;
+    console.log(carDisIndex)
     that.setData({
       carDisIndex: carDisIndex,
-      carDisId: app.globalData.carDisAddr[carDisIndex].id * 1,
+      carDisId: that.data.carAddrDisAddr[carDisIndex].id * 1,
     });
-    console.log(that.data)
   },
   bingWx: function (e) {
     var that = this;
@@ -277,112 +209,17 @@ Page({
     })
   },
 
-  // bingCarStyle: function (e) {
-  //   var that = this;
-  //   var carStyleIndex = e.detail.value;
-  //   that.setData({
-  //     carStyleIndex: carStyleIndex,
-  //     carStyleId: app.globalData.carStyleArr[carStyleIndex].id * 1,
-  //   });
-
-  //   app.getCarVehicleList(that.data.carStyleId);
-  //   var carVehicleOut = setInterval(function () {
-  //     if (app.globalData.carVehicle) {
-  //       clearTimeout(carVehicleOut);
-  //       if (app.globalData.carVehicle.length > 0) {
-  //         that.setData({
-  //           carVehicle: app.globalData.carVehicle,
-  //           carVehicleId: app.globalData.carVehicleArr[that.data.carVehicleIndex].id * 1,
-  //         });
-  //         app.globalData.carVehicle = "";
-  //       } else {
-  //         that.setData({
-  //           carVehicle: [],
-  //           carVehicleId: -1,
-  //         });
-  //       }
-  //     }
-  //   }, 1000);
-  // },
-
-  // bingCarVehicle: function (e) {
-  //   var that = this;
-  //   var carVehicleIndex = e.detail.value;
-  //   that.setData({
-  //     carVehicleIndex: carVehicleIndex,
-  //     carVehicleId: app.globalData.carVehicleArr[carVehicleIndex].id * 1,
-  //   });
-  // },
-  getPhoneCode: function () {
-    var that = this;
-    if (!that.data.getcodeStatus) {
-      return;
-    }
-    var status = app.getPhoneCode(that.data.phone);
-    if (status) {
-      return;
-    }
-
-    that.setData({
-      getcodeStatus: false
-    })
-    var downTime = 60;
-    var downTimeOut = setInterval(function () {
-      downTime--;
-      var getcodetext = "";
-      if (downTime == 0) {
-        getcodetext = "获取验证码";
-        that.setData({
-          getcodeStatus: true
-        })
-        clearTimeout(downTimeOut);
-        downTime = 60
-      } else {
-        getcodetext = downTime + "s"
-      }
-      that.setData({
-        getcodetext: getcodetext
-      })
-    }, 1000)
-  },
-  phoneInput: function (e) {
-    this.setData({
-      phone: e.detail.value
-    })
-  },
   formSubmit: function (e) {
+    console.log('1234')
     var that = this;
+    console.log(that.data.ajaxstatus);
     if(!that.data.ajaxstatus){
       return;
     }
     var msg = e.detail.value;
-    // if (msg.name == "") {
-    //   wx.showToast({
-    //     title: '姓名不能为空',
-    //     icon: 'none',
-    //     duration: 1500
-    //   })
-    //   return false;
-    // }
-    // if (!app.isPoneAvailable(msg.phone)) {
-    //   wx.showToast({
-    //     title: '电话号码输入有误',
-    //     icon: 'none',
-    //     duration: 1500
-    //   })
-    //   return false;
-    // }
-    // if (!app.isPoneCodeAvailable(msg.code)) {
-    //   wx.showToast({
-    //     title: '验证码格式错误',
-    //     icon: 'none',
-    //     duration: 1500
-    //   })
-    //   return false;
-    // }
     var data = {
-      name:msg.name,
-      tel:msg.phone,
+      name: wx.getStorageSync("realName"),
+      tel: wx.getStorageSync("phone"),
       vehicleId: that.data.vehicleId,
       dealerId: that.data.carDisId,
       appointmentDate:that.data.date,
@@ -413,7 +250,7 @@ Page({
       method: 'POST',
       success: function (res) {
         that.setData({
-          ajaxStatus: true,
+          ajaxstatus: true,
         })
         if (res.data.success) {
           wx.redirectTo({

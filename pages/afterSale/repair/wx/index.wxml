@@ -1,7 +1,7 @@
 <loading hidden="{{!loginhidde}}">
   页面加载中...
 </loading>
-<loading hidden="{{!ajaxstatus}}">
+<loading hidden="{{ajaxstatus}}">
   加载中...
 </loading>
 <view hidden="{{loginhidde}}">
@@ -11,29 +11,12 @@
   <view class='padding-border'>
     <form bindsubmit="formSubmit">
       <text class='formSubmit-title'>基本信息</text>
-      <!-- <view class='from-assembly flex-default'>
-        <text>姓名</text>
-        <input class='flex1 from-assembly-input' name="name" placeholder='请输入您的姓名'></input>
-      </view>
-      <view class='from-assembly flex-default'>
-        <text>称谓</text>
-        <radio-group class="gender" name="sex">
-          <label>
-            <radio value='1' checked/> 先生
-          </label>
-          <label>
-            <radio value='2' />女士
-          </label>
-        </radio-group>
-      </view> -->
+     
       <view class='from-assembly flex-default'>
         <text>车款</text>
         <view class='flex1 from-assembly-input'>{{categoryIdName}}</view>
       </view>
-      <!-- <view class='from-assembly flex-default'>
-        <text>车型</text>
-        <view class='flex1 from-assembly-input'>{{carVehicle}}</view>
-      </view> -->
+      
       <view class='from-assembly flex-default flex-center'>
         <text>爱车</text>
         <picker class='flex1' bindchange='bingLoveCar' value="{{carListArrIndex}}" range="{{carListArr}}">
@@ -41,20 +24,7 @@
         </picker>
         <text class='triangle'></text>
       </view>
-      <!-- <view class='from-assembly flex-default flex-center'>
-      <text>车款</text>
-      <picker class='flex1' bindchange='bingCarStyle' value="{{carStyleIndex}}" range="{{carStyle}}">
-        <view class="from-assembly-value">{{carStyle[carStyleIndex]}}</view>
-      </picker>
-      <text class='triangle' bindchange='bingCarStyle'></text>
-    </view>
-    <view class='from-assembly flex-default flex-center'>
-      <text>车型</text>
-      <picker class='flex1' bindchange='bingCarVehicle' value="{{carVehicleIndex}}" range="{{carVehicle}}">
-        <view class="from-assembly-value">{{carVehicle[carVehicleIndex]}}</view>
-      </picker>
-      <text class='triangle' bindchange='bingCarVehicle'></text>
-    </view> -->
+   
       <view class='from-assembly flex-default flex-center'>
         <text>城市</text>
         <picker class='flex1' bindchange='bingCity' value="{{cityIndex}}" range="{{city}}">
@@ -68,16 +38,7 @@
         </picker>
         <text class='triangle' bindchange='bingDis'></text>
       </view>
-      <!-- <view class='from-assembly flex-default'>
-        <text>手机号码</text>
-        <input class='flex1 from-assembly-input' name='phone' bindinput="phoneInput" placeholder='请输入手机号码'></input>
-      </view>
-      <view class='from-assembly flex-default from-assembly-no-right'>
-        <text>验证码</text>
-        <input class='flex1 from-assembly-input' placeholder='请输入验证码' name='code'></input>
-        <button class="from-assembly-phone-btn" bindtap='getPhoneCode'>{{getcodetext}}</button>
-      </view> -->
-
+     
       <text class='formSubmit-title'>主要信息</text>
       <view class='from-assembly flex-default flex-center' hidden='{{pageType == 2}}'>
         <text>维修类型</text>
