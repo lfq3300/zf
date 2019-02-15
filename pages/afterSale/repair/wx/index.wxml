@@ -13,7 +13,7 @@
       <text class='formSubmit-title'>基本信息</text>
      
       <view class='from-assembly flex-default'>
-        <text>车款</text>
+        <text>车系</text>
         <view class='flex1 from-assembly-input'>{{categoryIdName}}</view>
       </view>
       
