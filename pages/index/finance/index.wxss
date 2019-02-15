@@ -17,6 +17,10 @@
 }
 .car-title view{
   text-align: right;  
+  overflow: hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  padding-left: 15rpx;
 }
 .right-return-img{
   width: 20rpx;

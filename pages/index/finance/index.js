@@ -33,7 +33,7 @@ Page({
     var that = this;
     console.log(e);
     that.setData({
-      carsel: e.detail.id
+      carsel: e.target.dataset.id
     })
   },
   bingCarTime: function (e) {
