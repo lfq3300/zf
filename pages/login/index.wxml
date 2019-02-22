@@ -3,8 +3,12 @@
         授权中...
 </loading>
 <view class="padding-border">
-<view>使用小程序将获取您的公开信息</view>
+<view class='center'>
+  <icon size='50' type='success'></icon>
+</view>
+<view class='first'>为了更好的体验,此应用需要获取您的昵称,</view>
+<view class='last'>头像等基本信息授权</view>
 <button type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">
-同意授权
+确定授权
 </button>
 </view>

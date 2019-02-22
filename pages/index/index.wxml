@@ -17,7 +17,7 @@
     <view class="car-itme" wx:for="{{carList}}" wx:for-index="idx" wx:for-item="item" wx:key="property">
       <navigator url="/pages/index/catalog/index?id={{item.id}}&name={{item.name}}&carname={{tagName}}&carnameid={{tagIndex}}">
         <view class="car-item-bg flex-default">
-          <text class="max-size">{{item.name}}</text>
+          <text class="max-size" >{{item.name}}</text>
           <view class="flex-column flex1 flex-justify-content-end">
             <text class="min-size">Mercedes-Benz</text>
             <text>Class</text>

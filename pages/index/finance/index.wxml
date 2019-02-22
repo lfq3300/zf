@@ -35,8 +35,8 @@
       <text class='tab-car-title'>先享后选-弹性购车新方案</text>
       <view class='padding-border'>
         <view class="tab-car-sel-box {{carsel == idx?'tab-car-sel-box-select':''}}" wx:for="{{xxhx}}" wx:for-index="idx" wx:for-item="item" wx:key="property" bindtap='carselect' data-id='{{idx}}'>
-            <view class='box-title'>{{item.name}} </view>
-            <view class='box-cen'>月付款人民币<text>{{item.monthlyPay}}</text>万起</view>
+            <view class='box-title' data-id='{{idx}}'>{{item.name}} </view>
+            <view class='box-cen' data-id='{{idx}}'>月付款人民币<text>{{item.monthlyPay}}</text>万起</view>
         </view>
       </view>
       <view class='tab-car-explain'>*实际月付款以奔驰租赁系统为准</view>

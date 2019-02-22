@@ -13,9 +13,11 @@ navigator image{
 }
 
 navigator view{
-  line-height: 100rpx;
   background: #FFF;
   padding-left: 20rpx;
   font-size: 36rpx;
   color:#333333;
+  padding-top:10px;
+  padding-bottom:20px;
+
 }

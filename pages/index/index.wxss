@@ -102,3 +102,7 @@
 .car-item-bg  .flex-column{
     padding-left: 14rpx;
 }
+.car-item-bg text.car-name-min-size{
+  font-size:35rpx;
+  line-height:154rpx;
+}

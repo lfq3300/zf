@@ -1,9 +1,20 @@
 /* pages/userinfo/index.wxss */
+.center{
+  margin-top: 100rpx;
+}
+.first{
+  margin-top: 20rpx;
+}
+.last{
+  margin-bottom: 70rpx;
+}
 view{
-  margin-top: 50rpx;
   text-align: center;
-  margin-bottom: 50rpx;
+  font-size: 28rpx;
+  line-height: 50rpx;
 }
 button{
   margin-bottom: 50rpx;
+  font-size: 34rpx;
+  width: 80%;
 }

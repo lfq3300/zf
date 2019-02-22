@@ -8,6 +8,7 @@ Page({
   data: {
     ajaxStatus:true,
     date:"2019-01-01",
+    pdate:'',
     carTime:[
       
     ],
@@ -142,7 +143,8 @@ Page({
     var b = myDate.getDate()+t;
     var date = myDate.getFullYear() + "-" + m + "-" + b;
     that.setData({
-      date: date
+      date: date,
+      pdate: date
     });
     that.setData({
       imgUrl: options.url,

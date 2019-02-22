@@ -35,19 +35,19 @@
     </view>
     <view class='from-assembly flex-default flex-center'>
       <text>预约日期</text>
-      <picker  class='flex1' mode="date" value="{{date}}" bindchange="bindDate">
+      <picker  class='flex1' mode="date" value="{{date}}" bindchange="bindDate" start='{{pdate}}'>
         <view class="from-assembly-value">
           {{date}}
         </view>
       </picker>
     </view>
-       <view class='from-assembly flex-default flex-center'>
+       <!-- <view class='from-assembly flex-default flex-center'>
       <text>预约时间</text>
       <picker class='flex1' bindchange='bingTime' value="{{carTimeIndex}}" range="{{carTime}}">
         <view class="from-assembly-value">{{carTime[carTimeIndex]}}</view>
       </picker>
       <text class='triangle' bindchange='bingTime'></text>
-    </view>
+    </view> -->
     <button class="subBtn" formType="submit">预约试驾</button>
   </form>
 </view>

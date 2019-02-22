@@ -50,8 +50,12 @@ Page({
       method: 'post',
       success: function (res) {
         if (res.data.success) {
+          var carList = res.data.result;
+          for (var i = 0; i < carList.length;i++){
+            carList[i].name = carList[i].name.replace(/\s+/g, "")
+          }
           that.setData({
-            carList: res.data.result,
+            carList: carList,
             loginhidde:false,
             ajaxStatus: true,
           })

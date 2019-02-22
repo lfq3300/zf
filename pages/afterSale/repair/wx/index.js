@@ -27,7 +27,8 @@ Page({
     lovecarId:0,
     cityIndex:0,
     carListIndex: 0,
-    loginhidde: true
+    loginhidde: true,
+    pdate:"",
   },
 
   /**
@@ -46,6 +47,7 @@ Page({
     var date = myDate.getFullYear() + "-" + m + "-" + b;
     that.setData({
       date: date,
+      pdate:date,
       options:options
     });
     if (options.type == 1) {

@@ -13,7 +13,7 @@
       <text class='formSubmit-title'>基本信息</text>
      
       <view class='from-assembly flex-default'>
-        <text>车款</text>
+        <text>车系</text>
         <view class='flex1 from-assembly-input'>{{categoryIdName}}</view>
       </view>
       
@@ -49,18 +49,18 @@
       </view>
       <view class='from-assembly flex-default flex-center'>
         <text>预约日期</text>
-        <picker class='flex1' mode="date" value="{{date}}" bindchange="bindDate">
+        <picker class='flex1' mode="date" value="{{date}}" bindchange="bindDate" start="{{pdate}}">
           <view class="from-assembly-value">
             {{date}}
           </view>
         </picker>
       </view>
-      <view class='from-assembly flex-default flex-center'>
+      <!-- <view class='from-assembly flex-default flex-center'>
         <text>预约时间</text>
         <picker class='flex1' bindchange='bingTime' value="{{carTimeIndex}}" range="{{carTime}}">
           <view class="from-assembly-value">{{carTime[carTimeIndex]}}</view>
         </picker>
-      </view>
+      </view> -->
       <view class='from-assembly flex-default from-assembly-no-right from-assembly-textarea'>
         <text>具体描述</text>
         <textarea class='flex1' name="description"></textarea>

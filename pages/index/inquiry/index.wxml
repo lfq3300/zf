@@ -21,7 +21,7 @@
       <input class='flex1 from-assembly-input' name='phone' bindinput="phoneInput" placeholder='请输入手机号码' value='{{phone}}'></input>
     </view>
     <view class='from-assembly flex-default flex-center'>
-      <text>车款</text>
+      <text>车系</text>
        <input class='flex1 from-assembly-input' value='{{carname}}' disabled="true" ></input>
     </view>
     <view class='from-assembly flex-default flex-center'>

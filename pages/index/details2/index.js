@@ -45,7 +45,7 @@ Page({
             headingImgUrl: res.data.result.vehicle.headingImgUrl,
             vehicleDetailsImg: res.data.result.vehicleDetails[that.data.vehicleDetailsIndex].items
           })
-          WxParse.wxParse('accontent', 'html', car.content, that, 0);
+     //     WxParse.wxParse('accontent', 'html', car.content, that, 0);
           wx.hideNavigationBarLoading();
           wx.stopPullDownRefresh();
           wx.request({
