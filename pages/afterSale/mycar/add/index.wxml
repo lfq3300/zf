@@ -53,7 +53,7 @@
     </view>
     <view class='from-assembly flex-default'>
       <text>车牌号</text>
-      <input class='flex1 from-assembly-input' name='licensePlate' placeholder='请输入车牌号' maxlength='7'></input>
+      <input class='flex1 from-assembly-input' name='licensePlate' placeholder='例如:粤A00000'  bindblur='plateInput'></input>
     </view>
      <view class='from-assembly flex-default'>
       <text>车辆识别号</text>

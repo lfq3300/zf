@@ -242,9 +242,10 @@ Page({
       return;
     }
     var msg = e.detail.value;
-    if (msg.licensePlate == "") {
+    var express = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$/;
+    if (msg.licensePlate == "" || !express.test(msg.licensePlate)) {
       wx.showToast({
-        title: '请输入车牌号',
+        title: '车牌号不正确',
         icon: 'none',
         duration: 1500
       })
@@ -269,7 +270,7 @@ Page({
     }
     var data = {
       id: "",
-      name: that.data.carList[that.data.carListIndex] + '' + that.data.cars[that.data.carsIndex],
+      name:  that.data.cars[that.data.carsIndex],
       categoryId: that.data.carVehicleId,
       vehicleId: that.data.carListId,
      // carListId: that.data.carListId,
@@ -362,6 +363,26 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
+  plateInput:function(t){
+    var vehicleNumber = t.detail.value
+    if (vehicleNumber.length == 7 ){
+      var express = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$/;
+      var result = express.test(vehicleNumber);
+      if (!result){
+        wx.showToast({
+          title: '车牌号输入不正确',
+          icon: 'none',
+          duration: 1500
+        })      
+      }
+    }else{
+      wx.showToast({
+        title: '车牌号输入不正确',
+        icon: 'none',
+        duration: 1500
+      })     
+    }
+  },
   onReady: function () {
 
   },

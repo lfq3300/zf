@@ -6,6 +6,8 @@
 .move-menu .tag{
   padding-left: 6.25%;
   padding-right:  6.25%;
+  width: 47%;
+  text-align: center;
 }
 .move-menu .select text::after{
   bottom: -10rpx;

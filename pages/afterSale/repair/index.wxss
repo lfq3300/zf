@@ -20,8 +20,8 @@ page{
 }
 
 .weixiu .bg2 {
-  width: 372rpx;
-  height: 359rpx;
+  width: 509rpx;
+  height: 380rpx;
 }
 
 .baoyang {

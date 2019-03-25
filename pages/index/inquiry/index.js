@@ -107,6 +107,7 @@ Page({
       name: options.name,
       carnameid: options.carnameid,
       carid: options.id,
+      carType: options.carType,
       phone: wx.getStorageSync('phone'),
       contactName: wx.getStorageSync('realName'),
     });

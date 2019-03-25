@@ -22,7 +22,7 @@
     </view>
     <view class='from-assembly flex-default flex-center'>
       <text>车系</text>
-       <input class='flex1 from-assembly-input' value='{{carname}}' disabled="true" ></input>
+       <input class='flex1 from-assembly-input' value='{{carType}}' disabled="true" ></input>
     </view>
     <view class='from-assembly flex-default flex-center'>
       <text>车型</text>

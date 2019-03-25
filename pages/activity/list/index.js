@@ -7,30 +7,42 @@ Page({
    */
   data: {
     loginhidde:true,
-    tag: [{
-        "id": 0,
-        "name": "未开始",
-        "status": 100000000,
-      },
-      {
-        "id": 1,
-        "name": "报名中",
-        "status": 100000001,
-      },
-      {
-        "id": 2,
-        "name": "活动中",
-        "status": 100000002,
-      },
-      {
-        "id": 3,
-        "name": "已结束",
-        "status": 100000003,
-      }
+    tag: [
+    {
+      "id": 1,
+      "name": "报名中",
+      "status": 100000001,
+    },
+    {
+      "id": 2,
+      "name": "活动中",
+      "status": 100000002,
+    }
     ],
+    // tag: [{
+    //     "id": 0,
+    //     "name": "未开始",
+    //     "status": 100000000,
+    //   },
+    //   {
+    //     "id": 1,
+    //     "name": "报名中",
+    //     "status": 100000001,
+    //   },
+    //   {
+    //     "id": 2,
+    //     "name": "活动中",
+    //     "status": 100000002,
+    //   },
+    //   {
+    //     "id": 3,
+    //     "name": "已结束",
+    //     "status": 100000003,
+    //   }
+    // ],
     tagIndex:1,
     activityList:[],
-    status: 100000001
+    statuscode: 100000001
   },
 
   /**
@@ -38,14 +50,14 @@ Page({
    */
   onLoad: function(options) {
       var that = this;
-    that.getActivityList(that.data.status);
+    that.getActivityList(that.data.statuscode);
   },
-  getActivityList: function (status){
+  getActivityList: function (statuscode){
     var that = this;
     wx.request({
       url: app.data.hostUrl + 'api/services/app/activity/GetActiveList',
       method: "post",
-      data: { status: status },
+      data: { status: statuscode },
       success: function (res) {
         if(res.data.success){
           that.setData({
@@ -59,11 +71,12 @@ Page({
   getActivity:function(e){
     var that = this;
     var tagIndex = e.target.dataset.id;
-    console.log(e)
-    that.setData({
-      tagIndex: tagIndex
-    });
+    tagIndex = tagIndex - 1;
     var status = that.data.tag[tagIndex].status;
+    that.setData({
+      tagIndex: tagIndex,
+      statuscode: status,
+    });
     that.getActivityList(status);
   },
   /**

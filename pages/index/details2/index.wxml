@@ -58,8 +58,8 @@
     </view>
   </view> -->
   <view class='suspension'>
-    <view bindtap='jumpurl' data-text='快速询价' data-url="/pages/index/inquiry/index?id={{car.id}}&url={{carImage[0].imgUrl}}&carname={{carname}}&carnameid={{carnameid}}&name={{car.name}}">快速询价</view>
-    <view bindtap='jumpurl' data-text='预约试驾' data-url="/pages/index/drive/index?id={{car.id}}&url={{carImage[0].imgUrl}}&carname={{carname}}&carnameid={{carnameid}}&name={{car.name}}">预约试驾</view>
-    <view bindtap='jumpurl' data-text='金融计算' data-url="/pages/index/finance/index?id={{car.id}}&url={{carImage[0].imgUrl}}&carname={{carname}}&carnameid={{carnameid}}&name={{car.name}}">金融计算</view>
+    <view bindtap='jumpurl' data-text='快速询价' data-url="/pages/index/inquiry/index?id={{car.id}}&url={{carImage[0].imgUrl}}&carname={{carname}}&carnameid={{carnameid}}&name={{car.name}}&carType={{carType}}">快速询价</view>
+    <view bindtap='jumpurl' data-text='预约试驾' data-url="/pages/index/drive/index?id={{car.id}}&url={{carImage[0].imgUrl}}&carname={{carname}}&carnameid={{carnameid}}&name={{car.name}}&carType={{carType}}">预约试驾</view>
+    <view bindtap='jumpurl' data-text='金融计算' data-url="/pages/index/finance/index?id={{car.id}}&url={{carImage[0].imgUrl}}&carname={{carname}}&carnameid={{carnameid}}&name={{car.name}}&carType={{carType}}">金融计算</view>
   </view>
 </view>

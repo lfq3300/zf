@@ -23,7 +23,8 @@ Page({
     that.setData({
       carname: options.carname,
       carnameid: options.carnameid,
-      id: options.id
+      id: options.id,
+      carType: options.carType
     })
     that.onInfo(options.id);
 
