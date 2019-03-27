@@ -48,6 +48,8 @@ Page({
           wx.setStorageSync('hasVehicle', res.data.result.hasVehicle);
           wx.setStorageSync('phone', res.data.result.phone);
           wx.setStorageSync('realName', res.data.result.realName);
+          wx.setStorageSync('FirstName', res.data.result.FirstName);
+          wx.setStorageSync('LastName', res.data.result.LastName);
         } else {
           wx.showToast({
             title: '授权失败',

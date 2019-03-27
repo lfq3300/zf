@@ -43,7 +43,6 @@ Page({
       return;
     }
     var msg = e.detail.value;
-   
     var data = {
       accountId: wx.getStorageSync("userId"),
       contactName: wx.getStorageSync("realName"),
@@ -57,7 +56,9 @@ Page({
       sessionId: wx.getStorageSync('sessionId'),
       fromId: "appointment",
       cityId:that.data.cityId,
-      vehicleModelId:that.data.carListId
+      vehicleModelId:that.data.carListId,
+      vehicleIdName: msg.vehicleIdName,
+      vehiclModelIdName: that.data.carListArr[that.data.carListIndex].name
     };
     that.setData({
       ajaxStatus:false

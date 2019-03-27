@@ -13,7 +13,7 @@
       <view class='title'>{{carDis[carDisIndex]}}</view>
        <view>{{address}}</view>
         <view>{{tel}}</view>
-       <image src='https://zungfu2.azurewebsites.net/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
+       <image src='https://miniprogram.zfchina.com/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
     </picker>
   </view>
 </view>

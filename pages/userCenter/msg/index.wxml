@@ -4,10 +4,13 @@
 <view class='padding-border'>
   <form bindsubmit="formSubmit">
     <view class='from-assembly flex-default'>
-      <text>车主姓名</text>
-      <input class='flex1 from-assembly-input' name='contactName' placeholder='请输入您的姓名' value='{{contactName}}'></input>
+      <text>姓</text>
+      <input class='flex1 from-assembly-input' name='FirstName' placeholder='请输入您的姓名' value='{{FirstName}}'></input>
     </view>
-
+    <view class='from-assembly flex-default'>
+      <text>名</text>
+      <input class='flex1 from-assembly-input' name='LastName' placeholder='请输入您的姓名' value='{{LastName}}'></input>
+    </view>
     <view class='from-assembly flex-default'>
       <text>手机号码</text>
       <input class='flex1 from-assembly-input' name='phone' bindinput="phoneInput" placeholder='请输入手机号码' value='{{phone}}'></input>

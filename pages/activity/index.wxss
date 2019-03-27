@@ -6,7 +6,7 @@ page {
   position: fixed;
   height: 100%;
   width: 100%;
-  background-image: url("http://www.luofq.com/market_bg_n@3x.png");
+  background-image: url("https://miniprogram.zfchina.com/Common/Images/App/afterSale/market_bg_n@3x.png");
   background-size: 130%;
   top:0;
   left: 0;

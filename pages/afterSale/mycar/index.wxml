@@ -7,7 +7,7 @@
 <view hidden="{{loginhidde}}">
   <view class='page-title'>
     我的爱车
-    <image src='https://zungfu2.azurewebsites.net/Common/Images/App/afterSale/service_icon_delete_n@3x.png' bindtap='deleteMyCar'></image>
+    <image src='https://miniprogram.zfchina.com/Common/Images/App/afterSale/service_icon_delete_n@3x.png' bindtap='deleteMyCar'></image>
   </view>
 
   <view class='carlist'>
@@ -21,7 +21,7 @@
       </view>
     </checkbox-group>
     <navigator url='/pages/afterSale/mycar/add/index' class='addcar'>
-      <image src='https://zungfu2.azurewebsites.net/Common/Images/App/afterSale/service_img_add_n@3x.png'></image>
+      <image src='https://miniprogram.zfchina.com/Common/Images/App/afterSale/service_img_add_n@3x.png'></image>
       添加爱车
     </navigator>
   </view>

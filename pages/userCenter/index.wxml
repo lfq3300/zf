@@ -52,7 +52,7 @@
     </navigator>
      <view class="item flex-default" bindtap='cl'>
       <view class="icon-box">
-        <image class="icon" src="https://zungfu2.azurewebsites.net/Common/Images/App/afterSale/service_icon_delete_n@3x.png" mode="widthFix"></image>
+        <image class="icon" src="https://miniprogram.zfchina.com/Common/Images/App/afterSale/service_icon_delete_n@3x.png" mode="widthFix"></image>
       </view>
       <text class="item-title">清除缓存</text>
       <view class="item-right flex1 flex-default flex-justify-content-end">

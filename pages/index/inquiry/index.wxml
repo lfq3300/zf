@@ -26,7 +26,7 @@
     </view>
     <view class='from-assembly flex-default flex-center'>
       <text>车型</text>
-       <input class='flex1 from-assembly-input' value='{{name}}' disabled="true" ></input>
+       <input class='flex1 from-assembly-input' value='{{name}}' disabled="true" name="vehicleIdName"></input>
     </view>
      <view class='from-assembly flex-default flex-center'>
       <text>车型规格</text>

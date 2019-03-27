@@ -28,7 +28,8 @@ Page({
     }
     that.setData({
       phone: wx.getStorageSync('phone'),
-      contactName: wx.getStorageSync('realName'), 
+      LastName: wx.getStorageSync('LastName'), 
+      FirstName: wx.getStorageSync('FirstName'), 
     })
   },
   getPhoneCode: function () {
@@ -75,9 +76,17 @@ Page({
       return;
     }
     var msg = e.detail.value;
-    if (msg.contactName == "") {
+    if (msg.FirstName == "") {
       wx.showToast({
-        title: '姓名不能为空',
+        title: '姓不能为空',
+        icon: 'none',
+        duration: 1500
+      })
+      return false;
+    }
+    if (msg.LastName == "") {
+      wx.showToast({
+        title: '名不能为空',
         icon: 'none',
         duration: 1500
       })
@@ -105,7 +114,8 @@ Page({
     var data = {
       "accontId": wx.getStorageSync("userId"),
       "phone": msg.phone,
-      "realName": msg.contactName,
+      "FirstName": msg.FirstName,
+      "LastName": msg.LastName,
       "code": msg.code
     }
     wx.request({
@@ -120,7 +130,10 @@ Page({
          if (res.data.success) {
            wx.setStorageSync('hasPersonal', true);
            wx.setStorageSync('phone', msg.phone);
-           wx.setStorageSync('realName', msg.contactName);
+           wx.setStorageSync('FirstName', msg.FirstName);
+           wx.setStorageSync('LastName', msg.LastName);
+           wx.setStorageSync('realName', msg.FirstName + "" + msg.LastName);
+           
            if (that.data.pageurl){
              var options = that.data.options;
              var str = "";

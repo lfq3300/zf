@@ -224,6 +224,9 @@ Page({
       sessionId: wx.getStorageSync('sessionId'),
       code:msg.code,
       FormId: "appointment",
+      DealerIdName: that.data.carDis[that.data.carListArrIndex],
+      VehicleIdName: that.data.carListArr[that.data.carListArrIndex],
+      MaintainTypeIdName: that.data.carWx[that.data.carWxIndex]
     }
     var url = "";
     var msg = "";

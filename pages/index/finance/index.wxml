@@ -13,7 +13,7 @@
     <view class="flex1">
       <picker class='flex1' bindchange='bingCar' value="{{carListIndex}}" range="{{carList}}">
         <view class='flex1'>{{carList[carListIndex]}} 
-        <image src='https://zungfu2.azurewebsites.net/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
+        <image src='https://miniprogram.zfchina.com/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
         </view>
       </picker>
     </view>
@@ -49,7 +49,7 @@
         <view class="flex1">
           <picker class='flex1' bindchange='bingCarTime' value="{{carTimeIndex}}" range="{{carTime}}">
             <view>{{carTime[carTimeIndex]}}
-                <image src='https://zungfu2.azurewebsites.net/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
+                <image src='https://miniprogram.zfchina.com/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
             </view>
           </picker>
         </view>
@@ -76,5 +76,5 @@
       </view>
     </view>
   </view>
-  <image src='http://www.luofq.com/xxhx.png' class='xxhxbg'></image>
+  <image src='https://miniprogram.zfchina.com/Common/Images/App/afterSale/xxhx.png' class='xxhxbg'></image>
 </view>
