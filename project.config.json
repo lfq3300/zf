@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 52,
+			"current": 56,
 			"list": [
 				{
 					"id": 0,
@@ -360,6 +360,35 @@
 					"id": -1,
 					"name": "登录",
 					"pathName": "pages/login/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的预约列表",
+					"pathName": "pages/afterSale/help/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 54,
+					"name": "vivw",
+					"pathName": "pages/activity/viveweb/index",
+					"query": "src=https://mp.weixin.qq.com/s/cCGWXQvfBLBM19ApujLIJw",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "文案",
+					"pathName": "pages/about/list/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "vivw",
+					"pathName": "pages/index/drive/index",
+					"query": "id=48&url=https://zungfu2.azurewebsites.net/uploads/0c98ecd9-90ec-44db-b6b2-41a996148b3c.jpg&carname=轿车&carnameid=1&name=梅赛德斯-奔驰S级轿车&carType=S",
 					"scene": null
 				}
 			]

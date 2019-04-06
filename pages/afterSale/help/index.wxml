@@ -16,9 +16,8 @@
       </view>
       <view class='dislist'>
         <view class='flex-default' wx:for="{{carDisAddr}}" wx:for-index="idx" wx:for-item="item" wx:key="property">
-          <view class='flex1'>
-            {{item.name}} / {{item.tel}}</view>
-          <view class='callbtn' bindtap='callphone' data-tel='{{item.tel}}'>拨打电话</view>
+          <view class='flex1'>{{item.name}} / {{item.tel}}</view>
+          <text class='callbtn' bindtap='callphone' data-tel='{{item.tel}}'>拨打电话</text>
         </view>
       </view>
     </form>

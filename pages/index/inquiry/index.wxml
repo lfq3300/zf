@@ -11,7 +11,7 @@
   <view class='text'>快速查价</view>
 </view>
 <view class='padding-border'>
-  <form bindsubmit="formSubmit">
+  <form bindsubmit="formSubmit" report-submit="true">
    <view class='from-assembly flex-default'>
       <text>车主姓名</text>
       <input class='flex1 from-assembly-input' name='contactName' placeholder='请输入您的姓名' value='{{contactName}}'></input>

@@ -3,9 +3,15 @@
 </loading>
 <view hidden="{{loginhidde}}">
   <view class='padding-border'>
-    <navigator class='flex-column' url="/pages/activity/details/index?id={{item.id}}" wx:for="{{list}}" wx:for-index="idx" wx:for-item="item" wx:key="property" >
+    <block wx:for="{{list}}" wx:for-index="idx" wx:for-item="item" wx:key="property">
+       <navigator class='flex-column' url="/pages/activity/viveweb/index?src={{item.officialUrl}}" wx:if="{{item.isOfficial}}">
         <image src='{{item.imgUrl}}'></image>
         <view>{{item.title}}</view>
-    </navigator>
-</view>
+      </navigator>
+      <navigator class='flex-column' url="/pages/activity/details/index?id={{item.id}}" wx:else>
+        <image src='{{item.imgUrl}}'></image>
+        <view>{{item.title}}</view>
+      </navigator>
+    </block>
+  </view>
 </view>

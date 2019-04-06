@@ -286,7 +286,7 @@ Page({
       contactTel: wx.getStorageSync("phone"),
       accountId: wx.getStorageSync("userId"),
       sessionId: wx.getStorageSync('sessionId'),
-      fromId: "appointment",
+      fromId: e.detail.fromId,
     };
     that.setData({
       ajaxStatus: false

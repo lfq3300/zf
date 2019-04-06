@@ -65,7 +65,7 @@ Page({
       accountId: wx.getStorageSync("userId"),
       description: msg.msg,
       sessionId: wx.getStorageSync('sessionId'),
-      fromId: "appointment",
+      fromId: e.detail.fromId,
     };
     that.setData({
       ajaxStatus: false

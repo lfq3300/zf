@@ -48,7 +48,7 @@ Page({
       appointmentTimeId: that.data.carTimeId,
       genderId:msg.sex,
       sessionId: wx.getStorageSync('sessionId'),
-      fromId: "appointment",
+      fromId: e.detail.fromId,
       cityId: that.data.cityId,
       vehicleModelId: that.data.carListId
     }

@@ -1,4 +1,4 @@
-<form bindsubmit="formSubmit">
+<form bindsubmit="formSubmit" report-submit="true">
   <view class="padding-border">
     <view>
       <textarea placeholder='您的意见是我们的进步的动力' name="msg"></textarea>

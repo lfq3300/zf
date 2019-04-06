@@ -22,7 +22,6 @@
   margin-bottom: 60rpx;
 }
 .item image{
-  width: 100%;
   height:355rpx;
 }
 .item-title{

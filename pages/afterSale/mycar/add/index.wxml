@@ -5,7 +5,7 @@
   <ajaxlod></ajaxlod>
 </view>
 <view class='padding-border'>
-  <form bindsubmit="formSubmit">
+  <form bindsubmit="formSubmit" report-submit="true">
     
     <view class='from-assembly flex-default flex-center'>
       <text>车型</text>

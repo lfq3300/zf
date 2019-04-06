@@ -21,18 +21,22 @@ page{
   font-size: 24rpx;
   line-height: 100rpx;
   border-bottom: 1px solid #BCBCBC;
+  align-items: center;
 }
 .dislist .flex-default:last-child{
   border-bottom: none;
 }
 .dislist view{
   color: #fff;
+  line-height: 40rpx;
+  padding-right: 50rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
 }
-.dislist view.callbtn{
+.dislist text.callbtn{
   background: #D1A24B;
   height: 50rpx;
   line-height: 50rpx;
-  margin-top: 25rpx;
   width: 130rpx;
   text-align: center;
 }
