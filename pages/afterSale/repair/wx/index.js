@@ -205,7 +205,6 @@ Page({
 
   formSubmit: function (e) {
     var that = this;
-    console.log(that.data.ajaxstatus);
     if(!that.data.ajaxstatus){
       return;
     }
@@ -226,7 +225,8 @@ Page({
       FormId: "appointment",
       DealerIdName: that.data.carDis[that.data.carListArrIndex],
       VehicleIdName: that.data.carListArr[that.data.carListArrIndex],
-      MaintainTypeIdName: that.data.carWx[that.data.carWxIndex]
+      MaintainTypeIdName: that.data.carWx[that.data.carWxIndex],
+      MaintainTypeId: app.globalData.carWxArr[that.data.carWxIndex].id
     }
     var url = "";
     var msg = "";

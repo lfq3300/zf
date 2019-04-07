@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 57,
+			"current": 58,
 			"list": [
 				{
 					"id": 0,
@@ -395,6 +395,14 @@
 					"id": -1,
 					"name": "电话",
 					"pathName": "pages/afterSale/help/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "微信",
+					"pathName": "pages/afterSale/repair/wx/index",
+					"query": "type=1",
 					"scene": null
 				}
 			]
