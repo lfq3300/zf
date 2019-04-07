@@ -54,7 +54,7 @@ Page({
       dealerIdName: that.data.carDis[that.data.carDisIndex],
       description: msg.description,
       sessionId: wx.getStorageSync('sessionId'),
-      fromId: e.detail.formId,
+      formId: e.detail.formId,
       cityId:that.data.cityId,
       vehicleModelId:that.data.carListId,
       vehicleIdName: msg.vehicleIdName,

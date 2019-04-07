@@ -91,9 +91,28 @@ Page({
   },
   callphone: function (e) {
     var that = this;
-    wx.makePhoneCall({
-      phoneNumber: e.target.dataset.tel
+    var name = wx.getStorageSync('FirstName') + wx.getStorageSync('LastName');
+    var myDate = new Date();
+    var mo = myDate.getMonth() + 1 ;
+    var time = myDate.getFullYear() + "-" + mo+ "-" + myDate.getDate() + " " + myDate.getHours() + ":" + myDate.getMinutes() + ":" + myDate.getSeconds();
+    
+    wx.request({
+      url: app.data.hostUrl + 'api/services/app/records/SubmitRecordAsync',
+      data: {
+        "name": name,
+        "content": name + "于" + time + "拨打了 " + that.data.carDisAddr[that.data.carDisIndex].name +" 经销商电话",
+        "dealerId": that.data.carDisAddr[that.data.carDisIndex].id,
+        "accountId": wx.getStorageSync('userId'),
+        "tel": e.target.dataset.tel
+      },
+      method: 'post',
+      success: function (res) {
+        wx.makePhoneCall({
+          phoneNumber: e.target.dataset.tel
+        })
+      }
     })
+    
   },
 
   /**
