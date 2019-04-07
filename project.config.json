@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 56,
+			"current": 57,
 			"list": [
 				{
 					"id": 0,
@@ -389,6 +389,12 @@
 					"name": "vivw",
 					"pathName": "pages/index/drive/index",
 					"query": "id=48&url=https://zungfu2.azurewebsites.net/uploads/0c98ecd9-90ec-44db-b6b2-41a996148b3c.jpg&carname=轿车&carnameid=1&name=梅赛德斯-奔驰S级轿车&carType=S",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "电话",
+					"pathName": "pages/afterSale/help/index",
 					"scene": null
 				}
 			]

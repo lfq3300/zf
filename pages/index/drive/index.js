@@ -48,13 +48,15 @@ Page({
       appointmentTimeId: that.data.carTimeId,
       genderId:msg.sex,
       sessionId: wx.getStorageSync('sessionId'),
-      fromId: e.detail.fromId,
+      fromId: e.detail.formId,
       cityId: that.data.cityId,
       vehicleModelId: that.data.carListId
     }
+    console.log(data);
     that.setData({
       ajaxStatus: false
     })
+    console.log(data);
     wx.request({
       url: app.data.hostUrl + 'api/services/app/appointment/SubmitVehicleAppointment',
       data: data,
