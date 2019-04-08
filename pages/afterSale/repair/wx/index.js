@@ -216,7 +216,7 @@ Page({
       dealerId: that.data.carDisId,
       appointmentDate:that.data.date,
       appointmentTimeId: that.data.carTimeId,
-      genderId:msg.sex,
+      genderId: wx.getStorageSync("userinfo").gender,
       myVehicleId: that.data.lovecarId,
       description: msg.description,
       accountId: wx.getStorageSync("userId"),
@@ -226,7 +226,7 @@ Page({
       DealerIdName: that.data.carDis[that.data.carListArrIndex],
       VehicleIdName: that.data.carListArr[that.data.carListArrIndex],
       MaintainTypeIdName: that.data.carWx[that.data.carWxIndex],
-      MaintainTypeId: app.globalData.carWxArr[that.data.carWxIndex].id
+      MaintainTypeId: app.globalData.carWxArr[that.data.carWxIndex].value
     }
     var url = "";
     var msg = "";
