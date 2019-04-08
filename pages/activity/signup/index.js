@@ -93,7 +93,7 @@ Page({
       tel: msg.phone,
       genderId: msg.sex,
       sessionId: wx.getStorageSync('sessionId'),
-      formId: "appointment",
+      formId: e.detail.formId,
       email: msg.email,
       code: msg.code,
       appointmentDate: that.data.start

@@ -9,7 +9,7 @@
     {{title}}
   </view>
   <view class='padding-border'>
-    <form bindsubmit="formSubmit">
+    <form bindsubmit="formSubmit" report-submit="true">
       <text class='formSubmit-title'>基本信息</text>
      
       <view class='from-assembly flex-default'>

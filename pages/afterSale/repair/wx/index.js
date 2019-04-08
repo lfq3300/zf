@@ -222,7 +222,7 @@ Page({
       accountId: wx.getStorageSync("userId"),
       sessionId: wx.getStorageSync('sessionId'),
       code:msg.code,
-      FormId: "appointment",
+      formId: e.detail.formId,
       DealerIdName: that.data.carDis[that.data.carListArrIndex],
       VehicleIdName: that.data.carListArr[that.data.carListArrIndex],
       MaintainTypeIdName: that.data.carWx[that.data.carWxIndex],
