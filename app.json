@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/about/index",
     "pages/index/index",
     "pages/opinion/index",
     "pages/index/catalog/index",
@@ -15,7 +16,6 @@
     "pages/afterSale/repair/index",
     "pages/afterSale/repair/wx/index",
     "pages/afterSale/help/index",
-    "pages/about/index",
     "pages/about/list/index",
     "pages/about/contact/index",
     "pages/activity/index",
