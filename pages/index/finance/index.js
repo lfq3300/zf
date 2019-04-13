@@ -186,8 +186,8 @@ Page({
     console.log(that.data.viewwidth)
     viewspeed = viewspeed / that.data.viewwidth * 100;
     console.log(viewspeed);
-    if (viewspeed < 20) {
-      viewspeed = 20;
+    if (viewspeed < 40) {
+      viewspeed = 40;
     };
     if (viewspeed > 100){
       viewspeed = 100;
