@@ -21,12 +21,15 @@ Page({
     carListIndex: 0,
     carListId: 0,
     switchpageIndex: 1,
-    speed: 30,
-    viewspeed:60,
+    speed: 20,
+    viewspeed:40,
     shoufu: 0,
     yg: 0,
     xxhx:[],
-    carsel:0
+    carsel:0,
+    windowWidth:0,
+    viewwidth:0,
+    viewleft: 0,
   },
 
   carselect:function(e){
@@ -58,6 +61,11 @@ Page({
       carid: options.id
     });
     that.LoInfo();
+    wx.getSystemInfo({
+      success: function (res) {
+        that.data.windowWidth = res.windowWidth;
+      }
+    });
   },
 
   LoInfo: function () {
@@ -162,20 +170,40 @@ Page({
     })
   },
 
-  tapmove: function (e) {
+  tapstart: function (event){
+    this.data.lastX = event.touches[0].pageX*1.5;
+   
+  },
+  tapmove: function (event) {
     var that = this;
-    var speed = parseInt(e.touches[0].clientX - 170);
+    wx.createSelectorQuery().select('#touchview').boundingClientRect(function (rect) {
+      that.data.viewwidth = rect.width * 2;
+      that.data.viewleft = rect.left;
+    }).exec();
+    var currentX = event.touches[0].pageX + that.data.viewleft;
+    var viewspeed = currentX*2-120;
+    console.log(viewspeed);
+    console.log(that.data.viewwidth)
+    viewspeed = viewspeed / that.data.viewwidth * 100;
+    console.log(viewspeed);
+    if (viewspeed < 20) {
+      viewspeed = 20;
+    };
+    if (viewspeed > 100){
+      viewspeed = 100;
+    }
+    var speed = parseInt(viewspeed / 2);
     if (speed > 50) {
       speed = 50;
     };
     if (speed < 20) {
       speed = 20;
     }
-    var viewspeed = 2*speed;
     that.setData({
       speed: speed,
       viewspeed: viewspeed
-    })
+    });
+    this.data.lastX = currentX
   },
   tapend:function(e){
     var that = this;

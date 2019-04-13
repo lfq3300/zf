@@ -72,7 +72,6 @@
 }
 .assembly .price{
   text-align: center;
-  background: #EEEEEE;
   padding: 0 44rpx  ;
 }
 .progress-assembly .flex1{
@@ -80,8 +79,8 @@
 }
 .progress-btn{
   position: absolute;
-  width: 32rpx;
-  height: 32rpx;
+  width: 42rpx;
+  height: 42rpx;
   border-radius: 50%;
   background: #fff;
   top:50%;

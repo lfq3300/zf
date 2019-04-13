@@ -79,11 +79,11 @@ Page({
       if (!wx.getStorageSync('hasPersonal')) {
         wx.showModal({
           title: '提示',
-          content: '请移步到个人中心完善个人资料，再开始' + e.target.dataset.text+"操作",
+          content: '请先完善个人资料，再开始' + e.target.dataset.text+"操作",
           success(res) {
             if (res.confirm) {
-              wx.switchTab({
-                url: "/pages/userCenter/index"
+              wx.navigateTo({
+                url: "/pages/userCenter/msg/index"
               })
             } else if (res.cancel) {
               console.log('用户点击取消')

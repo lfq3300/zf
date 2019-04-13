@@ -40,25 +40,25 @@ Page({
       if (!wx.getStorageSync('hasPersonal')){
         wx.showModal({
           title: '提示',
-          content: '请移步到个人中心完善个人信息后再进行维修保养操作',
+          content: '请先完善个人信息',
           success(res) {
             if (res.confirm) {
-              wx.switchTab({
-                url: "/pages/userCenter/index"
+              wx.navigateTo({
+                url: "/pages/userCenter/msg/index"
               })
             } else if (res.cancel) {
               console.log('用户点击取消')
             }
           }
         })
-      } if (!wx.getStorageSync('hasVehicle')){
+      } else if (!wx.getStorageSync('hasVehicle')){
         wx.showModal({
           title: '提示',
-          content: '请移步到个人中心添加我的爱车后再进行维修保养操作',
+          content: '请移步到我的爱车完善爱车后再进行维修保养操作',
           success(res) {
             if (res.confirm) {
-              wx.switchTab({
-                url: "/pages/userCenter/index"
+              wx.navigateTo({
+                url: "/pages/afterSale/mycar/index"
               })
             } else if (res.cancel) {
               console.log('用户点击取消')

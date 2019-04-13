@@ -31,13 +31,22 @@ Page({
     })
   },
   jumplovecar:function(e){
-    if(!wx.getStorageSync('hasPersonal')){
-      wx.showToast({
-        title: '请先完善个人信息',
-        icon: 'none',
-        duration: 1500
+
+    if (!wx.getStorageSync('hasPersonal')) {
+      wx.showModal({
+        title: '提示',
+        content: '请先完善个人信息',
+        success(res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: "/pages/userCenter/msg/index"
+            })
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+          }
+        }
       })
-    }else{
+    } else{
       wx.navigateTo({
         url: e.target.dataset.url
       })
