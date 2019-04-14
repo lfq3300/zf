@@ -3,8 +3,8 @@ App({
     用户进来后发起微信授权 必须授权获取到用户信息后才可以
   */
   data: {
-//    hostUrl: "https://zungfu2.azurewebsites.net/",
-    hostUrl: "https://miniprogram.zfchina.com/",
+     hostUrl: "https://zungfu2.azurewebsites.net/",
+   // hostUrl: "https://miniprogram.zfchina.com/",
     appid: "wx4d69fe23e65ae0ca",
     appKey: "f3ee574e618801a984354749b2657b21",
   },
@@ -127,6 +127,67 @@ App({
       },
     })
   },
+  //根据地址和车型获取经销商
+  getAddrDealerAndVehicleId: function (addr,vehicleId) {
+    var that = this;
+    wx.request({
+      url: that.data.hostUrl + 'api/services/app/dealer/GetSalesDealerAsync?city=' + addr + "&vehicleId=" + vehicleId,
+      method: 'post',
+      success: function (res) {
+        if (res.data.success) {
+          var data = res.data.result;
+          data = that.sortAddres(data);
+          var jsx = [];
+          var addrs = [];
+          for (var i = 0; i < data.length; i++) {
+            jsx[i] = data[i].name;
+            var c = {};
+            c.latitude = data[i].latitude;
+            c.longitude = data[i].longitude;
+            c.tel = data[i].tel;
+            c.address = data[i].address;
+            c.id = data[i].id;
+            c.name = data[i].name;
+            addrs[i] = c;
+         }
+         if(jsx.length == 0){
+           addrs[0] = { "id": -1, "name":"当前城市不支持试驾该车型"};
+           jsx[0] = "当前城市不支持试驾该车型"
+         }
+         that.globalData.carAddrDis = jsx;
+         that.globalData.carAddrDisAddr = addrs;
+        }
+      },
+    })
+  },
+  getServiceDealerAsync: function (addr){
+    var that = this;
+    wx.request({
+      url: that.data.hostUrl + 'api/services/app/dealer/GetServiceDealerAsync?city=' + addr,
+      method: 'post',
+      success: function (res) {
+        if (res.data.success) {
+          var data = res.data.result;
+          data = that.sortAddres(data);
+          var jsx = [];
+          var addrs = [];
+          for (var i = 0; i < data.length; i++) {
+            jsx[i] = data[i].name;
+            var c = {};
+            c.latitude = data[i].latitude;
+            c.longitude = data[i].longitude;
+            c.tel = data[i].tel;
+            c.address = data[i].address;
+            c.id = data[i].id;
+            c.name = data[i].name;
+            addrs[i] = c;
+          }
+          that.globalData.carAddrDis = jsx;
+          that.globalData.carAddrDisAddr = addrs;
+        }
+      },
+    })
+  },
 
   //获取当前经纬度
 
@@ -142,7 +203,8 @@ App({
     var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) +
       Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
     s = s * 6378.137;
-    s = Math.round(s * 10000) / 10000; //输出为公里
+    //输出为公里
+    s = Math.round(s * 10000) / 10000; 
     return s;
   },
   //地址排序

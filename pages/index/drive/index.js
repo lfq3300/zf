@@ -35,6 +35,14 @@ Page({
       return;
     }
     var msg = e.detail.value;
+    if (that.data.carDisId < 0 ){
+        wx.showToast({
+          title: that.data.carDis[that.data.carDisIndex],
+          icon: 'none',
+          duration: 1500
+        })
+        return;
+    }
     var data = {
       accountId: wx.getStorageSync("userId"),
       name: wx.getStorageSync("realName"),
@@ -191,8 +199,10 @@ Page({
               vcity = pagecity[0];
             }
           }
-          app.getAddrDealer(vcity);
+          app.getAddrDealerAndVehicleId(vcity, that.data.carid);
+        //  app.getAddrDealer(vcity);
           var deaTime = setInterval(function () {
+            console.log(app.globalData.carAddrDisAddr);
             if (app.globalData.carAddrDisAddr) {
               clearTimeout(deaTime);
               that.setData({
@@ -249,7 +259,8 @@ Page({
       cityId: app.globalData.cityArr[cityIndex].id,
       ajaxstatus: false
     });
-    app.getAddrDealer(that.data.city[cityIndex]);
+  //  app.getAddrDealer(that.data.city[cityIndex]);
+    app.getAddrDealerAndVehicleId(that.data.city[cityIndex], that.data.carid);
     var deaTime = setInterval(function () {
       if (app.globalData.carAddrDisAddr) {
         clearTimeout(deaTime);

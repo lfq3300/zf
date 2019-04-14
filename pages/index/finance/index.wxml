@@ -36,13 +36,14 @@
       <view class='padding-border'>
         <view class="tab-car-sel-box {{carsel == idx?'tab-car-sel-box-select':''}}" wx:for="{{xxhx}}" wx:for-index="idx" wx:for-item="item" wx:key="property" bindtap='carselect' data-id='{{idx}}'>
             <view class='box-title' data-id='{{idx}}'>{{item.name}} </view>
-            <view class='box-cen' data-id='{{idx}}'>月付款人民币<text>{{item.monthlyPay}}</text>万起</view>
+            <view class='box-cen' data-id='{{idx}}'>{{item.tname}}<text>{{item.monthlyPay}}</text>起</view>
         </view>
       </view>
-      <view class='tab-car-explain'>*实际月付款以奔驰租赁系统为准</view>
+      <view class='tab-car-explain' wx:if="{{xxhx}}">*实际月付款以奔驰租赁系统为准</view>
+      <view class='tab-car-explain' wx:else>占无新购车方案</view>
     </view>
   <view class='tab-car' hidden='{{switchpageIndex == 1}}'>
-    <view class='car-center'>
+    <view class='car-center'  wx:if="{{financ}}">
       <text class='tab-car-title'>低利率、低首付、低月付</text>
       <view class='flex-default flex-center assembly'>
         <text>期限</text>
@@ -67,7 +68,7 @@
         <view class="show-info">{{speed}}%</view>
       </view>
     </view>
-    <view class='car-bottom'>
+    <view class='car-bottom'  wx:if="{{financ}}">
       <view class='flex-default flex-center'>
         <text>月供</text>
         <view class='flex1'>
@@ -76,5 +77,6 @@
       </view>
     </view>
   </view>
+  <view class='tab-car-explain' wx:if="{{!financ}}">占无新购车方案</view>
   <image src='https://miniprogram.zfchina.com/Common/Images/App/afterSale/xxhx.png' class='xxhxbg'></image>
 </view>

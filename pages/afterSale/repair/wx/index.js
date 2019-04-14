@@ -114,7 +114,9 @@ Page({
               vcity = pagecity[0];
             }
           }
-          app.getAddrDealer(vcity);
+          
+          app.getServiceDealerAsync(vcity);
+      //    app.getAddrDealer(vcity);
           var deaTime = setInterval(function () {
             if (app.globalData.carAddrDisAddr) {
               clearTimeout(deaTime);
@@ -152,7 +154,8 @@ Page({
     that.setData({
       cityIndex: cityIndex,
     });
-    app.getAddrDealer(that.data.city[cityIndex]);
+ //   app.getAddrDealer();
+    app.getServiceDealerAsync(that.data.city[cityIndex]);
     var deaTime = setInterval(function () {
       if (app.globalData.carAddrDisAddr) {
         clearTimeout(deaTime);
