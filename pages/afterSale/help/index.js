@@ -42,8 +42,15 @@ Page({
           var deaTime = setInterval(function () {
             if (app.globalData.carAddrDisAddr) {
               clearTimeout(deaTime);
+              var carDisAddr = app.globalData.carAddrDisAddr;
+              var newcarDisAddr = [];
+              for (var i in carDisAddr){
+                if (carDisAddr[i].isER){
+                  newcarDisAddr.push(carDisAddr[i]);
+                }
+              }
               that.setData({
-                carDisAddr: app.globalData.carAddrDisAddr,
+                carDisAddr: newcarDisAddr,
                 ajaxstatus:true
               });
               app.globalData.carAddrDisAddr = '';
@@ -81,8 +88,15 @@ Page({
     var deaTime = setInterval(function () {
       if (app.globalData.carAddrDisAddr) {
         clearTimeout(deaTime);
+        var carDisAddr = app.globalData.carAddrDisAddr;
+        var newcarDisAddr = [];
+        for (var i in carDisAddr) {
+          if (carDisAddr[i].isER) {
+            newcarDisAddr.push(carDisAddr[i]);
+          }
+        }
         that.setData({
-          carDisAddr: app.globalData.carAddrDisAddr,
+          carDisAddr: newcarDisAddr,
           ajaxstatus:true
         })
         app.globalData.carAddrDisAddr = '';
