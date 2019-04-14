@@ -12,15 +12,19 @@
     <picker bindchange='bingDis' value="{{carDisIndex}}" range="{{carDis}}">
       <view class='title'>{{carDis[carDisIndex]}}</view>
        <view>{{address}}</view>
-        <view>{{tel}}</view>
+       <!-- <view>{{tel}}</view> -->
        <image src='https://miniprogram.zfchina.com/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
     </picker>
   </view>
 </view>
-<!-- <view class='bottom padding-border'>
+
+<view  class='bottom padding-border'>
+<view  bindtap='callphone' data-tel='{{erTel}}'>售后预约服务: {{erTel}}</view>
+<!-- 
     <view>若有任何疑问，可以通过以下渠道寻求帮助：</view>
     <view>发邮件至：<text class='em'>Marketingzfmm@zfchina.com</text> </view>
     <view>邮件或私信请注明申请编号和中文姓名,还有你的联系方式。</view>
     <view>我们将尽快为您提供专业资讯服务</view>
-</view> -->
+     -->
+</view>
 </view>

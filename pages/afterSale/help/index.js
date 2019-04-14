@@ -38,7 +38,7 @@ Page({
               vcity = pagecity[0];
             }
           }
-          app.getAddrDealer(vcity);
+          app.getERDealerAsync(vcity);
           var deaTime = setInterval(function () {
             if (app.globalData.carAddrDisAddr) {
               clearTimeout(deaTime);
@@ -77,7 +77,7 @@ Page({
       cityIndex: cityIndex,
       ajaxstatus:false
     });
-    app.getAddrDealer(that.data.city[cityIndex]);
+    app.getERDealerAsync(that.data.city[cityIndex]);
     var deaTime = setInterval(function () {
       if (app.globalData.carAddrDisAddr) {
         clearTimeout(deaTime);
@@ -95,7 +95,6 @@ Page({
     var myDate = new Date();
     var mo = myDate.getMonth() + 1 ;
     var time = myDate.getFullYear() + "-" + mo+ "-" + myDate.getDate() + " " + myDate.getHours() + ":" + myDate.getMinutes() + ":" + myDate.getSeconds();
-    
     wx.request({
       url: app.data.hostUrl + 'api/services/app/records/SubmitRecordAsync',
       data: {
@@ -112,7 +111,6 @@ Page({
         })
       }
     })
-    
   },
 
   /**

@@ -43,3 +43,12 @@ page{
   width: 130rpx;
   text-align: center;
 }
+.bt{
+  background:#D1A24B;
+  height:50rpx;
+  line-height:50rpx;
+  padding:0 15rpx;
+  text-align:center;
+  display: inline-block;
+  margin-left: 15rpx;
+}

@@ -86,6 +86,7 @@ App({
             c.latitude = data[i].latitude;
             c.longitude = data[i].longitude;
             c.tel = data[i].tel;
+            c.erTel = data[i].erTel;
             c.address = data[i].address;
             c.id = data[i].id;
             c.name = data[i].name;
@@ -119,6 +120,38 @@ App({
             c.address = data[i].address;
             c.id = data[i].id;
             c.name = data[i].name;
+            addrs[i] = c;
+          }
+          that.globalData.carAddrDis = jsx;
+          that.globalData.carAddrDisAddr = addrs;
+        }
+      },
+    })
+  },
+  //道路救援
+  getERDealerAsync:function(city){
+    var that = this;
+    wx.request({
+      url: that.data.hostUrl + 'api/services/app/dealer/GetERDealerAsync?city=' + city,
+      method: 'post',
+      success: function (res) {
+        if (res.data.success) {
+          var data = res.data.result;
+          data = that.sortAddres(data);
+          var jsx = [];
+          var addrs = [];
+          for (var i = 0; i < data.length; i++) {
+            jsx[i] = data[i].name;
+            var c = {};
+            c.latitude = data[i].latitude;
+            c.longitude = data[i].longitude;
+            c.tel = data[i].tel;
+            c.address = data[i].address;
+            c.id = data[i].id;
+            c.name = data[i].name;
+            c.erTel = data[i].erTel;
+            c.isSalesDealer = data[i].isSalesDealer;
+            c.isServiceDealer = data[i].isServiceDealer;
             addrs[i] = c;
           }
           that.globalData.carAddrDis = jsx;

@@ -14,6 +14,7 @@ Page({
     carDisIndex:0,
     address:"",
     tel:"",
+    erTel:""
   },
 
   /**
@@ -34,6 +35,7 @@ Page({
           longitude: carDisAddr[0].longitude,
           address: carDisAddr[0].address,
           tel: carDisAddr[0].tel,
+          erTel: carDisAddr[0].erTel,
           markers:[{
             latitude: carDisAddr[0].latitude,
             longitude: carDisAddr[0].longitude,
@@ -49,6 +51,14 @@ Page({
       }
     }, 1000);
   },
+
+  callphone: function (e) {
+    var that = this;
+    wx.makePhoneCall({
+      phoneNumber: e.target.dataset.tel
+    })
+  },
+
   bingDis:function(e){
     var that = this;
     that.setData({
@@ -62,6 +72,7 @@ Page({
       longitude: carDisAddr[carDisIndex].longitude,
       address: carDisAddr[carDisIndex].address,
       tel: carDisAddr[carDisIndex].tel,
+      erTel: carDisAddr[carDisIndex].erTel,
       markers: [{
         latitude: carDisAddr[carDisIndex].latitude,
         longitude: carDisAddr[carDisIndex].longitude,

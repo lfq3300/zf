@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 60,
+			"current": 63,
 			"list": [
 				{
 					"id": 0,
@@ -424,6 +424,19 @@
 					"name": "预约试驾",
 					"pathName": "pages/index/drive/index",
 					"query": "id=49&url=https://miniprogram.zfchina.com/uploads/e6726ed0-b864-4b69-aac8-af7a71066cd4.jpg&carname=轿车&carnameid=1&name=梅赛德斯-迈巴赫S级轿车&carType=S",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我们",
+					"pathName": "pages/about/contact/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "道路",
+					"pathName": "pages/afterSale/help/index",
 					"scene": null
 				}
 			]
