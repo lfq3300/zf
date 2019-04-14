@@ -15,10 +15,10 @@
         </picker>
       </view>
       <view class='dislist'>
-        <view wx:if="{{carDisAddr}}" class="nocardis">
+        <!-- <view wx:if="{{carDisAddr}}" class="nocardis">
           当前城市没有救援经销商
-        </view>
-        <view class='flex-default'  wx:if="{{item.isER}}" wx:for="{{carDisAddr}}" wx:for-index="idx" wx:for-item="item" wx:key="property">
+        </view> -->
+        <view class='flex-default'   wx:for="{{carDisAddr}}" wx:for-index="idx" wx:for-item="item" wx:key="property">
           <view class='flex1'>{{item.name}}<text>\n +86 {{item.erTel}}</text>
           <!-- \n<view>
             <text class="bt" wx:if="{{item.isSalesDealer}}">销售</text>

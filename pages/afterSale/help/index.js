@@ -43,14 +43,14 @@ Page({
             if (app.globalData.carAddrDisAddr) {
               clearTimeout(deaTime);
               var carDisAddr = app.globalData.carAddrDisAddr;
-              var newcarDisAddr = [];
-              for (var i in carDisAddr){
-                if (carDisAddr[i].isER){
-                  newcarDisAddr.push(carDisAddr[i]);
-                }
-              }
+              // var newcarDisAddr = [];
+              // for (var i in carDisAddr){
+              //   if (carDisAddr[i].isER){
+              //     newcarDisAddr.push(carDisAddr[i]);
+              //   }
+              // }
               that.setData({
-                carDisAddr: newcarDisAddr,
+                carDisAddr: carDisAddr,
                 ajaxstatus:true
               });
               app.globalData.carAddrDisAddr = '';
@@ -89,14 +89,14 @@ Page({
       if (app.globalData.carAddrDisAddr) {
         clearTimeout(deaTime);
         var carDisAddr = app.globalData.carAddrDisAddr;
-        var newcarDisAddr = [];
-        for (var i in carDisAddr) {
-          if (carDisAddr[i].isER) {
-            newcarDisAddr.push(carDisAddr[i]);
-          }
-        }
+        // var newcarDisAddr = [];
+        // for (var i in carDisAddr) {
+        //   if (carDisAddr[i].isER) {
+        //     newcarDisAddr.push(carDisAddr[i]);
+        //   }
+        // }
         that.setData({
-          carDisAddr: newcarDisAddr,
+          carDisAddr: carDisAddr,
           ajaxstatus:true
         })
         app.globalData.carAddrDisAddr = '';
