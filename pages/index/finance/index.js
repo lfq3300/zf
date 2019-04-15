@@ -31,7 +31,8 @@ Page({
     windowWidth:0,
     viewwidth:0,
     viewleft: 0,
-    financ:true
+    financ:true,
+    maximumFinancingPct:0
   },
 
   carselect:function(e){
@@ -121,9 +122,9 @@ Page({
     }
     var switchpageIndex = 1;
     if (xxhx){
-       switchpageIndex = 2;
+       switchpageIndex = 1;
     }else{
-      switchpageIndex = 1;
+      switchpageIndex = 2;
     }
     that.setData({
       xxhx: xxhx,
@@ -212,6 +213,7 @@ Page({
       viewspeed = 100;
     }
     var speed = parseInt(viewspeed / 3.3)+20;
+    
     if (speed > 50) {
       speed = 50;
     }else
@@ -223,6 +225,9 @@ Page({
     }else
     if (speed < 50) {
       speed = 40;
+    }
+    if (that.data.maximumFinancingPct < speed){
+      speed = that.data.maximumFinancingPct;
     }
     that.setData({
       speed: speed,
@@ -240,6 +245,12 @@ Page({
   getfinancial: function () {
     var that = this;
     var financial = that.data.financial; //当前方案
+    var maximumFinancingPct = 0;
+    for (var i in financial) {
+      if (financial[i].maximumFinancingPct > maximumFinancingPct){
+        maximumFinancingPct = financial[i].maximumFinancingPct;
+      }
+    }
     var thatcar = that.data.carListArr[that.data.carListIndex]; //当前车辆信息 的价格 
     var price = thatcar.price*10000; //售价
     var speed = that.data.speed; //当前首付百分百
@@ -248,9 +259,8 @@ Page({
     price = (price - shoufu)*-1;
     var time = that.data.carTime[that.data.carTimeIndex]; //当前账期
     var financialPlanDetails = "";
-    console.log(financial);
     for (var i in financial){
-      if (speed < financial[i].maximumFinancingPct){
+      if (speed <= financial[i].maximumFinancingPct){
         financialPlanDetails = financial[i].financialPlanDetails;
           break;
       }
@@ -264,19 +274,20 @@ Page({
         }
       }
     };
-
     if (financ){
       var pric = that.pmr(financ.perentage/12/100, parseInt(time), price,0,0);
       that.setData({
         shoufu: (shoufu / 10000).toFixed(0),
         yg: pric,
         financ: true,
-        jrhidde:false
+        jrhidde:false,
+        maximumFinancingPct: maximumFinancingPct
       })
     }else{
       that.setData({
         financ: false,
-        jrhidde:false
+        jrhidde:false,
+        maximumFinancingPct: maximumFinancingPct
       })
     }
   },

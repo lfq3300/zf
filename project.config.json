@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 65,
+			"current": 64,
 			"list": [
 				{
 					"id": 0,
@@ -444,7 +444,7 @@
 					"id": 64,
 					"name": "计算器",
 					"pathName": "pages/index/finance/index",
-					"query": "id=22&url=https://miniprogram.zfchina.com/uploads/2472dae1-e00d-454a-b927-3006bc0b0b48.jpg&carname=轿车&carnameid=1&name=梅赛德斯-奔驰长轴距C级运动轿车&carType=C",
+					"query": "id=1015&url=https://miniprogram.zfchina.com/uploads/b190af68-8282-422a-b149-3c77daa2fb18.jpg&carname=轿车&carnameid=1&name=梅赛德斯-奔驰全新长轴距A级轿车&carType=A",
 					"scene": null
 				},
 				{
