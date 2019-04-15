@@ -42,7 +42,6 @@ Page({
       return;
     }
 
-
     that.setData({
       getcodeStatus: false
     })
