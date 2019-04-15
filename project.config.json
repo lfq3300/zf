@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 63,
+			"current": 65,
 			"list": [
 				{
 					"id": 0,
@@ -437,6 +437,21 @@
 					"id": -1,
 					"name": "道路",
 					"pathName": "pages/afterSale/help/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 64,
+					"name": "计算器",
+					"pathName": "pages/index/finance/index",
+					"query": "id=22&url=https://miniprogram.zfchina.com/uploads/2472dae1-e00d-454a-b927-3006bc0b0b48.jpg&carname=轿车&carnameid=1&name=梅赛德斯-奔驰长轴距C级运动轿车&carType=C",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "联系我们",
+					"pathName": "pages/about/contact/index",
+					"query": "",
 					"scene": null
 				}
 			]

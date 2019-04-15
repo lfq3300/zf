@@ -23,7 +23,7 @@
     <view class="flex1">￥{{carPrice}} 万</view>
   </view>
   <view class='tab-title flex-default flex-center'>
-    <view class="flex1 {{switchpageIndex == 1?'tab-select':''}}" bindtap='switchpage' data-index='1'>
+    <view class="flex1 {{switchpageIndex == 1?'tab-select':''}}" bindtap='switchpage' data-index='1' wx:if="{{xxhx == [] }}">
       <text class="frist" bindtap='switchpage' data-index='1'>先享后选</text>
     </view>
     <view class='tab-border'></view>

@@ -33,4 +33,5 @@ page{
   color: #000000;
   font-size: 32rpx;
   margin:10x 0;
+  margin-bottom: 20rpx;
 }

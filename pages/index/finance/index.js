@@ -119,8 +119,15 @@ Page({
         name: "星时贷-先享后选"
       }
     }
+    var switchpageIndex = 1;
+    if (xxhx){
+       switchpageIndex = 2;
+    }else{
+      switchpageIndex = 1;
+    }
     that.setData({
-      xxhx: xxhx
+      xxhx: xxhx,
+      switchpageIndex: switchpageIndex
     })
   },
   getGetById: function (car) {
@@ -261,7 +268,7 @@ Page({
     if (financ){
       var pric = that.pmr(financ.perentage/12/100, parseInt(time), price,0,0);
       that.setData({
-        shoufu: shoufu/10000,
+        shoufu: (shoufu / 10000).toFixed(0),
         yg: pric,
         financ: true,
         jrhidde:false

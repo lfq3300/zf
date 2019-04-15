@@ -88,6 +88,9 @@ App({
             c.tel = data[i].tel;
             c.erTel = data[i].erTel;
             c.address = data[i].address;
+            c.isSalesDealer = data[i].isSalesDealer;
+            c.isServiceDealer = data[i].isServiceDealer;
+            c.servicePhone = data[i].servicePhone;
             c.id = data[i].id;
             c.name = data[i].name;
             addrs[i] = c;
