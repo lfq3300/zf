@@ -106,26 +106,26 @@ Page({
   getXxhx:function(car){
     var that = this;
     var xxhx =[];
-    if (car.agility_LowDP) {
-      xxhx[0] = {
+    console.log(car);
+    if (parseInt(car.agility_LowDP)>1) {
+      xxhx.push({
         monthlyPay: car.agility_LowDP,
         tname:"预付款",
         name:"低首付-先享后选"
-      }
+      })
     }
-    if (car.agility_Express){
-      xxhx[1] = {
+    if (parseInt(car.agility_Express)>1){
+      xxhx.push({
         monthlyPay: car.agility_Express,
         tname:"月付款人民币",
         name: "星时贷-先享后选"
-      }
+      })
     }
-    var switchpageIndex = 1;
-    if (xxhx){
+    var switchpageIndex = 2;
+    if (xxhx.length>0){
        switchpageIndex = 1;
-    }else{
-      switchpageIndex = 2;
     }
+    console.log(xxhx)
     that.setData({
       xxhx: xxhx,
       switchpageIndex: switchpageIndex
