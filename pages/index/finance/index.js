@@ -177,6 +177,7 @@ Page({
       carListIndex: carListIndex,
       carListId: that.data.carListArr[carListIndex].id * 1,
       carPrice: that.data.carListArr[carListIndex].price * 1,
+      carTimeIndex:0,
       jrhidde: true,
       speed: 20,
       viewspeed: 1,
@@ -277,7 +278,7 @@ Page({
     if (financ){
       var pric = that.pmr(financ.perentage/12/100, parseInt(time), price,0,0);
       that.setData({
-        shoufu: (shoufu / 10000).toFixed(0),
+        shoufu: (shoufu / 10000).toFixed(3),
         yg: pric,
         financ: true,
         jrhidde:false,
@@ -292,7 +293,7 @@ Page({
     }
   },
   pmr: function (rate, nper, pv, ifv, itype) {
-    const DECIMAL = 0;
+    const DECIMAL = 3;
     let fv = ifv;
     let type = itype;
     if (!fv) fv = 0;
