@@ -164,12 +164,10 @@ Page({
       if (app.globalData.carDis) {
         clearTimeout(deaTime);
         var carDisAddr = app.globalData.carDisAddr;
-        console.log(that.data);
         if (options.id) {
           var index = 0;
           for (var i in carDisAddr) {
             if (carDisAddr[i].id == that.data.dealerId) {
-              console.log(carDisAddr[i]);
               index = i;
               break;
             }
