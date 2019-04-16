@@ -19,3 +19,6 @@ page{
   display: flex;
   margin-top: 60rpx;
 }
+.from-assembly-value {
+  color: #FFF;
+}

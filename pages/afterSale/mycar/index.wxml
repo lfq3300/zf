@@ -12,13 +12,13 @@
 
   <view class='carlist'>
     <checkbox-group bindchange="binCar">
-      <view class='item  flex-column' wx:for="{{carList}}" wx:for-index="idx" wx:for-item="item" wx:key="property">
+      <navigator url="/pages/afterSale/mycar/add/index?id={{item.id}}" class='item  flex-column' wx:for="{{carList}}" wx:for-index="idx" wx:for-item="item" wx:key="property">
         <image src='{{item.imgUrl}}'></image>
         <label class='item-title'>
           <checkbox value='{{item.id}}'></checkbox>
           <text>{{item.name}}</text>
         </label>
-      </view>
+      </navigator>
     </checkbox-group>
     <navigator url='/pages/afterSale/mycar/add/index' class='addcar'>
       <image src='https://miniprogram.zfchina.com/Common/Images/App/afterSale/service_img_add_n@3x.png'></image>

@@ -25,7 +25,8 @@ Page({
     ajaxStatus: true,
     loadStatus:true,
     carDisIndex: 0,
-    carsIndex:0
+    carsIndex:0,
+    loveCarId:''
   },
 
   /**
@@ -33,6 +34,29 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    console.log(options);
+    if(options.id){
+        //获取当前车辆的信息
+        wx.request({
+          url: app.data.hostUrl + '/api/services/app/myVehicle/GetMyVehicleForEdit',
+          method: "post",
+          data:{
+            "id": options.id,
+          },
+          success:function(res){
+              if(res.data.success){
+                var carInfo = res.data.result.myVehicle;
+                that.setData({
+                  loveCarId: options.id,
+                  loginDate: carInfo.purchaseDate.substring(0, 10),
+                  vin: carInfo.vin,
+                  engineCode: carInfo.engineCode,
+                  licensePlate: carInfo.licensePlate,
+                });
+              }
+          }
+        })
+    }
     var myDate = new Date();
     var m = myDate.getMonth() + 1;
     var t = 0;
@@ -48,6 +72,8 @@ Page({
     var carStyleOut = setInterval(function () {
       if (app.globalData.carStyle) {
         clearTimeout(carStyleOut);
+        console.log(that.data.loveCarId);
+        console.log(app.globalData.carStyleArr);
         that.setData({
           carStyle: app.globalData.carStyle,
           carStyleId: app.globalData.carStyleArr[that.data.carStyleIndex].id * 1,
@@ -122,6 +148,7 @@ Page({
     that.setData({
       carDisIndex: carDisIndex,
       carDisId: app.globalData.carDisAddr[carDisIndex].id * 1,
+      carListIndex:0
     })
   },
 
@@ -269,7 +296,7 @@ Page({
       return false;
     }
     var data = {
-      id: "",
+      id: that.data.loveCarId,
       name:  that.data.cars[that.data.carsIndex],
       categoryId: that.data.carVehicleId,
       vehicleId: that.data.carListId,
@@ -279,7 +306,7 @@ Page({
       licensePlate: msg.licensePlate,
      // cityId: that.data.cityId,
       VehicleModelId: that.data.carsId,
-      dealerId: that.data.carDisIndex,
+      dealerId: that.data.carDisId,
       firstLicenseDate: that.data.date,
       purchaseDate: that.data.loginDate,
       contactName: wx.getStorageSync("realName"),

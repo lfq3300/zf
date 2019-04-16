@@ -53,15 +53,15 @@
     </view>
     <view class='from-assembly flex-default'>
       <text>车牌号</text>
-      <input class='flex1 from-assembly-input' name='licensePlate' placeholder='例如:粤A00000'  bindblur='plateInput'></input>
+      <input class='flex1 from-assembly-input' name='licensePlate' placeholder='例如:粤A00000'  bindblur='plateInput' value='{{licensePlate}}'></input>
     </view>
      <view class='from-assembly flex-default'>
       <text>车辆识别号</text>
-      <input class='flex1 from-assembly-input' name='engineCode' placeholder='请输入车辆识别号'></input>
+      <input class='flex1 from-assembly-input' name='engineCode' placeholder='请输入车辆识别号' value='{{engineCode}}'></input>
     </view>
      <view class='from-assembly flex-default'>
       <text>底盘号码</text>
-      <input class='flex1 from-assembly-input' name='vin' placeholder='请输入底盘号码'></input>
+      <input class='flex1 from-assembly-input' name='vin' placeholder='请输入底盘号码' value='{{vin}}'></input>
     </view>
        <view class='from-assembly flex-default flex-center'>
       <text>首登日期</text>
