@@ -21,8 +21,10 @@
   overflow: hidden;
   margin-bottom: 60rpx;
 }
-.item image{
+.item image,
+.item navigator{
   height:355rpx;
+  overflow: hidden;
 }
 .item-title{
   height: 80rpx;

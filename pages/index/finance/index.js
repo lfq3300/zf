@@ -278,7 +278,7 @@ Page({
     if (financ){
       var pric = that.pmr(financ.perentage/12/100, parseInt(time), price,0,0);
       that.setData({
-        shoufu: (shoufu / 10000).toFixed(3),
+        shoufu: (shoufu / 10000).toFixed(2),
         yg: pric,
         financ: true,
         jrhidde:false,
@@ -308,7 +308,7 @@ Page({
     const fvPresent = fv * parseFloat(Math.pow(1 + rate, (-nper)).toFixed(DECIMAL));
     let pmt;
     if (pvFactorSum) { pmt = -(pv + fvPresent) / pvFactorSum; }
-    return Math.ceil(pmt);
+    return Math.round(pmt).toFixed(0);
   },
 
   /**

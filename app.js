@@ -4,7 +4,7 @@ App({
   */
   data: {
     hostUrl: "https://zungfu2.azurewebsites.net/",
-     //hostUrl: "https://miniprogram.zfchina.com/",
+    // hostUrl: "https://miniprogram.zfchina.com/",
     appid: "wx4d69fe23e65ae0ca",
     appKey: "f3ee574e618801a984354749b2657b21",
   },

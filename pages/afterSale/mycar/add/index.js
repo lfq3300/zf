@@ -26,7 +26,8 @@ Page({
     loadStatus:true,
     carDisIndex: 0,
     carsIndex:0,
-    loveCarId:''
+    loveCarId:'',
+    vehicleLevelId:1,
   },
 
   /**
@@ -36,6 +37,7 @@ Page({
     var that = this;
     console.log(options);
     if(options.id){
+        console.log("修改")
         //获取当前车辆的信息
         wx.request({
           url: app.data.hostUrl + '/api/services/app/myVehicle/GetMyVehicleForEdit',
@@ -52,10 +54,20 @@ Page({
                   vin: carInfo.vin,
                   engineCode: carInfo.engineCode,
                   licensePlate: carInfo.licensePlate,
+                  vehicleLevelId: carInfo.vehicleLevelId, //车型
+                  carVehicleId: carInfo.categoryId,
+                  carListId: carInfo.vehicleId,
+                  carsId: carInfo.vehicleModelId,
+                  dealerId: carInfo.dealerId
                 });
+                app.getCarStyleList();
               }
           }
         })
+    }else{
+      console.log("没有ID");
+      app.getCarStyleList();
+      app.getDealer('');
     }
     var myDate = new Date();
     var m = myDate.getMonth() + 1;
@@ -68,12 +80,20 @@ Page({
     that.setData({
       date: date
     });
-    app.getCarStyleList();
     var carStyleOut = setInterval(function () {
       if (app.globalData.carStyle) {
         clearTimeout(carStyleOut);
-        console.log(that.data.loveCarId);
-        console.log(app.globalData.carStyleArr);
+        if (options.id){
+          var carStyleArr = app.globalData.carStyleArr;
+          for (var i in carStyleArr){
+            if (carStyleArr[i].id == that.data.vehicleLevelId){
+                that.setData({
+                  carStyleIndex:i
+                })
+                break;
+              }
+            }
+        }
         that.setData({
           carStyle: app.globalData.carStyle,
           carStyleId: app.globalData.carStyleArr[that.data.carStyleIndex].id * 1,
@@ -83,6 +103,17 @@ Page({
           if (app.globalData.carVehicle) {
             clearTimeout(carVehicleOut);
             if (app.globalData.carVehicle.length > 0) {
+              if(that.data.loveCarId){
+                var carVehicleArr = app.globalData.carVehicleArr;
+                for (var i in carVehicleArr) {
+                  if (carVehicleArr[i].id == that.data.carVehicleId) {
+                      that.setData({
+                        carVehicleIndex:i
+                      })
+                      break;
+                  }
+                }
+              }
               that.setData({
                 carVehicle: app.globalData.carVehicle,
                 carVehicleId: app.globalData.carVehicleArr[that.data.carVehicleIndex].id * 1,
@@ -93,11 +124,22 @@ Page({
                 if (app.globalData.carList) {
                   clearTimeout(carListOut);
                   if (app.globalData.carList.length > 0) {
+                    if (that.data.loveCarId) {
+                      var carListArr = app.globalData.carListArr;
+                      for (var i in carListArr) {
+                        if (carListArr[i].id == that.data.carListId) {
+                          that.setData({
+                            carListIndex: i
+                          });
+                          break;
+                        }
+                      }
+                    }
                     that.setData({
                       carList: app.globalData.carList,
                       carListId: app.globalData.carListArr[that.data.carListIndex].id * 1,
                     });
-                    that.getCars(that.data.carListId);
+                    that.getCars(that.data.carListId,true);
                   } else {
                     that.setData({
                       carList: [],
@@ -118,6 +160,30 @@ Page({
         }, 1000);
       }
     }, 1000);
+    var deaTime = setInterval(function () {
+      if (app.globalData.carDis) {
+        clearTimeout(deaTime);
+        var carDisAddr = app.globalData.carDisAddr;
+        console.log(that.data);
+        if (options.id) {
+          var index = 0;
+          for (var i in carDisAddr) {
+            if (carDisAddr[i].id == that.data.dealerId) {
+              console.log(carDisAddr[i]);
+              index = i;
+              break;
+            }
+          }
+          that.setData({
+            carDisIndex: index
+          })
+        }
+        that.setData({
+          carDis: app.globalData.carDis,
+          carDisId: app.globalData.carDisAddr[that.data.carDisIndex].id * 1,
+        })
+      }
+    }, 1000);
     // app.getCity();
     // var cityOut = setInterval(function () {
     //   if (app.globalData.city) {
@@ -130,16 +196,6 @@ Page({
     //     }
     //   }
     // }, 1000);
-    app.getDealer('');
-    var deaTime = setInterval(function () {
-      if (app.globalData.carDis) {
-        clearTimeout(deaTime);
-        that.setData({
-          carDis: app.globalData.carDis,
-          carDisId: app.globalData.carDisAddr[that.data.carDisIndex].id * 1,
-        })
-      }
-    }, 1000);
   },
 
   bingDis: function (e) {
@@ -168,6 +224,7 @@ Page({
         if (app.globalData.carVehicle.length > 0) {
           that.setData({
             carVehicle: app.globalData.carVehicle,
+            carListIndex:0,
             carVehicleId: app.globalData.carVehicleArr[that.data.carVehicleIndex].id * 1,
           });
           app.globalData.carVehicle = "";
@@ -209,6 +266,7 @@ Page({
     var carVehicleIndex = e.detail.value;
     that.setData({
       carVehicleIndex: carVehicleIndex,
+      carListIndex:0,
       carVehicleId: app.globalData.carVehicleArr[carVehicleIndex].id * 1,
       loadStatus: true
     });
@@ -314,6 +372,7 @@ Page({
       accountId: wx.getStorageSync("userId"),
       sessionId: wx.getStorageSync('sessionId'),
       formId: e.detail.formId,
+      VehicleLevelId:that.data.carStyleId
     };
     that.setData({
       ajaxStatus: false
@@ -353,7 +412,7 @@ Page({
     })
   },
 
-  getCars: function(carid){
+  getCars: function(carid,status=false){
     var that = this;
     wx.request({
       url: app.data.hostUrl + 'api/services/app/vehicleModel/GetActiveList?vehicleId=' + carid,
@@ -363,15 +422,25 @@ Page({
           var result = res.data.result;
           var a = [];
           var b = [];
+          var index = 0;
           for (var i = 0; i < result.length; i++) {
             a[i] = result[i].name;
             b[i] = result[i];
           }
-          var carListId = b[0].id * 1;
+          if (status){
+            for(var i in b){
+              if (that.data.carsId == b[i].id){
+                index = i;
+                app.getDealer('');
+                break;
+              }
+            }
+          }
+          var carListId = b[index].id * 1;
           that.setData({
             cars: a,
             carsArr: b,
-            carsIndex:0,
+            carsIndex: index,
             carsId: carListId,
             loadStatus: false
           });
@@ -384,7 +453,7 @@ Page({
     var carsIndex = e.detail.value;
     that.setData({
       carsIndex: carsIndex,
-      carsId: that.data.carsArr[carsIndex],
+      carsId: that.data.carsArr[carsIndex].id,
     });
   },
   /**
