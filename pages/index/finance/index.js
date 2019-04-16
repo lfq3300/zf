@@ -293,7 +293,7 @@ Page({
     }
   },
   pmr: function (rate, nper, pv, ifv, itype) {
-    const DECIMAL = 3;
+    const DECIMAL = 8;
     let fv = ifv;
     let type = itype;
     if (!fv) fv = 0;
@@ -308,7 +308,7 @@ Page({
     const fvPresent = fv * parseFloat(Math.pow(1 + rate, (-nper)).toFixed(DECIMAL));
     let pmt;
     if (pvFactorSum) { pmt = -(pv + fvPresent) / pvFactorSum; }
-    return pmt.toFixed(DECIMAL);
+    return pmt.toFixed(3);
   },
 
   /**
