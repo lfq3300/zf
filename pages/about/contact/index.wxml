@@ -19,8 +19,8 @@
 </view>
 
 <view  class='bottom padding-border'>
-<view  bindtap='callphone' data-tel='{{tel}}' wx:if="{{isSalesDealer}}">预约服务: {{tel}}</view>
-<view  bindtap='callphone' data-tel='{{servicePhone}}' wx:if="{{isServiceDealer}}">售后服务: {{servicePhone}}</view>
+<view  bindtap='callphone' data-tel='{{tel}}' wx:if="{{isSalesDealer}}">中心热线: {{tel}}</view>
+<view  bindtap='callphone' data-tel='{{servicePhone}}' wx:if="{{isServiceDealer}}">售后服务热线: {{servicePhone}}</view>
 <!-- 
     <view>若有任何疑问，可以通过以下渠道寻求帮助：</view>
     <view>发邮件至：<text class='em'>Marketingzfmm@zfchina.com</text> </view>
