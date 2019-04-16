@@ -308,7 +308,7 @@ Page({
     const fvPresent = fv * parseFloat(Math.pow(1 + rate, (-nper)).toFixed(DECIMAL));
     let pmt;
     if (pvFactorSum) { pmt = -(pv + fvPresent) / pvFactorSum; }
-    return pmt.toFixed(3);
+    return Math.ceil(pmt);
   },
 
   /**
