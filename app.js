@@ -3,8 +3,8 @@ App({
     用户进来后发起微信授权 必须授权获取到用户信息后才可以
   */
   data: {
-   hostUrl: "https://zungfu2.azurewebsites.net/",
-    //  hostUrl: "https://miniprogram.zfchina.com/",
+  // hostUrl: "https://zungfu2.azurewebsites.net/",
+    hostUrl: "https://miniprogram.zfchina.com/",
     appid: "wx4d69fe23e65ae0ca",
     appKey: "f3ee574e618801a984354749b2657b21",
   },
@@ -298,10 +298,7 @@ App({
           method: 'GET',
           success: function (res) {
             var city = res.data.result.address_component.city;
-            if (city.indexOf("市")){
-                //截取市
-              city = city.split("市")[0];
-            }
+            console.log(res);
             that.globalData.loadcity = city;
           }
         })

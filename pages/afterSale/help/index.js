@@ -24,6 +24,7 @@ Page({
       if (app.globalData.city) {
         clearTimeout(cityOut);
         if (app.globalData.city.length > 0) {
+          console.log(app.globalData);
           console.log(app.globalData.city);
           that.setData({
             city: app.globalData.city,
