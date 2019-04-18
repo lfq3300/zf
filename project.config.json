@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 71,
+			"current": 72,
 			"list": [
 				{
 					"id": 0,
@@ -494,6 +494,12 @@
 					"name": "我的爱车",
 					"pathName": "pages/afterSale/mycar/index",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "道路救援",
+					"pathName": "pages/afterSale/help/index",
 					"scene": null
 				}
 			]

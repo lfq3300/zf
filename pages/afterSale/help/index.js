@@ -24,20 +24,26 @@ Page({
       if (app.globalData.city) {
         clearTimeout(cityOut);
         if (app.globalData.city.length > 0) {
+          console.log(app.globalData.city);
           that.setData({
             city: app.globalData.city,
             loginhidde: false
           });
           var pagecity = app.globalData.city;
           var vcity = "";
+          var index = 0;
           for (var i = 0; i < pagecity.length; i++) {
             if (pagecity[i] == app.globalData.loadcity) {
               vcity = pagecity[i];
+              index = i;
               break;
             } else {
               vcity = pagecity[0];
             }
           }
+          that.setData({
+            cityIndex:index
+          })
           app.getERDealerAsync(vcity);
           var deaTime = setInterval(function () {
             if (app.globalData.carAddrDisAddr) {
