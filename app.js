@@ -301,6 +301,7 @@ App({
             var city = res.data.result.address_component.city;
             console.log(res);
             that.globalData.loadcity = city;
+            wx.setStorageSync('loadcity', city);
           }
         })
   },
@@ -449,8 +450,6 @@ App({
             a[i] = result[i].name;
             b[i] = result[i];
           }
-          console.log(that.data);
-          console.log(that.globalData);
           that.globalData.city = a;
           that.globalData.cityArr = b;
         }

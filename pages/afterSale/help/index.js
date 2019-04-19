@@ -19,6 +19,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    app.getLocal(app.globalData.latitude, app.globalData.longitude)
     app.getCity();
     var cityOut = setInterval(function () {
       if (app.globalData.city) {
@@ -33,8 +34,10 @@ Page({
           var pagecity = app.globalData.city;
           var vcity = "";
           var index = 0;
+          var loadcity = wx.getStorageSync('loadcity');
+          console.log(loadcity);
           for (var i = 0; i < pagecity.length; i++) {
-            if (pagecity[i] == app.globalData.loadcity) {
+            if (pagecity[i] == loadcity) {
               vcity = pagecity[i];
               index = i;
               break;
