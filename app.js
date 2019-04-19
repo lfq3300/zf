@@ -297,6 +297,7 @@ App({
           },
           method: 'GET',
           success: function (res) {
+            console.log(res);
             var city = res.data.result.address_component.city;
             if (city.indexOf("市")){
                 //截取市
