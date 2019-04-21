@@ -13,6 +13,7 @@ App({
     carDis:"",
     carDisAddr:""
   },
+  
   onLaunch: function() {
     wx.getStorageInfo({
       success(res) {
@@ -290,18 +291,27 @@ App({
     var that = this;
     var locationString = latitude + "," + longitude;
         wx.request({
-          url: 'http://apis.map.qq.com/ws/geocoder/v1/',
+          url: 'https://apis.map.qq.com/ws/geocoder/v1/',
           data: {
             "key": "ILEBZ-F4KC4-QSBU6-DK5J3-H7W6S-3MFLO",
             "location": locationString
           },
           method: 'GET',
           success: function (res) {
+            console.log("success")
             console.log(res);
             var city = res.data.result.address_component.city;
             console.log(res);
             that.globalData.loadcity = city;
             wx.setStorageSync('loadcity', city);
+          },
+          fail:function(res){
+              console.log("fail")
+              console.log(res);
+          },
+          complete:function(res){
+            console.log("complete")
+            console.log(res);
           }
         })
   },
