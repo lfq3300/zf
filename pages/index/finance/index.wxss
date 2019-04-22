@@ -160,3 +160,6 @@
   text-align: center;
    padding-bottom: 60rpx;
 }
+.tba2{
+  padding-top: 80rpx;
+}

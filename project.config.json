@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
@@ -37,7 +37,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 72,
+			"current": 73,
 			"list": [
 				{
 					"id": 0,
@@ -500,6 +500,14 @@
 					"id": -1,
 					"name": "道路救援",
 					"pathName": "pages/afterSale/help/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "金融",
+					"pathName": "pages/index/finance/index",
+					"query": "id=44&url=https://miniprogram.zfchina.com/uploads/7318a67b-c8f3-434e-b714-6102c33d9962.png&carname=轿车&carnameid=1&name=梅赛德斯-奔驰长轴距E级车运动轿车&carType=E",
 					"scene": null
 				}
 			]

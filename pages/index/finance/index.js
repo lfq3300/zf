@@ -13,10 +13,9 @@ Page({
     carid: "",
     carTime: [
       "36",
-      "24",
-      "12"
+      "24"
     ],
-    carTimeIndex: 2,
+    carTimeIndex: 0,
     loginhidde: true,
     jrhidde:false,
     carListIndex: 0,
@@ -111,14 +110,14 @@ Page({
       xxhx.push({
         monthlyPay: car.agility_LowDP,
         tname:"预付款",
-        name:"低首付-先享后选"
+        name:"低预付"
       })
     }
     if (parseInt(car.agility_Express)>1){
       xxhx.push({
         monthlyPay: car.agility_Express,
         tname:"月付款人民币",
-        name: "星时贷-先享后选"
+        name: "星时享"
       })
     }
     var switchpageIndex = 2;
