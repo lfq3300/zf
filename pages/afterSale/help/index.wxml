@@ -7,7 +7,7 @@
 <view hidden="{{loginhidde}}">
   <view class='padding-border'>
     <form bindsubmit="formSubmit">
-      <text class='title'>在线发送救援位置，让救援更方便，全程协助处理事故报案、查勘、定损、核价、理赔资料收集、保险回款等一系列问题</text>
+      <text class='title'>一键呼出，让救援更方便，全程协助处理事故报案、查勘、定损、核价、理赔资料收集、保险回款等一系列问题</text>
       <view class='from-assembly flex-default flex-center'>
         <text>城市</text>
         <picker class='flex1' bindchange='bingCity' value="{{cityIndex}}" range="{{city}}">
