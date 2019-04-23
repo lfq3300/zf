@@ -132,9 +132,15 @@ Page({
       success: function (res) {
         wx.makePhoneCall({
           phoneNumber: e.target.dataset.tel
-        })
+        });
+      },
+      fail:function(){
+        wx.makePhoneCall({
+          phoneNumber: e.target.dataset.tel
+        });
       }
     })
+   
   },
 
   /**
