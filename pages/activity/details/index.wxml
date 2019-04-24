@@ -5,7 +5,7 @@
   <view class='padding-border'>
   <view class='title'>{{title}}</view>
   <view class='attr'>
-    <text class='author'>任孚中国</text>
+    <text class='author'>仁孚中国</text>
     <text class='time'>一周前</text>
   </view>
   <view class='flex-column img-box'>
