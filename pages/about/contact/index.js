@@ -28,6 +28,8 @@ Page({
         clearTimeout(deaTime);
         var carDisAddr = app.globalData.carDisAddr;
         console.log(carDisAddr[0]);
+        console.log(carDisAddr[0].latitude);
+        console.log(carDisAddr[0].longitude);
         that.setData({
           carDis: app.globalData.carDis,
           carDisAddr: carDisAddr,
@@ -68,6 +70,9 @@ Page({
     })
     var carDisIndex = e.detail.value;
     var carDisAddr = that.data.carDisAddr;
+    console.log(carDisAddr[carDisIndex]);
+    console.log(carDisAddr[carDisIndex].latitude);
+    console.log(carDisAddr[carDisIndex].longitude);
     that.setData({
       carDisIndex: carDisIndex,
       latitude: carDisAddr[carDisIndex].latitude,
