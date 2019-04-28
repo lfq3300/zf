@@ -28,8 +28,9 @@ Page({
         clearTimeout(deaTime);
         var carDisAddr = app.globalData.carDisAddr;
         console.log(carDisAddr[0]);
-        console.log(carDisAddr[0].latitude);
-        console.log(carDisAddr[0].longitude);
+        console.log( );
+        carDisAddr[0].latitude = carDisAddr[0].latitude-0.0060;
+        carDisAddr[0].longitude = carDisAddr[0].longitude - 0.0065;
         that.setData({
           carDis: app.globalData.carDis,
           carDisAddr: carDisAddr,
@@ -75,8 +76,8 @@ Page({
     console.log(carDisAddr[carDisIndex].longitude);
     that.setData({
       carDisIndex: carDisIndex,
-      latitude: carDisAddr[carDisIndex].latitude,
-      longitude: carDisAddr[carDisIndex].longitude,
+      latitude: carDisAddr[carDisIndex].latitude - 0.0060,
+      longitude: carDisAddr[carDisIndex].longitude - 0.0065,
       address: carDisAddr[carDisIndex].address,
       tel: carDisAddr[carDisIndex].tel,
       servicePhone: carDisAddr[carDisIndex].servicePhone,
