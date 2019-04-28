@@ -1,6 +1,6 @@
 page,text,view{
   color: #1B1B1B;
-  font-family: "微软雅黑";
+  font-family: "MYingHeiPRC-W3";
 }
 .padding-border {
   padding-left: 40rpx;

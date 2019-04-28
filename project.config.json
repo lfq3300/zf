@@ -19,6 +19,8 @@
 		"hidedInDevtools": []
 	},
 	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -38,9 +40,7 @@
 		},
 		"miniprogram": {
 			"current": 73,
-			"list": [
-				
-			]
+			"list": []
 		}
 	}
 }
