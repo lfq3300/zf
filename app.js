@@ -132,7 +132,6 @@ App({
       success: function (res) {
         if (res.data.success) {
           var data = res.data.result;
-
           data = that.sortAddres(data);
           var jsx = [];
           var addrs = [];

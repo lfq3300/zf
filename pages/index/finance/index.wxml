@@ -39,8 +39,8 @@
             <view class='box-cen' data-id='{{idx}}'>{{item.tname}}<text>{{item.monthlyPay}}</text>起</view>
         </view>
       </view>
-      <view class='tab-car-explain' wx:if="{{xxhx}}">*实际月付款以奔驰租赁系统为准</view>
-      <view class='tab-car-explain' wx:else>占无新购车方案</view>
+      <!-- <view class='tab-car-explain' wx:if="{{false}}">*实际月付款以奔驰租赁系统为准</view>
+      <view class='tab-car-explain' wx:else>占无新购车方案</view> -->
     </view>
   <view class='tab-car' hidden='{{switchpageIndex == 1}}'>
     <view class='car-center' >
@@ -75,7 +75,7 @@
           ￥{{yg}} 元
         </view>
       </view>
-      <view class='tab-car-explain tba2' wx:if="{{financ}}">*详细金融方案请以当地仁孚经销商为准</view>
+      <!-- <view class='tab-car-explain tba2' wx:if="{{financ}}">*详细金融方案请以当地仁孚经销商为准</view> -->
     </view>
   </view>
   <view class='tab-car-explain' wx:if="{{!financ && switchpageIndex == 2}}">暂无</view>
