@@ -28,9 +28,10 @@ Page({
         clearTimeout(deaTime);
         var carDisAddr = app.globalData.carDisAddr;
         console.log(carDisAddr[0]);
-        console.log( );
-        carDisAddr[0].latitude = carDisAddr[0].latitude-0.0060;
-        carDisAddr[0].longitude = carDisAddr[0].longitude - 0.0065;
+        var c = that.bdMap_to_txMap(carDisAddr[0].longitude,carDisAddr[0].latitude);
+        carDisAddr[0].latitude = c.lat;
+        carDisAddr[0].longitude = c.lng;
+        console.log(carDisAddr[0]);
         that.setData({
           carDis: app.globalData.carDis,
           carDisAddr: carDisAddr,
@@ -63,7 +64,19 @@ Page({
       phoneNumber: e.target.dataset.tel
     })
   },
-
+  bdMap_to_txMap: function (lng, lat){
+    let x_pi = 3.14159265358979324 * 3000.0 / 180.0;
+    let x = lng - 0.0065;
+    let y = lat - 0.006;
+    let z = Math.sqrt(x * x + y * y) - 0.00002 * Math.sin(y * x_pi);
+    let theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * x_pi);
+    let lngs = z * Math.cos(theta);
+    let lats = z * Math.sin(theta);
+    return {
+      lng: lngs,
+      lat: lats
+    }
+  },
   bingDis:function(e){
     var that = this;
     that.setData({
@@ -71,13 +84,13 @@ Page({
     })
     var carDisIndex = e.detail.value;
     var carDisAddr = that.data.carDisAddr;
-    console.log(carDisAddr[carDisIndex]);
-    console.log(carDisAddr[carDisIndex].latitude);
-    console.log(carDisAddr[carDisIndex].longitude);
+    var c = that.bdMap_to_txMap(carDisAddr[carDisIndex].longitude, carDisAddr[carDisIndex].latitude);
+    carDisAddr[carDisIndex].latitude = c.lat;
+    carDisAddr[carDisIndex].longitude = c.lng;
     that.setData({
       carDisIndex: carDisIndex,
-      latitude: carDisAddr[carDisIndex].latitude - 0.0060,
-      longitude: carDisAddr[carDisIndex].longitude - 0.0065,
+      latitude: carDisAddr[carDisIndex].latitude ,
+      longitude: carDisAddr[carDisIndex].longitude ,
       address: carDisAddr[carDisIndex].address,
       tel: carDisAddr[carDisIndex].tel,
       servicePhone: carDisAddr[carDisIndex].servicePhone,
