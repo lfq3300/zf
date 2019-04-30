@@ -40,12 +40,26 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
 					"name": "联系我们",
 					"pathName": "pages/about/contact/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "1",
+					"pathName": "pages/afterSale/repair/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "2",
+					"pathName": "pages/activity/index",
 					"scene": null
 				}
 			]

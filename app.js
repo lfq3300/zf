@@ -15,27 +15,6 @@ App({
   },
   
   onLaunch: function() {
-    wx.loadFontFace({
-      family: 'MYingHeiPRC-W3',
-      source: 'url("https://miniprogram.zfchina.com/fonts/zf/MYingHeiPRC-W3.otf")',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { }
-    });
-    wx.loadFontFace({
-      family: 'MYingHeiPRC-W4',
-      source: 'url("https://miniprogram.zfchina.com/fonts/zf/MYingHeiPRC-W4.otf")',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { }
-    });
-    wx.loadFontFace({
-      family: 'MYingHeiPRC-W5',
-      source: 'url("https://miniprogram.zfchina.com/fonts/zf/MYingHeiPRC-W5.otf")',
-      success: function (res) { },
-      fail: function (res) { },
-      complete: function (res) { }
-    });
     wx.getStorageInfo({
       success(res) {
         console.log(res.keys)

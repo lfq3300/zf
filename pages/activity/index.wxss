@@ -6,12 +6,13 @@ page {
   position: fixed;
   height: 100%;
   width: 100%;
-  background-image: url("https://miniprogram.zfchina.com/Common/Images/App/afterSale/market_bg_n@3x.png");
-  background-size: 130%;
   top:0;
   left: 0;
 }
-
+.box image{
+  width: 100%;
+  height: 100%;
+}
 .btn-box{
   position: fixed;
    top:50%;

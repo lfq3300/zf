@@ -7,7 +7,7 @@
     <view class='bg-box'>
       <navigator url='/pages/activity/video/index?video={{videoUrl}}&img={{imgUrl}}'>
         <image lazy-load src='{{imgUrl}}' class='bg'></image>
-        <image lazy-load src='https://miniprogram.zfchina.com/Common/Images/App/afterSale/about_icon_play@3x.png' class='video-play'></image>
+        <image lazy-load src='../../images/about_icon_play@3x.png' class='video-play'></image>
       </navigator>
     </view>
     <view class='video-title'>
@@ -30,7 +30,7 @@
         <text>联系</text>我们</view>
       <view class='news'>
         <navigator url='/pages/about/contact/index'>
-          <image lazy-load src='https://miniprogram.zfchina.com/Common/Images/App/about_img_contact@3x.png' class='bg'></image>
+          <image lazy-load src='../../images/about_img_contact@3x.png' class='bg'></image>
         </navigator>
       </view>
     </view>
