@@ -1,7 +1,7 @@
 <view class="logo-view">
   <navigator url="/pages/index/index" open-type="switchTab">
     <view class="logo-box">
-      <image class='logo-img' src='https://miniprogram.zfchina.com/Common/Images/App/afterSale/logo.png' mode="widthFix"></image>
+      <image  lazy-load class='logo-img' src='https://miniprogram.zfchina.com/Common/Images/App/afterSale/logo.png' mode="widthFix"></image>
     </view>
   </navigator>
 </view>

@@ -1,6 +1,6 @@
 <view class="flex-column">
 <view class='icon'>
-  <image src='/images/icons/icon_submit.png'></image>
+  <image lazy-load src='/images/icons/icon_submit.png'></image>
 </view>
 <text class="text1">{{msg}},</text>
 <text class="text1" hidden='{{!status}}'>我们将尽快与您取得联系。</text>

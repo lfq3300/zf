@@ -23,7 +23,7 @@
             <text>Class</text>
           </view>
         </view>
-        <image class="car-item-img" src='{{item.imgUrl}}'></image>
+        <image lazy-load class="car-item-img" src='{{item.imgUrl}}'></image>
       </navigator>
     </view>
   </view>

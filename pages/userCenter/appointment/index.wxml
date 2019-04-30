@@ -16,7 +16,7 @@
   <view class='item' wx:for="{{list}}" wx:for-index="idx" wx:for-item="item" wx:key="property">
     <view class='box' wx-if="{{item.type == '100000001'}}">
       <view class='title'>
-        <image src='https://miniprogram.zfchina.com/Common/Images/App/afterSale/personal_icon_mine01@3x.png'></image>
+        <image lazy-load src='https://miniprogram.zfchina.com/Common/Images/App/afterSale/personal_icon_mine01@3x.png'></image>
         <text>预约试驾</text>
         <text class='status'>{{item.statusIdName}}</text>
       </view>
@@ -34,7 +34,7 @@
     </view>
     <view class='box active-box' wx:elif="{{item.type == '100000002'}}">
       <view class='title'>
-        <image src='https://miniprogram.zfchina.com/Common/Images/App/afterSale/personal_icon_mine03@3x.png'></image>
+        <image lazy-load src='https://miniprogram.zfchina.com/Common/Images/App/afterSale/personal_icon_mine03@3x.png'></image>
         <text>活动预约</text>
         <text class='status'>{{item.statusIdName}}</text>
       </view>
@@ -53,7 +53,7 @@
     </view>
     <view class='box' wx:elif="{{item.type == '100000003'}}">
       <view class='title'>
-        <image src='https://miniprogram.zfchina.com/Common/Images/App/afterSale/personal_icon_mine02@3x.png'></image>
+        <image lazy-load src='https://miniprogram.zfchina.com/Common/Images/App/afterSale/personal_icon_mine02@3x.png'></image>
         <text>预约维修</text>
         <text class='status'>{{item.statusIdName}}</text>
       </view>
@@ -71,7 +71,7 @@
     </view>
     <view class='box' wx:elif="{{item.type == '100000004'}}">
       <view class='title'>
-        <image src='https://miniprogram.zfchina.com/Common/Images/App/afterSale/personal_icon_mine02@3x.png'></image>
+        <image lazy-load src='https://miniprogram.zfchina.com/Common/Images/App/afterSale/personal_icon_mine02@3x.png'></image>
         <text>预约保养</text>
         <text class='status'>{{item.statusIdName}}</text>
       </view>

@@ -13,7 +13,7 @@
     <view class="flex1">
       <picker class='flex1' bindchange='bingCar' value="{{carListIndex}}" range="{{carList}}">
         <view class='flex1'>{{carList[carListIndex]}} 
-        <image src='https://miniprogram.zfchina.com/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
+        <image lazy-load src='https://miniprogram.zfchina.com/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
         </view>
       </picker>
     </view>
@@ -50,7 +50,7 @@
         <view class="flex1">
           <picker class='flex1' bindchange='bingCarTime' value="{{carTimeIndex}}" range="{{carTime}}">
             <view>{{carTime[carTimeIndex]}}
-                <image src='https://miniprogram.zfchina.com/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
+                <image lazy-load src='https://miniprogram.zfchina.com/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
             </view>
           </picker>
         </view>
@@ -79,5 +79,5 @@
     </view>
   </view>
   <view class='tab-car-explain' wx:if="{{!financ && switchpageIndex == 2}}">暂无</view>
-  <image src='https://miniprogram.zfchina.com/Common/Images/App/afterSale/xxhx.png' class='xxhxbg'></image>
+  <image lazy-load src='https://miniprogram.zfchina.com/Common/Images/App/afterSale/xxhx.png' class='xxhxbg'></image>
 </view>

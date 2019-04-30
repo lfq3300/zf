@@ -2,11 +2,11 @@
 <view class='box'></view>
 <view class='flex-column btn-box'>
   <navigator url='/pages/activity/list/index' class='bnt1'>
-      <image src="https://miniprogram.zfchina.com/Common/Images/App/afterSale/market_bg01_n@3x.png"></image>
+      <image lazy-load src="https://miniprogram.zfchina.com/Common/Images/App/afterSale/market_bg01_n@3x.png"></image>
       <view>活动报名</view>
   </navigator>
   <navigator url='/pages/activity/survey/index' class='bnt2'>
-    <image src='https://miniprogram.zfchina.com/Common/Images/App/afterSale/market_bg02_n@3x.png'></image>
+    <image lazy-load src='https://miniprogram.zfchina.com/Common/Images/App/afterSale/market_bg02_n@3x.png'></image>
     <view>问卷调查</view>
   </navigator>
 </view>

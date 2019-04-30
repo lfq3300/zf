@@ -6,7 +6,7 @@
 </loading>
 <view hidden="{{!loginhidde}}">
 <view class='bg'>
-  <image src='{{imgUrl}}'></image>
+  <image lazy-load src='{{imgUrl}}'></image>
   <view class='shadow'></view>
   <view class='text'>快速查价</view>
 </view>
