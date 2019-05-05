@@ -1,1 +1,2 @@
-<image src="https://miniprogram.zfchina.com/Common/Images/App/afterSale/service_tips_bg3x.png" mode="widthFix"></image>
+<loading hidden="{{!imgstatus}}">加载中</loading>
+<image hidden='{{imgstatus}}' src="https://miniprogram.zfchina.com/Common/Images/App/afterSale/service_tips_bg3x.png" mode="widthFix"></image>
