@@ -1,4 +1,5 @@
 // pages/UserCenter/index.js
+var app = getApp();
 Page({
 
   /**
@@ -11,6 +12,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    app.ifUserLogin();
     var userInfo = wx.getStorageSync('userinfo');
     var that = this;
     that.setData({

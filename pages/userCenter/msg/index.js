@@ -155,6 +155,7 @@ Page({
    */
   onShow: function () {
     this.onLoad();
+    app.ifUserLogin();
   },
 
   /**
