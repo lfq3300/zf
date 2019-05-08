@@ -3,8 +3,8 @@ App({
     用户进来后发起微信授权 必须授权获取到用户信息后才可以
   */
   data: {
-  // hostUrl: "https://zungfu2.azurewebsites.net/",
-    hostUrl: "https://miniprogram.zfchina.com/",
+  //hostUrl: "https://zungfu2.azurewebsites.net/",
+     hostUrl: "https://miniprogram.zfchina.com/",
     appid: "wx4d69fe23e65ae0ca",
     appKey: "f3ee574e618801a984354749b2657b21",
   },
@@ -31,12 +31,11 @@ App({
     this.ifUserLogin();
     this.getUserAddsInfo();
   },
-
+  onshow:function(){
+    this.ifUserLogin();
+  },
   /*判断用户是否登陆*/
   ifUserLogin: function(e) {
-    wx.showLoading({
-      title: '登陆中...',
-    })
     var that = this;
     console.log("uid" + wx.getStorageSync('userId'));
     if (!wx.getStorageSync('userId')) {
@@ -53,7 +52,6 @@ App({
             method: 'post',
             success: function(res) {
               if (res.statusCode == 200 && res.data.success) {
-                wx.hideLoading({})
                 wx.setStorageSync('sessionId', res.data.result);
                 if (wx.getStorageSync('userId').length == 0) {
                   wx.navigateTo({
@@ -70,7 +68,6 @@ App({
         }
       })
     }else{
-      wx.hideLoading({})
       console.log('登陆')
     }
 

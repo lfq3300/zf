@@ -50,7 +50,7 @@
         </view>
       </view>
     </navigator>
-     <view class="item flex-default" bindtap='cl'>
+     <!-- <view class="item flex-default" bindtap='cl'>
       <view class="icon-box">
         <image lazy-load class="icon" src="https://miniprogram.zfchina.com/Common/Images/App/afterSale/service_icon_delete_n@3x.png" mode="widthFix"></image>
       </view>
@@ -60,6 +60,6 @@
           <image lazy-load class="return-icon" src="/images/icons/mine_icon_return.png" mode="widthFix"></image>
         </view>
       </view>
-    </view>
+    </view> -->
   </view>
 </view>
