@@ -34,11 +34,16 @@ App({
 
   /*判断用户是否登陆*/
   ifUserLogin: function(e) {
+    wx.showLoading({
+      title: '登陆中...',
+    })
     var that = this;
+    console.log("uid" + wx.getStorageSync('userId'));
     if (!wx.getStorageSync('userId')) {
       console.log('未登陆')
       wx.login({
         success: function(res) {
+          console.log(res);
           var code = res.code;
           wx.request({
             url: that.data.hostUrl + 'api/MiniApp/wechatoauth',
@@ -48,6 +53,7 @@ App({
             method: 'post',
             success: function(res) {
               if (res.statusCode == 200 && res.data.success) {
+                wx.hideLoading({})
                 wx.setStorageSync('sessionId', res.data.result);
                 if (wx.getStorageSync('userId').length == 0) {
                   wx.navigateTo({
@@ -57,9 +63,14 @@ App({
               }
             }
           })
+        },
+        fail:function(res){
+          console.log("未登录");
+            console.log(res)
         }
       })
     }else{
+      wx.hideLoading({})
       console.log('登陆')
     }
 

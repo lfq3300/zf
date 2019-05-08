@@ -141,6 +141,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.setStorageSync('callbackurl', '');
     var that = this;
     var myDate = new Date();
     var m = myDate.getMonth() + 1;

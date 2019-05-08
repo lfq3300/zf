@@ -74,7 +74,10 @@ Page({
     })
   },
   jumpurl: function (e) {
+    
     if (e.target.dataset.text == "快速询价" || e.target.dataset.text == "预约试驾") {
+      var url = e.target.dataset.url;
+      console.log(url);
       //判断是否添加个人资料和爱车信息
       if (!wx.getStorageSync('hasPersonal')) {
         wx.showModal({
@@ -82,6 +85,7 @@ Page({
           content: '请先完善个人资料，再开始' + e.target.dataset.text+"操作",
           success(res) {
             if (res.confirm) {
+              wx.setStorageSync('callbackurl', url);
               wx.navigateTo({
                 url: "/pages/userCenter/msg/index"
               })

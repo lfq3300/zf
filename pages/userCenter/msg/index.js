@@ -17,15 +17,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    if (options.pageurl){
-      var pageurl = options.pageurl;
-      delete options['pageurl'];
-      this.setData({
-        pageurl: pageurl,
-        options: options
-      });
-
-    }
     that.setData({
       phone: wx.getStorageSync('phone'),
       LastName: wx.getStorageSync('LastName'), 
@@ -133,18 +124,9 @@ Page({
            wx.setStorageSync('LastName', msg.LastName);
            wx.setStorageSync('realName', msg.FirstName + "" + msg.LastName);
            
-           if (that.data.pageurl){
-             var options = that.data.options;
-             var str = "";
-             for (var key in options) {
-               console.log(options[key]);
-               str += key + "=" + options[key] + "&"
-             }
-             if (str) {
-               str = "&" + str;
-             }
+           if (wx.getStorageSync("callbackurl")){
              wx.redirectTo({
-               url: "/"+that.data.pageurl
+               url: wx.getStorageSync("callbackurl")
              })
            }else{
              wx.switchTab({
@@ -172,7 +154,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.onLoad();
   },
 
   /**
