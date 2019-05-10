@@ -3,4 +3,5 @@ page{
 }
 image{
   width: 100%;
+  min-height: 1500rpx;
 }
