@@ -26,11 +26,11 @@ Page({
 
   bingDis:function(e){
     var that = this;
-    console.log(that.data.carDisId);
+    console.log(that.data.carDisArr);
     var carDisIndex = e.detail.value;
     that.setData({
       carDisIndex: carDisIndex,
-      carDisId: that.data.carDisId[carDisIndex].id * 1,
+      carDisId: that.data.carDisArr[carDisIndex].id * 1,
     })
   },
   
@@ -142,6 +142,7 @@ Page({
             if (app.globalData.carAddrDisAddr) {
               clearTimeout(deaTime);
               that.setData({
+                carDisArr: app.globalData.carAddrDisAddr,
                 carDis: app.globalData.carAddrDis,
                 carDisIndex:0,
                 carDisId: app.globalData.carAddrDisAddr[0].id * 1,
