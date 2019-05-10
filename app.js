@@ -180,7 +180,7 @@ App({
     })
   },
   //根据地址和车型获取经销商
-  getAddrDealerAndVehicleId: function (addr,vehicleId) {
+  getAddrDealerAndVehicleId: function (addr,vehicleId = 1) {
     var that = this;
     wx.request({
       url: that.data.hostUrl + 'api/services/app/dealer/GetSalesDealerAsync?city=' + addr + "&vehicleId=" + vehicleId,

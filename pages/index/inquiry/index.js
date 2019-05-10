@@ -137,7 +137,7 @@ Page({
               vcity = pagecity[0];
             }
           }
-          app.getAddrDealer(vcity);
+          app.getAddrDealerAndVehicleId(vcity, that.data.carid);
           var deaTime = setInterval(function () {
             if (app.globalData.carAddrDisAddr) {
               clearTimeout(deaTime);
@@ -194,11 +194,12 @@ Page({
       cityId: app.globalData.cityArr[cityIndex].id,
       ajaxstatus: false
     });
-    app.getAddrDealer(that.data.city[cityIndex]);
+    app.getAddrDealerAndVehicleId(that.data.city[cityIndex], that.data.carid);
     var deaTime = setInterval(function () {
       if (app.globalData.carAddrDisAddr) {
         clearTimeout(deaTime);
         that.setData({
+          carDisArr: app.globalData.carAddrDisAddr,
           carDis: app.globalData.carAddrDis,
           carDisIndex:0,
           carDisId: app.globalData.carAddrDisAddr[0].id * 1,

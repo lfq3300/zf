@@ -17,7 +17,7 @@ Page({
       that.setData({
         imgstatus: false
       })
-    },2000)
+    },2500)
    
   },
 
