@@ -57,10 +57,10 @@ App({
                 if (wx.getStorageSync('userId').length == 0) {
                   wx.hideLoading();
                   console.log('跳转授权页面');
-                  wx.navigateTo({
-                    url: "/pages/login/index"
-                  })
-                }
+                    wx.navigateTo({
+                      url: "/pages/login/index"
+                    })
+                  }
               }
             }
           })

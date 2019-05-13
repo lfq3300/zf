@@ -82,7 +82,7 @@
 
 .car-item-bg text.max-size{
   font-size: 85rpx;
-  font-weight: 900;
+  font-weight:bold;
 }
 .car-item-bg text.min-size{
   font-size: 16rpx;

@@ -25,11 +25,14 @@ Page({
   },
   cl:function(){
     wx.clearStorageSync();
-    wx.showToast({
-      title: '清除缓存成功',
-      icon: 'none',
-      duration: 1500
-    })
+    wx.showLoading({
+      title: '清除缓存...',
+      mask: true,
+      icon: 'loading',
+    });
+    setTimeout(function(){
+      app.ifUserLogin();
+    },2000)
   },
   jumplovecar:function(e){
 
