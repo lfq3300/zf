@@ -33,9 +33,14 @@ App({
   /*判断用户是否登陆*/
   ifUserLogin: function(e) {
     var that = this;
+    wx.showLoading({
+      title: '授权中...',
+      mask: true,
+      icon: 'loading'
+    });
     console.log("uid" + wx.getStorageSync('userId'));
     if (!wx.getStorageSync('userId')) {
-      console.log('未登陆')
+      console.log('未登陆');
       wx.login({
         success: function(res) {
           console.log(res);
@@ -50,6 +55,8 @@ App({
               if (res.statusCode == 200 && res.data.success) {
                 wx.setStorageSync('sessionId', res.data.result);
                 if (wx.getStorageSync('userId').length == 0) {
+                  wx.hideLoading();
+                  console.log('跳转授权页面');
                   wx.navigateTo({
                     url: "/pages/login/index"
                   })
@@ -64,6 +71,7 @@ App({
         }
       })
     }else{
+      wx.hideLoading();
       console.log('登陆')
     }
 
