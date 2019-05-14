@@ -54,6 +54,7 @@ Page({
           var carList = res.data.result;
           for (var i = 0; i < carList.length;i++){
             carList[i].name = carList[i].name.replace(/\s+/g, "")
+            carList[i].prefixName = carList[i].prefixName.replace(/\s+/g, "")
           }
           that.setData({
             carList: carList,

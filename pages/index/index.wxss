@@ -106,3 +106,6 @@
   font-size:35rpx;
   line-height:154rpx;
 }
+.size-zero{
+  opacity: 0;
+}

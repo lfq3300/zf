@@ -18,9 +18,13 @@
       <navigator url="/pages/index/catalog/index?id={{item.id}}&name={{item.prefixName}}&carname={{tagName}}&carnameid={{tagIndex}}">
         <view class="car-item-bg flex-default">
           <text class="max-size" >{{item.prefixName}}</text>
-          <view class="flex-column flex1 flex-justify-content-end">
+          <view class="flex-column flex1 flex-justify-content-end" hidden='{{item.prefixName.length>1}}'>
             <text class="min-size">Mercedes-Benz</text>
-            <text>Class</text>
+            <text >Class</text>
+          </view>
+           <view class="flex-column flex1 flex-justify-content-end" hidden='{{item.prefixName.length == 1}}'>
+            <text class="min-size">Mercedes-Benz</text>
+            <text class="size-zero"> Class </text>
           </view>
         </view>
         <image lazy-load class="car-item-img" src='{{item.imgUrl}}'></image>
