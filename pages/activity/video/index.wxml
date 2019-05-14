@@ -1,4 +1,4 @@
 <view>
-  <video id="myvideo" src="{{videourl}}"  direction="90" >
+  <video id="myvideo" src="{{videourl}}"  direction="90" controls="{{true}}" autoplay="{{true}}" show-play-btn="{{true}}" show-center-play-btn="{{true}}">
   </video>
 </view>
