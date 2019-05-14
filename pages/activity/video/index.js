@@ -17,19 +17,6 @@ Page({
       videourl: options.video,
       imgUrl: options.img,
     });
-    wx.getSystemInfo({
-      success: function (res) {
-        console.log(res.model);
-        var reg = RegExp(/iPhone/);
-        if (res.model.match(reg)) {
-          console.log('IX')
-        } else {
-          var videoContext = wx.createVideoContext('myvideo', this);
-          videoContext.requestFullScreen();
-          videoContext.showStatusBar();
-        }
-      }
-    });
   },
 
   /**
