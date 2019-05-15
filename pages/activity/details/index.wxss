@@ -63,3 +63,7 @@ page {
   line-height: 100rpx;
   opacity: 1;
 }
+
+.jsbtn{
+  background: #a2a3a3;
+}

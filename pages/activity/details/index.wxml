@@ -11,9 +11,10 @@
   <view class='flex-column img-box'>
       <import src="../../../wxParse/wxParse.wxml" />
       <template is="wxParse" data="{{wxParseData:accontent.nodes}}" />
-       <navigator hidden="{{type != '100000002'}}" class='btn' url='/pages/activity/signup/index?id={{id}}&start={{start}}'>
+       <navigator wx:if="{{typestatus=='100000001'}}" class='btn' url='/pages/activity/signup/index?id={{id}}&start={{start}}'>
   立即报名
 </navigator>
+<navigator  wx:if="{{typestatus=='100000002'}}"  class='btn jsbtn'>报名结束</navigator>
   </view>
 </view>
 

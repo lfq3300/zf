@@ -9,8 +9,7 @@ Page({
     imgurl: 1,
     title:"",
     loginhidde:true,
-    type:'',
-    id:""
+    id:"",
   },
 
   /**
@@ -20,9 +19,10 @@ Page({
     var that = this;
     that.getActivity(options.id);
     that.setData({
-      type: options.type ? options.type:'',
+      typestatus: options.type,
       id: options.id
-    })
+    });
+    console.log(that.data.typestatus);
   },
 
   getActivity: function (id) {
