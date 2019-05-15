@@ -1,16 +1,23 @@
 .move-menu{
   border-bottom: 1px solid #DCDCDC;
   margin-bottom: 48rpx;
+  display: flex;
 }
 
 .move-menu .tag{
-  padding-left: 6.25%;
-  padding-right:  6.25%;
-  width: 47%;
+  flex: 1;
   text-align: center;
+  padding-left: 0;
+  padding-right: 0;
 }
 .move-menu .select text::after{
   bottom: -10rpx;
+}
+.move-menu .tag:first-child{
+  margin-left:0;
+}
+.move-menu .tag:last-child{
+  margin-right: 0;
 }
 
 .act-list{

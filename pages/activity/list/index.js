@@ -8,41 +8,11 @@ Page({
   data: {
     loginhidde:true,
     tag: [
-    {
-      "id": 1,
-      "name": "报名中",
-      "status": 100000001,
-    },
-    {
-      "id": 2,
-      "name": "活动中",
-      "status": 100000002,
-    }
+    
     ],
-    // tag: [{
-    //     "id": 0,
-    //     "name": "未开始",
-    //     "status": 100000000,
-    //   },
-    //   {
-    //     "id": 1,
-    //     "name": "报名中",
-    //     "status": 100000001,
-    //   },
-    //   {
-    //     "id": 2,
-    //     "name": "活动中",
-    //     "status": 100000002,
-    //   },
-    //   {
-    //     "id": 3,
-    //     "name": "已结束",
-    //     "status": 100000003,
-    //   }
-    // ],
     tagIndex:1,
     activityList:[],
-    statuscode: 100000001
+    statuscode: '',
   },
 
   /**
@@ -50,9 +20,34 @@ Page({
    */
   onLoad: function(options) {
     app.ifUserLogin();
-      var that = this;
-    that.getActivityList(that.data.statuscode);
+    var that = this;
+    that.getActivityType();
   },
+  getActivityType:function(){
+    var that = this;
+    wx.request({
+      url: app.data.hostUrl + 'api/services/app/globalInformation/GetListByType?type=7',
+      method: "post",
+      success: function (res) {
+        var tag = res.data.result;
+        var newTag = [];
+        for (var i in tag){
+          if (tag[i].isActive){
+            newTag.push({
+              "name": tag[i].name,
+              "status": tag[i].value
+            });
+          }
+        }
+        that.setData({
+          statuscode: newTag[0].status,
+          tag: newTag
+        })
+        that.getActivityList(newTag[0].status);
+      }
+    });
+  },
+  
   getActivityList: function (statuscode){
     var that = this;
     wx.request({
@@ -71,8 +66,9 @@ Page({
   },
   getActivity:function(e){
     var that = this;
-    var tagIndex = e.target.dataset.id;
-    tagIndex = tagIndex - 1;
+    var tagIndex = e.target.dataset.index;
+    console.log(tagIndex);
+    console.log(that.data.tag);
     var status = that.data.tag[tagIndex].status;
     that.setData({
       tagIndex: tagIndex,

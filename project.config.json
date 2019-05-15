@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -102,6 +102,13 @@
 					"id": -1,
 					"name": "1",
 					"pathName": "pages/activity/video/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "活动",
+					"pathName": "pages/activity/list/index",
 					"scene": null
 				}
 			]
