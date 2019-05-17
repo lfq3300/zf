@@ -9,10 +9,10 @@
     <image src='{{imgUrl}}'></image>
   </view>
   <view class="flex-default car-title flex-center ">
-    <text>{{name}}</text>
+    <text class="flex1">{{name}}</text>
     <view class="flex1">
       <picker class='flex1' bindchange='bingCar' value="{{carListIndex}}" range="{{carList}}">
-        <view class='flex1'>{{carList[carListIndex]}} 
+        <view class='flex1 bingname'>{{carList[carListIndex]}} 
         <image lazy-load src='https://miniprogram.zfchina.com/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
         </view>
       </picker>
@@ -49,7 +49,7 @@
         <text>期限</text>
         <view class="flex1">
           <picker class='flex1' bindchange='bingCarTime' value="{{carTimeIndex}}" range="{{carTime}}">
-            <view>{{carTime[carTimeIndex]}}
+            <view class="pos">{{carTime[carTimeIndex]}}
                 <image lazy-load src='https://miniprogram.zfchina.com/Common/Images/App/icons/mine_icon_return.png' class='right-return-img'></image>
             </view>
           </picker>

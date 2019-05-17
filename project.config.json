@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -54,6 +54,20 @@
 					"name": "活动",
 					"pathName": "pages/activity/list/index",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "1",
+					"pathName": "pages/index/inquiry/index",
+					"query": "id=1039&url=https://miniprogram.zfchina.com/uploads/894b2c49-9ab1-4c35-a359-4dd59253fa09.jpg&carname=AMG&carnameid=1002&name=梅赛德斯-AMG C 43 4MATIC 旅行轿车 特别版&carType=C",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "1",
+					"pathName": "pages/index/finance/index",
+					"query": "id=1016&url=https://miniprogram.zfchina.com/uploads/9baa0b62-e883-407b-9176-1671a68744fb.jpg&carname=AMG&carnameid=1002&name=梅赛德斯-AMG C 43 4MATIC&carType=C",
 					"scene": null
 				}
 			]

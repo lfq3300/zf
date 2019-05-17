@@ -42,3 +42,12 @@ page {
   color: #848484;
   font-size: 22rpx;
 }
+
+.from-assembly-value{
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+  
+.from-assembly .flex1{
+  overflow: hidden;
+}

@@ -19,6 +19,14 @@ page{
   display: flex;
   margin-top: 60rpx;
 }
-.from-assembly-value {
+
+
+.from-assembly-value{
+  text-overflow:ellipsis;
+  white-space:nowrap;
   color: #FFF;
+}
+  
+.from-assembly .flex1{
+  overflow: hidden;
 }

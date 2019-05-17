@@ -211,8 +211,8 @@ App({
             addrs[i] = c;
          }
          if(jsx.length == 0){
-           addrs[0] = { "id": -1, "name":"当前城市不支持试驾该车型"};
-           jsx[0] = "当前城市不支持试驾该车型"
+           addrs[0] = { "id": -1, "name":"当前城市暂无经销商支持"};
+           jsx[0] = "当前城市暂无经销商支持"
          }
          that.globalData.carAddrDis = jsx;
          that.globalData.carAddrDisAddr = addrs;

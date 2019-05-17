@@ -15,17 +15,31 @@
   font-size: 24rpx;
   color: #1B1B1B;
 }
+.car-title text{
+overflow:hidden;
+white-space:nowrap;
+text-overflow:ellipsis;
+
+}
 .car-title view{
   text-align: right;  
   overflow: hidden;
   white-space:nowrap;
   text-overflow:ellipsis;
   padding-left: 15rpx;
+  position: relative;
 }
 .right-return-img{
   width: 20rpx;
   height: 20rpx;
   padding-left: 20rpx;
+  position: absolute;
+  right: 0;
+  top:50%;
+  transform: translateY(-50%);
+}
+.bingname{
+  padding-right: 20rpx;
 }
 .tab-title{
   margin-top: 76rpx;
@@ -52,7 +66,7 @@
   margin-bottom: 45rpx;
 }
 .tab-car .car-center{
-  padding:0 62rpx 0 54rpx;
+  padding:0 37rpx  0 40rpx;
   box-sizing: border-box;
   margin-bottom: 98rpx;
 }
@@ -72,7 +86,6 @@
 }
 .assembly .price{
   text-align: center;
-  padding: 0 44rpx  ;
 }
 .progress-assembly .flex1{
   position: relative;
@@ -136,7 +149,7 @@
 .show-info{
   width: 130rpx;
   text-align: center;
-  padding-left: 30rpx;
+  padding-left: 65rpx;
   box-sizing: border-box;
 }
 .xxhxbg{
@@ -162,4 +175,8 @@
 }
 .tba2{
   padding-top: 80rpx;
+}
+.pos{
+  position: relative;
+  padding-right: 30rpx;
 }
