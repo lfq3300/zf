@@ -23,25 +23,7 @@ Page({
         status: false
       })
     }
-    wx.loadFontFace({
-      family: "MYingHeiPRC-W3",
-      source: 'url("https://miniprogram.zfchina.com/fonts/zf/MYingHeiPRC-W3.otf")',
-      success(res) {
-        console.log('success')
-        console.log(res);
-        console.log(res.status)
-      },
-      fail: function (res) {
-        console.log('fail')
-        console.log(res);
-        console.log(res.status)
-      },
-      complete: function (res) {
-        console.log('complete')
-        console.log(res);
-        console.log(res.status)
-      }
-    });
+   
     // setTimeout(function () {
     //   wx.switchTab({
     //     url: '/pages/index/index'

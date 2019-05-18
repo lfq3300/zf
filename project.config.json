@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 4,
 			"list": [
 				{
 					"id": -1,
@@ -68,6 +68,13 @@
 					"name": "1",
 					"pathName": "pages/index/finance/index",
 					"query": "id=1016&url=https://miniprogram.zfchina.com/uploads/9baa0b62-e883-407b-9176-1671a68744fb.jpg&carname=AMG&carnameid=1002&name=梅赛德斯-AMG C 43 4MATIC&carType=C",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "1",
+					"pathName": "pages/index/finance/index",
+					"query": "id=33&url=https://miniprogram.zfchina.com/uploads/5ac85f37-3cf4-4fe2-b289-476f201052ae.jpg&carname=轿车&carnameid=1&name=梅赛德斯-奔驰标准轴距E级车运动版&carType=E",
 					"scene": null
 				}
 			]
