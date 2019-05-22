@@ -69,13 +69,6 @@
 					"pathName": "pages/index/finance/index",
 					"query": "id=1016&url=https://miniprogram.zfchina.com/uploads/9baa0b62-e883-407b-9176-1671a68744fb.jpg&carname=AMG&carnameid=1002&name=梅赛德斯-AMG C 43 4MATIC&carType=C",
 					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "啊",
-					"pathName": "pages/afterSale/repair/wx/index",
-					"query": "type=2",
-					"scene": null
 				}
 			]
 		}

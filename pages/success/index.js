@@ -23,7 +23,6 @@ Page({
         status: false
       })
     }
-
     // setTimeout(function () {
     //   wx.switchTab({
     //     url: '/pages/index/index'
