@@ -57,6 +57,7 @@ Page({
         if (app.globalData.carWx) {
           clearTimeout(carWxOut);
           that.setData({
+            carWxArr: app.globalData.carWxArr,
             carWx: app.globalData.carWx,
             carWxId: app.globalData.carWxArr[that.data.carWxIndex].id * 1,
           });
@@ -212,24 +213,47 @@ Page({
       return;
     }
     var msg = e.detail.value;
-    var data = {
-      name: wx.getStorageSync("realName"),
-      tel: wx.getStorageSync("phone"),
-      vehicleId: that.data.vehicleId,
-      dealerId: that.data.carDisId,
-      appointmentDate:that.data.date,
-      appointmentTimeId: that.data.carTimeId,
-      genderId: wx.getStorageSync("userinfo").gender,
-      myVehicleId: that.data.lovecarId,
-      description: msg.description,
-      accountId: wx.getStorageSync("userId"),
-      sessionId: wx.getStorageSync('sessionId'),
-      code:msg.code,
-      formId: e.detail.formId,
-      DealerIdName: that.data.carDis[that.data.carListArrIndex],
-      VehicleIdName: that.data.carListArr[that.data.carListArrIndex],
-      MaintainTypeIdName: that.data.carWx[that.data.carWxIndex],
-      MaintainTypeId: app.globalData.carWxArr[that.data.carWxIndex].value
+    console.log(that.data.carWxArr);
+    console.log(that.data.carWxIndex);
+    var data = {};
+    if (that.data.pageType == 1){
+      data = {
+        name: wx.getStorageSync("realName"),
+        tel: wx.getStorageSync("phone"),
+        vehicleId: that.data.vehicleId,
+        dealerId: that.data.carDisId,
+        appointmentDate: that.data.date,
+        appointmentTimeId: that.data.carTimeId,
+        genderId: wx.getStorageSync("userinfo").gender,
+        myVehicleId: that.data.lovecarId,
+        description: msg.description,
+        accountId: wx.getStorageSync("userId"),
+        sessionId: wx.getStorageSync('sessionId'),
+        code: msg.code,
+        formId: e.detail.formId,
+        DealerIdName: that.data.carDis[that.data.carListArrIndex],
+        VehicleIdName: that.data.carListArr[that.data.carListArrIndex],
+        MaintainTypeIdName: that.data.carWx[that.data.carWxIndex],
+        MaintainTypeId: that.data.carWxArr[that.data.carWxIndex].value
+      }
+    } else if (that.data.pageType == 2){
+      data = {
+        name: wx.getStorageSync("realName"),
+        tel: wx.getStorageSync("phone"),
+        vehicleId: that.data.vehicleId,
+        dealerId: that.data.carDisId,
+        appointmentDate: that.data.date,
+        appointmentTimeId: that.data.carTimeId,
+        genderId: wx.getStorageSync("userinfo").gender,
+        myVehicleId: that.data.lovecarId,
+        description: msg.description,
+        accountId: wx.getStorageSync("userId"),
+        sessionId: wx.getStorageSync('sessionId'),
+        code: msg.code,
+        formId: e.detail.formId,
+        DealerIdName: that.data.carDis[that.data.carListArrIndex],
+        VehicleIdName: that.data.carListArr[that.data.carListArrIndex],
+      }
     }
     var url = "";
     var msg = "";

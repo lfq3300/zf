@@ -23,7 +23,7 @@
             <text >Class</text>
           </view>
            <view class="flex-column flex1 flex-justify-content-end" hidden='{{item.prefixName.length == 1}}'>
-            <text class="min-size">Mercedes-Benz</text>
+            <text class="min-size" hidden='{{item.prefixName == "smart"}}'>Mercedes-Benz</text>
             <text class="size-zero"> Class </text>
           </view>
         </view>
