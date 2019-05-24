@@ -278,7 +278,7 @@ Page({
       var pric = that.pmr(financ.perentage/12/100, parseInt(time), price,0,0);
       that.setData({
         shoufu: (shoufu / 10000).toFixed(2),
-        yg: pric,
+        yg: parseInt(pric),
         financ: true,
         jrhidde:false,
         maximumFinancingPct: maximumFinancingPct
