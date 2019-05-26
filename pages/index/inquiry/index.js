@@ -137,7 +137,7 @@ Page({
               vcity = pagecity[0];
             }
           }
-          app.getAddrDealerAndVehicleId(vcity, that.data.carid);
+          app.getQuotaDealerAsync(vcity, that.data.carid);
           var deaTime = setInterval(function () {
             if (app.globalData.carAddrDisAddr) {
               clearTimeout(deaTime);
@@ -194,7 +194,7 @@ Page({
       cityId: app.globalData.cityArr[cityIndex].id,
       ajaxstatus: false
     });
-    app.getAddrDealerAndVehicleId(that.data.city[cityIndex], that.data.carid);
+    app.getQuotaDealerAsync(that.data.city[cityIndex], that.data.carid);
     var deaTime = setInterval(function () {
       if (app.globalData.carAddrDisAddr) {
         clearTimeout(deaTime);

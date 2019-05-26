@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 6,
 			"list": [
 				{
 					"id": -1,
@@ -68,6 +68,27 @@
 					"name": "1",
 					"pathName": "pages/index/finance/index",
 					"query": "id=1016&url=https://miniprogram.zfchina.com/uploads/9baa0b62-e883-407b-9176-1671a68744fb.jpg&carname=AMG&carnameid=1002&name=梅赛德斯-AMG C 43 4MATIC&carType=C",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "c",
+					"pathName": "pages/index/inquiry/index",
+					"query": "id=20&url=https://miniprogram.zfchina.com/uploads/90a048f8-be10-4ae9-8f0b-eff0b1c20ac2.jpg&carname=轿车&carnameid=1&name=梅赛德斯-奔驰标准轴距C级车运动版&carType=C",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "SMA金融方案",
+					"pathName": "pages/index/finance/index",
+					"query": "id=1041&url=https://miniprogramuat.zfchina.com/uploads/5ac77407-9753-42da-aa0b-bdfe8ff2e656.jpg&carname=smart&carnameid=1004&name=smart fortwo 66 千瓦锋型版&carType=smart",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "普通金融方案",
+					"pathName": "pages/index/finance/index",
+					"query": "id=48&url=https://miniprogram.zfchina.com/uploads/0c98ecd9-90ec-44db-b6b2-41a996148b3c.jpg&carname=轿车&carnameid=1&name=梅赛德斯-奔驰S级轿车&carType=S",
 					"scene": null
 				}
 			]

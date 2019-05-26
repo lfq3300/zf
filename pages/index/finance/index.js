@@ -12,8 +12,7 @@ Page({
     carnameid: "",
     carid: "",
     carTime: [
-      "36",
-      "24"
+      
     ],
     carTimeIndex: 0,
     loginhidde: true,
@@ -31,7 +30,7 @@ Page({
     viewwidth:0,
     viewleft: 0,
     financ:true,
-    maximumFinancingPct:0
+    maximumFinancingPct:0,
   },
 
   carselect:function(e){
@@ -43,10 +42,24 @@ Page({
   bingCarTime: function (e) {
     var that = this;
     var carTimeIndex = e.detail.value;
-    that.setData({
-      carTimeIndex: carTimeIndex,
-      jrhidde: true,
-    });
+    if (that.data.carname.toLowerCase() == "smart") {
+      var speed = 30;
+      if (that.data.carTime[carTimeIndex] != 36){
+        speed = 30;
+      }else{
+        speed = 40;
+      }
+      that.setData({
+        carTimeIndex: carTimeIndex,
+        jrhidde: true,
+        speed: speed
+      });
+    }else{
+      that.setData({
+        carTimeIndex: carTimeIndex,
+        jrhidde: true,
+      });
+    }
     that.getfinancial();
   },
   /**
@@ -54,12 +67,20 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    var speed = 20;
+    var viewspeed = 1;
+    if (options.carname.toLowerCase() == "smart"){
+      speed = 30;
+      viewspeed = 100;
+    }
     that.setData({
       imgUrl: options.url,
       carname: options.carname,
       name: options.name,
       carnameid: options.carnameid,
-      carid: options.id
+      carid: options.id,
+      speed: speed,
+      viewspeed: viewspeed
     });
     that.LoInfo();
     wx.getSystemInfo({
@@ -75,6 +96,7 @@ Page({
       url: app.data.hostUrl + 'api/services/app/vehicleModel/GetActiveList?vehicleId=' + that.data.carid,
       method: 'post',
       success: function (res) {
+        console.log(res);
         if (res.data.success) {
           var result = res.data.result;
           var a = [];
@@ -86,7 +108,7 @@ Page({
           var carListId = b[0].id * 1;
           var carPrice = b[0].price * 1;
           var xxhx = [];
-         
+
           that.setData({
             loginhidde: false,
             carList: a,
@@ -172,14 +194,20 @@ Page({
   bingCar: function (e) {
     var that = this;
     var carListIndex = e.detail.value;
+    var speed = 20;
+    var viewspeed = 1;
+    if (that.data.carname.toLowerCase() == "smart") {
+      speed = 30;
+      viewspeed = 100;
+    }
     that.setData({
       carListIndex: carListIndex,
       carListId: that.data.carListArr[carListIndex].id * 1,
       carPrice: that.data.carListArr[carListIndex].price * 1,
       carTimeIndex:0,
       jrhidde: true,
-      speed: 20,
-      viewspeed: 1,
+      speed: speed,
+      viewspeed: viewspeed,
     });
     that.getGetById();
     that.getXxhx(that.data.carListArr[carListIndex]);
@@ -226,8 +254,18 @@ Page({
     if (speed < 50) {
       speed = 40;
     }
+    console.log(speed);
     if (that.data.maximumFinancingPct < speed){
       speed = that.data.maximumFinancingPct;
+    }
+    console.log(that.data.carname.toLowerCase());
+    if (that.data.carname.toLowerCase() == "smart"){
+      if(that.data.carTime[that.data.carTimeIndex] == 36){
+        speed = 40;
+      }else{
+        speed = 30;
+      }
+      viewspeed = 100;
     }
     that.setData({
       speed: speed,
@@ -245,35 +283,85 @@ Page({
   getfinancial: function () {
     var that = this;
     var financial = that.data.financial; //当前方案
+    console.log(financial);
+    console.log("当前方案");
     var maximumFinancingPct = 0;
+    var carTime = [];
     for (var i in financial) {
-      if (financial[i].maximumFinancingPct > maximumFinancingPct){
-        maximumFinancingPct = financial[i].maximumFinancingPct;
+        carTime.push(financial[i].maximumLeaseTerm);
+        carTime.push(financial[i].minimumLeaseTerm);
+    }
+    var temp = []; //一个新的临时数组
+    for (var i = 0; i < carTime.length; i++) {
+      if (temp.indexOf(carTime[i]) == -1) {
+        temp.push(carTime[i]);
       }
     }
+    temp = temp.sort();
+    //获取当前日期 
+    for (var i in financial) {
+      if (temp[that.data.carTimeIndex] == financial[i].minimumLeaseTerm || temp[that.data.carTimeIndex] == financial[i].maximumLeaseTerm){
+          maximumFinancingPct = financial[i].maximumFinancingPct;
+      }
+    }
+    that.setData({
+      carTime: temp
+    })
     var thatcar = that.data.carListArr[that.data.carListIndex]; //当前车辆信息 的价格 
     var price = thatcar.price*10000; //售价
     var speed = that.data.speed; //当前首付百分百
     //首付
-    var shoufu = price * speed / 100
-    price = (price - shoufu)*-1;
+    var shoufu = "";
+    if (that.data.carname.toLowerCase() != "smart") {
+      console.log("不是smart")
+      shoufu = price * speed / 100
+      price = (price - shoufu) * -1;
+    }
+   
     var time = that.data.carTime[that.data.carTimeIndex]; //当前账期
+
     var financialPlanDetails = "";
-    for (var i in financial){
-      if (speed <= financial[i].maximumFinancingPct){
+    for (var i in financial) {
+      console.log(financial[i]);
+      if (time == financial[i].minimumLeaseTerm || time == financial[i].maximumLeaseTerm) {
         financialPlanDetails = financial[i].financialPlanDetails;
-          break;
+        break;
       }
     }
+
+    if (that.data.carname.toLowerCase() == "smart"){
+        if(time == 36){
+          speed = 40;
+        }
+      shoufu = price * speed / 100
+      price = (price - shoufu) * -1;
+      that.setData({
+        speed: speed,
+        price: price,
+        shoufu: shoufu
+      })
+    }
     var financ = "";
+    console.log(financialPlanDetails);
     if (financialPlanDetails){
       for (var i in financialPlanDetails) {
+        console.log(financialPlanDetails[i]);
+        console.log("方案选择")
         if (time == financialPlanDetails[i].maxTerm || time == financialPlanDetails[i].minTerm){
             financ = financialPlanDetails[i];
             break;
         }
       }
     };
+    console.log(time);
+    console.log(financ);
+    console.log(maximumFinancingPct);
+    if (maximumFinancingPct < speed) {
+      speed = maximumFinancingPct;
+      that.setData({
+        speed: speed
+      });
+    }
     if (financ){
       var pric = that.pmr(financ.perentage/12/100, parseInt(time), price,0,0);
       that.setData({
@@ -289,7 +377,8 @@ Page({
         jrhidde:false,
         maximumFinancingPct: maximumFinancingPct
       })
-    }
+    };
+    console.log(that.data.maximumFinancingPct);
   },
   pmr: function (rate, nper, pv, ifv, itype) {
     const DECIMAL = 8;
