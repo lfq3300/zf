@@ -25,7 +25,8 @@ Page({
       carname: options.carname,
       carnameid: options.carnameid,
       id: options.id,
-      carType: options.carType
+      carType: options.carType,
+      carTypeId: options.carTypeId
     })
     that.onInfo(options.id);
 

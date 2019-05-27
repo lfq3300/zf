@@ -48,8 +48,8 @@ Page({
       accountId: wx.getStorageSync("userId"),
       contactName: wx.getStorageSync("realName"),
       contactTel: wx.getStorageSync("phone"),
-      categoryId: that.data.carnameid,
-      categoryIdName: that.data.carname,
+      categoryId: that.data.carTypeid,
+      categoryIdName: that.data.carType,
       vehicleId: that.data.carid,
       dealerId: that.data.carDisId,
       dealerIdName: that.data.carDis[that.data.carDisIndex],
@@ -111,6 +111,7 @@ Page({
       carnameid: options.carnameid,
       carid: options.id,
       carType: options.carType,
+      carTypeid: options.carTypeId,
       phone: wx.getStorageSync('phone'),
       contactName: wx.getStorageSync('realName'),
     });
