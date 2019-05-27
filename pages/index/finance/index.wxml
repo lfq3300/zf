@@ -78,6 +78,6 @@
       <!-- <view class='tab-car-explain tba2' wx:if="{{financ}}">*详细金融方案请以当地仁孚经销商为准</view> -->
     </view>
   </view>
-  <view class='tab-car-explain' wx:if="{{!financ && switchpageIndex == 2}}">暂无方案</view>
+  <view class='tab-car-explain' wx:if="{{!financ && switchpageIndex == 2}}">暂无</view>
   <image lazy-load src='https://miniprogram.zfchina.com/Common/Images/App/afterSale/xxhx.png' class='xxhxbg'></image>
 </view>
