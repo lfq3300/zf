@@ -3,8 +3,8 @@ App({
     用户进来后发起微信授权 必须授权获取到用户信息后才可以
   */
   data: {
-    hostUrl: "https://miniprogramuat.zfchina.com/",
-    //hostUrl: "https://miniprogram.zfchina.com/",
+    //hostUrl: "https://miniprogramuat.zfchina.com/",
+    hostUrl: "https://miniprogram.zfchina.com/",
     appid: "wx4d69fe23e65ae0ca",
     appKey: "f3ee574e618801a984354749b2657b21",
   },
@@ -16,14 +16,10 @@ App({
   onLaunch: function() {
     wx.getStorageInfo({
       success(res) {
-        console.log(res.keys)
-        console.log(res.currentSize)
-        console.log(res.limitSize)
       }
     })
     try {
       const res = wx.getStorageInfoSync()
-      console.log(res)
     } catch (e) {
       // Do something when catch error
     }
@@ -38,12 +34,9 @@ App({
       mask: true,
       icon: 'loading'
     });
-    console.log("uid" + wx.getStorageSync('userId'));
     if (!wx.getStorageSync('userId')) {
-      console.log('未登陆');
       wx.login({
         success: function(res) {
-          console.log(res);
           var code = res.code;
           wx.request({
             url: that.data.hostUrl + 'api/MiniApp/wechatoauth',
@@ -56,7 +49,6 @@ App({
                 wx.setStorageSync('sessionId', res.data.result);
                 if (wx.getStorageSync('userId').length == 0) {
                   wx.hideLoading();
-                  console.log('跳转授权页面');
                     wx.navigateTo({
                       url: "/pages/login/index"
                     })
@@ -66,13 +58,10 @@ App({
           })
         },
         fail:function(res){
-          console.log("未登录");
-            console.log(res)
         }
       })
     }else{
       wx.hideLoading();
-      console.log('登陆')
     }
 
 
@@ -340,7 +329,6 @@ App({
     wx.getLocation({
       type: 'wgs84',
       success: function (res) {
-        console.log(res);
         that.globalData.latitude = res.latitude;
         that.globalData.longitude = res.longitude;
         that.getLocal(res.latitude, res.longitude)
@@ -360,20 +348,13 @@ App({
           },
           method: 'GET',
           success: function (res) {
-            console.log("success")
-            console.log(res);
             var city = res.data.result.address_component.city;
-            console.log(res);
             that.globalData.loadcity = city;
             wx.setStorageSync('loadcity', city);
           },
           fail:function(res){
-              console.log("fail")
-              console.log(res);
           },
           complete:function(res){
-            console.log("complete")
-            console.log(res);
           }
         })
   },

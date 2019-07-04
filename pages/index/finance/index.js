@@ -20,7 +20,7 @@ Page({
     carListIndex: 0,
     carListId: 0,
     switchpageIndex: 1,
-    speed: 20,
+    speed: 30,
     viewspeed:1,
     shoufu: 0,
     yg: 0,
@@ -96,7 +96,6 @@ Page({
       url: app.data.hostUrl + 'api/services/app/vehicleModel/GetActiveList?vehicleId=' + that.data.carid,
       method: 'post',
       success: function (res) {
-        console.log(res);
         if (res.data.success) {
           var result = res.data.result;
           var a = [];
@@ -127,7 +126,6 @@ Page({
   getXxhx:function(car){
     var that = this;
     var xxhx =[];
-    console.log(car);
     if (parseInt(car.agility_LowDP)>1) {
       xxhx.push({
         monthlyPay: car.agility_LowDP,
@@ -146,7 +144,6 @@ Page({
     if (xxhx.length>0){
        switchpageIndex = 1;
     }
-    console.log(xxhx)
     that.setData({
       xxhx: xxhx,
       switchpageIndex: switchpageIndex
@@ -254,11 +251,9 @@ Page({
     if (speed < 50) {
       speed = 40;
     }
-    console.log(speed);
     if (that.data.maximumFinancingPct < speed){
       speed = that.data.maximumFinancingPct;
     }
-    console.log(that.data.carname.toLowerCase());
     if (that.data.carname.toLowerCase() == "smart"){
       if(that.data.carTime[that.data.carTimeIndex] == 36){
         speed = 40;
@@ -283,8 +278,6 @@ Page({
   getfinancial: function () {
     var that = this;
     var financial = that.data.financial; //当前方案
-    console.log(financial);
-    console.log("当前方案");
     var maximumFinancingPct = 0;
     var carTime = [];
     for (var i in financial) {
@@ -313,7 +306,6 @@ Page({
     //首付
     var shoufu = "";
     if (that.data.carname.toLowerCase() != "smart") {
-      console.log("不是smart")
       shoufu = price * speed / 100
       price = (price - shoufu) * -1;
     }
@@ -321,14 +313,17 @@ Page({
     var time = that.data.carTime[that.data.carTimeIndex]; //当前账期
 
     var financialPlanDetails = "";
+    var speed = that.data.speed;
     for (var i in financial) {
-      console.log(financial[i]);
       if (time == financial[i].minimumLeaseTerm || time == financial[i].maximumLeaseTerm) {
-        financialPlanDetails = financial[i].financialPlanDetails;
-        break;
+        if (speed < 50 && financial[i].maximumFinancingPct<51){
+          financialPlanDetails = financial[i].financialPlanDetails;
+        } else if (speed >= 50 && financial[i].maximumFinancingPct >= 50){
+          financialPlanDetails = financial[i].financialPlanDetails;
+        }
       }
     }
-
+    console.log(financialPlanDetails);
     if (that.data.carname.toLowerCase() == "smart"){
         if(time == 36){
           speed = 40;
@@ -342,20 +337,15 @@ Page({
       })
     }
     var financ = "";
-    console.log(financialPlanDetails);
     if (financialPlanDetails){
       for (var i in financialPlanDetails) {
         console.log(financialPlanDetails[i]);
-        console.log("方案选择")
         if (time == financialPlanDetails[i].maxTerm || time == financialPlanDetails[i].minTerm){
             financ = financialPlanDetails[i];
             break;
         }
       }
     };
-    console.log(time);
-    console.log(financ);
-    console.log(maximumFinancingPct);
     if (maximumFinancingPct < speed) {
       speed = maximumFinancingPct;
       that.setData({
@@ -378,7 +368,6 @@ Page({
         maximumFinancingPct: maximumFinancingPct
       })
     };
-    console.log(that.data.maximumFinancingPct);
   },
   pmr: function (rate, nper, pv, ifv, itype) {
     const DECIMAL = 8;
