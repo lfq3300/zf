@@ -14,22 +14,31 @@ Page({
     textArrValue: [],
     pageId: '',
     hidden: true,
-    ajaxstatus: true
+    ajaxstatus: true,
+    count:"(1/1)",
+    countIndex:0,
+    surLen:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //app.ifUserLogin();
+    if (!wx.getStorageSync("surphone")){
+        wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
+        wx.redirectTo({
+          url: "/pages/activity/survey/phone/index"
+        })
+    }
     var that = this;
     that.setData({
-      SurveyIdTitle: options.title,
+      SurveyIdTitle: options.title ? options.title:"",
       pageId: options.id,
       options: options
     })
     that.pageInfo(options);
   },
+  
   pageInfo: function (options) {
     var that = this;
     wx.request({
@@ -39,6 +48,10 @@ Page({
         wx.hideNavigationBarLoading();
         wx.stopPullDownRefresh();
         if (res.statusCode == 200 && res.data.success) {
+          that.setData({
+            count:"(1/"+res.data.result.length+")",
+            surLen: res.data.result.length
+          })
           var textArrStatus = [];
           var textArrValue = [];
           res.data.result.forEach((item, index) => {
@@ -61,7 +74,6 @@ Page({
             }
             textArrValue.push('');
           })
-          console.log(res.data.result[0]);
           that.setData({
             SurveyIdTitle: res.data.result[0].surveyIdName,
             surveyArr: res.data.result,
@@ -74,8 +86,6 @@ Page({
       fail: function (res) {
         wx.hideNavigationBarLoading();
         wx.stopPullDownRefresh();
-        console.log('--fail--');
-        console.log(res)
       }
     })
   },
@@ -288,8 +298,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var that = this;
-    that.pageInfo(that.setData.options);
+
   },
 
   /**

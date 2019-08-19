@@ -1,0 +1,14 @@
+<view class='padding-border'>
+  <form bindsubmit="formSubmit">
+    <view class='from-assembly flex-default'>
+      <text>手机号码</text>
+      <input class='flex1 from-assembly-input' name='phone' bindinput="phoneInput" placeholder='请输入手机号码' value='{{phone}}'></input>
+    </view>
+    <view class='from-assembly flex-default from-assembly-no-right'>
+      <text>验证码</text>
+      <input class='flex1 from-assembly-input' placeholder='请输入验证码' name='code'></input>
+      <button class="from-assembly-phone-btn" bindtap='getPhoneCode'>{{getcodetext}}</button>
+    </view>
+    <button class='subBtn' formType="submit" type='submit'>保存</button>
+  </form>
+</view>

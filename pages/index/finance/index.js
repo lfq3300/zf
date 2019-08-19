@@ -129,7 +129,7 @@ Page({
     if (parseInt(car.agility_LowDP)>1) {
       xxhx.push({
         monthlyPay: car.agility_LowDP,
-        tname:"预付款",
+        tname:"月付款",
         name:"低预付"
       })
     }

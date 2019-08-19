@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/about/index",
+    "pages/activity/survey/phone/index",
     "pages/index/index",
     "pages/opinion/index",
     "pages/index/catalog/index",
