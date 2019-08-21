@@ -24,12 +24,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (!wx.getStorageSync("surphone")){
-        wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
-        wx.redirectTo({
-          url: "/pages/activity/survey/phone/index"
-        })
-    }
+    // if (!wx.getStorageSync("surphone")){
+    //     wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
+    //     wx.redirectTo({
+    //       url: "/pages/activity/survey/phone/index"
+    //     })
+    // }
     var that = this;
     that.setData({
       SurveyIdTitle: options.title ? options.title:"",
@@ -285,6 +285,28 @@ Page({
           duration: 2500
         })
       }
+    })
+  },
+  next:function(){
+    this.timu(1);
+  },
+  prev:function(){
+    this.timu(-1);
+  },
+  timu:function(num){
+    var countIndex = this.data.countIndex;
+    var surLen = this.data.surLen;
+    countIndex = countIndex + num;
+    if (countIndex > surLen){
+      countIndex = surLen;
+    } else if (countIndex<0){
+      countIndex = 0
+    }
+    var a = countIndex + 1;
+    var count = "(" + a + "/" + surLen + ")";
+    this.setData({
+      countIndex: countIndex,
+      count: count
     })
   },
   /**

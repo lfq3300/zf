@@ -43,7 +43,8 @@
         </view> 
       </view>
     </view>
-        <button class="subBtn" bindtap='submitFrom'  wx:if="{{surLen == countIndex}}">提交</button>
-        <button class="subBtn" bindtap='submitFrom'>下一题</button>
+        <button class="subBtn" bindtap='submitFrom' wx:if="{{surLen == countIndex}}">提交</button>
+        <button class="subBtn" bindtap='next'>下一题</button>
+        <button class="subBtn" bindtap='prev'>上一题</button>
   </view>
 </view>
