@@ -1,0 +1,50 @@
+<loading hidden="{{hidden}}">
+        提交中...
+</loading>
+<loading hidden="{{!loginhidde}}">
+  页面加载中...
+</loading>
+<view hidden="{{loginhidde}}" class="padding-border">
+  <view class='page'>
+    <view class='title'>
+      {{SurveyIdTitle}}   <text>{{count}}</text>
+    </view>
+    <view class='sur-item' wx:for="{{surveyArr}}" wx:for-index="index" wx:for-item="item" wx:key="property" wx:if="{{optId == item.id}}" >
+      <view class='sur-item-title'>{{index+1}}. {{item.title}} {{item.id}} </view>
+      <view class='sur-item-content' wx:if="{{item.type == 'radio'}}">
+        <radio-group class="flex-column from-item" bindchange='bindRadioOption' data-questionId='{{item.id}}' data-index='{{index}}'>
+          <block  wx:for='{{item.options}}' wx:for-index="itemIndex"  wx:for-item="opt" wx:key="property">
+          <label>
+            <radio color='#D1A24B' checked='{{opt.isSelected}}'  value='{{opt.id}}-|-{{opt.title}}-|-{{opt.otherOption}}-|-{{index}}-|-{{opt.questionLinkId}}'/>
+            {{opt.title}} -- {{opt.questionLinkId}}
+          </label>
+          <view wx:if="{{opt.otherOption && textArrStatus[index] }}" class='other-textarea'>
+              <input  type='text'  bindblur='bingTextarea' data-id='{{opt.id}}' data-questionId='{{item.id}}' data-index='{{index}}' value="{{opt.answerContent?opt.answerContent:''}}"  adjust-position='{{true}}' show-confirm-bar='{{false}}' />
+            </view> 
+         </block>   
+        </radio-group>
+      </view>
+      <view class='sur-item-content' wx:if="{{item.type == 'checkbox'}}" >
+        <checkbox-group class="flex-column from-item" bindchange='bindCheckboxOption' data-questionId='{{item.id}}'  data-index='{{index}}'>
+        <block wx:for='{{item.options}}' wx:for-index="itemIndex"  wx:for-item="opt" wx:key="property">
+          <label >
+            <checkbox color='#fff' checked='{{opt.isSelected}}'  value='{{opt.id}}-|-{{opt.title}}-|-{{opt.otherOption}}-|-{{index}}-|-{{opt.questionLinkId}}'/>
+            {{opt.title}} -- {{opt.questionLinkId}}
+          </label>
+          <view wx:if="{{opt.otherOption && textArrStatus[index]}}" class='other-textarea'>
+              <input type='text' bindblur='bingTextarea' data-id='{{opt.id}}' data-questionId='{{item.id}}' data-index='{{index}}' value="{{opt.answerContent?opt.answerContent:''}}"  adjust-position='{{true}}' show-confirm-bar='{{false}}'/>
+            </view> 
+          </block>
+        </checkbox-group>
+      </view>
+      <view class='sur-item-content' wx:if="{{item.type == 'text'}}">
+        <view class='other-textarea'>
+              <input type='text'  bindblur='bingOtherTextarea' data-questionId='{{item.id}}' value="{{item.answerContent?item.answerContent:''}}" adjust-position='{{true}}' show-confirm-bar='{{false}}'/>
+        </view> 
+      </view>
+    </view>
+        <button class="subBtn" bindtap='submitFrom' wx:if="{{surLen == optIndex}}">提交</button>
+        <button class="subBtn" bindtap='next'>下一题</button>
+        <button class="subBtn" bindtap='prev' hidden="{{optIndex == 0}}">上一题</button>
+  </view>
+</view>

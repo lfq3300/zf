@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -89,6 +89,20 @@
 					"name": "普通金融方案",
 					"pathName": "pages/index/finance/index",
 					"query": "id=1015&url=https://miniprogram.zfchina.com/uploads/b190af68-8282-422a-b149-3c77daa2fb18.jpg&carname=轿车&carnameid=1&name=梅赛德斯-奔驰全新长轴距A级轿车&carType=A&carTypeId=82",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "问卷列表",
+					"pathName": "pages/activity/survey/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "跳题目",
+					"pathName": "pages/activity/survey/newsurvey",
+					"query": "id=2&title=仁孚中国腾势客户调查问卷",
 					"scene": null
 				}
 			]
