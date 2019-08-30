@@ -92,17 +92,17 @@
 					"scene": null
 				},
 				{
-					"id": 7,
-					"name": "调查表",
-					"pathName": "pages/activity/survey/survey",
-					"query": "id=1",
+					"id": -1,
+					"name": "问卷列表",
+					"pathName": "pages/activity/survey/index",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "手机",
-					"pathName": "pages/activity/survey/phone/index",
-					"query": "",
+					"name": "跳题目",
+					"pathName": "pages/activity/survey/newsurvey",
+					"query": "id=2&title=仁孚中国腾势客户调查问卷",
 					"scene": null
 				}
 			]

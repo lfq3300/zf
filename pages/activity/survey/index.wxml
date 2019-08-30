@@ -4,7 +4,11 @@
 <view hidden="{{loginhidde}}">
     <header></header>
     <view class='list padding-border'>
-        <navigator wx:for="{{surveryList}}" wx:for-index="idx" wx:for-item="item" wx:key="property" url='/pages/activity/survey/survey?id={{item.id}}&title={{item.title}}'>
+      <block wx:for="{{surveryList}}" 
+        wx:for-index="idx" 
+        wx:for-item="item" 
+        wx:key="property" >
+        <navigator wx:if="{{item.useNewTemplate}}" url='/pages/activity/survey/newsurvey?id={{item.id}}&title={{item.title}}'>
             <view class='bg'>
                 <view class='title'>{{item.title}}</view>
                 <view class='date'>{{item.creationDate}}</view>
@@ -12,5 +16,14 @@
             <view class='btn' wx:if='{{!item.isDone}}'>参加</view>
             <view class='btn old' wx:if='{{item.isDone}}'>已参加</view>
         </navigator>
+         <navigator wx:if="{{!item.useNewTemplate}}" url='/pages/activity/survey/survey?id={{item.id}}&title={{item.title}}'>
+            <view class='bg'>
+                <view class='title'>{{item.title}}</view>
+                <view class='date'>{{item.creationDate}}</view>
+            </view>
+            <view class='btn' wx:if='{{!item.isDone}}'>参加</view>
+            <view class='btn old' wx:if='{{item.isDone}}'>已参加</view>
+        </navigator>
+        </block>
     </view>
 </view>
