@@ -1,39 +1,36 @@
 /* pages/survey/survey.wxss */
-page{
-  background: #373737;
+
+page {
+  background: #f4f4f4;
 }
 
 
 .title {
+  background: #fff;
   text-align: center;
   line-height: 100rpx;
   font-size: 40rpx;
-  color: #fff;
+  color: #333;
   font-family: MYingHeiPRC-W5;
 }
 
-.title text{
-  color: #fff;
-  font-size: 30rpx;
-  float: right;
-}
-
 .sur-item {
-  padding-top: 50rpx;
+  background: #fff;
+  padding-top: 20rpx;
   padding-bottom: 20rpx;
   margin-bottom: 20rpx;
 }
 
 .sur-item-title {
-  color: #fff;
-  font-size: 30rpx;
+  color: #333;
+  font-size: 32rpx;
   padding-left: 24rpx;
   font-family: MYingHeiPRC-W4;
   padding-bottom: 20rpx;
 }
 
 .sur-item-content {
-  border-top: 1rpx solid #333;
+  border-top: 1rpx solid #f4f4f4;
   padding-bottom: 10rpx;
   padding-left: 35rpx;
   padding-right: 35rpx;
@@ -41,9 +38,9 @@ page{
 }
 
 .from-item label {
-  color: #fff;
-  font-size: 32rpx;
-  line-height: 70rpx;
+  color: #666;
+  font-size: 28rpx;
+  line-height: 0;
 }
 
 radio, checkbox {
@@ -54,7 +51,7 @@ radio, checkbox {
 checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   position: absolute;
   -webkit-appearance: none;
-  background: #D1A24B;
+  background: #5f8fff;
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
@@ -66,7 +63,6 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   width: 100%;
   font-size: 28rpx;
   padding-left: 20rpx;
-  margin-top: 10rpx;
 }
 .btn-bottom{
   text-align: center;
@@ -80,4 +76,5 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   line-height: 94rpx;
   width:100%;
   color:  #fff;
+  background: #5F8FFF;
 }
