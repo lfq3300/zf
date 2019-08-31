@@ -18,7 +18,6 @@ Page({
     count: "(1/1)",
     countIndex: 0,
     optId:0,
-    isAnswer:false,
     optArr:[],
     isJump:true,
     surLen:0,
@@ -101,18 +100,14 @@ Page({
     var index = e.target.dataset.index;
     this.setFromData(e, questionid, index);
     console.log(e);
-    this.setData({
-      isAnswer:true
-    })
+  
   },
 
   bindCheckboxOption: function (e) {
     var questionid = e.target.dataset.questionid;
     var index = e.target.dataset.index;
     this.setFromData(e, questionid, index, true);
-    this.setData({
-      isAnswer: true
-    })
+    
   },
   setFromData: function (e, questionid, index, status = false) {
     var value = e.detail.value
@@ -154,6 +149,7 @@ Page({
             optionId: parseInt(val[0]),
             content: textArrValue[index] ? textArrValue[index] : '其他',
             otherOption: val[2],
+            questionLinkId: val[4]
           }
         } else {
           newJsonData = {
@@ -161,6 +157,7 @@ Page({
             optionId: parseInt(val[0]),
             content: val[1],
             otherOption: val[2],
+            questionLinkId:val[4]
           }
         }
         newquestions.push(newJsonData);
@@ -174,6 +171,7 @@ Page({
           optionId: parseInt(val[0]),
           content: textArrValue[index] ? textArrValue[index] : '其他',
           otherOption: val[2],
+          questionLinkId: val[4]
         }
       } else {
         textArrStatus[index] = false;
@@ -182,6 +180,7 @@ Page({
           optionId: parseInt(val[0]),
           content: val[1],
           otherOption: val[2],
+          questionLinkId: val[4]
         }
       }
       newquestions.push(newJsonData);
@@ -303,93 +302,72 @@ Page({
     })
   },
 
+  /**
+   * optId 表示当前页显示的题目id
+   * optArr 表示 题目的数组ID
+   * optIndex 当前选中题目的Index
+   */
   //跳题目 
   jumpOpt:function(value,thisid,index){
-    if (value instanceof Array){
-      value = value[0];
-    }
-    var valueArr = value.split("-|-");
-    var nextId = valueArr.pop();
-    console.log(nextId);
-    if (nextId == "null"){
-      console.log("为空"); 
-      var opt = this.data.surveyArr;
-      console.log(opt);
-      //nextId 就是 下一个
-      console.log(index);
-      nextId = opt[index+1].id;
-    }else{
-      console.log("不为空"); 
-    }
-    var isJump = this.data.isJump;
+    var valArr = value.split("-|-");
     var optArr = this.data.optArr;
-    if (isJump){
-      this.setData({
-        isJump: false
-      });
+    var nextId = valArr.pop();
+    var optIndex = this.data.optIndex;
+    var surveyArr = this.data.surveyArr;
+    var questions = this.data.questions;
+    if (nextId == "null"){
+       //下一题Linkid 未 null 取下一题目的id
+      optArr.push(parseInt(surveyArr[optIndex + 1].questionId))
     }else{
-      // 删除最后一个  在添加 
-      optArr.pop();
+      // 存在下一题目ID
+      optArr.push(parseInt(nextId));
     }
-    optArr.push(parseInt(nextId));
     this.setData({
       optArr: optArr
-    });
-    console.log(optArr);
-  },
-  next: function () {
-    wx.hideToast();
-    var isAnswer = this.data.isAnswer;
-    if(isAnswer){
-      this.timu(true);
-    }else{
-      wx.showToast({
-        title:"当前题目未回答",
-        icon:'none',
-        duration:1500
-      })
-    }
-    this.setData({
-      isAnswer:false
     })
   },
-  prev: function () {
+  next: function () {
+    this.timu(true);
+  },
+
+  prev: function(){
     this.timu(false);
   },
   timu: function (status) {
-    this.setData({
-      isJump:true
-    })
+    wx.hideToast();
     var optArr = this.data.optArr;
-    if (!status) {
-      optArr.pop();
-      //需要将 optArr 去掉最后一个 返回上一题
-      this.setData({
-        optArr: optArr
-      })
-      console.log("上一题");
+    var nextId = 0;
+    var questions = this.data.questions;
+    if(!status){
+      //上一题目
+      nextId = optArr.pop();
     }
-    console.log(optArr);
-    var nextId = optArr[optArr.length-1];
-    console.log(optArr);
-    console.log(nextId);
-    var surveyArr = this.data.surveyArr;
-    var optId = 0;
-    var countIndex = 0;
-    for (var i = 0; i < surveyArr.length;i++){
-      if (surveyArr[i].id == nextId){
-        optId = nextId;
-        break;
+    nextId = optArr[optArr.length - 1];
+    var optStatus = false;
+    for (var i = 0; i < questions.length; i++) {
+      if (nextId == questions[i].id){
+        optStatus = true;
       }
-      countIndex += 1;
     }
-    
-    console.log(this.data);
-    var count = "(" + countIndex + 1 + "/" + surveyArr.length + ")";
+    if (!optStatus){
+        wx.showToast({
+          title: '请回答当前题目',
+          icon:"none",
+          duration:1500,
+        })
+    }
+    var optIndex = 0;
+    var surveyArr = this.data.surveyArr;
+    for (var i = 0; i < surveyArr.length;i++){
+      if (nextId == surveyArr[i].id){
+          break;
+      }
+      optIndex++;
+    }
     this.setData({
-      optId: optId,
-      count: count,
-      optIndex: countIndex
+      optIndex: optIndex,
+      optArr: optArr,
+      optId: nextId
     })
   },
   /**
