@@ -19,9 +19,14 @@ Page({
     countIndex: 0,
     optId:0,
     optArr:[],
+    optArrIndex:0,
     isJump:true,
     surLen:0,
-    optIndex:0
+    optIndex:0,
+    tindex:0,
+    isSelePrev:false,
+    textStatus:false,
+    isSelected:true
   },
 
   /**
@@ -38,7 +43,8 @@ Page({
     that.setData({
       SurveyIdTitle: options.title ? options.title : "",
       pageId: options.id,
-      options: options
+      options: options,
+      dealerId: options.dealerId ? options.dealerId : "",
     })
     that.pageInfo(options);
   },
@@ -85,7 +91,7 @@ Page({
             loginhidde: false,
             optArr:[res.data.result[0].id],
             surLen: res.data.result.length,
-            optId: [res.data.result[0].id] 
+            optId: res.data.result[0].id
           });
         }
       },
@@ -206,7 +212,8 @@ Page({
     textArrValue[index] = value;
     this.setData({
       questions: questions,
-      textArrValue: textArrValue
+      textArrValue: textArrValue,
+      textStatus: false
     })
   },
   bingOtherTextarea: function (e) {
@@ -232,7 +239,8 @@ Page({
       otherOption: 'other',
     })
     this.setData({
-      questions: newquestions
+      questions: newquestions,
+      textStatus:false
     })
   },
   submitFrom: function () {
@@ -252,13 +260,27 @@ Page({
       hidden: false,
       ajaxstatus: false
     })
+    var questions = that.data.questions;
+    var optArr = that.data.optArr;
+    var newquestions = [];
+    for (var i = 0; i < optArr.length;i++){
+      for (var j = 0; j < questions.length;j++){
+        if (optArr[i] == questions[j].questionId){
+          newquestions.push(questions[j]);
+        }
+      }
+    }
+    questions = newquestions;
     wx.request({
       url: app.data.hostUrl + 'api/MiniApp/addsurvey',
       method: "post",
       data: {
         surveyId: parseInt(that.data.pageId),
         accountId: wx.getStorageSync('userId'),
-        questions: that.data.questions
+        questions: questions,
+        phone: wx.getStorageSync("surphone"),
+        dealerId: that.data.dealerId
+
       },
       success: function (res) {
         that.setData({
@@ -309,19 +331,115 @@ Page({
    */
   //跳题目 
   jumpOpt:function(value,thisid,index){
-    var valArr = value.split("-|-");
+    var newValue = value;
+    if (!value){
+        this.setData({
+          isSelected:false
+        })
+    }else{
+      isSelected: true
+    }
+    var _this = this;
+    if(value instanceof Array){
+      newValue = value[0];
+      for(var i = 0;i<value.length;i++){
+         var item =  value[i].split("-|-");
+        console.log(item);
+         if(item[2] == "true"){
+           newValue = value[i];
+           _this.setData({
+             textStatus:true
+           });
+           break;
+         }else{
+           _this.setData({
+             textStatus: false
+           });
+         }
+      }
+    }
+    console.log(newValue);
+    console.log(this.data);
+    var valArr = newValue.split("-|-");
     var optArr = this.data.optArr;
+    var optnew = [];
+    for (var i = 0; i < optArr.length;i++){
+      if (optnew.length == 0){
+        optnew.push(optArr[i]);
+      }else{
+        var kstauts = true;
+        for (var k = 0; k < optnew.length;k++){
+          if (optnew[k] == optArr[i]){
+            kstauts = false;
+            break;
+          }
+        }
+        if (kstauts){
+          optnew.push(optArr[i]);
+        }
+      }
+    }
+    optArr = optnew;
+    console.log(optArr);  
     var nextId = valArr.pop();
     var optIndex = this.data.optIndex;
     var surveyArr = this.data.surveyArr;
     var questions = this.data.questions;
+    var nes = [];
+    // 去重复
+    for (var i = 0; i < questions.length;i++){
+      if(nes.length == 0){
+        nes.push(questions[i]);
+      }else{
+        var nesStatus = true;
+        for (var j = 0; j < nes.length;j++){
+          if (nes[j].questionId == questions[i].questionId){
+            nesStatus = false;
+           }
+        };
+        if (nesStatus){
+          nes.push(questions[i]);
+        }
+      }
+    }
+    var optArrIndex = this.data.optArrIndex;
     if (nextId == "null"){
        //下一题Linkid 未 null 取下一题目的id
-      optArr.push(parseInt(surveyArr[optIndex + 1].questionId))
+      var a = optIndex+1;
+      //做替换
+      if (optArrIndex < nes.length){
+        optArr[optArrIndex+1] = parseInt(surveyArr[a].id);
+      }else{
+          optArr.push(parseInt(surveyArr[a].id));
+      }
     }else{
-      // 存在下一题目ID
-      optArr.push(parseInt(nextId));
+      if (optArrIndex < nes.length) {
+        optArr[optArrIndex+1] = parseInt(nextId);
+      } else {
+          optArr.push(parseInt(nextId));
+      }
+       //存在下一题目ID
     }
+    console.log(optArr);  
+    var optnew = [];
+    for (var i = 0; i < optArr.length; i++) {
+      if (optnew.length == 0) {
+        optnew.push(optArr[i]);
+      } else {
+        var kstauts = true;
+        for (var k = 0; k < optnew.length; k++) {
+          if (optnew[k] == optArr[i]) {
+            kstauts = false;
+            break;
+          }
+        }
+        if (kstauts) {
+          optnew.push(optArr[i]);
+        }
+      }
+    }
+    optArr = optnew;
+    console.log(optArr);
     this.setData({
       optArr: optArr
     })
@@ -334,28 +452,48 @@ Page({
     this.timu(false);
   },
   timu: function (status) {
-    wx.hideToast();
+    //判断text是否有写入
+    if (this.data.textStatus || !this.data.isSelected){
+      wx.showToast({
+        title: '请回答当前题目',
+        icon: "none",
+        duration: 1500,
+      });
+      return;
+    }
     var optArr = this.data.optArr;
     var nextId = 0;
     var questions = this.data.questions;
-    if(!status){
-      //上一题目
-      nextId = optArr.pop();
-    }
-    nextId = optArr[optArr.length - 1];
+    var optId = this.data.optId;
+    console.log(optId);
+    var optArrIndex = this.data.optArrIndex;
     var optStatus = false;
     for (var i = 0; i < questions.length; i++) {
-      if (nextId == questions[i].id){
+      if (optId == questions[i].questionId) {
         optStatus = true;
+        break;
       }
     }
-    if (!optStatus){
-        wx.showToast({
-          title: '请回答当前题目',
-          icon:"none",
-          duration:1500,
-        })
+    if (!status) {
+      //上一题目
+      optStatus = true;
+      optArrIndex = optArrIndex -1;
+    }else{
+      optArrIndex = optArrIndex + 1;
     }
+    console.log("optindex:" + optArrIndex);
+    if (!optStatus) {
+      wx.showToast({
+        title: '请回答当前题目',
+        icon: "none",
+        duration: 1500,
+      });
+      return;
+    }
+    wx.hideToast();
+    nextId = optArr[optArrIndex];
+    console.log(this.data);
+    console.log(nextId);
     var optIndex = 0;
     var surveyArr = this.data.surveyArr;
     for (var i = 0; i < surveyArr.length;i++){
@@ -364,10 +502,18 @@ Page({
       }
       optIndex++;
     }
+    var surLen = this.data.surLen;
+    var tindex = optIndex+1;
+    if (tindex > surLen){
+      tindex = surLen;
+    }
     this.setData({
       optIndex: optIndex,
       optArr: optArr,
-      optId: nextId
+      optArrIndex: optArrIndex,
+      count: "(" + tindex + "/" + surLen+")",
+      optId: nextId,
+      tindex: tindex
     })
   },
   /**

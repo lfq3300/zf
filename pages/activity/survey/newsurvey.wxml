@@ -9,7 +9,8 @@
     <view class='title'>
       {{SurveyIdTitle}}   <text>{{count}}</text>
     </view>
-    <view class='sur-item' wx:for="{{surveyArr}}" wx:for-index="index" wx:for-item="item" wx:key="property" wx:if="{{optId == item.id}}" >
+    <block wx:for="{{surveyArr}}" wx:for-index="index" wx:for-item="item" wx:key="property">
+    <view class='sur-item'  hidden="{{optId != item.id}}" >
       <view class='sur-item-title'>{{index+1}}. {{item.title}} {{item.id}} </view>
       <view class='sur-item-content' wx:if="{{item.type == 'radio'}}">
         <radio-group class="flex-column from-item" bindchange='bindRadioOption' data-questionId='{{item.id}}' data-index='{{index}}'>
@@ -43,8 +44,9 @@
         </view> 
       </view>
     </view>
-        <button class="subBtn" bindtap='submitFrom' wx:if="{{surLen == optIndex}}">提交</button>
-        <button class="subBtn" bindtap='next'>下一题</button>
-        <button class="subBtn" bindtap='prev' hidden="{{optIndex == 0}}">上一题</button>
+    </block>
+        <button class="subBtn" bindtap='submitFrom' hidden="{{surLen != tindex}}">提交</button>
+        <button class="subBtn" bindtap='next'hidden="{{surLen == tindex}}">下一题</button>
+        <button class="subBtn" bindtap='prev' hidden="{{tindex == 0}}">上一题</button>
   </view>
 </view>
