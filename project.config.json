@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 8,
+			"current": 9,
 			"list": [
 				{
 					"id": -1,
@@ -103,6 +103,13 @@
 					"name": "跳题目",
 					"pathName": "pages/activity/survey/newsurvey",
 					"query": "id=2&title=仁孚中国腾势客户调查问卷",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "etc问卷",
+					"pathName": "pages/activity/survey/survey",
+					"query": "id=3&title=ETC%20Questionnaire",
 					"scene": null
 				}
 			]
