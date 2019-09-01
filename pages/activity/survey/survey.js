@@ -24,17 +24,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //  if (!wx.getStorageSync("surphone")){
-    //     wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
-    //     wx.redirectTo({
-    //       url: "/pages/activity/survey/phone/index"
-    //     })
-    // }
+     if (!wx.getStorageSync("surphone")){
+        wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
+        wx.redirectTo({
+          url: "/pages/activity/survey/phone/index"
+        })
+    }
     var that = this;
     that.setData({
       SurveyIdTitle: options.title ? options.title:"",
       pageId: options.id,
-      options: options
+      options: options,
+      dealerId: options.dealerId ? options.dealerId : "",
     })
     that.pageInfo(options);
   },
@@ -106,15 +107,10 @@ Page({
   },
   setFromData: function (e, questionid, index, status = false, optiongroupid=0) {
     var value = e.detail.value;
-    console.log(value);
     var questions = this.data.questions;
-    console.log(questions);
     var len = questions.length;
-    console.log(len);
     var textArrStatus = this.data.textArrStatus;
-    console.log(textArrStatus);
     var textArrValue = this.data.textArrValue;
-    console.log(textArrValue);
     for (var i = 0; i < len; i++) {
       if (parseInt(questions[i].questionId) === parseInt(questionid)) {
         delete questions[i];
@@ -148,6 +144,7 @@ Page({
             optionId: parseInt(val[0]),
             content: textArrValue[index] ? textArrValue[index] : '其他',
             otherOption: val[2],
+            optiongroupid: optiongroupid
           }
         } else {
           newJsonData = {
@@ -155,6 +152,7 @@ Page({
             optionId: parseInt(val[0]),
             content: val[1],
             otherOption: val[2],
+            optiongroupid: optiongroupid
           }
         }
         newquestions.push(newJsonData);
@@ -168,6 +166,7 @@ Page({
           optionId: parseInt(val[0]),
           content: textArrValue[index] ? textArrValue[index] : '其他',
           otherOption: val[2],
+          optiongroupid: optiongroupid
         }
       } else {
         textArrStatus[index] = false;
@@ -176,6 +175,7 @@ Page({
           optionId: parseInt(val[0]),
           content: val[1],
           otherOption: val[2],
+          optiongroupid: optiongroupid
         }
       }
       newquestions.push(newJsonData);
@@ -254,7 +254,9 @@ Page({
       data: {
         surveyId: parseInt(that.data.pageId),
         accountId: wx.getStorageSync('userId'),
-        questions: that.data.questions
+        questions: that.data.questions,
+        dealerId: that.data.dealerId,
+        phone: wx.getStorageSync("surphone"),
       },
       success: function (res) {
         that.setData({
