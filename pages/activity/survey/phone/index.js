@@ -117,7 +117,7 @@ Page({
    */
   onShow: function () {
     //this.onLoad();
-    app.ifUserLogin();
+  //  app.ifUserLogin();
   },
 
   /**

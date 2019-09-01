@@ -36,7 +36,8 @@
     "pages/demo/index",
     "pages/activity/viveweb/index",
     "pages/activity/survey/phone/index",
-    "pages/activity/survey/newsurvey"
+    "pages/activity/survey/newsurvey",
+    "pages/survey/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",

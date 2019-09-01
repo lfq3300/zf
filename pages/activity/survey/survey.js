@@ -17,7 +17,8 @@ Page({
     ajaxstatus: true,
     count:"(1/1)",
     countIndex:0,
-    surLen:0
+    surLen:0,
+    StartDateTime: app.getThisDateTime()
   },
 
   /**
@@ -257,6 +258,8 @@ Page({
         questions: that.data.questions,
         dealerId: that.data.dealerId,
         phone: wx.getStorageSync("surphone"),
+        StartDateTime: that.data.StartDateTime,
+        EndDateTime: app.getThisDateTime()
       },
       success: function (res) {
         that.setData({
@@ -271,7 +274,7 @@ Page({
             success: function () {
               setTimeout(function () {
                 wx.switchTab({
-                  url: '/pages/survey/index'
+                  url: '../pages/survey/index'
                 })
               }, 1500)
             }
@@ -367,6 +370,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+      
   }
 })

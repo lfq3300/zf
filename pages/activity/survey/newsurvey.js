@@ -26,19 +26,22 @@ Page({
     tindex:0,
     isSelePrev:false,
     textStatus:false,
-    isSelected:true
+    isSelected:true,
+    StartDateTime: app.getThisDateTime(),
+    groupOpt:false,
+    groupId:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // if (!wx.getStorageSync("surphone")){
-    //     wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
-    //     wx.redirectTo({
-    //       url: "/pages/activity/survey/phone/index"
-    //     })
-    // }
+     if (!wx.getStorageSync("surphone")){
+         wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
+         wx.redirectTo({
+           url: "/pages/activity/survey/phone/index"
+         })
+     }
     var that = this;
     that.setData({
       SurveyIdTitle: options.title ? options.title : "",
@@ -104,10 +107,16 @@ Page({
   bindRadioOption: function (e) {
     var questionid = e.target.dataset.questionid;
     var index = e.target.dataset.index;
-    this.setFromData(e, questionid, index);
-    console.log(e);
+    this.setFromData(e, questionid, index, false);
   
   },
+  bindMatrRadioOption:function(e){
+    var questionid = e.target.dataset.questionid;
+    var optiongroupid = e.target.dataset.optiongroupid;
+    var index = e.target.dataset.index;
+    this.setFromData(e, questionid, index, false, optiongroupid);
+  },
+
 
   bindCheckboxOption: function (e) {
     var questionid = e.target.dataset.questionid;
@@ -115,16 +124,24 @@ Page({
     this.setFromData(e, questionid, index, true);
     
   },
-  setFromData: function (e, questionid, index, status = false) {
+  setFromData: function (e, questionid, index, status = false, optiongroupid = 0) {
+    if (optiongroupid){
+        this.setData({
+          groupOpt:true,
+          groupId: questionid
+        })
+    }
     var value = e.detail.value
     this.jumpOpt(value, questionid, index);
     var questions = this.data.questions;
     var len = questions.length;
     var textArrStatus = this.data.textArrStatus;
     var textArrValue = this.data.textArrValue;
-    for (var i = 0; i < len; i++) {
-      if (parseInt(questions[i].questionId) === parseInt(questionid)) {
-        delete questions[i];
+    if (!optiongroupid){
+      for (var i = 0; i < len; i++) {
+        if (parseInt(questions[i].questionId) === parseInt(questionid)) {
+          delete questions[i];
+        }
       }
     }
     var newquestions = [];
@@ -155,7 +172,8 @@ Page({
             optionId: parseInt(val[0]),
             content: textArrValue[index] ? textArrValue[index] : '其他',
             otherOption: val[2],
-            questionLinkId: val[4]
+            questionLinkId: val[4],
+            optiongroupid: optiongroupid,
           }
         } else {
           newJsonData = {
@@ -163,7 +181,8 @@ Page({
             optionId: parseInt(val[0]),
             content: val[1],
             otherOption: val[2],
-            questionLinkId:val[4]
+            questionLinkId:val[4],
+            optiongroupid: optiongroupid,
           }
         }
         newquestions.push(newJsonData);
@@ -177,7 +196,8 @@ Page({
           optionId: parseInt(val[0]),
           content: textArrValue[index] ? textArrValue[index] : '其他',
           otherOption: val[2],
-          questionLinkId: val[4]
+          questionLinkId: val[4],
+          optiongroupid: optiongroupid
         }
       } else {
         textArrStatus[index] = false;
@@ -186,10 +206,13 @@ Page({
           optionId: parseInt(val[0]),
           content: val[1],
           otherOption: val[2],
-          questionLinkId: val[4]
+          questionLinkId: val[4],
+          optiongroupid: optiongroupid
         }
       }
+      console.log(newJsonData);
       newquestions.push(newJsonData);
+      console.log(newquestions);
     }
     this.setData({
       questions: newquestions,
@@ -279,7 +302,9 @@ Page({
         accountId: wx.getStorageSync('userId'),
         questions: questions,
         phone: wx.getStorageSync("surphone"),
-        dealerId: that.data.dealerId
+        dealerId: that.data.dealerId,
+        StartDateTime: that.data.StartDateTime,
+        EndDateTime: app.getThisDateTime()
 
       },
       success: function (res) {
@@ -302,6 +327,11 @@ Page({
           })
 
         } else {
+          setTimeout(function () {
+            wx.switchTab({
+              url: '/pages/survey/index'
+            })
+          }, 1500)
           wx.showToast({
             title: res.data.error.message,
             icon: 'none',
@@ -358,8 +388,6 @@ Page({
          }
       }
     }
-    console.log(newValue);
-    console.log(this.data);
     var valArr = newValue.split("-|-");
     var optArr = this.data.optArr;
     var optnew = [];
@@ -407,6 +435,10 @@ Page({
        //下一题Linkid 未 null 取下一题目的id
       var a = optIndex+1;
       //做替换
+      if (surveyArr.length == a){
+        a = a - 1;
+      }
+
       if (optArrIndex < nes.length){
         optArr[optArrIndex+1] = parseInt(surveyArr[a].id);
       }else{
@@ -447,11 +479,40 @@ Page({
   next: function () {
     this.timu(true);
   },
-
+  
   prev: function(){
     this.timu(false);
   },
   timu: function (status) {
+    //判断 当前 是否是 复选框 
+    if (this.data.groupOpt){
+        var questions = this.data.questions;
+        var groupId = this.data.groupId;
+        var surveyArr = this.data.surveyArr;
+        var groupLen = 0;
+        surveyArr.forEach(surItem=>{
+          if (surItem.id == groupId){
+              surItem.optionGroups.length;
+            }
+        });
+        var optLen = 0;
+        questions.forEach(v=>{
+          if (v.questionId == groupId){
+            optLen+=1;
+          }
+        })
+      if (groupLen != optLen){
+        wx.showToast({
+          title: '请回答当前题目',
+          icon: "none",
+          duration: 1500,
+        });
+        console.log("矩阵单选")
+        return;
+      }else{
+
+      }
+    }
     //判断text是否有写入
     if (this.data.textStatus || !this.data.isSelected){
       wx.showToast({
@@ -464,8 +525,8 @@ Page({
     var optArr = this.data.optArr;
     var nextId = 0;
     var questions = this.data.questions;
+    console.log(questions);
     var optId = this.data.optId;
-    console.log(optId);
     var optArrIndex = this.data.optArrIndex;
     var optStatus = false;
     for (var i = 0; i < questions.length; i++) {

@@ -23,7 +23,7 @@ App({
     } catch (e) {
       // Do something when catch error
     }
-  //  this.ifUserLogin();
+    this.ifUserLogin();
     this.getUserAddsInfo();
   },
   /*判断用户是否登陆*/
@@ -544,4 +544,21 @@ App({
     urlWithArgs = urlWithArgs.substring(0, urlWithArgs.length - 1)
     return urlWithArgs
   },
+  getThisDateTime:function(){
+    var date = new Date();
+    //年
+    var year = date.getFullYear();
+    //月
+    var month = date.getMonth() + 1;
+    //日
+    var day = date.getDate();
+    //时
+    var hh = date.getHours();
+    //分
+    var mm = date.getMinutes();
+    //秒
+    var ss = date.getSeconds();
+    var rq = year + "-" + month + "-" + day + " " + hh + ":" + mm + ":" + ss;
+    return rq;
+  }
 });
