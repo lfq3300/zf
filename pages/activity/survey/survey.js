@@ -17,7 +17,8 @@ Page({
     ajaxstatus: true,
     count:"(1/1)",
     countIndex:0,
-    surLen:0
+    surLen:0,
+    StartDateTime: new Date().getTime()
   },
 
   /**
@@ -257,6 +258,8 @@ Page({
         questions: that.data.questions,
         dealerId: that.data.dealerId,
         phone: wx.getStorageSync("surphone"),
+        StartDateTime: that.data.StartDateTime,
+        EndDateTime: new Date().getTime()
       },
       success: function (res) {
         that.setData({

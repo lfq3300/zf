@@ -81,3 +81,26 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   width:100%;
   color:  #fff;
 }
+
+
+.radio-title {
+  height: 75rpx;
+  background: #ccc;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  margin-bottom: 20rpx;
+
+}
+
+.radio-title view{
+  display: inline-block;
+  width: 20%;
+  font-size: 28rpx;
+  text-align: center;
+  color: fff;
+}
+
+.matrixradio-type radio{
+  transform:scale(0.8);
+}

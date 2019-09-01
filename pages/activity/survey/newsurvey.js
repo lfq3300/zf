@@ -26,19 +26,20 @@ Page({
     tindex:0,
     isSelePrev:false,
     textStatus:false,
-    isSelected:true
+    isSelected:true,
+    StartDateTime: new Date().getTime()
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // if (!wx.getStorageSync("surphone")){
-    //     wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
-    //     wx.redirectTo({
-    //       url: "/pages/activity/survey/phone/index"
-    //     })
-    // }
+     if (!wx.getStorageSync("surphone")){
+         wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
+         wx.redirectTo({
+           url: "/pages/activity/survey/phone/index"
+         })
+     }
     var that = this;
     that.setData({
       SurveyIdTitle: options.title ? options.title : "",
@@ -103,9 +104,9 @@ Page({
   },
   bindRadioOption: function (e) {
     var questionid = e.target.dataset.questionid;
+    var optiongroupid = e.target.dataset.optiongroupid;
     var index = e.target.dataset.index;
-    this.setFromData(e, questionid, index);
-    console.log(e);
+    this.setFromData(e, questionid, index, false, optiongroupid);
   
   },
 
@@ -115,7 +116,7 @@ Page({
     this.setFromData(e, questionid, index, true);
     
   },
-  setFromData: function (e, questionid, index, status = false) {
+  setFromData: function (e, questionid, index, status = false, optiongroupid = 0) {
     var value = e.detail.value
     this.jumpOpt(value, questionid, index);
     var questions = this.data.questions;
@@ -155,7 +156,8 @@ Page({
             optionId: parseInt(val[0]),
             content: textArrValue[index] ? textArrValue[index] : '其他',
             otherOption: val[2],
-            questionLinkId: val[4]
+            questionLinkId: val[4],
+            optiongroupid: optiongroupid,
           }
         } else {
           newJsonData = {
@@ -163,7 +165,8 @@ Page({
             optionId: parseInt(val[0]),
             content: val[1],
             otherOption: val[2],
-            questionLinkId:val[4]
+            questionLinkId:val[4],
+            optiongroupid: optiongroupid,
           }
         }
         newquestions.push(newJsonData);
@@ -177,7 +180,8 @@ Page({
           optionId: parseInt(val[0]),
           content: textArrValue[index] ? textArrValue[index] : '其他',
           otherOption: val[2],
-          questionLinkId: val[4]
+          questionLinkId: val[4],
+          optiongroupid: optiongroupid
         }
       } else {
         textArrStatus[index] = false;
@@ -186,7 +190,8 @@ Page({
           optionId: parseInt(val[0]),
           content: val[1],
           otherOption: val[2],
-          questionLinkId: val[4]
+          questionLinkId: val[4],
+          optiongroupid: optiongroupid
         }
       }
       newquestions.push(newJsonData);
@@ -279,7 +284,9 @@ Page({
         accountId: wx.getStorageSync('userId'),
         questions: questions,
         phone: wx.getStorageSync("surphone"),
-        dealerId: that.data.dealerId
+        dealerId: that.data.dealerId,
+        StartDateTime: that.data.StartDateTime,
+        EndDateTime: new Date().getTime()
 
       },
       success: function (res) {
