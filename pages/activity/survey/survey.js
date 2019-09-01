@@ -74,9 +74,10 @@ Page({
             }
             textArrValue.push('');
           })
+          var sureyArr = res.data.result;
           that.setData({
             SurveyIdTitle: res.data.result[0].surveyIdName,
-            surveyArr: res.data.result,
+            surveyArr: sureyArr,
             textArrStatus: textArrStatus,
             textArrValue: textArrValue,
             loginhidde: false
@@ -92,8 +93,9 @@ Page({
   bindRadioOption: function (e) {
     console.log(e);
     var questionid = e.target.dataset.questionid;
+    var optiongroupid = e.target.dataset.optiongroupid;
     var index = e.target.dataset.index;
-    this.setFromData(e, questionid, index);
+    this.setFromData(e, questionid, index, false, optiongroupid);
   },
 
   bindCheckboxOption: function (e) {
@@ -102,8 +104,9 @@ Page({
     var index = e.target.dataset.index;
     this.setFromData(e, questionid, index, true);
   },
-  setFromData: function (e, questionid, index, status = false) {
+  setFromData: function (e, questionid, index, status = false, optiongroupid=0) {
     var value = e.detail.value;
+    console.log(value);
     var questions = this.data.questions;
     console.log(questions);
     var len = questions.length;
@@ -180,7 +183,8 @@ Page({
     this.setData({
       questions: newquestions,
       textArrStatus: textArrStatus
-    })
+    });
+    console.log(this.data.questions);
   },
   bingTextarea: function (e) {
     var questionid = e.target.dataset.questionid;
