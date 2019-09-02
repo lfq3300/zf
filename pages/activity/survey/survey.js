@@ -18,7 +18,11 @@ Page({
     count:"(1/1)",
     countIndex:0,
     surLen:0,
+<<<<<<< HEAD
     StartDateTime: app.getThisDateTime()
+=======
+    StartDateTime: new Date().getTime()
+>>>>>>> master
   },
 
   /**
@@ -259,7 +263,11 @@ Page({
         dealerId: that.data.dealerId,
         phone: wx.getStorageSync("surphone"),
         StartDateTime: that.data.StartDateTime,
+<<<<<<< HEAD
         EndDateTime: app.getThisDateTime()
+=======
+        EndDateTime: new Date().getTime()
+>>>>>>> master
       },
       success: function (res) {
         that.setData({

@@ -108,5 +108,9 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 }
 
 .matrixradio-type radio{
+<<<<<<< HEAD
   transform:scale(0.6);
+=======
+  transform:scale(0.8);
+>>>>>>> master
 }

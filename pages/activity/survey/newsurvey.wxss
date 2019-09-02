@@ -90,7 +90,11 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   justify-content:center;
   align-items:center;
   margin-bottom: 20rpx;
+<<<<<<< HEAD
   font-size: 24rpx;
+=======
+
+>>>>>>> master
 }
 
 .radio-title view{
@@ -102,9 +106,13 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 }
 
 .matrixradio-type radio{
+<<<<<<< HEAD
   transform:scale(0.6);
 }
 .matrixradio-type .from-item label {
   width: 20%;
   display: inline-block;
+=======
+  transform:scale(0.8);
+>>>>>>> master
 }

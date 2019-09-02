@@ -27,9 +27,13 @@ Page({
     isSelePrev:false,
     textStatus:false,
     isSelected:true,
+<<<<<<< HEAD
     StartDateTime: app.getThisDateTime(),
     groupOpt:false,
     groupId:0
+=======
+    StartDateTime: new Date().getTime()
+>>>>>>> master
   },
 
   /**
@@ -106,8 +110,13 @@ Page({
   },
   bindRadioOption: function (e) {
     var questionid = e.target.dataset.questionid;
+    var optiongroupid = e.target.dataset.optiongroupid;
     var index = e.target.dataset.index;
+<<<<<<< HEAD
     this.setFromData(e, questionid, index, false);
+=======
+    this.setFromData(e, questionid, index, false, optiongroupid);
+>>>>>>> master
   
   },
   bindMatrRadioOption:function(e){
@@ -125,12 +134,15 @@ Page({
     
   },
   setFromData: function (e, questionid, index, status = false, optiongroupid = 0) {
+<<<<<<< HEAD
     if (optiongroupid){
         this.setData({
           groupOpt:true,
           groupId: questionid
         })
     }
+=======
+>>>>>>> master
     var value = e.detail.value
     this.jumpOpt(value, questionid, index);
     var questions = this.data.questions;
@@ -304,7 +316,11 @@ Page({
         phone: wx.getStorageSync("surphone"),
         dealerId: that.data.dealerId,
         StartDateTime: that.data.StartDateTime,
+<<<<<<< HEAD
         EndDateTime: app.getThisDateTime()
+=======
+        EndDateTime: new Date().getTime()
+>>>>>>> master
 
       },
       success: function (res) {
