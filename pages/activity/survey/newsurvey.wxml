@@ -52,17 +52,10 @@
         <view class="matrixradio-type" wx:for="{{item.optionGroups}}" wx:for-index="opindex" wx:for-item="opitem" wx:key="opkey">
           <view class="sur-item-title">{{opitem.title}}</view>
           <view class="from-item">
-<<<<<<< HEAD
             <radio-group bindchange='bindMatrRadioOption'  data-questionId= "{{item.id}}" data-optiongroupid= "{{opitem.id}}"  data-index='{{index}}'>
               <block wx:for="{{item.options}}" wx:for-index="oindex" wx:for-item="oitem" wx:key="okey">
                 <label>
                   <radio   color='#D1A24B' checked='{{opt.isSelected}}' value='{{opitem.id}}-|-{{oitem.title}}-|-{{oitem.otherOption}}-|-{{oindex}}-|-{{oitem.questionLinkId}}'/>
-=======
-            <radio-group bindchange='bindRadioOption'  data-questionId= "{{item.id}}" data-optiongroupid= "{{opitem.id}}"  data-index='{{index}}'>
-              <block wx:for="{{item.options}}" wx:for-index="oindex" wx:for-item="oitem" wx:key="okey">
-                <label>
-                  <radio checked='{{opt.isSelected}}' value='{{oitem.id}}-|-{{oitem.title}}-|-{{oitem.otherOption}}-|-{{oindex}}'/>
->>>>>>> master
                 </label>
               </block>
             </radio-group>
