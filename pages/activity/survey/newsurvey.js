@@ -328,11 +328,6 @@ Page({
           })
 
         } else {
-          setTimeout(function () {
-            wx.switchTab({
-              url: '/pages/survey/index'
-            })
-          }, 1500)
           wx.showToast({
             title: res.data.error.message,
             icon: 'none',
@@ -392,6 +387,16 @@ Page({
     var valArr = newValue.split("-|-");
     var optArr = this.data.optArr;
     var optnew = [];
+    if (valArr[2] == "true"){
+      newValue = value[i];
+      _this.setData({
+        textStatus: true
+      });
+    }else{
+      _this.setData({
+        textStatus: false
+      });
+    }
     for (var i = 0; i < optArr.length;i++){
       if (optnew.length == 0){
         optnew.push(optArr[i]);
@@ -493,7 +498,7 @@ Page({
         var groupLen = 0;
         surveyArr.forEach(surItem=>{
           if (surItem.id == groupId){
-              surItem.optionGroups.length;
+            groupLen  = surItem.optionGroups.length;
             }
         });
         var optLen = 0;
@@ -511,7 +516,10 @@ Page({
         console.log("矩阵单选")
         return;
       }else{
-
+        this.setData({
+          groupOpt: false,
+          groupId: 0
+        })
       }
     }
     //判断text是否有写入

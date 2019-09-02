@@ -55,7 +55,7 @@
             <radio-group bindchange='bindMatrRadioOption'  data-questionId= "{{item.id}}" data-optiongroupid= "{{opitem.id}}"  data-index='{{index}}'>
               <block wx:for="{{item.options}}" wx:for-index="oindex" wx:for-item="oitem" wx:key="okey">
                 <label>
-                  <radio   color='#D1A24B' checked='{{opt.isSelected}}' value='{{opitem.id}}-|-{{oitem.title}}-|-{{oitem.otherOption}}-|-{{oindex}}-|-{{oitem.questionLinkId}}'/>
+                  <radio   color='#D1A24B' checked='{{opt.isSelected}}' value='{{opitem.id}}-|-{{oitem.title}}-|-1-|-{{oindex}}-|-{{oitem.questionLinkId}}'/>
                 </label>
               </block>
             </radio-group>

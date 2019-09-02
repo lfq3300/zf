@@ -23,8 +23,8 @@ App({
     } catch (e) {
       // Do something when catch error
     }
-    this.ifUserLogin();
-    this.getUserAddsInfo();
+  //  this.ifUserLogin();
+  //  this.getUserAddsInfo();
   },
   /*判断用户是否登陆*/
   ifUserLogin: function(e) {

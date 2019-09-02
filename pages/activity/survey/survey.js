@@ -18,7 +18,9 @@ Page({
     count:"(1/1)",
     countIndex:0,
     surLen:0,
-    StartDateTime: app.getThisDateTime()
+    StartDateTime: app.getThisDateTime(),
+    groupOpt: false,
+    groupId: 0
   },
 
   /**
@@ -97,6 +99,13 @@ Page({
     var questionid = e.target.dataset.questionid;
     var optiongroupid = e.target.dataset.optiongroupid;
     var index = e.target.dataset.index;
+    this.setFromData(e, questionid, index);
+  },
+
+  bindMatrRadioOption: function (e) {
+    var questionid = e.target.dataset.questionid;
+    var optiongroupid = e.target.dataset.optiongroupid;
+    var index = e.target.dataset.index;
     this.setFromData(e, questionid, index, false, optiongroupid);
   },
 
@@ -107,14 +116,22 @@ Page({
     this.setFromData(e, questionid, index, true);
   },
   setFromData: function (e, questionid, index, status = false, optiongroupid=0) {
+    if (optiongroupid) {
+      this.setData({
+        groupOpt: true,
+        groupId: questionid
+      })
+    }
     var value = e.detail.value;
     var questions = this.data.questions;
     var len = questions.length;
     var textArrStatus = this.data.textArrStatus;
     var textArrValue = this.data.textArrValue;
-    for (var i = 0; i < len; i++) {
-      if (parseInt(questions[i].questionId) === parseInt(questionid)) {
-        delete questions[i];
+    if (!optiongroupid) {
+      for (var i = 0; i < len; i++) {
+        if (parseInt(questions[i].questionId) === parseInt(questionid)) {
+          delete questions[i];
+        }
       }
     }
     var newquestions = [];
@@ -234,6 +251,37 @@ Page({
   },
   submitFrom: function () {
     var that = this;
+    if (this.data.groupOpt) {
+      var questions = that.data.questions;
+      var groupId = that.data.groupId;
+      var surveyArr = that.data.surveyArr;
+      var groupLen = 0;
+      surveyArr.forEach(surItem => {
+        if (surItem.id == groupId) {
+          groupLen = surItem.optionGroups.length;
+        }
+      });
+      var optLen = 0;
+      questions.forEach(v => {
+        if (v.questionId == groupId) {
+          optLen += 1;
+        }
+      })
+      if (groupLen != optLen) {
+        wx.showToast({
+          title: '请回答当前题目',
+          icon: "none",
+          duration: 1500,
+        });
+        console.log("矩阵单选")
+        return;
+      } else {
+        that.setData({
+          groupOpt: false,
+          groupId: 0
+        })
+      }
+    }
     if (that.data.questions.length == 0) {
       wx.showToast({
         title: '不能提交空问卷',

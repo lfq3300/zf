@@ -34,6 +34,7 @@ Page({
   onLoad: function (options) {
     wx.hideNavigationBarLoading();
     wx.stopPullDownRefresh();
+    app.getUserAddsInfo();
   },
   jump:function(e){
     if (e.target.dataset.text == "维修保养"){
@@ -89,7 +90,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    app.ifUserLogin();
+   // app.ifUserLogin();
   },
 
   /**

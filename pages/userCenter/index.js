@@ -68,6 +68,7 @@ Page({
    */
   onShow: function () {
     app.ifUserLogin();
+    this.onLoad();
   },
 
   /**
