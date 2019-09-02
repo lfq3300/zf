@@ -10,7 +10,7 @@
     <view class='title'>
       {{SurveyIdTitle}}
     </view>
-    <view class='sur-item' wx:for="{{surveyArr}}" wx:for-index="index" wx:for-item="item" wx:key="property">
+    <view class='sur-item ' wx:for="{{surveyArr}}" wx:for-index="index" wx:for-item="item" wx:key="property">
       <view class='sur-item-title'>{{index+1}}. {{item.title}}</view>
       <view class="sur-item-content" wx:if="{{item.type == 'matrixradio'}}">
         <view class="radio-title">
@@ -24,7 +24,7 @@
             <radio-group bindchange='bindMatrRadioOption'  data-questionId= "{{item.id}}" data-optiongroupid= "{{opitem.id}}"  data-index='{{index}}'>
               <block wx:for="{{item.options}}" wx:for-index="oindex" wx:for-item="oitem" wx:key="okey">
                 <label>
-                  <radio color='#5F8FFF' checked='{{opt.isSelected}}' value='{{oitem.id}}-|-{{oitem.title}}-|-1-|-{{oindex}}'/>
+                  <radio color='#5F8FFF' checked='{{opt.isSelected}}' value='{{oitem.id}}-|-{{oitem.title}}-|-1-|-{{oindex}}-|-{{oitem.point}}'/>
                 </label>
               </block>
             </radio-group>
@@ -35,19 +35,19 @@
         <radio-group class="flex-column from-item" bindchange='bindRadioOption' data-questionId='{{item.id}}' data-index='{{index}}'>
           <block wx:for='{{item.options}}' wx:for-index="itemIndex" wx:for-item="opt" wx:key="property">
             <label>
-              <radio color='#5F8FFF' checked='{{opt.isSelected}}' value='{{opt.id}}-|-{{opt.title}}-|-{{opt.otherOption}}-|-{{index}}' /> {{opt.title}}
+              <radio color='#5F8FFF' checked='{{opt.isSelected}}' value='{{opt.id}}-|-{{opt.title}}-|-{{opt.otherOption}}-|-{{index}}-|-{{opt.point}}' /> {{opt.title}}
             </label>
             <view wx:if="{{opt.otherOption && textArrStatus[index] }}" class='other-textarea'>
-              <input type='text' bindblur='bingTextarea' data-id='{{opt.id}}' data-questionId='{{item.id}}' data-index='{{index}}' value="{{opt.answerContent?opt.answerContent:''}}" adjust-position='{{true}}' show-confirm-bar='{{false}}' />
+              <input type='text' bindblur='bingTextarea' data-id='{{opt.id}}' data-point='{{opt.point}}' data-questionId='{{item.id}}' data-index='{{index}}' value="{{opt.answerContent?opt.answerContent:''}}" adjust-position='{{true}}' show-confirm-bar='{{false}}' />
             </view>
           </block>
         </radio-group>
       </view>
       <view class='sur-item-content' wx:if="{{item.type == 'checkbox'}}">
-        <checkbox-group class="flex-column from-item" bindchange='bindCheckboxOption' data-questionId='{{item.id}}' data-index='{{index}}'>
+        <checkbox-group class="flex-column from-item error" bindchange='bindCheckboxOption' data-questionId='{{item.id}}' data-index='{{index}}'>
           <block wx:for='{{item.options}}' wx:for-index="itemIndex" wx:for-item="opt" wx:key="property">
             <label>
-              <checkbox color='#fff' checked='{{opt.isSelected}}' value='{{opt.id}}-|-{{opt.title}}-|-{{opt.otherOption}}-|-{{index}}' /> {{opt.title}}
+              <checkbox color='#fff' checked='{{opt.isSelected}}' value='{{opt.id}}-|-{{opt.title}}-|-{{opt.otherOption}}-|-{{index}}-|-{{opt.point}}' /> {{opt.title}}
             </label>
             <view wx:if="{{opt.otherOption && textArrStatus[index]}}" class='other-textarea'>
               <input type='text' bindblur='bingTextarea' data-id='{{opt.id}}' data-questionId='{{item.id}}' data-index='{{index}}' value="{{opt.answerContent?opt.answerContent:''}}" adjust-position='{{true}}' show-confirm-bar='{{false}}' />

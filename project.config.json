@@ -40,7 +40,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 9,
+			"current": 10,
 			"list": [
 				{
 					"id": -1,
@@ -110,6 +110,13 @@
 					"name": "etc问卷",
 					"pathName": "pages/activity/survey/survey",
 					"query": "id=3&title=ETC%20Questionnaire",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "普通问卷",
+					"pathName": "pages/activity/survey/survey",
+					"query": "id=1&title=%E4%BB%81%E5%AD%9A%E5%A5%94%E9%A9%B0%E8%BD%A6%E4%B8%BB%E8%B0%83%E7%A0%94%E8%A1%A8%20",
 					"scene": null
 				}
 			]

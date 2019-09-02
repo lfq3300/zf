@@ -36,6 +36,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    app.ifUserLogin();
      if (!wx.getStorageSync("surphone")){
          wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
          wx.redirectTo({
@@ -86,9 +87,39 @@ Page({
             }
             textArrValue.push('');
           })
+          //做回显处理 
+          
+          //
+          var surveyArr = res.data.result;
+          var initopt = [];
+          var optArr = [];
+          surveyArr.forEach(v=>{
+            var options = v.options;
+            if (v.type == "matrixradio"){
+              var optionGroups = v.optionGroups;
+              options.forEach(va=>{
+                  console.log(va);
+              })        
+            }else{
+              options.forEach(va=>{
+                if (va.isSelected){
+                  initopt.push({
+                    content: va.title,
+                    optionId: va.id,
+                    optiongroupid:null,
+                    otherOption: va.otherOption,
+                    point: va.point,
+                    questionId: va.questionId,
+                    questionLinkId: va.questionLinkId ? va.questionLinkId:'null'
+                  });
+                  optArr.push(va.id);
+                }
+              });
+            }
+          });
           that.setData({
             SurveyIdTitle: res.data.result[0].surveyIdName,
-            surveyArr: res.data.result,
+            surveyArr: surveyArr,
             textArrStatus: textArrStatus,
             textArrValue: textArrValue,
             loginhidde: false,
@@ -174,7 +205,8 @@ Page({
             content: textArrValue[index] ? textArrValue[index] : '其他',
             otherOption: val[2],
             questionLinkId: val[4],
-            optiongroupid: optiongroupid,
+            optiongroupid: optiongroupid ? optiongroupid:null,
+            point: val[5]
           }
         } else {
           newJsonData = {
@@ -183,7 +215,9 @@ Page({
             content: val[1],
             otherOption: val[2],
             questionLinkId:val[4],
-            optiongroupid: optiongroupid,
+            optiongroupid: optiongroupid ? optiongroupid : null,
+            point: val[5]
+
           }
         }
         newquestions.push(newJsonData);
@@ -198,7 +232,9 @@ Page({
           content: textArrValue[index] ? textArrValue[index] : '其他',
           otherOption: val[2],
           questionLinkId: val[4],
-          optiongroupid: optiongroupid
+          optiongroupid: optiongroupid ? optiongroupid : null,
+          point: val[5]
+
         }
       } else {
         textArrStatus[index] = false;
@@ -208,7 +244,9 @@ Page({
           content: val[1],
           otherOption: val[2],
           questionLinkId: val[4],
-          optiongroupid: optiongroupid
+          optiongroupid: optiongroupid ? optiongroupid : null,
+          point: val[5]
+
         }
       }
       console.log(newJsonData);
@@ -269,6 +307,80 @@ Page({
   },
   submitFrom: function () {
     var that = this;
+    var ajx = false;
+    var questions = that.data.questions;
+    var groupId = that.data.groupId;
+    var surveyArr = that.data.surveyArr;
+    surveyArr.forEach((surItem, i) => {
+      if (this.data.groupOpt) {
+        if (surItem.type == "matrixradio") {
+          var groupLen = surItem.optionGroups.length;
+          var groupId = surItem.id;
+          var optLen = 0;
+          questions.forEach(v => {
+            if (v.questionId == groupId) {
+              optLen += 1;
+            }
+          });
+          if (groupLen != optLen) {
+            var ti = i + 1;
+            wx.showToast({
+              title: '第' + ti + "题还未完成",
+              icon: "none",
+              duration: 1500,
+            });
+            ajx = true;
+            return;
+          }
+        }
+      }
+      if (surItem.type == "checkbox") {
+        var maxSelected = parseInt(surItem.maxSelected);
+        var minSelected = parseInt(surItem.minSelected);
+        var groupId = surItem.id;
+        var optLen = 0;
+        questions.forEach(v => {
+          if (v.questionId == groupId) {
+            optLen += 1;
+          }
+        });
+        var title = '';
+        var ti = i + 1;
+        if ((minSelected > 0 && maxSelected > 0) && optLen < minSelected || optLen > maxSelected) {
+          title = '第' + ti + "题只能选 " + minSelected + "-" + maxSelected + "个选项";
+          wx.showToast({
+            title: title,
+            icon: "none",
+            duration: 1500,
+          });
+          ajx = true;
+          return;
+        } else if (minSelected > 0 && optLen < minSelected) {
+          title = '第' + ti + "题最少选 " + minSelected + "个选项";
+          wx.showToast({
+            title: title,
+            icon: "none",
+            duration: 1500,
+          });
+          ajx = true;
+          return;
+        } else if (maxSelected > 0 && optLen > maxSelected) {
+          title = '第' + ti + "题最多选 " + maxSelected + "个选项";
+          wx.showToast({
+            title: title,
+            icon: "none",
+            duration: 1500,
+          });
+          ajx = true;
+          return;
+        }
+
+      }
+    });
+
+    if (ajx) {
+      return;
+    }
     if (that.data.questions.length == 0) {
       wx.showToast({
         title: '不能提交空问卷',
@@ -321,7 +433,7 @@ Page({
             success: function () {
               setTimeout(function () {
                 wx.switchTab({
-                  url: '/pages/survey/index'
+                  url: '/pages/activity/index'
                 })
               }, 1500)
             }
@@ -414,8 +526,10 @@ Page({
       }
     }
     optArr = optnew;
-    console.log(optArr);  
-    var nextId = valArr.pop();
+    console.log(optArr);
+    console.log(valArr);  
+    var nextId = valArr[valArr.length-2];
+    console.log(nextId);
     var optIndex = this.data.optIndex;
     var surveyArr = this.data.surveyArr;
     var questions = this.data.questions;

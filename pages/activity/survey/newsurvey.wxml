@@ -16,7 +16,7 @@
         <radio-group class="flex-column from-item" bindchange='bindRadioOption' data-questionId='{{item.id}}' data-index='{{index}}'>
           <block  wx:for='{{item.options}}' wx:for-index="itemIndex"  wx:for-item="opt" wx:key="property">
           <label>
-            <radio color='#D1A24B' checked='{{opt.isSelected}}'  value='{{opt.id}}-|-{{opt.title}}-|-{{opt.otherOption}}-|-{{index}}-|-{{opt.questionLinkId}}'/>
+            <radio color='#D1A24B' checked='{{opt.isSelected}}'  value='{{opt.id}}-|-{{opt.title}}-|-{{opt.otherOption}}-|-{{index}}-|-{{opt.questionLinkId}}-|-{{opt.point}}'/>
             {{opt.title}}
           </label>
           <view wx:if="{{opt.otherOption && textArrStatus[index] }}" class='other-textarea'>
@@ -29,7 +29,7 @@
         <checkbox-group class="flex-column from-item" bindchange='bindCheckboxOption' data-questionId='{{item.id}}'  data-index='{{index}}'>
         <block wx:for='{{item.options}}' wx:for-index="itemIndex"  wx:for-item="opt" wx:key="property">
           <label >
-            <checkbox color='#fff' checked='{{opt.isSelected}}'  value='{{opt.id}}-|-{{opt.title}}-|-{{opt.otherOption}}-|-{{index}}-|-{{opt.questionLinkId}}'/>
+            <checkbox color='#fff' checked='{{opt.isSelected}}'  value='{{opt.id}}-|-{{opt.title}}-|-{{opt.otherOption}}-|-{{index}}-|-{{opt.questionLinkId}}-|-{{opt.point}}'/>
             {{opt.title}}
           </label>
           <view wx:if="{{opt.otherOption && textArrStatus[index]}}" class='other-textarea'>
@@ -55,7 +55,7 @@
             <radio-group bindchange='bindMatrRadioOption'  data-questionId= "{{item.id}}" data-optiongroupid= "{{opitem.id}}"  data-index='{{index}}'>
               <block wx:for="{{item.options}}" wx:for-index="oindex" wx:for-item="oitem" wx:key="okey">
                 <label>
-                  <radio   color='#D1A24B' checked='{{opt.isSelected}}' value='{{opitem.id}}-|-{{oitem.title}}-|-1-|-{{oindex}}-|-{{oitem.questionLinkId}}'/>
+                  <radio   color='#D1A24B' checked='{{opt.isSelected}}' value='{{oitem.id}}-|-{{oitem.title}}-|-1-|-{{oindex}}-|-{{oitem.questionLinkId}}-|-{{oitem.point}}'/>
                 </label>
               </block>
             </radio-group>
