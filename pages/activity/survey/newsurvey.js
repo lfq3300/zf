@@ -36,16 +36,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.ifUserLogin();
-     if (!wx.getStorageSync("surphone")){
-         wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
-         wx.redirectTo({
-           url: "/pages/activity/survey/phone/index"
-         })
-     }
     var that = this;
     that.setData({
-      SurveyIdTitle: options.title ? options.title : "",
+      SurveyIdTitle: "",
       pageId: options.id,
       options: options,
       dealerId: options.dealerId ? options.dealerId : "",
@@ -56,7 +49,7 @@ Page({
   pageInfo: function (options) {
     var that = this;
     wx.request({
-      url: app.data.hostUrl + 'api/services/app/surveyQuestion/GetListBySurveyIdAsync?surveyId=' + parseInt(that.data.pageId) + '&accountId=' + wx.getStorageSync('userId'),
+       url: app.data.hostUrl + 'api/services/app/surveyQuestion/GetListBySurveyIdAsync?surveyId=' + parseInt(that.data.pageId) + '&accountId=' + wx.getStorageSync('userId'),
       method: 'POST',
       success: function (res) {
         wx.hideNavigationBarLoading();
@@ -87,9 +80,6 @@ Page({
             }
             textArrValue.push('');
           })
-          //做回显处理 
-          
-          //
           var surveyArr = res.data.result;
           var initopt = [];
           var optArr = [];
@@ -97,12 +87,27 @@ Page({
             var options = v.options;
             if (v.type == "matrixradio"){
               var optionGroups = v.optionGroups;
-              options.forEach(va=>{
-                  console.log(va);
-              })        
+              optionGroups.forEach(optv=>{
+                options.forEach(va => {
+                  if (optv.selectedOptionId == va.id){
+                    optArr.push(v.id);
+                    initopt.push({
+                      content: va.title,
+                      optionId: va.id,
+                      optiongroupid: optv.id,
+                      otherOption: "1",
+                      point: va.point,
+                      questionId: va.questionId,
+                      questionLinkId: va.questionLinkId ? va.questionLinkId : 'null'
+                    });
+                  }
+                })    
+              })
             }else{
               options.forEach(va=>{
                 if (va.isSelected){
+                  console.log(va);
+                  optArr.push(va.questionId);
                   initopt.push({
                     content: va.title,
                     optionId: va.id,
@@ -112,18 +117,48 @@ Page({
                     questionId: va.questionId,
                     questionLinkId: va.questionLinkId ? va.questionLinkId:'null'
                   });
-                  optArr.push(va.id);
                 }
               });
             }
           });
+          var c = [res.data.result[0].id];
+          if (optArr.length>0){
+            var optnew = [];
+            for (var i = 0; i < optArr.length; i++) {
+              if (optnew.length == 0) {
+                optnew.push(optArr[i]);
+              } else {
+                var kstauts = true;
+                for (var k = 0; k < optnew.length; k++) {
+                  if (optnew[k] == optArr[i]) {
+                    kstauts = false;
+                    break;
+                  }
+                }
+                if (kstauts) {
+                  optnew.push(optArr[i]);
+                }
+              }
+            }
+            c = optnew;
+          }else{
+            if (!wx.getStorageSync("surphone")) {
+              wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
+              wx.redirectTo({
+                url: "/pages/activity/survey/phone/index"
+              })
+            }
+          }
+          console.log(c);
+          console.log("CCC");
           that.setData({
             SurveyIdTitle: res.data.result[0].surveyIdName,
             surveyArr: surveyArr,
             textArrStatus: textArrStatus,
             textArrValue: textArrValue,
             loginhidde: false,
-            optArr:[res.data.result[0].id],
+            optArr:c,
+            questions: initopt,
             surLen: res.data.result.length,
             optId: res.data.result[0].id
           });
@@ -156,7 +191,7 @@ Page({
     this.setFromData(e, questionid, index, true);
     
   },
-  setFromData: function (e, questionid, index, status = false, optiongroupid = 0) {
+  setFromData: function (e, questionid, index, status = false, optiongroupid = null) {
     if (optiongroupid){
         this.setData({
           groupOpt:true,
@@ -206,7 +241,7 @@ Page({
             otherOption: val[2],
             questionLinkId: val[4],
             optiongroupid: optiongroupid ? optiongroupid:null,
-            point: val[5]
+            point: val[5] == "null" ? 0 : val[5]
           }
         } else {
           newJsonData = {
@@ -216,7 +251,7 @@ Page({
             otherOption: val[2],
             questionLinkId:val[4],
             optiongroupid: optiongroupid ? optiongroupid : null,
-            point: val[5]
+            point: val[5] == "null" ? 0 : val[5]
 
           }
         }
@@ -233,7 +268,7 @@ Page({
           otherOption: val[2],
           questionLinkId: val[4],
           optiongroupid: optiongroupid ? optiongroupid : null,
-          point: val[5]
+          point: val[5] == "null" ? 0 : val[5]
 
         }
       } else {
@@ -245,7 +280,7 @@ Page({
           otherOption: val[2],
           questionLinkId: val[4],
           optiongroupid: optiongroupid ? optiongroupid : null,
-          point: val[5]
+          point: val[5] == "null" ? 0 : val[5]
 
         }
       }
@@ -426,6 +461,7 @@ Page({
           hidden: true,
         })
         if (res.data.success) {
+          wx.setStorageSync('surphone', '');
           wx.showToast({
             title: '提交成功',
             icon: 'none',
@@ -469,6 +505,8 @@ Page({
    */
   //跳题目 
   jumpOpt:function(value,thisid,index){
+    console.log(this.data);
+    console.log(value);
     var newValue = value;
     if (!value){
         this.setData({
@@ -711,7 +749,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    app.ifUserLogin();
+    this.onLoad(this.data.options);
   },
 
   /**

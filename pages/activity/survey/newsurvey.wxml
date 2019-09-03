@@ -55,7 +55,7 @@
             <radio-group bindchange='bindMatrRadioOption'  data-questionId= "{{item.id}}" data-optiongroupid= "{{opitem.id}}"  data-index='{{index}}'>
               <block wx:for="{{item.options}}" wx:for-index="oindex" wx:for-item="oitem" wx:key="okey">
                 <label>
-                  <radio   color='#D1A24B' checked='{{opt.isSelected}}' value='{{oitem.id}}-|-{{oitem.title}}-|-1-|-{{oindex}}-|-{{oitem.questionLinkId}}-|-{{oitem.point}}'/>
+                  <radio   color='#D1A24B'  checked='{{opitem.selectedOptionId == oitem.id}}' value='{{oitem.id}}-|-{{oitem.title}}-|-1-|-{{oindex}}-|-{{oitem.questionLinkId}}-|-{{oitem.point}}'/>
                 </label>
               </block>
             </radio-group>
@@ -66,6 +66,6 @@
     </block>
         <button class="subBtn" bindtap='submitFrom' hidden="{{surLen != tindex}}">提交</button>
         <button class="subBtn" bindtap='next'hidden="{{surLen == tindex}}">下一题</button>
-        <button class="subBtn" bindtap='prev' hidden="{{tindex == 0}}">上一题</button>
+        <!--<button class="subBtn" bindtap='prev' hidden="{{tindex == 0}}">上一题</button>-->
   </view>
 </view>

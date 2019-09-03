@@ -27,16 +27,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-     app.ifUserLogin();
-     if (!wx.getStorageSync("surphone")){
-        wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
-        wx.redirectTo({
-          url: "/pages/activity/survey/phone/index"
-        })
-    }
      var that = this;
     that.setData({
-      SurveyIdTitle: options.title ? options.title:"",
+      SurveyIdTitle:"",
       pageId: options.id,
       options: options,
       dealerId: options.dealerId ? options.dealerId : "",
@@ -80,12 +73,58 @@ Page({
             textArrValue.push('');
           })
           var sureyArr = res.data.result;
+
+          var initopt = [];
+          sureyArr.forEach(v => {
+            var options = v.options;
+            if (v.type == "matrixradio") {
+              var optionGroups = v.optionGroups;
+              optionGroups.forEach(optv => {
+                options.forEach(va => {
+                  if (optv.selectedOptionId == va.id) {
+                    initopt.push({
+                      content: va.title,
+                      optionId: va.id,
+                      optiongroupid: optv.id,
+                      otherOption: "1",
+                      point: va.point,
+                      questionId: va.questionId,
+                      questionLinkId: va.questionLinkId ? va.questionLinkId : 'null'
+                    });
+                  }
+                })
+              })
+            } else {
+              options.forEach(va => {
+                if (va.isSelected) {
+                  initopt.push({
+                    content: va.title,
+                    optionId: va.id,
+                    optiongroupid: null,
+                    otherOption: va.otherOption,
+                    point: va.point,
+                    questionId: va.questionId,
+                    questionLinkId: va.questionLinkId ? va.questionLinkId : 'null'
+                  });
+                }
+              });
+            }
+          });
+          if (initopt.length == 0){
+            if (!wx.getStorageSync("surphone")) {
+              wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
+              wx.redirectTo({
+                url: "/pages/activity/survey/phone/index"
+              })
+            }
+          }
           that.setData({
             SurveyIdTitle: res.data.result[0].surveyIdName,
             surveyArr: sureyArr,
             textArrStatus: textArrStatus,
             textArrValue: textArrValue,
-            loginhidde: false
+            loginhidde: false,
+            questions: initopt,
           });
         }
       },
@@ -98,7 +137,6 @@ Page({
   bindRadioOption: function (e) {
     console.log(e);
     var questionid = e.target.dataset.questionid;
-    var optiongroupid = e.target.dataset.optiongroupid;
     var index = e.target.dataset.index;
     this.setFromData(e, questionid, index);
   },
@@ -115,7 +153,7 @@ Page({
     var index = e.target.dataset.index;
     this.setFromData(e, questionid, index, true);
   },
-  setFromData: function (e, questionid, index, status = false, optiongroupid=0) {
+  setFromData: function (e, questionid, index, status = false, optiongroupid=null) {
     if (optiongroupid) {
       this.setData({
         groupOpt: true,
@@ -163,7 +201,7 @@ Page({
             optionId: parseInt(val[0]),
             content: textArrValue[index] ? textArrValue[index] : '其他',
             otherOption: val[2],
-            optiongroupid: optiongroupid,
+            optiongroupid: optiongroupid ? optiongroupid:null,
             point: val[4]
 
           }
@@ -173,7 +211,7 @@ Page({
             optionId: parseInt(val[0]),
             content: val[1],
             otherOption: val[2],
-            optiongroupid: optiongroupid,
+            optiongroupid: optiongroupid ? optiongroupid : null,
             point: val[4]
 
           }
@@ -189,7 +227,7 @@ Page({
           optionId: parseInt(val[0]),
           content: textArrValue[index] ? textArrValue[index] : '其他',
           otherOption: val[2],
-          optiongroupid: optiongroupid,
+          optiongroupid: optiongroupid ? optiongroupid : null,
           point: val[4]
 
         }
@@ -200,7 +238,7 @@ Page({
           optionId: parseInt(val[0]),
           content: val[1],
           otherOption: val[2],
-          optiongroupid: optiongroupid,
+          optiongroupid: optiongroupid ? optiongroupid : null,
           point: val[4]
 
         }
@@ -371,6 +409,7 @@ Page({
           hidden: true,
         })
         if (res.data.success) {
+          wx.setStorageSync('surphone', '');
           wx.showToast({
             title: '提交成功',
             icon: 'none',
@@ -440,7 +479,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    app.ifUserLogin();
+    this.onLoad(this.data.options);
   },
 
   /**
