@@ -28,17 +28,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-     var that = this;
+    var that = this;
     that.setData({
       SurveyIdTitle:"",
       pageId: options.id,
       options: options,
       dealerId: options.dealerId ? options.dealerId : "",
     })
-    that.pageInfo(options);
+ //   that.pageInfo(options);
   },
   
   pageInfo: function (options) {
+    console.log("pageIno");
     var that = this;
     wx.request({
       url: app.data.hostUrl + 'api/services/app/surveyQuestion/GetListBySurveyIdAsync?surveyId=' + parseInt(that.data.pageId) + '&accountId=' + wx.getStorageSync('userId'),
@@ -74,7 +75,7 @@ Page({
             textArrValue.push('');
           })
           var sureyArr = res.data.result;
-
+          var wjajax = false;
           var initopt = [];
           sureyArr.forEach(v => {
             var options = v.options;
@@ -95,7 +96,17 @@ Page({
                   }
                 })
               })
-            } else {
+            } else if (v.type == "text") {
+              initopt.push({
+                content: v.answerContent,
+                optionId: v.id,
+                optiongroupid: null,
+                otherOption: "other",
+                point: 0,
+                questionId: v.questionId,
+                questionLinkId: v.questionLinkId ? v.questionLinkId : 'null'
+              });
+            }else {
               options.forEach(va => {
                 if (va.isSelected) {
                   initopt.push({
@@ -113,10 +124,12 @@ Page({
           });
           if (initopt.length == 0){
             if (!wx.getStorageSync("surphone")) {
+              console.log(app.getCurrentPageUrlWithArgs());
               wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
               wx.redirectTo({
                 url: "/pages/activity/survey/phone/index"
               })
+              return;
             }
             wjajax = false
           }else{
@@ -536,8 +549,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    console.log("onShow");
     app.ifUserLogin();
-    this.onLoad(this.data.options);
+    this.pageInfo(this.data.options);
   },
 
   /**
@@ -558,6 +572,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    //
+    console.log("下拉");
     this.pageInfo(this.data.options);
   },
 

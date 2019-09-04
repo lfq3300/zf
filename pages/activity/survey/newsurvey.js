@@ -44,7 +44,7 @@ Page({
       options: options,
       dealerId: options.dealerId ? options.dealerId : "",
     })
-    that.pageInfo(options);
+  //  that.pageInfo(options);
   },
 
   pageInfo: function (options) {
@@ -86,6 +86,7 @@ Page({
           var initopt = [];
           var optArr = [];
           surveyArr.forEach(v=>{
+            console.log(v);
             var options = v.options;
             if (v.type == "matrixradio"){
               var optionGroups = v.optionGroups;
@@ -105,10 +106,19 @@ Page({
                   }
                 })    
               })
+            } else if (v.type == "text"){
+              initopt.push({
+                content: v.answerContent,
+                optionId: v.id,
+                optiongroupid: null,
+                otherOption: "other",
+                point: 0,
+                questionId: v.questionId,
+                questionLinkId: v.questionLinkId ? v.questionLinkId : 'null'
+              });
             }else{
               options.forEach(va=>{
                 if (va.isSelected){
-                  console.log(va);
                   optArr.push(va.questionId);
                   initopt.push({
                     content: va.title,
@@ -147,10 +157,12 @@ Page({
           }else{
             wjajax = false;
             if (!wx.getStorageSync("surphone")) {
+              console.log(app.getCurrentPageUrlWithArgs());
               wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
               wx.redirectTo({
                 url: "/pages/activity/survey/phone/index"
               })
+              return;
             }
           }
           console.log(c);
@@ -740,7 +752,7 @@ Page({
    */
   onShow: function () {
     app.ifUserLogin();
-    this.onLoad(this.data.options);
+    this.pageInfo(this.data.options);
   },
 
   /**
