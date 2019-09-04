@@ -30,7 +30,8 @@ Page({
     StartDateTime: app.getThisDateTime(),
     groupOpt:false,
     groupId:0,
-    wjajax:false
+    wjajax:false,
+    rules:null
   },
 
   /**
@@ -50,7 +51,8 @@ Page({
   pageInfo: function (options) {
     var that = this;
     wx.request({
-       url: app.data.hostUrl + 'api/services/app/surveyQuestion/GetListBySurveyIdAsync?surveyId=' + parseInt(that.data.pageId) + '&accountId=' + wx.getStorageSync('userId'),
+        url: app.data.hostUrl + 'api/services/app/surveyQuestion/GetListBySurveyIdAsync?surveyId=' + parseInt(that.data.pageId) + '&accountId=' + wx.getStorageSync('userId'),
+   //   url: app.data.hostUrl + 'api/services/app/surveyQuestion/GetListBySurveyIdAsync?surveyId=' + parseInt(that.data.pageId) + '&accountId=10',
       method: 'POST',
       success: function (res) {
         wx.hideNavigationBarLoading();
@@ -106,15 +108,17 @@ Page({
                 })    
               })
             } else if (v.type == "text"){
-              initopt.push({
-                content: v.answerContent,
-                optionId: v.id,
-                optiongroupid: null,
-                otherOption: "other",
-                point: 0,
-                questionId: v.questionId,
-                questionLinkId: v.questionLinkId ? v.questionLinkId : 'null'
-              });
+              if (v.answerContent){
+                initopt.push({
+                  content: v.answerContent,
+                  optionId: v.id,
+                  optiongroupid: null,
+                  otherOption: "other",
+                  point: 0,
+                  questionId: v.questionId,
+                  questionLinkId: v.questionLinkId ? v.questionLinkId : 'null'
+                });
+              }
             }else{
               options.forEach(va=>{
                 if (va.isSelected){
@@ -155,14 +159,14 @@ Page({
             c = optnew;
           }else{
             wjajax = false;
-            // if (!wx.getStorageSync("surphone")) {
-            //   console.log(app.getCurrentPageUrlWithArgs());
-            //   wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
-            //   wx.redirectTo({
-            //     url: "/pages/activity/survey/phone/index"
-            //   })
-            //   return;
-            // }
+            if (!wx.getStorageSync("surphone")) {
+              console.log(app.getCurrentPageUrlWithArgs());
+              wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
+              wx.redirectTo({
+                url: "/pages/activity/survey/phone/index"
+              })
+              return;
+            }
           }
       //    c = [48];
           that.setData({
@@ -175,6 +179,7 @@ Page({
             questions: initopt,
             surLen: res.data.result.length,
             optId: res.data.result[0].id,
+            rules: res.data.result[0].rules,
             wjajax: wjajax
           });
         }
@@ -214,10 +219,10 @@ Page({
         })
         
     }
-    console.log(e);
     var value = e.detail.value
     this.jumpOpt(value, questionid, index);
     var questions = this.data.questions;
+    var no = e.target.dataset.no;
     var len = questions.length;
     var textArrStatus = this.data.textArrStatus;
     var textArrValue = this.data.textArrValue;
@@ -251,6 +256,7 @@ Page({
       for (var i = 0; i < value.length; i++) {
         var val = value[i].split("-|-");
         if (val[2] == 'true') {
+          var point = val[5] == "null" ? 0 : val[5];
           newJsonData = {
             questionId: parseInt(questionid),
             optionId: parseInt(val[0]),
@@ -258,9 +264,11 @@ Page({
             otherOption: val[2],
             questionLinkId: val[4],
             optiongroupid: optiongroupid ? optiongroupid:null,
-            point: val[5] == "null" ? 0 : val[5]
+            point: point,
+            rules: no + "=" + point,
           }
         } else {
+          var point = val[5] == "null" ? 0 : val[5];
           newJsonData = {
             questionId: parseInt(questionid),
             optionId: parseInt(val[0]),
@@ -268,8 +276,8 @@ Page({
             otherOption: val[2],
             questionLinkId:val[4],
             optiongroupid: optiongroupid ? optiongroupid : null,
-            point: val[5] == "null" ? 0 : val[5]
-
+            point: point,
+            rules: no + "=" + point,
           }
         }
         newquestions.push(newJsonData);
@@ -278,6 +286,7 @@ Page({
       var val = value.split("-|-");
       if (val[2] == 'true') {
         textArrStatus[index] = true;
+        var point = val[5] == "null" ? 0 : val[5];
         newJsonData = {
           questionId: parseInt(questionid),
           optionId: parseInt(val[0]),
@@ -285,11 +294,13 @@ Page({
           otherOption: val[2],
           questionLinkId: val[4],
           optiongroupid: optiongroupid ? optiongroupid : null,
-          point: val[5] == "null" ? 0 : val[5]
+          point: point,
+          rules: no + "=" + point,
 
         }
       } else {
         textArrStatus[index] = false;
+        var point = val[5] == "null" ? 0 : val[5];
         newJsonData = {
           questionId: parseInt(questionid),
           optionId: parseInt(val[0]),
@@ -297,8 +308,8 @@ Page({
           otherOption: val[2],
           questionLinkId: val[4],
           optiongroupid: optiongroupid ? optiongroupid : null,
-          point: val[5] == "null" ? 0 : val[5]
-
+          point: point,
+          rules: no + "=" + point,
         }
       }
       if (newJsonData.otherOption == "1"){
@@ -344,7 +355,7 @@ Page({
       textStatus: false
     })
   },
-  bingOtherTextarea: function (e) {
+  bingOtherTextarea: function (e){
     var questionid = e.target.dataset.questionid;
     var value = e.detail.value;
     var questions = this.data.questions;
@@ -513,6 +524,7 @@ Page({
       }
     }
     optArr = optnew;
+    console.log(optArr);
     var nextId = valArr[valArr.length-2];
     var optIndex = this.data.optIndex;
     var surveyArr = this.data.surveyArr;
@@ -573,7 +585,7 @@ Page({
         }
       }
     }
-    optArr = optnew;
+    console.log(optnew);
     this.setData({
       optArr: optArr
     })
@@ -587,8 +599,10 @@ Page({
   },
   timu: function (status) {
     var optId = this.data.optId;
+    console.log(optId);
     //判断 当前 是否是 复选框 复选题目 
     var questions = this.data.questions;
+    console.log(questions);
     var surveyArr = this.data.surveyArr;
     for (var i = 0; i < surveyArr.length;i++){
       if (surveyArr[i].id == optId && surveyArr[i].type == "checkbox"){
@@ -691,6 +705,7 @@ Page({
     }else{
       optArrIndex = optArrIndex + 1;
     }
+    //判断 
     if (!optStatus) {
       wx.showToast({
         title: '请回答当前题目',
@@ -699,16 +714,31 @@ Page({
       });
       return;
     }
+    console.log(optArr);
     wx.hideToast();
     nextId = optArr[optArrIndex];
+    //就是在index中判断 
     var optIndex = 0;
+    var rules = "";
     var surveyArr = this.data.surveyArr;
     for (var i = 0; i < surveyArr.length;i++){
       if (nextId == surveyArr[i].id){
+          //获取到需要跳转下一题目的规则
+          rules = surveyArr[i].rules;
           break;
       }
       optIndex++;
     }
+    console.log("验证前：" + optIndex);
+    var data = this.rules(rules, optArr, questions, surveyArr, nextId, optIndex);
+    console.log(data);
+    console.log("验证后" + data.optIndex)
+    console.log("验证规则完毕");
+    console.log(data);
+    optArr = data.optArr;
+    nextId = data.nextId;
+    optIndex = data.optIndex;
+    console.log(this.data.questions);
     var surLen = this.data.surLen;
     var tindex = optIndex+1;
     if (tindex > surLen){
@@ -722,6 +752,80 @@ Page({
       optId: nextId,
       tindex: tindex
     })
+  },
+  rules: function (ru, optArr, questions, surveyArr, nextId, optIndex){
+    console.log("进来验证")
+    var that = this;
+    if (!ru){
+      //下一题没有规则 
+      return {
+        "a":1,
+        optArr: optArr,
+        nextId: nextId,
+        optIndex: optIndex
+      };
+    }
+    ru = ru.split("|");
+    console.log(ru);
+    var status = [];
+
+    for (var i = 0; i < questions.length;i++){
+      for (var a = 0; a < ru.length;a++){
+        console.log(ru[a]+"--123")
+        if (ru[a].indexOf("!") != -1) {
+          console.log("!");
+          console.log(questions[i].rules);
+          console.log(ru[a]);
+          console.log(questions[i].rules == ru[a]);
+          console.log("=====")
+          if (questions[i].rules == ru[a]){
+            status.push(true) //跳题目
+          }else{
+            status.push(false) //不跳
+          }
+        } else if (ru.indexOf("=")) {
+            //可以进入
+            console.log("=");
+            console.log(questions[i].rules);
+            console.log(ru[a]);
+            console.log(questions[i].rules == ru[a]);
+            console.log("=====")
+          if (questions[i].rules == ru[a]) {
+            status.push(true) //跳题目
+          }else{
+            status.push(false) //不跳
+          }
+        }
+      }
+    }
+    console.log(status);
+    var bb = false;
+    for (var i = 0; i < status.length;i++){
+      if (status[i]){
+        bb = true;
+        break;
+      }
+    }
+    if (bb){
+      //不可以进入 需要去下一题目  下一题目  获取下一题目的规则 判断
+      //获取下一题目
+      var nextoptIndex = optIndex + 1;
+      var nextRules = surveyArr[nextoptIndex].rules;
+      var nextnId = surveyArr[nextoptIndex].id;
+      //需要删除掉
+      optArr.pop();
+      //将下一题目的换上去
+      optArr.push(nextnId);
+      console.log("-------------------------");
+      return that.rules(nextRules, optArr, questions, surveyArr, nextnId, nextoptIndex);
+    }else{
+      return {
+        "b": 1,
+        optArr: optArr,
+        nextId: nextId,
+        optIndex: optIndex
+      };
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

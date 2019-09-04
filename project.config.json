@@ -155,10 +155,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 15,
 					"name": "pages/activity/survey/newsurvey",
 					"pathName": "pages/activity/survey/newsurvey",
-					"query": "id=4&title=ETC%202019",
+					"query": "id=5&title=test",
 					"scene": null
 				}
 			]

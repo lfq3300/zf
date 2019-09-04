@@ -16,8 +16,8 @@
         <radio-group class="flex-column from-item" bindchange='bindRadioOption' data-no="{{item.no}}" data-questionId='{{item.id}}' data-index='{{index}}'>
           <block  wx:for='{{item.options}}' wx:for-index="itemIndex"  wx:for-item="opt" wx:key="property">
           <label>
-            <radio color='#D1A24B' checked='{{opt.isSelected}}'  disabled="{{!opt.isSelected &&wjajax}}"   value='{{opt.id}}-|-{{opt.title}}-|-{{opt.otherOption}}-|-{{index}}-|-{{opt.questionLinkId}}-|-{{opt.point}}'/>
-            {{opt.title}}1
+            <radio color='#D1A24B' checked='{{opt.isSelected}}'    value='{{opt.id}}-|-{{opt.title}}-|-{{opt.otherOption}}-|-{{index}}-|-{{opt.questionLinkId}}-|-{{opt.point}}'/>
+            {{opt.title}}
           </label>
           <view wx:if="{{opt.otherOption && textArrStatus[index] }}" class='other-textarea'>
               <input  type='text'  bindblur='bingTextarea' data-id='{{opt.id}}' data-questionId='{{item.id}}' data-index='{{index}}' value="{{opt.answerContent?opt.answerContent:''}}"  adjust-position='{{true}}' show-confirm-bar='{{false}}' />
@@ -29,7 +29,7 @@
         <checkbox-group class="flex-column from-item" bindchange='bindCheckboxOption' data-no="{{item.no}}" data-questionId='{{item.id}}'  data-index='{{index}}'>
         <block wx:for='{{item.options}}' wx:for-index="itemIndex"  wx:for-item="opt" wx:key="property">
           <label >
-            <checkbox color='#fff' checked='{{opt.isSelected}}'  disabled="{{!opt.isSelected &&wjajax}}"  value='{{opt.id}}-|-{{opt.title}}-|-{{opt.otherOption}}-|-{{index}}-|-{{opt.questionLinkId}}-|-{{opt.point}}'/>
+            <checkbox color='#fff' checked='{{opt.isSelected}}'    value='{{opt.id}}-|-{{opt.title}}-|-{{opt.otherOption}}-|-{{index}}-|-{{opt.questionLinkId}}-|-{{opt.point}}'/>
             {{opt.title}}
           </label>
           <view wx:if="{{opt.otherOption && textArrStatus[index]}}" class='other-textarea'>
@@ -56,7 +56,7 @@
               <block wx:for="{{item.options}}" wx:for-index="oindex" wx:for-item="oitem" wx:key="okey">
                 <label>
                   <radio   color='#D1A24B'  checked='{{opitem.selectedOptionId == oitem.id}}' 
-                  disabled="{{opitem.selectedOptionId != oitem.id &&wjajax}}" value='{{oitem.id}}-|-{{oitem.title}}-|-1-|-{{oindex}}-|-{{oitem.questionLinkId}}-|-{{oitem.point}}'/>
+                value='{{oitem.id}}-|-{{oitem.title}}-|-1-|-{{oindex}}-|-{{oitem.questionLinkId}}-|-{{oitem.point}}'/>
                 </label>
               </block>
             </radio-group>
