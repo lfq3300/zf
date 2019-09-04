@@ -15,6 +15,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    wx.setStorageSync('surphone', "");
     wx.request({
       url: app.data.hostUrl + 'api/services/app/survey/GetListByAccountIdAsync',
       method: "post",

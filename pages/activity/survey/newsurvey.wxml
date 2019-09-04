@@ -64,7 +64,8 @@
       </view>
     </view>
     </block>
-        <button class="subBtn" bindtap='submitFrom' hidden="{{surLen != tindex}}">提交</button>
+        <button class="subBtn" bindtap='submitFrom' wx:if="{{!wjajax}}" hidden="{{surLen != tindex}}">提交</button>
+        <button class="subBtn"  wx:if="{{wjajax}}" hidden="{{surLen != tindex}}">问卷已提交</button>
         <button class="subBtn" bindtap='next'hidden="{{surLen == tindex}}">下一题</button>
         <!--<button class="subBtn" bindtap='prev' hidden="{{tindex == 0}}">上一题</button>-->
   </view>

@@ -63,7 +63,8 @@
     </view>
 
     <view class='btn-bottom'>
-      <text bindtap='submitFrom'>提交</text>
+      <text bindtap='submitFrom' wx:if="{{!wjajax}}">提交</text>
+      <button class="subBtn"  wx:if="{{wjajax}}" >问卷已提交</button>
     </view>
   </view>
 </view>

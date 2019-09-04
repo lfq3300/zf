@@ -20,7 +20,8 @@ Page({
     surLen:0,
     StartDateTime: app.getThisDateTime(),
     groupOpt: false,
-    groupId: 0
+    groupId: 0,
+    wjajax:false
   },
 
   /**
@@ -117,6 +118,9 @@ Page({
                 url: "/pages/activity/survey/phone/index"
               })
             }
+            wjajax = false
+          }else{
+            wjajax=true;
           }
           that.setData({
             SurveyIdTitle: res.data.result[0].surveyIdName,
@@ -125,6 +129,7 @@ Page({
             textArrValue: textArrValue,
             loginhidde: false,
             questions: initopt,
+            wjajax: wjajax
           });
         }
       },
@@ -243,7 +248,24 @@ Page({
 
         }
       }
-      newquestions.push(newJsonData);
+      
+      if (newJsonData.otherOption == "1") {
+        var jz = false;
+        var index = 0;
+        for (var i = 0; i < newquestions.length; i++) {
+          if (newquestions[i].questionId == newJsonData.questionId && newquestions[i].optiongroupid == newJsonData.optiongroupid) {
+            jz = true;
+            index = i;
+          }
+        }
+        if (jz) {
+          newquestions[index] = newJsonData;
+        } else {
+          newquestions.push(newJsonData);
+        }
+      } else {
+        newquestions.push(newJsonData);
+      }
     }
     this.setData({
       questions: newquestions,
@@ -298,14 +320,61 @@ Page({
   },
   submitFrom: function () {
       var that = this;
-      var ajx = false;
+      var ajx = true;
       var questions = that.data.questions;
       var groupId = that.data.groupId;
       var surveyArr = that.data.surveyArr;
-      surveyArr.forEach((surItem, i) => {
-        if (this.data.groupOpt) {
-          if (surItem.type == "matrixradio") {
-            var groupLen = surItem.optionGroups.length;
+      var surlen = 0;
+      try {
+        surveyArr.forEach((surItem, i) => {
+          surlen += 1;
+          if (surItem.isRequired) {
+            console.log(surItem.isRequired);
+            var reqstatus = false;
+            questions.forEach(v => {
+              console.log(v.questionId);
+              console.log(surItem.id);
+              if (v.questionId == surItem.id) {
+                reqstatus = true;
+              }
+            });
+            if (!reqstatus) {
+              wx.showToast({
+                title: '第' + surlen + "题还未完成",
+                icon: "none",
+                duration: 1500,
+              });
+              throw new Error("EndIterative");
+              ajx = false;
+              return;
+            }
+          }
+          if (this.data.groupOpt) {
+            if (surItem.type == "matrixradio") {
+              var groupLen = surItem.optionGroups.length;
+              var groupId = surItem.id;
+              var optLen = 0;
+              questions.forEach(v => {
+                if (v.questionId == groupId) {
+                  optLen += 1;
+                }
+              });
+              if (groupLen != optLen) {
+                var ti = i + 1;
+                wx.showToast({
+                  title: '第' + ti + "题还未完成",
+                  icon: "none",
+                  duration: 1500,
+                });
+                throw new Error("EndIterative");
+                ajx = false;
+                return;
+              }
+            }
+          }
+          if (surItem.type == "checkbox") {
+            var maxSelected = parseInt(surItem.maxSelected);
+            var minSelected = parseInt(surItem.minSelected);
             var groupId = surItem.id;
             var optLen = 0;
             questions.forEach(v => {
@@ -313,63 +382,51 @@ Page({
                 optLen += 1;
               }
             });
-            if (groupLen != optLen) {
-              var ti = i + 1;
+            var title = '';
+            var ti = i + 1;
+            if (minSelected > 0 || maxSelected > 0) {
+            if ( optLen < minSelected || optLen > maxSelected) {
+              title = '第' + ti + "题只能选 " + minSelected + "-" + maxSelected + "个选项";
+              if (minSelected == maxSelected) {
+                title = '第' + ti + "题只能选 " + minSelected + "个选项";
+              }
               wx.showToast({
-                title: '第' + ti +"题还未完成",
+                title: title,
                 icon: "none",
                 duration: 1500,
               });
-              ajx = true;
+              throw new Error("EndIterative");
+              ajx = false;
+              return;
+            } else if (minSelected > 0 && optLen < minSelected) {
+              title = '第' + ti + "题最少选 " + minSelected + "个选项";
+              wx.showToast({
+                title: title,
+                icon: "none",
+                duration: 1500,
+              });
+              throw new Error("EndIterative");
+              ajx = false;
+              return;
+            } else if (maxSelected > 0 && optLen > maxSelected) {
+              title = '第' + ti + "题最多选 " + maxSelected + "个选项";
+              wx.showToast({
+                title: title,
+                icon: "none",
+                duration: 1500,
+              });
+              throw new Error("EndIterative");
+              ajx = false;
               return;
             }
-          }
-        }
-        if (surItem.type == "checkbox"){
-          var maxSelected = parseInt(surItem.maxSelected);
-          var minSelected = parseInt(surItem.minSelected);
-          var groupId = surItem.id;
-          var optLen = 0;
-          questions.forEach(v => {
-            if (v.questionId == groupId) {
-              optLen += 1;
             }
-          });
-          var title = '';
-          var ti = i + 1;
-          if ((minSelected > 0 && maxSelected > 0) && optLen < minSelected || optLen > maxSelected) {
-            title = '第' + ti + "题只能选 " + minSelected + "-" + maxSelected+"个选项";
-            wx.showToast({
-              title: title ,
-              icon: "none",
-              duration: 1500,
-            });
-            ajx = true;
-            return;
-          } else if (minSelected > 0 && optLen < minSelected){
-            title = '第' + ti + "题最少选 " + minSelected + "个选项";
-            wx.showToast({
-              title: title,
-              icon: "none",
-              duration: 1500,
-            });
-            ajx = true;
-            return;
-          } else if (maxSelected > 0 && optLen > maxSelected) {
-            title = '第' + ti + "题最多选 " + maxSelected + "个选项";
-            wx.showToast({
-              title: title,
-              icon: "none",
-              duration: 1500,
-            });
-            ajx = true;
-            return;
           }
-            
-        }
-      });
-   
-    if (ajx){
+
+        });
+      }catch (e){
+
+      }
+    if (!ajx){
       return;
     }
     that.setData({

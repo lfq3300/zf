@@ -29,7 +29,8 @@ Page({
     isSelected:true,
     StartDateTime: app.getThisDateTime(),
     groupOpt:false,
-    groupId:0
+    groupId:0,
+    wjajax:false
   },
 
   /**
@@ -60,6 +61,7 @@ Page({
           })
           var textArrStatus = [];
           var textArrValue = [];
+          var wjajax = false;
           res.data.result.forEach((item, index) => {
             if (item.type != 'text' && item.options.length > 0) {
               var v = false;
@@ -123,6 +125,7 @@ Page({
           });
           var c = [res.data.result[0].id];
           if (optArr.length>0){
+            wjajax = true;
             var optnew = [];
             for (var i = 0; i < optArr.length; i++) {
               if (optnew.length == 0) {
@@ -142,6 +145,7 @@ Page({
             }
             c = optnew;
           }else{
+            wjajax = false;
             if (!wx.getStorageSync("surphone")) {
               wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
               wx.redirectTo({
@@ -150,7 +154,7 @@ Page({
             }
           }
           console.log(c);
-          console.log("CCC");
+      //    c = [48];
           that.setData({
             SurveyIdTitle: res.data.result[0].surveyIdName,
             surveyArr: surveyArr,
@@ -160,7 +164,8 @@ Page({
             optArr:c,
             questions: initopt,
             surLen: res.data.result.length,
-            optId: res.data.result[0].id
+            optId: res.data.result[0].id,
+            wjajax: wjajax
           });
         }
       },
@@ -197,6 +202,7 @@ Page({
           groupOpt:true,
           groupId: questionid
         })
+        
     }
     var value = e.detail.value
     this.jumpOpt(value, questionid, index);
@@ -284,9 +290,23 @@ Page({
 
         }
       }
-      console.log(newJsonData);
-      newquestions.push(newJsonData);
-      console.log(newquestions);
+      if (newJsonData.otherOption == "1"){
+        var jz = false;
+        var index = 0;
+        for (var i = 0; i < newquestions.length;i++){
+          if (newquestions[i].questionId == newJsonData.questionId && newquestions[i].optiongroupid == newJsonData.optiongroupid){
+            jz = true;
+            index = i;
+          }
+        }
+        if (jz){
+          newquestions[index] = newJsonData;
+        }else{
+          newquestions.push(newJsonData);
+        }
+      }else{
+        newquestions.push(newJsonData);
+      }
     }
     this.setData({
       questions: newquestions,
@@ -342,88 +362,6 @@ Page({
   },
   submitFrom: function () {
     var that = this;
-    var ajx = false;
-    var questions = that.data.questions;
-    var groupId = that.data.groupId;
-    var surveyArr = that.data.surveyArr;
-    surveyArr.forEach((surItem, i) => {
-      if (this.data.groupOpt) {
-        if (surItem.type == "matrixradio") {
-          var groupLen = surItem.optionGroups.length;
-          var groupId = surItem.id;
-          var optLen = 0;
-          questions.forEach(v => {
-            if (v.questionId == groupId) {
-              optLen += 1;
-            }
-          });
-          if (groupLen != optLen) {
-            var ti = i + 1;
-            wx.showToast({
-              title: '第' + ti + "题还未完成",
-              icon: "none",
-              duration: 1500,
-            });
-            ajx = true;
-            return;
-          }
-        }
-      }
-      if (surItem.type == "checkbox") {
-        var maxSelected = parseInt(surItem.maxSelected);
-        var minSelected = parseInt(surItem.minSelected);
-        var groupId = surItem.id;
-        var optLen = 0;
-        questions.forEach(v => {
-          if (v.questionId == groupId) {
-            optLen += 1;
-          }
-        });
-        var title = '';
-        var ti = i + 1;
-        if ((minSelected > 0 && maxSelected > 0) && optLen < minSelected || optLen > maxSelected) {
-          title = '第' + ti + "题只能选 " + minSelected + "-" + maxSelected + "个选项";
-          wx.showToast({
-            title: title,
-            icon: "none",
-            duration: 1500,
-          });
-          ajx = true;
-          return;
-        } else if (minSelected > 0 && optLen < minSelected) {
-          title = '第' + ti + "题最少选 " + minSelected + "个选项";
-          wx.showToast({
-            title: title,
-            icon: "none",
-            duration: 1500,
-          });
-          ajx = true;
-          return;
-        } else if (maxSelected > 0 && optLen > maxSelected) {
-          title = '第' + ti + "题最多选 " + maxSelected + "个选项";
-          wx.showToast({
-            title: title,
-            icon: "none",
-            duration: 1500,
-          });
-          ajx = true;
-          return;
-        }
-
-      }
-    });
-
-    if (ajx) {
-      return;
-    }
-    if (that.data.questions.length == 0) {
-      wx.showToast({
-        title: '不能提交空问卷',
-        icon: 'none',
-        duration: 1500
-      })
-      return;
-    }
     if (!that.data.ajaxstatus) {
       return;
     }
@@ -517,6 +455,9 @@ Page({
     }
     var _this = this;
     if(value instanceof Array){
+      if (value.length == 0){
+        return;
+      }
       newValue = value[0];
       for(var i = 0;i<value.length;i++){
          var item =  value[i].split("-|-");
@@ -642,16 +583,67 @@ Page({
     this.timu(false);
   },
   timu: function (status) {
-    //判断 当前 是否是 复选框 
+    var optId = this.data.optId;
+    //判断 当前 是否是 复选框 复选题目 
+    var questions = this.data.questions;
+    var surveyArr = this.data.surveyArr;
+    console.log(questions);
+    for (var i = 0; i < surveyArr.length;i++){
+      if (surveyArr[i].id == optId && surveyArr[i].type == "checkbox"){
+        var maxSelected = surveyArr[i].maxSelected;
+        var minSelected = surveyArr[i].minSelected;
+        var optLen = 0;
+        for (var a = 0; a < questions.length;a++){
+          if (questions[a].questionId == optId){
+            optLen+=1;
+          }
+        }
+        var title = "";
+        console.log(minSelected);
+        console.log(maxSelected);
+        if (minSelected > 0 || maxSelected > 0){
+          if (optLen < minSelected || optLen > maxSelected) {
+            title = "当前题目只能选 " + minSelected + "-" + maxSelected + "个选项";
+            if (minSelected == maxSelected) {
+              title = "当前题目只能选 " + minSelected + "个选项.";
+            }
+            wx.showToast({
+              title: title,
+              icon: "none",
+              duration: 1500,
+            });
+            return;
+          } else if (minSelected > 0 && optLen < minSelected) {
+            title = "当前题目最少选 " + minSelected + "个选项";
+            wx.showToast({
+              title: title,
+              icon: "none",
+              duration: 1500,
+            });
+            return;
+          } else if (maxSelected > 0 && optLen > maxSelected) {
+            title = "当前题目最多选 " + maxSelected + "个选项.";
+            wx.showToast({
+              title: title,
+              icon: "none",
+              duration: 1500,
+            });
+            return;
+          }
+        }
+      }
+    }
+    //当前是否是矩阵单选
     if (this.data.groupOpt){
         var questions = this.data.questions;
         var groupId = this.data.groupId;
         var surveyArr = this.data.surveyArr;
         var groupLen = 0;
         surveyArr.forEach(surItem=>{
+          console.log(surItem);
           if (surItem.id == groupId){
             groupLen  = surItem.optionGroups.length;
-            }
+          }
         });
         var optLen = 0;
         questions.forEach(v=>{
@@ -661,7 +653,7 @@ Page({
         })
       if (groupLen != optLen){
         wx.showToast({
-          title: '请回答当前题目',
+          title: '请回答当前题目-1',
           icon: "none",
           duration: 1500,
         });
@@ -686,8 +678,6 @@ Page({
     var optArr = this.data.optArr;
     var nextId = 0;
     var questions = this.data.questions;
-    console.log(questions);
-    var optId = this.data.optId;
     var optArrIndex = this.data.optArrIndex;
     var optStatus = false;
     for (var i = 0; i < questions.length; i++) {
