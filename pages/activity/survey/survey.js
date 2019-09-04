@@ -39,7 +39,6 @@ Page({
   },
   
   pageInfo: function (options) {
-    console.log("pageIno");
     var that = this;
     wx.request({
       url: app.data.hostUrl + 'api/services/app/surveyQuestion/GetListBySurveyIdAsync?surveyId=' + parseInt(that.data.pageId) + '&accountId=' + wx.getStorageSync('userId'),
@@ -124,7 +123,6 @@ Page({
           });
           if (initopt.length == 0){
             if (!wx.getStorageSync("surphone")) {
-              console.log(app.getCurrentPageUrlWithArgs());
               wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
               wx.redirectTo({
                 url: "/pages/activity/survey/phone/index"
@@ -153,7 +151,6 @@ Page({
     })
   },
   bindRadioOption: function (e) {
-    console.log(e);
     var questionid = e.target.dataset.questionid;
     var index = e.target.dataset.index;
     this.setFromData(e, questionid, index);
@@ -203,7 +200,6 @@ Page({
       }
       for (var i = 0; i < value.length; i++) {
         var val = value[i].split("-|-");
-        console.log(val);
         if (val[2] == 'true') {
           textArrStatus[index] = true;
           break;
@@ -284,7 +280,6 @@ Page({
       questions: newquestions,
       textArrStatus: textArrStatus
     });
-    console.log(this.data.questions);
   },
   bingTextarea: function (e) {
     var questionid = e.target.dataset.questionid;
@@ -342,11 +337,8 @@ Page({
         surveyArr.forEach((surItem, i) => {
           surlen += 1;
           if (surItem.isRequired) {
-            console.log(surItem.isRequired);
             var reqstatus = false;
             questions.forEach(v => {
-              console.log(v.questionId);
-              console.log(surItem.id);
               if (v.questionId == surItem.id) {
                 reqstatus = true;
               }
@@ -490,7 +482,6 @@ Page({
                   url: '/pages/activity/index'
                 })
               }, 1500)
-              console.log(346);
             }
           })
 
@@ -549,7 +540,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log("onShow");
     app.ifUserLogin();
     this.pageInfo(this.data.options);
   },
@@ -573,7 +563,6 @@ Page({
    */
   onPullDownRefresh: function () {
     //
-    console.log("下拉");
     this.pageInfo(this.data.options);
   },
 

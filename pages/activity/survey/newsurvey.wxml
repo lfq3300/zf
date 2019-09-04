@@ -13,7 +13,7 @@
     <view class='sur-item'  hidden="{{optId != item.id}}" >
       <view class='sur-item-title'>{{index+1}}. {{item.title}} </view>
       <view class='sur-item-content' wx:if="{{item.type == 'radio'}}">
-        <radio-group class="flex-column from-item" bindchange='bindRadioOption' data-questionId='{{item.id}}' data-index='{{index}}'>
+        <radio-group class="flex-column from-item" bindchange='bindRadioOption' data-no="{{item.no}}" data-questionId='{{item.id}}' data-index='{{index}}'>
           <block  wx:for='{{item.options}}' wx:for-index="itemIndex"  wx:for-item="opt" wx:key="property">
           <label>
             <radio color='#D1A24B' checked='{{opt.isSelected}}'  disabled="{{!opt.isSelected &&wjajax}}"   value='{{opt.id}}-|-{{opt.title}}-|-{{opt.otherOption}}-|-{{index}}-|-{{opt.questionLinkId}}-|-{{opt.point}}'/>
@@ -26,7 +26,7 @@
         </radio-group>
       </view>
       <view class='sur-item-content' wx:if="{{item.type == 'checkbox'}}">
-        <checkbox-group class="flex-column from-item" bindchange='bindCheckboxOption' data-questionId='{{item.id}}'  data-index='{{index}}'>
+        <checkbox-group class="flex-column from-item" bindchange='bindCheckboxOption' data-no="{{item.no}}" data-questionId='{{item.id}}'  data-index='{{index}}'>
         <block wx:for='{{item.options}}' wx:for-index="itemIndex"  wx:for-item="opt" wx:key="property">
           <label >
             <checkbox color='#fff' checked='{{opt.isSelected}}'  disabled="{{!opt.isSelected &&wjajax}}"  value='{{opt.id}}-|-{{opt.title}}-|-{{opt.otherOption}}-|-{{index}}-|-{{opt.questionLinkId}}-|-{{opt.point}}'/>
@@ -52,7 +52,7 @@
         <view class="matrixradio-type" wx:for="{{item.optionGroups}}" wx:for-index="opindex" wx:for-item="opitem" wx:key="opkey">
           <view class="sur-item-title">{{opitem.title}}</view>
           <view class="from-item">
-            <radio-group bindchange='bindMatrRadioOption'  data-questionId= "{{item.id}}" data-optiongroupid= "{{opitem.id}}"  data-index='{{index}}'>
+            <radio-group bindchange='bindMatrRadioOption'  data-questionId= "{{item.id}}" data-no="{{item.no}}" data-optiongroupid= "{{opitem.id}}"  data-index='{{index}}' style="width:100%;display:flex">
               <block wx:for="{{item.options}}" wx:for-index="oindex" wx:for-item="oitem" wx:key="okey">
                 <label>
                   <radio   color='#D1A24B'  checked='{{opitem.selectedOptionId == oitem.id}}' 

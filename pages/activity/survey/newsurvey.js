@@ -86,7 +86,6 @@ Page({
           var initopt = [];
           var optArr = [];
           surveyArr.forEach(v=>{
-            console.log(v);
             var options = v.options;
             if (v.type == "matrixradio"){
               var optionGroups = v.optionGroups;
@@ -156,16 +155,15 @@ Page({
             c = optnew;
           }else{
             wjajax = false;
-            if (!wx.getStorageSync("surphone")) {
-              console.log(app.getCurrentPageUrlWithArgs());
-              wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
-              wx.redirectTo({
-                url: "/pages/activity/survey/phone/index"
-              })
-              return;
-            }
+            // if (!wx.getStorageSync("surphone")) {
+            //   console.log(app.getCurrentPageUrlWithArgs());
+            //   wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
+            //   wx.redirectTo({
+            //     url: "/pages/activity/survey/phone/index"
+            //   })
+            //   return;
+            // }
           }
-          console.log(c);
       //    c = [48];
           that.setData({
             SurveyIdTitle: res.data.result[0].surveyIdName,
@@ -216,6 +214,7 @@ Page({
         })
         
     }
+    console.log(e);
     var value = e.detail.value
     this.jumpOpt(value, questionid, index);
     var questions = this.data.questions;
@@ -455,8 +454,6 @@ Page({
    */
   //跳题目 
   jumpOpt:function(value,thisid,index){
-    console.log(this.data);
-    console.log(value);
     var newValue = value;
     if (!value){
         this.setData({
@@ -473,7 +470,6 @@ Page({
       newValue = value[0];
       for(var i = 0;i<value.length;i++){
          var item =  value[i].split("-|-");
-        console.log(item);
          if(item[2] == "true"){
            newValue = value[i];
            _this.setData({
@@ -517,10 +513,7 @@ Page({
       }
     }
     optArr = optnew;
-    console.log(optArr);
-    console.log(valArr);  
     var nextId = valArr[valArr.length-2];
-    console.log(nextId);
     var optIndex = this.data.optIndex;
     var surveyArr = this.data.surveyArr;
     var questions = this.data.questions;
@@ -563,7 +556,6 @@ Page({
       }
        //存在下一题目ID
     }
-    console.log(optArr);  
     var optnew = [];
     for (var i = 0; i < optArr.length; i++) {
       if (optnew.length == 0) {
@@ -582,7 +574,6 @@ Page({
       }
     }
     optArr = optnew;
-    console.log(optArr);
     this.setData({
       optArr: optArr
     })
@@ -599,7 +590,6 @@ Page({
     //判断 当前 是否是 复选框 复选题目 
     var questions = this.data.questions;
     var surveyArr = this.data.surveyArr;
-    console.log(questions);
     for (var i = 0; i < surveyArr.length;i++){
       if (surveyArr[i].id == optId && surveyArr[i].type == "checkbox"){
         var maxSelected = surveyArr[i].maxSelected;
@@ -611,8 +601,6 @@ Page({
           }
         }
         var title = "";
-        console.log(minSelected);
-        console.log(maxSelected);
         if (minSelected > 0 || maxSelected > 0){
           if (optLen < minSelected || optLen > maxSelected) {
             title = "当前题目只能选 " + minSelected + "-" + maxSelected + "个选项";
@@ -652,7 +640,6 @@ Page({
         var surveyArr = this.data.surveyArr;
         var groupLen = 0;
         surveyArr.forEach(surItem=>{
-          console.log(surItem);
           if (surItem.id == groupId){
             groupLen  = surItem.optionGroups.length;
           }
@@ -665,11 +652,10 @@ Page({
         })
       if (groupLen != optLen){
         wx.showToast({
-          title: '请回答当前题目-1',
+          title: '请回答当前题目',
           icon: "none",
           duration: 1500,
         });
-        console.log("矩阵单选")
         return;
       }else{
         this.setData({
@@ -705,7 +691,6 @@ Page({
     }else{
       optArrIndex = optArrIndex + 1;
     }
-    console.log("optindex:" + optArrIndex);
     if (!optStatus) {
       wx.showToast({
         title: '请回答当前题目',
@@ -716,8 +701,6 @@ Page({
     }
     wx.hideToast();
     nextId = optArr[optArrIndex];
-    console.log(this.data);
-    console.log(nextId);
     var optIndex = 0;
     var surveyArr = this.data.surveyArr;
     for (var i = 0; i < surveyArr.length;i++){

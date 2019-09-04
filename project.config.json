@@ -47,7 +47,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 13,
+			"current": 15,
 			"list": [
 				{
 					"id": -1,
@@ -143,6 +143,20 @@
 				{
 					"id": 13,
 					"name": "etc2019",
+					"pathName": "pages/activity/survey/newsurvey",
+					"query": "id=4&title=ETC%202019",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/activity/survey/survey",
+					"pathName": "pages/activity/survey/survey",
+					"query": "id=3&title=ETC%20Questionnaire",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/activity/survey/newsurvey",
 					"pathName": "pages/activity/survey/newsurvey",
 					"query": "id=4&title=ETC%202019",
 					"scene": null
