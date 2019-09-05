@@ -31,7 +31,8 @@ Page({
     groupOpt:false,
     groupId:0,
     wjajax:false,
-    rules:null
+    rules:null,
+    isend:false
   },
 
   /**
@@ -47,12 +48,16 @@ Page({
     })
   //  that.pageInfo(options);
   },
-
+  retunrAbout:function(){
+    wx.switchTab({
+      url: '/pages/about/index',
+    })
+  },
   pageInfo: function (options) {
     var that = this;
     wx.request({
         url: app.data.hostUrl + 'api/services/app/surveyQuestion/GetListBySurveyIdAsync?surveyId=' + parseInt(that.data.pageId) + '&accountId=' + wx.getStorageSync('userId'),
-   //   url: app.data.hostUrl + 'api/services/app/surveyQuestion/GetListBySurveyIdAsync?surveyId=' + parseInt(that.data.pageId) + '&accountId=10',
+    //  url: app.data.hostUrl + 'api/services/app/surveyQuestion/GetListBySurveyIdAsync?surveyId=' + parseInt(that.data.pageId) + '&accountId=9828',
       method: 'POST',
       success: function (res) {
         wx.hideNavigationBarLoading();
@@ -168,6 +173,7 @@ Page({
               return;
             }
           }
+          console.log(initopt);
       //    c = [48];
           that.setData({
             SurveyIdTitle: res.data.result[0].surveyIdName,
@@ -547,6 +553,12 @@ Page({
       }
     }
     var optArrIndex = this.data.optArrIndex;
+    if (nextId == -1){
+        this.setData({
+          isend:true
+        })
+        return;
+    }
     if (nextId == "null"){
        //下一题Linkid 未 null 取下一题目的id
       var a = optIndex+1;
@@ -729,16 +741,19 @@ Page({
       }
       optIndex++;
     }
-    console.log("验证前：" + optIndex);
-    var data = this.rules(rules, optArr, questions, surveyArr, nextId, optIndex);
-    console.log(data);
-    console.log("验证后" + data.optIndex)
-    console.log("验证规则完毕");
-    console.log(data);
-    optArr = data.optArr;
-    nextId = data.nextId;
-    optIndex = data.optIndex;
-    console.log(this.data.questions);
+    if (!this.data.wjajax){
+      console.log("验证前：" + optIndex);
+      var data = this.rules(rules, optArr, questions, surveyArr, nextId, optIndex);
+      console.log(data);
+      console.log("验证后" + data.optIndex)
+      console.log("验证规则完毕");
+      console.log(data);
+      optArr = data.optArr;
+      nextId = data.nextId;
+      optIndex = data.optIndex;
+      console.log(this.data.questions);
+    }
+    
     var surLen = this.data.surLen;
     var tindex = optIndex+1;
     if (tindex > surLen){
@@ -755,6 +770,8 @@ Page({
   },
   rules: function (ru, optArr, questions, surveyArr, nextId, optIndex){
     console.log("进来验证")
+    console.log(ru);
+    console.log(questions)
     var that = this;
     if (!ru){
       //下一题没有规则 
@@ -765,66 +782,125 @@ Page({
         optIndex: optIndex
       };
     }
-    ru = ru.split("|");
-    console.log(ru);
-    var status = [];
-
-    for (var i = 0; i < questions.length;i++){
-      for (var a = 0; a < ru.length;a++){
-        console.log(ru[a]+"--123")
-        if (ru[a].indexOf("!") != -1) {
-          console.log("!");
+    //
+    if (ru.indexOf("|") != -1){
+      ru = ru.split("|");
+      console.log("是数组");
+      console.log(ru);
+      //都要等于才进去 否在跳下一题
+      var status = [];
+      for (var a = 0; a < ru.length; a++) {
+        for (var i = 0; i < questions.length; i++) {
           console.log(questions[i].rules);
-          console.log(ru[a]);
-          console.log(questions[i].rules == ru[a]);
-          console.log("=====")
-          if (questions[i].rules == ru[a]){
-            status.push(true) //跳题目
-          }else{
-            status.push(false) //不跳
-          }
-        } else if (ru.indexOf("=")) {
-            //可以进入
-            console.log("=");
-            console.log(questions[i].rules);
-            console.log(ru[a]);
-            console.log(questions[i].rules == ru[a]);
-            console.log("=====")
-          if (questions[i].rules == ru[a]) {
-            status.push(true) //跳题目
-          }else{
-            status.push(false) //不跳
+          if (ru[a].indexOf("!") != -1) {
+            var neru = ru[a].split("!=");
+            var quru = questions[i].rules.split("=");
+            if (neru[0] == quru[0] && neru[1] != quru[1]){
+              status.push(true);
+              break;
+            }
+          }else
+          if (ru[a] == questions[i].rules){
+              status.push(true);
+              break;
           }
         }
       }
-    }
-    console.log(status);
-    var bb = false;
-    for (var i = 0; i < status.length;i++){
-      if (status[i]){
-        bb = true;
-        break;
+      console.log(status);
+      if (status.length == ru.length){
+        return {
+          "e": 1,
+          optArr: optArr,
+          nextId: nextId,
+          optIndex: optIndex
+        };
+      }else{
+        //获取下一题目
+        var nextoptIndex = optIndex + 1;
+        console.log(nextoptIndex);
+        if (nextoptIndex > surveyArr.length - 1) {
+          return {
+            "c": 1,
+            optArr: optArr,
+            nextId: nextId,
+            optIndex: optIndex
+          }
+        } else {
+          var nextRules = surveyArr[nextoptIndex].rules;
+          var nextnId = surveyArr[nextoptIndex].id;
+          //需要删除掉
+          optArr.pop();
+          //将下一题目的换上去
+          optArr.push(nextnId);
+          console.log("-------------------------");
+          return that.rules(nextRules, optArr, questions, surveyArr, nextnId, nextoptIndex);
+        }
+
       }
-    }
-    if (bb){
-      //不可以进入 需要去下一题目  下一题目  获取下一题目的规则 判断
-      //获取下一题目
-      var nextoptIndex = optIndex + 1;
-      var nextRules = surveyArr[nextoptIndex].rules;
-      var nextnId = surveyArr[nextoptIndex].id;
-      //需要删除掉
-      optArr.pop();
-      //将下一题目的换上去
-      optArr.push(nextnId);
-      console.log("-------------------------");
-      return that.rules(nextRules, optArr, questions, surveyArr, nextnId, nextoptIndex);
     }else{
-      return {
-        "b": 1,
-        optArr: optArr,
-        nextId: nextId,
-        optIndex: optIndex
-      };
+      ru = ru.split("|");
+      console.log(ru);
+      var status = [];
+      for (var i = 0; i < questions.length; i++) {
+        for (var a = 0; a < ru.length; a++) {
+          console.log(ru[a] + "--123")
+          if (ru[a].indexOf("!") != -1) {
+            var neru = ru[a].split("!=");
+            var quru = questions[i].rules.split("=");
+            if (neru[0] == quru[0] && neru[1] != quru[1]) {
+              status.push(false) //不跳
+            }else{
+              status.push(true) //跳题目
+            }
+          } else if (ru.indexOf("=")) {
+            //可以进入
+            if (questions[i].rules == ru[a]) {
+              status.push(false) //不跳
+              console.log("不跳 1 " + questions[i].rules + "====" + ru[a])
+            } else {
+              status.push(true) //跳题目
+              console.log("跳题目 1  " + questions[i].rules + "====" + ru[a])
+            }
+          }
+        }
+      }
+      var bb = false;
+      for (var i = 0; i < status.length; i++) {
+        if (status[i]) {
+          bb = true;
+          break;
+        }
+      }
+      if (bb) {
+        //不可以进入 需要去下一题目  下一题目  获取下一题目的规则 判断
+        //获取下一题目
+        var nextoptIndex = optIndex + 1;
+        console.log(nextoptIndex);
+        if (nextoptIndex > surveyArr.length - 1) {
+          return {
+            "c": 1,
+            optArr: optArr,
+            nextId: nextId,
+            optIndex: optIndex
+          }
+        } else {
+          var nextRules = surveyArr[nextoptIndex].rules;
+          var nextnId = surveyArr[nextoptIndex].id;
+          //需要删除掉
+          optArr.pop();
+          //将下一题目的换上去
+          optArr.push(nextnId);
+          console.log("-------------------------");
+          return that.rules(nextRules, optArr, questions, surveyArr, nextnId, nextoptIndex);
+        }
+      } else {
+        return {
+          "b": 1,
+          optArr: optArr,
+          nextId: nextId,
+          optIndex: optIndex
+        };
+      }
     }
   },
   /**

@@ -5,7 +5,7 @@
   页面加载中...
 </loading>
 <view hidden="{{loginhidde}}" class="padding-border">
-  <view class='page'>
+  <view class='page' hidden="{{isend}}">
     <view class='title'>
       {{SurveyIdTitle}}   <text>{{count}}</text>
     </view>
@@ -69,5 +69,9 @@
         <button class="subBtn"  wx:if="{{wjajax}}" hidden="{{surLen != tindex}}">问卷已提交</button>
         <button class="subBtn" bindtap='next'hidden="{{surLen == tindex}}">下一题</button>
         <!--<button class="subBtn" bindtap='prev' hidden="{{tindex == 0}}">上一题</button>-->
+  </view>
+  <view  hidden="{{!isend}}">
+
+        <button class="subBtn" bindtap='retunrAbout'>返回首页</button>
   </view>
 </view>
