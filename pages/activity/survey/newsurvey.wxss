@@ -114,3 +114,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
 .padding-border{
   padding-bottom: 150rpx;
 }
+.retunr-box{
+  color: #fff;
+  margin-top: 90rpx;
+}

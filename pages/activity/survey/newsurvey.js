@@ -32,7 +32,8 @@ Page({
     groupId:0,
     wjajax:false,
     rules:null,
-    isend:false
+    isend:false,
+    thanksMsg:""
   },
 
   /**
@@ -555,7 +556,8 @@ Page({
     var optArrIndex = this.data.optArrIndex;
     if (nextId == -1){
         this.setData({
-          isend:true
+          isend:true,
+          thanksMsg: surveyArr[0].thanksMsg
         })
         return;
     }
@@ -838,6 +840,7 @@ Page({
 
       }
     }else{
+      console.log("进这里");
       ru = ru.split("|");
       console.log(ru);
       var status = [];
@@ -847,24 +850,31 @@ Page({
           if (ru[a].indexOf("!") != -1) {
             var neru = ru[a].split("!=");
             var quru = questions[i].rules.split("=");
-            if (neru[0] == quru[0] && neru[1] != quru[1]) {
-              status.push(false) //不跳
-            }else{
-              status.push(true) //跳题目
+            if (neru[0] == quru[0]){
+               if(neru[1] == quru[1]){
+                 status.push(true) //跳题目
+                  break;
+                }else {
+                 status.push(false) //不跳
+                  break;
+                }
             }
           } else if (ru.indexOf("=")) {
             //可以进入
             if (questions[i].rules == ru[a]) {
               status.push(false) //不跳
               console.log("不跳 1 " + questions[i].rules + "====" + ru[a])
+              break;
             } else {
               status.push(true) //跳题目
               console.log("跳题目 1  " + questions[i].rules + "====" + ru[a])
+              break;
             }
           }
         }
       }
       var bb = false;
+      console.log(status);
       for (var i = 0; i < status.length; i++) {
         if (status[i]) {
           bb = true;

@@ -16,7 +16,9 @@
         <radio-group class="flex-column from-item" bindchange='bindRadioOption' data-no="{{item.no}}" data-questionId='{{item.id}}' data-index='{{index}}'>
           <block  wx:for='{{item.options}}' wx:for-index="itemIndex"  wx:for-item="opt" wx:key="property">
           <label>
-            <radio color='#D1A24B' checked='{{opt.isSelected}}'    value='{{opt.id}}-|-{{opt.title}}-|-{{opt.otherOption}}-|-{{index}}-|-{{opt.questionLinkId}}-|-{{opt.point}}'/>
+            <radio color='#D1A24B' checked='{{opt.isSelected}}'    
+                   disabled="{{opitem.selectedOptionId != oitem.id &&wjajax}}" 
+            value='{{opt.id}}-|-{{opt.title}}-|-{{opt.otherOption}}-|-{{index}}-|-{{opt.questionLinkId}}-|-{{opt.point}}'/>
             {{opt.title}}
           </label>
           <view wx:if="{{opt.otherOption && textArrStatus[index] }}" class='other-textarea'>
@@ -29,7 +31,9 @@
         <checkbox-group class="flex-column from-item" bindchange='bindCheckboxOption' data-no="{{item.no}}" data-questionId='{{item.id}}'  data-index='{{index}}'>
         <block wx:for='{{item.options}}' wx:for-index="itemIndex"  wx:for-item="opt" wx:key="property">
           <label >
-            <checkbox color='#fff' checked='{{opt.isSelected}}'    value='{{opt.id}}-|-{{opt.title}}-|-{{opt.otherOption}}-|-{{index}}-|-{{opt.questionLinkId}}-|-{{opt.point}}'/>
+            <checkbox color='#fff' checked='{{opt.isSelected}}'   
+                   disabled="{{opitem.selectedOptionId != oitem.id &&wjajax}}" 
+             value='{{opt.id}}-|-{{opt.title}}-|-{{opt.otherOption}}-|-{{index}}-|-{{opt.questionLinkId}}-|-{{opt.point}}'/>
             {{opt.title}}
           </label>
           <view wx:if="{{opt.otherOption && textArrStatus[index]}}" class='other-textarea'>
@@ -56,6 +60,7 @@
               <block wx:for="{{item.options}}" wx:for-index="oindex" wx:for-item="oitem" wx:key="okey">
                 <label>
                   <radio   color='#D1A24B'  checked='{{opitem.selectedOptionId == oitem.id}}' 
+                   disabled="{{opitem.selectedOptionId != oitem.id &&wjajax}}" 
                 value='{{oitem.id}}-|-{{oitem.title}}-|-1-|-{{oindex}}-|-{{oitem.questionLinkId}}-|-{{oitem.point}}'/>
                 </label>
               </block>
@@ -70,8 +75,8 @@
         <button class="subBtn" bindtap='next'hidden="{{surLen == tindex}}">下一题</button>
         <!--<button class="subBtn" bindtap='prev' hidden="{{tindex == 0}}">上一题</button>-->
   </view>
-  <view  hidden="{{!isend}}">
-
+  <view  class="retunr-box" hidden="{{!isend}}">
+        {{thanksMsg}}
         <button class="subBtn" bindtap='retunrAbout'>返回首页</button>
   </view>
 </view>
