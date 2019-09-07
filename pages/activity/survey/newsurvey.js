@@ -59,7 +59,6 @@ Page({
     var that = this;
     wx.request({
         url: app.data.hostUrl + 'api/services/app/surveyQuestion/GetListBySurveyIdAsync?surveyId=' + parseInt(that.data.pageId) + '&accountId=' + wx.getStorageSync('userId'),
-    //  url: app.data.hostUrl + 'api/services/app/surveyQuestion/GetListBySurveyIdAsync?surveyId=' + parseInt(that.data.pageId) + '&accountId=9828',
       method: 'POST',
       success: function (res) {
         wx.hideNavigationBarLoading();
@@ -116,6 +115,7 @@ Page({
               })
             } else if (v.type == "text"){
               if (v.answerContent){
+                optArr.push(v.id);
                 initopt.push({
                   content: v.answerContent,
                   optionId: v.id,
