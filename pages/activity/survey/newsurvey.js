@@ -47,6 +47,7 @@ Page({
       options: options,
       dealerId: options.dealerId ? options.dealerId : "",
     })
+    console.log(this.data);
   //  that.pageInfo(options);
   },
   retunrAbout:function(){

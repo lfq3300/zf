@@ -41,7 +41,8 @@ Page({
   pageInfo: function (options) {
     var that = this;
     wx.request({
-      url: app.data.hostUrl + 'api/services/app/surveyQuestion/GetListBySurveyIdAsync?surveyId=' + parseInt(that.data.pageId) + '&accountId=' + wx.getStorageSync('userId'),
+     url: app.data.hostUrl + 'api/services/app/surveyQuestion/GetListBySurveyIdAsync?surveyId=' + parseInt(that.data.pageId) + '&accountId=' + wx.getStorageSync('userId'),
+     //   url: app.data.hostUrl + 'api/services/app/surveyQuestion/GetListBySurveyIdAsync?surveyId=' + parseInt(that.data.pageId) + '&accountId=9828',
       method: 'POST',
       success: function (res) {
         wx.hideNavigationBarLoading();
@@ -96,16 +97,18 @@ Page({
                 })
               })
             } else if (v.type == "text") {
-              initopt.push({
-                content: v.answerContent,
-                optionId: v.id,
-                optiongroupid: null,
-                otherOption: "other",
-                point: 0,
-                questionId: v.questionId,
-                questionLinkId: v.questionLinkId ? v.questionLinkId : 'null'
-              });
-            }else {
+              if (v.answerContent) {
+                initopt.push({
+                  content: v.answerContent,
+                  optionId: v.id,
+                  optiongroupid: null,
+                  otherOption: "other",
+                  point: 0,
+                  questionId: v.questionId,
+                  questionLinkId: v.questionLinkId ? v.questionLinkId : 'null'
+                });
+              }
+            } else {
               options.forEach(va => {
                 if (va.isSelected) {
                   initopt.push({
@@ -121,6 +124,7 @@ Page({
               });
             }
           });
+          console.log(initopt);
           if (initopt.length == 0){
             if (!wx.getStorageSync("surphone")) {
               wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
