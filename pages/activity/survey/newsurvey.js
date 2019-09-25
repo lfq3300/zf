@@ -415,7 +415,7 @@ Page({
       method: "post",
       data: {
         surveyId: parseInt(that.data.pageId),
-        accountId: wx.getStorageSync('userId'),
+        accountId: 9828,//wx.getStorageSync('userId'),
         questions: questions,
         phone: wx.getStorageSync("surphone"),
         dealerId: that.data.dealerId,
