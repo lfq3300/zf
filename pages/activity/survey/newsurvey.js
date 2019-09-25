@@ -410,6 +410,7 @@ Page({
       }
     }
     questions = newquestions;
+    console.log(questions);
     wx.request({
       url: app.data.hostUrl + 'api/MiniApp/addsurvey',
       method: "post",
