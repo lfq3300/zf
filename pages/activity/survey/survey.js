@@ -35,7 +35,7 @@ Page({
       options: options,
       dealerId: options.dealerId ? options.dealerId : "",
     })
- //   that.pageInfo(options);
+    that.pageInfo(options);
   },
   
   pageInfo: function (options) {

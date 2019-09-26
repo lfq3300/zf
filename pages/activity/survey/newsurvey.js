@@ -48,7 +48,7 @@ Page({
       dealerId: options.dealerId ? options.dealerId : "",
     })
     console.log(this.data);
-  //  that.pageInfo(options);
+    that.pageInfo(options);
   },
   retunrAbout:function(){
     wx.switchTab({
