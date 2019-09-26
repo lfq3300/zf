@@ -927,7 +927,7 @@ Page({
    */
   onShow: function () {
     app.ifUserLogin();
-    this.pageInfo(this.data.options);
+  //  this.pageInfo(this.data.options);
   },
 
   /**
@@ -948,7 +948,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.pageInfo(this.data.options);
+    //this.pageInfo(this.data.options);
   },
 
   /**

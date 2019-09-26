@@ -545,7 +545,7 @@ Page({
    */
   onShow: function () {
     app.ifUserLogin();
-    this.pageInfo(this.data.options);
+   // this.pageInfo(this.data.options);
   },
 
   /**
@@ -567,7 +567,7 @@ Page({
    */
   onPullDownRefresh: function () {
     //
-    this.pageInfo(this.data.options);
+  //  this.pageInfo(this.data.options);
   },
 
   /**

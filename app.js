@@ -540,7 +540,7 @@ App({
     for (let key in options) {
       const value = options[key]
       urlWithArgs += `${key}=${value}&`
-    }
+    } 
     urlWithArgs = urlWithArgs.substring(0, urlWithArgs.length - 1)
     return urlWithArgs
   },

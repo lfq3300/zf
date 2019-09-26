@@ -57,7 +57,7 @@ Page({
             duration: 2000
           })
         }
-        wx.navigateBack();
+        wx.navigateBack();  
       },
       fail: function () {
         wx.showToast({
