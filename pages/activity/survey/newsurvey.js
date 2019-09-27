@@ -33,7 +33,9 @@ Page({
     wjajax:false,
     rules:null,
     isend:false,
-    thanksMsg:""
+    thanksMsg:"",
+    subTitle:"",
+    isClick: false
   },
 
   /**
@@ -58,7 +60,7 @@ Page({
   pageInfo: function (options) {
     var that = this;
     wx.request({
-        url: app.data.hostUrl + 'api/services/app/surveyQuestion/GetListBySurveyIdAsync?surveyId=' + parseInt(that.data.pageId) + '&accountId=' + wx.getStorageSync('userId'),
+        url: app.data.hostUrl + 'api/services/app/surveyQuestion/GetListBySurveyIdAsync?surveyId=' + parseInt(that.data.pageId) + '&accountId=13',// + wx.getStorageSync('userId'),
       method: 'POST',
       success: function (res) {
         wx.hideNavigationBarLoading();
@@ -169,6 +171,7 @@ Page({
             if (!wx.getStorageSync("surphone")) {
               console.log(app.getCurrentPageUrlWithArgs());
               wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
+              wx.setStorageSync("subTitle", res.data.result[0].subTitle);
               wx.redirectTo({
                 url: "/pages/activity/survey/phone/index"
               })
@@ -220,6 +223,9 @@ Page({
     
   },
   setFromData: function (e, questionid, index, status = false, optiongroupid = null) {
+    this.setData({
+      isClick:true
+    })
     if (optiongroupid){
         this.setData({
           groupOpt:true,
@@ -360,7 +366,8 @@ Page({
     this.setData({
       questions: questions,
       textArrValue: textArrValue,
-      textStatus: false
+      textStatus: false,
+      isClick:true,
     })
   },
   bingOtherTextarea: function (e){
@@ -387,7 +394,8 @@ Page({
     })
     this.setData({
       questions: newquestions,
-      textStatus:false
+      textStatus:false,
+      isClick:true
     })
   },
   submitFrom: function () {
@@ -480,7 +488,9 @@ Page({
           isSelected:false
         })
     }else{
-      isSelected: true
+      this.setData({
+        isSelected: true
+      })
     }
     var _this = this;
     if(value instanceof Array){
@@ -653,20 +663,25 @@ Page({
       lastId = surveyArr[0].id;
     } else if (optId == lastId) {
       lastId = newquestions[newquestions.length - 1].questionId;
+      console.log(lastId);
     } 
-    
+    if (this.data.isClick){
+      optArr.pop();
+    }
     // else{
     //    lastId = newquestions[newquestions.length - 1].questionId;
     // }
     console.log("lastId"+lastId);
     optArr.pop();
+    console.log(optArr);
     this.setData({
       questions: newquestions,
       optArr: optArr,
       optArrIndex: optArr.length-1,
       count: "(" + tindex + "/" + surLen + ")",
       tindex: tindex,
-      optId: lastId
+      optId: lastId,
+      isClick:false
     })
 
   },
@@ -827,7 +842,8 @@ Page({
       optArrIndex: optArrIndex,
       count: "(" + tindex + "/" + surLen+")",
       optId: nextId,
-      tindex: tindex
+      tindex: tindex,
+      isClick:false
     })
   },
 
@@ -1015,7 +1031,8 @@ Page({
       wjajax: false,
       rules: null,
       isend: false,
-      thanksMsg: ""
+      thanksMsg: "",
+      isClick:false
     });
     this.pageInfo(this.data.options);
     },

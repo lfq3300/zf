@@ -9,6 +9,7 @@ Page({
     getcodetext: "获取验证码",
     getcodeStatus: true,
     ajaxStatus: true,
+    subTitle:"",
   },
 
   /**
@@ -18,6 +19,7 @@ Page({
     var that = this;
     that.setData({
       phone: "",
+      subTitle: wx.getStorageSync("subTitle")
     })
   },
   getPhoneCode: function () {

@@ -35,7 +35,7 @@ Page({
       options: options,
       dealerId: options.dealerId ? options.dealerId : "",
     })
-    that.pageInfo(options);
+  //  that.pageInfo(options);
   },
   
   pageInfo: function (options) {
@@ -128,6 +128,7 @@ Page({
           if (initopt.length == 0){
             if (!wx.getStorageSync("surphone")) {
               wx.setStorageSync("sururl", app.getCurrentPageUrlWithArgs());
+              wx.setStorageSync("subTitle", res.data.result[0].subTitle);
               wx.redirectTo({
                 url: "/pages/activity/survey/phone/index"
               })

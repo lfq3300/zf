@@ -47,7 +47,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 16,
+			"current": 15,
 			"list": [
 				{
 					"id": -1,
@@ -158,7 +158,7 @@
 					"id": 15,
 					"name": "pages/activity/survey/newsurvey",
 					"pathName": "pages/activity/survey/newsurvey",
-					"query": "id=3&title=ETC%20Questionnaire",
+					"query": "id=4&title=ETC%202019",
 					"scene": null
 				},
 				{
