@@ -545,7 +545,24 @@ Page({
    */
   onShow: function () {
     app.ifUserLogin();
-   // this.pageInfo(this.data.options);
+    this.setData({
+      loginhidde: true,
+      title: '',
+      surveyArr: [],
+      questions: [],
+      textArrStatus: [],
+      textArrValue: [],
+      hidden: true,
+      ajaxstatus: true,
+      count: "(1/1)",
+      countIndex: 0,
+      surLen: 0,
+      StartDateTime: app.getThisDateTime(),
+      groupOpt: false,
+      groupId: 0,
+      wjajax: false
+    })
+    this.pageInfo(this.data.options);
   },
 
   /**

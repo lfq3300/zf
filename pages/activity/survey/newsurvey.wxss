@@ -118,3 +118,11 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
   color: #fff;
   margin-top: 90rpx;
 }
+.subBtnBox{
+  display: flex;
+}
+
+.subBtnBox view{
+  flex: 1;
+  padding: 0 10rpx;
+}

@@ -23,7 +23,7 @@ Page({
     isJump:true,
     surLen:0,
     optIndex:0,
-    tindex:0,
+    tindex:1,
     isSelePrev:false,
     textStatus:false,
     isSelected:true,
@@ -48,7 +48,7 @@ Page({
       dealerId: options.dealerId ? options.dealerId : "",
     })
     console.log(this.data);
-    that.pageInfo(options);
+ //   that.pageInfo(options);
   },
   retunrAbout:function(){
     wx.switchTab({
@@ -416,7 +416,7 @@ Page({
       method: "post",
       data: {
         surveyId: parseInt(that.data.pageId),
-        accountId: 9828,//wx.getStorageSync('userId'),
+        accountId: wx.getStorageSync('userId'),
         questions: questions,
         phone: wx.getStorageSync("surphone"),
         dealerId: that.data.dealerId,
@@ -584,6 +584,7 @@ Page({
       }
        //存在下一题目ID
     }
+    console.log(optArr);
     var optnew = [];
     for (var i = 0; i < optArr.length; i++) {
       if (optnew.length == 0) {
@@ -611,11 +612,66 @@ Page({
   },
   
   prev: function(){
-    this.timu(false);
+    var questions = this.data.questions;
+    console.log(questions);
+    var optArrIndex = this.data.optArrIndex;
+    var optArr = this.data.optArr;
+    var optId = this.data.optId;
+    var surveyArr = this.data.surveyArr;
+    //获取最后一题的ID
+    var lastId = questions[questions.length - 1].questionId;
+    //获取当前题目的id
+    console.log(lastId);
+    //
+    //如果和当前ID相同 则表示
+    var newquestions = [];
+    var id = 0;
+    for (var i = 0; i < questions.length;i++){
+      if (questions[i].questionId != lastId){
+          newquestions.push(questions[i]);
+          id = questions[i].questionId;
+        }
+    }
+   
+    optArrIndex = newquestions.length;
+    console.log("前面:"+this.data.tindex);
+    var tindex = this.data.tindex - 1;
+    console.log("后:" +tindex);
+    var surLen = this.data.surLen;
+    if (tindex > surLen) {
+      tindex = surLen;
+    };
+   
+    // if (id != 0 && id == surveyArr[0].id){
+    //      tindex = 1;
+    //      newquestions = [];
+    //      console.log("11111");
+    // }
+    console.log(newquestions);
+    console.log(newquestions.length);
+    if (newquestions.length == 0){
+      lastId = surveyArr[0].id;
+    } else if (optId == lastId) {
+      lastId = newquestions[newquestions.length - 1].questionId;
+    } 
+    
+    // else{
+    //    lastId = newquestions[newquestions.length - 1].questionId;
+    // }
+    console.log("lastId"+lastId);
+    optArr.pop();
+    this.setData({
+      questions: newquestions,
+      optArr: optArr,
+      optArrIndex: optArr.length-1,
+      count: "(" + tindex + "/" + surLen + ")",
+      tindex: tindex,
+      optId: lastId
+    })
+
   },
   timu: function (status) {
     var optId = this.data.optId;
-    console.log(optId);
     //判断 当前 是否是 复选框 复选题目 
     var questions = this.data.questions;
     console.log(questions);
@@ -717,7 +773,7 @@ Page({
     if (!status) {
       //上一题目
       optStatus = true;
-      optArrIndex = optArrIndex -1;
+      optArrIndex = optArrIndex -1; //删掉之后的那些题目 后面的题目 以及当前的题目
     }else{
       optArrIndex = optArrIndex + 1;
     }
@@ -733,6 +789,8 @@ Page({
     console.log(optArr);
     wx.hideToast();
     nextId = optArr[optArrIndex];
+    console.log(optArrIndex);
+    console.log("nextId:" + nextId);
     //就是在index中判断 
     var optIndex = 0;
     var rules = "";
@@ -772,6 +830,9 @@ Page({
       tindex: tindex
     })
   },
+
+
+
   rules: function (ru, optArr, questions, surveyArr, nextId, optIndex){
     console.log("进来验证")
     console.log(ru);
@@ -919,7 +980,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
@@ -927,8 +988,37 @@ Page({
    */
   onShow: function () {
     app.ifUserLogin();
-  //  this.pageInfo(this.data.options);
-  },
+    this.setData({
+      loginhidde: true,
+      title: '',
+      surveyArr: [],
+      questions: [],
+      textArrStatus: [],
+      textArrValue: [],
+      hidden: true,
+      ajaxstatus: true,
+      count: "(1/1)",
+      countIndex: 0,
+      optId: 0,
+      optArr: [],
+      optArrIndex: 0,
+      isJump: true,
+      surLen: 0,
+      optIndex: 0,
+      tindex: 1,
+      isSelePrev: false,
+      textStatus: false,
+      isSelected: true,
+      StartDateTime: app.getThisDateTime(),
+      groupOpt: false,
+      groupId: 0,
+      wjajax: false,
+      rules: null,
+      isend: false,
+      thanksMsg: ""
+    });
+    this.pageInfo(this.data.options);
+    },
 
   /**
    * 生命周期函数--监听页面隐藏
