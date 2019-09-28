@@ -225,7 +225,7 @@ Page({
   setFromData: function (e, questionid, index, status = false, optiongroupid = null) {
     this.setData({
       isClick:true
-    })
+    });
     if (optiongroupid){
         this.setData({
           groupOpt:true,
@@ -545,6 +545,8 @@ Page({
     optArr = optnew;
     console.log(optArr);
     var nextId = valArr[valArr.length-2];
+    console.log(valArr);
+    console.log(nextId);
     var optIndex = this.data.optIndex;
     var surveyArr = this.data.surveyArr;
     var questions = this.data.questions;
@@ -573,19 +575,21 @@ Page({
         })
         return;
     }
+    console.log(nextId)
     if (nextId == "null"){
        //下一题Linkid 未 null 取下一题目的id
       var a = optIndex+1;
+      console.log(a);
       //做替换
       if (surveyArr.length == a){
         a = a - 1;
       }
-
       if (optArrIndex < nes.length){
         optArr[optArrIndex+1] = parseInt(surveyArr[a].id);
       }else{
           optArr.push(parseInt(surveyArr[a].id));
       }
+      console.log(optArr);
     }else{
       if (optArrIndex < nes.length) {
         optArr[optArrIndex+1] = parseInt(nextId);
@@ -665,6 +669,7 @@ Page({
       lastId = newquestions[newquestions.length - 1].questionId;
       console.log(lastId);
     } 
+    console.log(this.data.isClick);
     if (this.data.isClick){
       optArr.pop();
     }
@@ -674,14 +679,17 @@ Page({
     console.log("lastId"+lastId);
     optArr.pop();
     console.log(optArr);
+    var optIndex = this.data.optIndex - 1;
     this.setData({
       questions: newquestions,
       optArr: optArr,
       optArrIndex: optArr.length-1,
       count: "(" + tindex + "/" + surLen + ")",
       tindex: tindex,
+      optIndex: optIndex,
       optId: lastId,
-      isClick:false
+      isClick:false,
+      groupId:0
     })
 
   },
@@ -753,7 +761,7 @@ Page({
         })
       if (groupLen != optLen){
         wx.showToast({
-          title: '请回答当前题目',
+          title: '请回答当前题目11',
           icon: "none",
           duration: 1500,
         });
@@ -768,13 +776,14 @@ Page({
     //判断text是否有写入
     if (this.data.textStatus || !this.data.isSelected){
       wx.showToast({
-        title: '请回答当前题目',
+        title: '请回答当前题目22',
         icon: "none",
         duration: 1500,
       });
       return;
     }
     var optArr = this.data.optArr;
+    console.log(optArr);
     var nextId = 0;
     var questions = this.data.questions;
     var optArrIndex = this.data.optArrIndex;
@@ -795,7 +804,7 @@ Page({
     //判断 
     if (!optStatus) {
       wx.showToast({
-        title: '请回答当前题目',
+        title: '请回答当前题目--',
         icon: "none",
         duration: 1500,
       });
@@ -845,6 +854,7 @@ Page({
       tindex: tindex,
       isClick:false
     })
+    console.log(this.data.isClick);
   },
 
 

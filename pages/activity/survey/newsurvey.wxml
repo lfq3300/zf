@@ -11,7 +11,7 @@
     </view>
     <block wx:for="{{surveyArr}}" wx:for-index="index" wx:for-item="item" wx:key="property">
     <view class='sur-item'  wx:if="{{optId == item.id}}" >
-      <view class='sur-item-title'>{{index+1}}. {{item.title}} </view>
+      <view class='sur-item-title'>{{index+1}}.{{item.id}}. {{item.title}} </view>
       <view class='sur-item-content' wx:if="{{item.type == 'radio'}}">
         <radio-group class="flex-column from-item" bindchange='bindRadioOption' data-no="{{item.no}}" data-questionId='{{item.id}}' data-index='{{index}}'>
           <block  wx:for='{{item.options}}' wx:for-index="itemIndex"  wx:for-item="opt" wx:key="property">
