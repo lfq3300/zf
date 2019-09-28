@@ -60,7 +60,7 @@ Page({
   pageInfo: function (options) {
     var that = this;
     wx.request({
-        url: app.data.hostUrl + 'api/services/app/surveyQuestion/GetListBySurveyIdAsync?surveyId=' + parseInt(that.data.pageId) + '&accountId=13',// + wx.getStorageSync('userId'),
+        url: app.data.hostUrl + 'api/services/app/surveyQuestion/GetListBySurveyIdAsync?surveyId=' + parseInt(that.data.pageId) + '&accountId=' + wx.getStorageSync('userId'),
       method: 'POST',
       success: function (res) {
         wx.hideNavigationBarLoading();
