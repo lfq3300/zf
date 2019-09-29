@@ -761,7 +761,7 @@ Page({
         })
       if (groupLen != optLen){
         wx.showToast({
-          title: '请回答当前题目11',
+          title: '请回答当前题目',
           icon: "none",
           duration: 1500,
         });
@@ -776,7 +776,7 @@ Page({
     //判断text是否有写入
     if (this.data.textStatus || !this.data.isSelected){
       wx.showToast({
-        title: '请回答当前题目22',
+        title: '请回答当前题目',
         icon: "none",
         duration: 1500,
       });
@@ -804,7 +804,7 @@ Page({
     //判断 
     if (!optStatus) {
       wx.showToast({
-        title: '请回答当前题目--',
+        title: '请回答当前题目',
         icon: "none",
         duration: 1500,
       });
